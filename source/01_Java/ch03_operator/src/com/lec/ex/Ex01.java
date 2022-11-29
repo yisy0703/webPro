@@ -2,7 +2,7 @@ package com.lec.ex;
 // 산술연산 : + - * / %(나머지연산자)
 public class Ex01 {
 	public static void main(String[] args) {
-		int n1=-99, n2=10;
+		int n1=19, n2=10;
 		int result; double resultDouble;
 		result = n1 + n2;
 		System.out.printf("%d %c %d = %d\n", n1, '+', n2, result);
