@@ -13,6 +13,16 @@ public class VarEx04 {
 		double d = 3.14159265359; // 8byte
 		System.out.println("f = " + f);
 		System.out.println("d = " + d);
-		
+		if(f == d) {
+			System.out.println("f와 d값은 같다");
+		}else {
+			System.out.println("f와 d값은 다르다");
+		}
 	}
 }
+
+
+
+
+
+
