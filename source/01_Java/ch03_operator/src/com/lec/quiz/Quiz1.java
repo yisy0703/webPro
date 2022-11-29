@@ -11,6 +11,7 @@ public class Quiz1 {
 		String result = (su % 3 == 0) ? "3의 배수입니다":"3의 배수가 아닙니다";
 		//System.out.println("입력하신 수 (" + su + ")는" + result);
 		System.out.printf("입력하신 수(%d)는 %s\n", su, result);
+		sc.close();
 	}
 }
 
