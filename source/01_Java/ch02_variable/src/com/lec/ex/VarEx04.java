@@ -18,6 +18,20 @@ public class VarEx04 {
 		}else {
 			System.out.println("f와 d값은 다르다");
 		}
+		System.out.println("======================");
+		f = 10.1F;
+		d = 10.1;
+		System.out.println("f = " + f);
+		System.out.println("d = " + d);
+		if(f == d) {
+			System.out.println("f와 d값은 같다");
+		}else {
+			System.out.println("f와 d값은 다르다");
+		}
+		// 정수(4byte)랑 실수(8byte)랑 연산한결과 : i+d(8byte)
+		System.out.println("i + d = " + (i+d) );
+		// 정수(4byte)랑 정수(4byte)랑 연산한 결과 : 4byte
+		System.out.println("i / 7 = " + (i/7) );
 	}
 }
 
