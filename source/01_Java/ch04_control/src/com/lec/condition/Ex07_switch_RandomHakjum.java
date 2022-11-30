@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Ex07_switch_RandomHakjum {
 	public static void main(String[] args) {
 		// 0 <= Math.random() < 1 : 실수
-		// 0 <= Math.random()*101 < 101 : 실수
-		// 0 <= (int)(Math.random()*101) < 101 : 정수
+		// 0 <= Math.random()*3 < 3 : 실수
+		// 0 <= (int)(Math.random()*3) < 101 : 정수
 		//System.out.println((int)(Math.random()*101));
 		int score = (int)(Math.random()*101);
 		int temp = (score==100) ? score-1 : score; 
