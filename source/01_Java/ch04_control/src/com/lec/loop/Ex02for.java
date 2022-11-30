@@ -5,8 +5,12 @@ public class Ex02for {
 	public static void main(String[] args) {
 		int tot = 0; // 누적합을 위한 변수
 		for(int i=1 ; i<=20 ; i++) {
-			tot = tot + i ;
+			System.out.print(i);
+			if(i!=20) {
+				System.out.print('+');
+			}
+			tot += i; //tot = tot + i ;
 		}
-		System.out.println("1~20까지 누적합은 " + tot);
+		System.out.println("=" + tot);
 	}
 }
