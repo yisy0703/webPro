@@ -28,9 +28,12 @@ public class Ex04_height {
 				maxIdx = idx;
 			}//if-최대값
 			if(arrHeight[idx] < minHeight) {
-				
+				minHeight = arrHeight[idx];
+				minIdx = idx;
 			}// if-최소값
 		}//for
+		System.out.printf("가장 큰 학생은 %s의 키는 %d\n", arrName[maxIdx], maxHeight);
+		System.out.printf("가장 작은 학생은 %s의 키는 %d\n", arrName[minIdx], minHeight);
 	}//main
 }//class
 
