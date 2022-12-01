@@ -18,8 +18,19 @@ public class Ex01 {
 		int[] iArr3;
 		iArr3 = new int[3]; // {0,0,0}
 		// 확장 for문
+		for(int temp : iArr3) {
+			System.out.println(temp);
+		}
+		// 일반for문을 이용한 배열 값을 변경
+		for(int idx=0 ; idx<iArr3.length ; idx++) {
+			iArr3[idx] = 999;
+		}
+		for(int idx=0 ; idx<iArr3.length ; idx++) {
+			System.out.println(idx+"번째 : " + iArr3[idx]);
+		}
 	}
 }
+
 
 
 
