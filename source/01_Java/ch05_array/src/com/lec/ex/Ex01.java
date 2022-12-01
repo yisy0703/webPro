@@ -28,6 +28,13 @@ public class Ex01 {
 		for(int idx=0 ; idx<iArr3.length ; idx++) {
 			System.out.println(idx+"번째 : " + iArr3[idx]);
 		}
+		// 확장 for문을 이용한 배열 값을 변경 ★불가★
+		for(int ia : iArr3) {
+			ia = 111;
+		}
+		for(int ia : iArr3) {
+			System.out.println(ia);
+		}
 	}
 }
 
