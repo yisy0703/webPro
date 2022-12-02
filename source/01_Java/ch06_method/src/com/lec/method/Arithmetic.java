@@ -18,7 +18,7 @@ public class Arithmetic {
 	public String evenOdd(int value) {
 		return value%2==0? "짝수입니다":"홀수입니다";
 	}
-	static int abs(int value) { // 절대값을 return. 접근제한자 생략할 경우?
+	public static int abs(int value) { // 절대값을 return. 접근제한자 생략할 경우?
 		int result = value>=0? value : -value;
 		return result;
 	}
