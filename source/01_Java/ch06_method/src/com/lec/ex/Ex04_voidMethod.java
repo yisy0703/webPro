@@ -7,6 +7,15 @@ public class Ex04_voidMethod {
 		printLine('~'); 
 		System.out.println("Hello, Java");
 		printLine(15);
+		System.out.println("Hello, World!");
+		Ex04_voidMethod ex = new Ex04_voidMethod();
+		ex.printLine(21, '#');
+	}
+	private void printLine(int cnt, char ch) {
+		for(int i=0 ; i<cnt ; i++) {
+			System.out.print(ch);
+		}
+		System.out.println();//°³Çà
 	}
 	private static void printLine(int cnt) {
 		for(int i=0 ; i<cnt ; i++) {
