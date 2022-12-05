@@ -18,7 +18,7 @@ public class Man {
 		this.weight = weight;
 		System.out.println("데이터 4개 초기화하는 생성자 함수");
 	}
-	// Man man = new Man(170);
+	// new Man("홍길동")  new Man(170)  new Man(65.5)
 	public Man(String name) {
 		this.name = name;
 		System.out.println("이름 초기화하는 생성자 함수");
@@ -29,6 +29,13 @@ public class Man {
 	public Man(double weight) {
 		this.weight = weight;
 	}
+	public double calculateBMI() { // 객체안의 height와 weight로 BMI 지수 return
+		double result = weight / ( (height*0.01) * (height*0.01) );
+		return result;
+	}
+	// getter : name, age, height, weight
+	
+	// setter : name, age, height, weight
 }
 
 
