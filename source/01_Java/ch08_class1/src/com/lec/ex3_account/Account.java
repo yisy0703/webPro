@@ -36,6 +36,10 @@ public class Account {
 //		System.out.println("\""+accountNo+"\" " + ownerName+"ดิ ภÜพื : " + balance + "ฟ๘");
 		System.out.printf("\" %s \" %sดิ ภÜพื : %dฟ๘\n", accountNo, ownerName, balance);
 	}
+	public String infoString() {
+		//return "\""+accountNo+"\" " + ownerName+"ดิ ภÜพื : " + balance + "ฟ๘";
+		return String.format("\" %s \" %sดิ ภÜพื : %dฟ๘\n", accountNo, ownerName, balance);
+	}
 	// setter : ownerName
 	// getter : accountNo, ownerName, balance
 	public String getOwnerName() {
@@ -50,25 +54,4 @@ public class Account {
 	public long getBalance() {
 		return balance;
 	}
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
