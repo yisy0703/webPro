@@ -13,9 +13,19 @@ public class HumanMain {
 		Man man = new Man();
 		Kid kid1 = new Kid("홍아기");
 		// Kid kid2 = new Kid(); 개발자가 생성자 함수를 만들면 디폴트 생성자 함수는 자동 생성 안 함
+		Man hong = new Man("홍길동");
+		Man kim  = new Man("김길동", 22, 180, 67);
+		Man kim2 = kim;
 		
+		kim2.setHeight(185); kim2.setWeight(300);
+		System.out.println("kim과 kim2가 같은 객체냐 : " + kim.equals(kim2));
+		double bmi = kim.calculateBMI();
+		System.out.println(kim2.getName()+"의 bmi지수는 " + bmi);
 	}
 }
+
+
+
 
 
 
