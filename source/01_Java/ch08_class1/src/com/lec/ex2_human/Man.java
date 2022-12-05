@@ -34,8 +34,16 @@ public class Man {
 		return result;
 	}
 	// getter : name, age, height, weight
-	
+	public String getName() {return name;}
+	public int getAge() {return age;}
+	public int getHeight() {return height;}
+	public double getWeight() {return weight;}
 	// setter : name, age, height, weight
+	public void setName(String name) {this.name = name;}
+	public void setAge(int age) {this.age = age;}
+	public void setHeight(int height) {this.height = height;}
+	public void setWeight(double weight) {this.weight = weight;}
+	
 }
 
 
