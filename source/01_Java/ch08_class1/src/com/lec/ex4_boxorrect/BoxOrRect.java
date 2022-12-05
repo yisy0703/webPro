@@ -43,9 +43,9 @@ public class BoxOrRect {
 	}
 	public String infoString() {
 		if(depth==0) {
-			return String.format("사각형 - 가로 :%d, 세로:%d, 넓이:%d\n", width, height, volume);
+			return String.format("사각형 - 가로 :%d, 세로:%d, 넓이:%d", width, height, volume);
 		}else {
-			return String.format("직육면체 - 가로:%d, 세로:%d, 깊이:%d, 부피:%d\n", 
+			return String.format("직육면체 - 가로:%d, 세로:%d, 깊이:%d, 부피:%d", 
 					width, height, depth, volume);
 		}
 	}
