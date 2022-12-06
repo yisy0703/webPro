@@ -3,7 +3,7 @@ package com.lec.ex5_momchild;
 // child1.takeMoney(1000);
 public class Child {
 	private String name;
-	MomPouch momPouch;
+	static MomPouch momPouch;
 	public Child(String name) {
 		this.name = name;
 		momPouch = new MomPouch();
