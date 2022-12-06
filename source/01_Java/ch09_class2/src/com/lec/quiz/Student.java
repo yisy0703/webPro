@@ -1,7 +1,7 @@
 package com.lec.quiz;
 // 객체 생성 : new Student("정우성", 90, 80, 100); -> 번호, 총점, 평균도 같이 초기화
 public class Student {
-	private static int count;
+	private static int count=1;
 	private int no;
 	private String name;
 	private int kor;
@@ -11,7 +11,7 @@ public class Student {
 	private int avg;
 	public Student(){}
 	public Student(String name, int kor, int eng, int mat) {
-		no = ++count;
+		no = count++;
 		this.name=name;
 		this.kor=kor;
 		this.eng=eng;
