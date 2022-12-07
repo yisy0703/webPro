@@ -10,9 +10,8 @@ public class Point3D extends Point {
 	}
 	// infoPrint를 효율적인 override  : 좌표 x=2, y=1, z=1 (super.infoPrint이용)
 	@Override
-	public void infoPrint() {
-		super.infoPrint();
-		System.out.print(", z=" + z);
+	public String infoPrint() {
+		return super.infoPrint() + ", z=" + z;
 	}
 	
 //	public void infoPrint3d() {
