@@ -5,7 +5,7 @@ public class Child extends SuperIJ{
 	public Child() {
 		System.out.println("매개변수 없는 Child 생성자 함수");
 	}
-	public Child(int i, int j) {
+	public Child(int i, int j) {  // 오후 수정
 		System.out.println("매개변수 있는 child 생성자 함수 - i, j초기화");
 		//setI(i); 
 		this.i = i;
