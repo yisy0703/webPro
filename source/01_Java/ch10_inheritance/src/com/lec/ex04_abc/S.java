@@ -1,4 +1,4 @@
-package com.lec.ex4_abc;
+package com.lec.ex04_abc;
 public class S {
 	protected int s;
 	public S() {

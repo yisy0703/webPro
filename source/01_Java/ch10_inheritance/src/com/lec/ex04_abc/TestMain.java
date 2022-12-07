@@ -1,4 +1,4 @@
-package com.lec.ex4_abc;
+package com.lec.ex04_abc;
 public class TestMain {
 	public static void main(String[] args) {
 		S sObj = new S(); // 생성자함수1개 실행

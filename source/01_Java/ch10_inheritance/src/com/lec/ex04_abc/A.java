@@ -1,4 +1,4 @@
-package com.lec.ex4_abc;
+package com.lec.ex04_abc;
 // s
 public class A extends S {
 	public A() {
