@@ -1,7 +1,7 @@
 package com.lec.ex02_protected;
 public class SuperIJ {
-	private int i;
-	private int j;
+	protected int i;
+	protected int j;
 	public SuperIJ() { // 상속받은 클래스에서 부모클래스의 디폴트 생성자가 호출(기본적으로) 
 		System.out.println("매개변수 없는 SuperIJ 생성자 함수");
 	}
