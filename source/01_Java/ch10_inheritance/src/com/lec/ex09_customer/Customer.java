@@ -1,5 +1,4 @@
 package com.lec.ex09_customer;
-
 import cons.Constant;
 // name, tel, infoString
 public class Customer extends Person {
