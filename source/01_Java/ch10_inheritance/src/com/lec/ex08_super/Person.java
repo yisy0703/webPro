@@ -1,4 +1,4 @@
-package com.lec.ex8_super;
+package com.lec.ex08_super;
 // this.~ : 내객체의 ~
 // this() : 내클래스의 생성자 (함수내 첫번째 명령)
 // super.~ : 부모클래스의 ~
