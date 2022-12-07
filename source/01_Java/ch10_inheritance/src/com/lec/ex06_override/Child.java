@@ -19,3 +19,13 @@ public class Child extends Parent {
 		return true;
 	}
 }
+
+
+
+
+
+
+
+
+
+
