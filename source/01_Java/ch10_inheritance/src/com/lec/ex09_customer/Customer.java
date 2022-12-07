@@ -31,7 +31,8 @@ public class Customer extends Person {
 	}//buy
 	@Override
 	public String infoString() {
-		return super.infoString() + "   [주소]"+address + "   [포인트]" + point;
+		return super.infoString() + "  [주소]"+address + 
+				"  [포인트]" + point + "  [누적구매금액]" + sum + "  [vip여부]" + vip;
 	}
 }
 
