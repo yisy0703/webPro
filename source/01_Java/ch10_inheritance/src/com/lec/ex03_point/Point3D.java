@@ -11,10 +11,6 @@ public class Point3D extends Point {
 	public void infoPrint3d() {
 		System.out.println("ÁÂÇ¥ x=" + getX() + ", y=" + getY() +", z=" +z);
 	}
-	public int getZ() {
-		return z;
-	}
-	public void setZ(int z) {
-		this.z = z;
-	}
+	public int getZ() {return z;}
+	public void setZ(int z) {this.z = z;}
 }
