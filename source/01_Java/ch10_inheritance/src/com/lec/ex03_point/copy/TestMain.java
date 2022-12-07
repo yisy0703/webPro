@@ -11,5 +11,23 @@ public class TestMain {
 		// point3d.infoPrint(); //추후에 변경
 		System.out.println(point3d.infoPrint());
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
