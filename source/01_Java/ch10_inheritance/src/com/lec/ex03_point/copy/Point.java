@@ -11,8 +11,8 @@ public class Point {
 		this.x = x;
 		this.y = y;
 	}
-	public void infoPrint() {
-		System.out.print("ÁÂÇ¥ : x=" + x + ", y="+y);
+	public String infoPrint() {
+		return "ÁÂÇ¥ : x=" + x + ", y="+y;
 	}
 	public int getX() {return x;}
 	public void setX(int x) {this.x = x;}

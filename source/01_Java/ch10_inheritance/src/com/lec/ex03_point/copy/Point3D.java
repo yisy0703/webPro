@@ -3,11 +3,18 @@ package com.lec.ex03_point.copy;
 public class Point3D extends Point {
 	private int z;
 	public Point3D(int x, int y, int z) {
+		super(x, y);
 		System.out.println("매개변수 있는 Point3D 생성자 함수 - x, y, z 값 초기화");
 		// setX(x); setY(y); 수정
 		this.z = z;
 	}
 	// infoPrint를 효율적인 override  : 좌표 x=2, y=1, z=1 (super.infoPrint이용)
+	@Override
+	public void infoPrint() {
+		super.infoPrint();
+		System.out.print(", z=" + z);
+	}
+	
 //	public void infoPrint3d() {
 //		System.out.println("좌표 x=" + getX() + ", y=" + getY() +", z=" +z);
 //	}
