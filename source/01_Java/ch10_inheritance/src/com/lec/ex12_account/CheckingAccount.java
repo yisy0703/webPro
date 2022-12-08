@@ -18,7 +18,7 @@ public class CheckingAccount extends Account {
 				System.out.printf("%s님 %d원 지불하여 계좌(%s)에 잔액 %d원\n", 
 						getOwnerName(), amount, getAccountNo(), getBalance());
 			}else { // 잔액부족으로 지불불가
-				System.out.printf("%님  잔액이 부족하여 지불 불가합니다\n", getOwnerName());
+				System.out.printf("%s님  잔액이 부족하여 지불 불가합니다\n", getOwnerName());
 			}
 		}else { // 틀린 카드 번호 입력
 			System.out.println("유효한 카드 번호가 아닙니다");
