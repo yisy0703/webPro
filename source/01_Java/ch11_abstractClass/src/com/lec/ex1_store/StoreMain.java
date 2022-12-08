@@ -7,7 +7,8 @@ public class StoreMain {
 //		Store2 st2 = new Store2("= = 대학가 2호점 = =");
 //		Store3 st3 = new Store3("= = 증권가 3호점 = =");
 //		HeadQuarterStore[] stores = {head, st1, st2, st3};
-		HeadQuarterStore[] stores = {new HeadQuarterStore("= = 본사 = ="),
+		HeadQuarterStore[] stores = {
+				//new HeadQuarterStore("= = 본사 = ="), 추상클래스는 객체 생성 불가
 				new Store1("= = 주택가 1호점 = ="),
 				new Store2("= = 대학가 2호점 = ="),
 				new Store3("= = 증권가 3호점 = =")};
