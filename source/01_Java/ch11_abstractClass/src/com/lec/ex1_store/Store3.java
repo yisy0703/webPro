@@ -12,4 +12,6 @@ public class Store3 extends HeadQuarterStore{
 	public void bibim() {System.out.println("ºñºö¹ä : 7,000¿ø");}
 	@Override
 	public void sunde() {System.out.println("¾óÅ«¼ø´ë±¹ : 6,000¿ø");}
+	@Override
+	public void gongibab() {System.out.println("°ø±â¹ä : 1,000¿ø");}
 }
