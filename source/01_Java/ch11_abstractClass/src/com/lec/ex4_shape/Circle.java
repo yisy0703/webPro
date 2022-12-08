@@ -12,6 +12,11 @@ public class Circle extends Shape {
 	public double area() {
 		return Constant.PI*r*r;
 	}
+	@Override
+	public void draw() {
+		System.out.print("¿ø ");
+		super.draw();
+	}
 }
 
 
