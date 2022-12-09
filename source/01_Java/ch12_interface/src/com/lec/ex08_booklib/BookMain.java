@@ -46,7 +46,9 @@ public class BookMain {
 			case 2: // 반납로직 : 1.책이름입력 2.책조회 3.반납메소드 호출
 				break;
 			case 3: // 책 list 출력 : for문을 이용하여 출력
-				
+				for(Book book : books) {
+					book.printState();
+				}
 			}
 		}while(fn!=0);
 		System.out.println("종료");
