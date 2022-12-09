@@ -48,7 +48,6 @@ public class Book implements ILendable {
 		//msg = msg + "대출중";
 		msg += state == STATE_NORMAL ? "대출가능" : "대출 중";
 		System.out.println(msg);
-
 	}
 }
 
