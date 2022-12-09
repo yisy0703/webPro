@@ -44,6 +44,21 @@ public class BookMain {
 				}// if - 도서 조회
 				break;
 			case 2: // 반납로직 : 1.책이름입력 2.책조회 3.반납메소드 호출
+				// 1. 책이름입력
+				System.out.print("대출하고자 하는 책이름은?");
+				bTitle = scanner.next(); // white-space 앞까지의 스트링만 받음
+				// 2.책조회
+				for(idx=0 ; idx<books.length ; idx++) {
+					if(bTitle.equals(books[idx].getBookTitle()) ) {
+						break;
+					}
+				}// for
+				if(idx == books.length) {
+					System.out.println("해당 도서는 본 도서관의 책이 아닙니다");
+				}else {
+					// 3. 반납메소드 호출
+					books[idx].checkIn();
+				}
 				break;
 			case 3: // 책 list 출력 : for문을 이용하여 출력
 				for(Book book : books) {
