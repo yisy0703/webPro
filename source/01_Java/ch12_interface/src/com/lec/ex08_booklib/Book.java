@@ -39,9 +39,15 @@ public class Book implements ILendable {
 	}
 	@Override
 	public void printState() {
-		if(state==STATE_NORMAL) {
-			System.out.println(book);
-		}
+//		if(state==STATE_NORMAL) {
+//			System.out.println(bookNo + "\t" + bookTitle + "(" + writer +"著) - 대출가능");
+//		}else if(state ==STATE_BORROWED) {
+//			System.out.println(bookNo + "\t" + bookTitle + "(" + writer +"著) - 대출 중");
+//		}
+		String msg = bookNo + "\t" + bookTitle + "(" + writer +"著) - ";
+		//msg = msg + "대출중";
+		msg += state == STATE_NORMAL ? "대출가능" : "대출 중";
+		System.out.println(msg);
 
 	}
 }
