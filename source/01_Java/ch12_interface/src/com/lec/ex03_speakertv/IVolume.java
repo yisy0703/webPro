@@ -1,6 +1,6 @@
 package com.lec.ex03_speakertv;
 // 인터페이스 - static final 변수(상수)와 추상메소드 (예외:default메소드, static 메소드)
-// 작업명세서
+// 작업명세서 역할
 public interface IVolume {
 	public void volumeUp(); // 볼륨 레벨을 1씩 up
 	public void volumeUp(int level); // 볼륨 레벨을 level씩 up
