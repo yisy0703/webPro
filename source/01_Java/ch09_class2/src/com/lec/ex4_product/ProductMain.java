@@ -8,6 +8,7 @@ public class ProductMain {
 		p1.infoPrint();
 		Product p2 = new Product();
 		p2.infoPrint();
+		p2.staticMethod();
 		System.out.println("static 변수 : " + Product.count);
 		System.out.println("static 변수 : " + p1.count);
 		System.out.println("static 변수 : " + p2.count);
