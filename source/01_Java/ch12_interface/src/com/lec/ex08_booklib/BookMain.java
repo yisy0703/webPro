@@ -45,7 +45,7 @@ public class BookMain {
 				break;
 			case 2: // 반납로직 : 1.책이름입력 2.책조회 3.반납메소드 호출
 				// 1. 책이름입력
-				System.out.print("대출하고자 하는 책이름은?");
+				System.out.print("반납하고자 하는 책이름은?");
 				bTitle = scanner.next(); // white-space 앞까지의 스트링만 받음
 				// 2.책조회
 				for(idx=0 ; idx<books.length ; idx++) {
