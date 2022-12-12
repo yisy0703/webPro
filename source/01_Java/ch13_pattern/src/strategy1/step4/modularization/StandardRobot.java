@@ -11,15 +11,15 @@ public class StandardRobot extends Robot {
 	}
 	@Override
 	public void actionFly() {
-
+		fly.fly();
 	}
 	@Override
 	public void actionMissile() {
-
+		missile.missile();
 	}
 	@Override
 	public void actionKnife() {
-
+		knife.knife();
 	}
 	public void setFly(FlyImpl fly) {
 		this.fly = fly;
