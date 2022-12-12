@@ -1,18 +1,13 @@
 package strategy1.step4.modularization;
-import strategy1.step4.interfaces.FlyImpl;
-import strategy1.step4.interfaces.FlyNo;
-import strategy1.step4.interfaces.KnifeImpl;
-import strategy1.step4.interfaces.KnifeWood;
-import strategy1.step4.interfaces.MissileImpl;
-import strategy1.step4.interfaces.MissileYes;
-public class StandardRobot extends Robot {
+import strategy1.step4.interfaces.*;
+public class LowRobot extends Robot {
 	private FlyImpl     fly;
 	private MissileImpl missile;
 	private KnifeImpl   knife;
-	public StandardRobot() {
-		setFly(new FlyNo());//fly = new FlyNo();
-		setMissile(new MissileYes());//missile = new MissileYes();
-		setKnife(new KnifeWood());//knife = new KnifeWood();
+	public LowRobot() {
+		setFly(new FlyNo()); //fly = new FlyNo();
+		setMissile(new MissileNo());//missile = new MissileNo();
+		setKnife(new KnifeNo());//knife = new KnifeNo();
 	}
 	@Override
 	public void actionFly() {
