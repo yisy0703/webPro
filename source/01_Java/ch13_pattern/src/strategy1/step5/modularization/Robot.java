@@ -30,15 +30,15 @@ public class Robot{
 		knife.knife();
 	}
 	// setter ÇÊ¿ä
-		public void setFly(FlyImpl fly) {
-			this.fly = fly;
-		}
-		public void setMissile(MissileImpl missile) {
-			this.missile = missile;
-		}
-		public void setKnife(KnifeImpl knife) {
-			this.knife = knife;
-		}
+	public void setFly(FlyImpl fly) {
+		this.fly = fly;
+	}
+	public void setMissile(MissileImpl missile) {
+		this.missile = missile;
+	}
+	public void setKnife(KnifeImpl knife) {
+		this.knife = knife;
+	}
 }
 
 
