@@ -11,23 +11,9 @@ public class TestMain {
 			robot.shape();
 			robot.actionRun();
 			robot.actionWalk();
-			if(robot instanceof SuperRobot) {
-				SuperRobot tempRobot = (SuperRobot)robot; // 객체의 명시적인 형변환(casting)
-				tempRobot.actionFly();
-				tempRobot.actionMissile();
-				tempRobot.actionKnife();
-			}else if(robot instanceof StandardRobot) {
-				StandardRobot tempRobot = (StandardRobot)robot; // 객체의 명시적인 형변환(casting)
-				tempRobot.actionFly();
-				tempRobot.actionMissile();
-				tempRobot.actionKnife();
-			}else if(robot instanceof LowRobot) {
-				LowRobot tempRobot = (LowRobot)robot; // 객체의 명시적인 형변환(casting)
-				tempRobot.actionFly();
-				tempRobot.actionMissile();
-				tempRobot.actionKnife();
-			}
-			
+			robot.actionFly();
+			robot.actionMissile();
+			robot.actionKnife();
 		}
 	}
 }
