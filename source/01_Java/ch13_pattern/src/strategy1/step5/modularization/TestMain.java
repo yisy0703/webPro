@@ -1,4 +1,4 @@
-package strategy1.step4.modularization;
+package strategy1.step5.modularization;
 
 import strategy1.step4.interfaces.FlyHigh;
 import strategy1.step4.interfaces.KnifeToy;
