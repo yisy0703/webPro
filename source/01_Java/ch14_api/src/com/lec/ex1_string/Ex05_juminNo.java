@@ -24,5 +24,17 @@ public class Ex05_juminNo {
 		}else {
 			System.out.println("유효하지 않은 주민번호입니다");
 		}
+		// 방법3.genderStr을 정수로 전환
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
