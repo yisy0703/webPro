@@ -7,6 +7,7 @@ public class Person {
 	private String name;
 	private JobImpl job;
 	private GetImpl get;
+	public Person() {}
 	public Person(String id, String name) {
 		this.id = id;
 		this.name = name;
