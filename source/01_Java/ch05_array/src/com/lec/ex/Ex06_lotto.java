@@ -9,7 +9,7 @@ public class Ex06_lotto {
 		int temp;
 		for(i=0 ; i<lotto.length ; i++) {
 			do { // 발생된 난수가 중복되었는지 체크
-				temp = (int)(Math.random()*45+1);
+				temp = random.nextInt(45)+1;
 				for(j=0 ; j<i ; j++) {
 					if(lotto[j] == temp) {
 						break;
