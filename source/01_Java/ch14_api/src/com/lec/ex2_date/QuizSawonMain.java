@@ -4,7 +4,7 @@ public class QuizSawonMain {
 	public static void main(String[] args) {
 		Sawon[] employee = {new Sawon("a01", "홍길동", Sawon.COMPUTER),
 							new Sawon("a02","신길동", Sawon.DESIGN, 2022,12,15),
-							new Sawon("b01","마길동", Sawon.ACCOUNTING, 2022, 12, 12)};
+							new Sawon("b01","마길동", Sawon.HUMANRESOURCES, 2022, 12, 12)};
 		for(int i=0 ; i<employee.length ; i++) {
 			System.out.println(employee[i]);
 		}

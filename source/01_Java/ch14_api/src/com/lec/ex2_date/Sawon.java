@@ -29,10 +29,21 @@ public class Sawon {
 	@Override
 	public String toString() {  // [사번]a01  [이름]홍길동    [부서]COMPUTER   [입사일]2022년3월31일(목)
 		SimpleDateFormat sdf = new SimpleDateFormat("yy년M월d일(E)");
-		if(dept.length()>8) {
+		if(dept.length() >8 )
 			return "[사번]=" + no + "\t[이름]" + name + "\t[부서]" + dept + "\t[입사일]" + sdf.format(hiredate);
-		}else {
+		else
 			return "[사번]=" + no + "\t[이름]" + name + "\t[부서]" + dept + "\t\t[입사일]" + sdf.format(hiredate);
-		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
