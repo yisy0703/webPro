@@ -25,9 +25,15 @@ public class Ex01_Calendar {
 			case 6: System.out.print("금요일"); break;
 			case 7: System.out.print("토요일"); break;
 		}
-		System.out.printf("%d시 %d분 %d초 %d(%s %d시 %d분 %d초)",
+		System.out.printf("%d시 %d분 %d초 %d(%s %d시 %d분 %d초)\n",
 				hour24, minute, second, milliSec, 
-				);
+				(ampm==0 ? "오전":"오후"), hour, minute, second);
+		// %d(정수)
+		// %tY(년), %tm(월), %td(일) %ta(요일) %tH(24시) %tp(오전/오후) %tl(12시) %tM(분) %tS(초)
+		System.out.printf("%tY년 %tm월 %td일 %ta요일 %tH시 %tM분 %tS초(%tp %tl시)\n", 
+				now, now, now, now, now, now, now, now, now);
+		System.out.printf("%1$tY년 %1$tm월 %1$td일 %1$ta요일 %1$tH시 %1$tM분 %1$tS초(%1$tp %1$tl시)\n", 
+				now);
 	}
 }
 
