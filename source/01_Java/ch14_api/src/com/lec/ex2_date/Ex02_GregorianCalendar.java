@@ -1,8 +1,10 @@
 package com.lec.ex2_date;
 import java.util.Calendar;
-public class Ex01_Calendar {
+import java.util.GregorianCalendar;
+public class Ex02_GregorianCalendar {
 	public static void main(String[] args) {
-		Calendar now = Calendar.getInstance();
+		//Calendar now = Calendar.getInstance();
+		GregorianCalendar now = new GregorianCalendar();
 		System.out.println(now);
 		// 2022년 12월 14일 수요일 09시48분
 		int year = now.get(Calendar.YEAR);
