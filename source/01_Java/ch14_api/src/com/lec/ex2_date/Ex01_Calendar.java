@@ -17,10 +17,17 @@ public class Ex01_Calendar {
 		int milliSec = now.get(Calendar.MILLISECOND);
 		System.out.printf("%d년 %d월 %d일 ", year, month, day);
 		switch (week) {
-		case 1: System.out.print("일요일"); break;
-		case 2: System.out.print("월요일"); break;
-		case 3: System.out.print("화요일"); break;
+			case 1: System.out.print("일요일"); break;
+			case 2: System.out.print("월요일"); break;
+			case 3: System.out.print("화요일"); break;
+			case 4: System.out.print("수요일"); break;
+			case 5: System.out.print("목요일"); break;
+			case 6: System.out.print("금요일"); break;
+			case 7: System.out.print("토요일"); break;
 		}
+		System.out.printf("%d시 %d분 %d초 %d(%s %d시 %d분 %d초)",
+				hour24, minute, second, milliSec, 
+				);
 	}
 }
 
