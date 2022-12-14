@@ -11,6 +11,10 @@ public class Friend {
 		this.birth = birth;
 		this.address = address;
 	}
+	@Override
+	public String toString() {
+		return "[捞抚]"+name + "\t[傈拳]"+tel +"\t[积老]" +birth + "\t[林家]" + address;
+	}
 	public String getBirth() {
 		return birth;
 	}
@@ -24,3 +28,6 @@ public class Friend {
 		return address;
 	}
 }
+
+
+

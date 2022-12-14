@@ -7,6 +7,7 @@ public class Ex01_FriendMain {
 				new Friend("마길동", "010-6666-6666", "03-03", "인천 송도"),};
 		for(Friend friend : friends) {
 			// 이름:홍길동 전화:010-9999-999 생일:12-14 주소:서울 서대문
+			System.out.println(friend);
 		}
 	}
 }
