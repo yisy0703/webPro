@@ -12,10 +12,13 @@ public class Ex06_telPrint {
 			System.out.print("짝수번째 문자열 : ");
 			for(int i=0 ; i<tel.length() ; i++) {
 				if(i%2==0) {
-					System.out.print(tel.charAt(i));
-				}else {
-					System.out.print(" ");
+					System.out.print(tel.charAt(i) + " ");
 				}
+//				if(i%2==0) {
+//					System.out.print(tel.charAt(i));
+//				}else {
+//					System.out.print(" ");
+//				}
 			}
 			System.out.println();
 			System.out.print("문자를 꺼꾸로 : ");
