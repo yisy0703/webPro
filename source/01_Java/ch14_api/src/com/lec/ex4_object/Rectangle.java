@@ -1,6 +1,7 @@
 package com.lec.ex4_object;
-// new Rectangle(10,5,"빨강") new Rectangle(10,5) new Rectangle() new Rectanlge("노랑")
-public class Rectangle {
+// (1)implements Cloneable
+// (2)복제 메소드 clone을 오버라이드 
+public class Rectangle implements Cloneable {
 	private int width;
 	private int height;
 	private String color;
@@ -31,6 +32,11 @@ public class Rectangle {
 			return widthChk && heightChk && colorChk;
 		}
 		return false;
+	}
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
 	}
 	public int getWidth() {
 		return width;
