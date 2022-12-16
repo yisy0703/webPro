@@ -7,6 +7,8 @@ public class BookMain {
 						new Book("890ㅁ-02-01", "mysql","마길동"),
 						new Book("890ㅁ-01-01", "jdbc","제이디"),
 						new Book("890ㅁ-01-01", "html","이에이")};
+		Scanner scanner = new Scanner(System.in);
 		
+		scanner.close();
 	}
 }

@@ -10,6 +10,7 @@ public class TestMain {
 		book2.setCheckOutDate(new Date(new GregorianCalendar(2022, 10, 1).getTimeInMillis()));
 		System.out.println("book1상태 : "+book1);
 		System.out.println("book2상태 : "+book2);
+		System.out.println("= = = 반납함 = = =");
 		try {
 			book1.checkIn();
 			book2.checkIn();
