@@ -24,6 +24,15 @@ public class Friend {
 			return "[name=" + name + ", tel=" + tel;
 		}
 	}
+	public String getName() {
+		return name;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
 }
 
 
