@@ -14,7 +14,7 @@ public class Ex04_FriendArrayListSearchTel {
 		Scanner sc = new Scanner(System.in);
 		while(true) {
 			boolean searchOk = false;
-			System.out.println("검색하고자 하는 전화번호 뒷자리(종료 : x)?");
+			System.out.print("검색하고자 하는 전화번호 뒷자리(종료 : x)?");
 			String searchTel = sc.next(); // 8888
 			if(searchTel.equalsIgnoreCase("x")) 
 				break;
