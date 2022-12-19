@@ -19,9 +19,9 @@ public class Friend {
 							// sysout(f) => È« 717-7777
 		if(birthday!=null) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy³â MM¿ù ddÀÏ(E)");
-			return "[name=" + name + ", tel=" + tel + ", birthday=" + sdf.format(birthday);
+			return "[name]" + name + " [tel]" + tel + " [birthday]" + sdf.format(birthday);
 		}else {
-			return "[name=" + name + ", tel=" + tel;
+			return "[name]" + name + " [tel]" + tel;
 		}
 	}
 	public String getName() {
