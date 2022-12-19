@@ -1,5 +1,8 @@
 package com.lec.ex1_inputstreamOutputStream;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 // (1)파일을연다(스트림객체생성) (2)데이터읽는다(read메소드 사용) (3)파일을 닫는다(close메소드사용)
 public class Ex01_InputStream {
 	public static void main(String[] args) {
