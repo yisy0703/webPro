@@ -33,7 +33,7 @@ public class CustomerArrayListMain {
 		}while(true);
 		scanner.close();
 		// N(n)을 입력할 경우 회원정보 출력
-		if(customers.isEmpty()) {
+		if(customers.size()==0) {
 			System.out.println("가입한 회원 목록이 없습니다");
 		}else {
 			System.out.println("가입한 회원 목록입니다");
@@ -43,3 +43,9 @@ public class CustomerArrayListMain {
 		}
 	}
 }
+
+
+
+
+
+
