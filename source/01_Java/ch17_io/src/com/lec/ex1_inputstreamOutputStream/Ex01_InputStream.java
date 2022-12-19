@@ -10,7 +10,7 @@ public class Ex01_InputStream {
 			while(true) {
 				int i = is.read(); // 1byte씩 읽기
 				if(i == -1) break; // 파일의 끝이면 break;
-				System.out.print((char)i);
+				System.out.print((char)i + "(" + i+")");
 			}
 			System.out.println("\nDONE");
 		} catch (FileNotFoundException e) {
@@ -20,7 +20,7 @@ public class Ex01_InputStream {
 		} finally {
 			// 3. 파일을 닫는다
 			try {
-				is.close();
+				if(is!=null) is.close();
 			} catch (IOException ignore) {
 				System.out.println(ignore.getMessage());
 			}
