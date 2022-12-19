@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 
 import com.lec.ex1_list.Friend;
@@ -33,6 +34,15 @@ public class Ex03_IteratorEx {
 		while(iterator2.hasNext()) {
 			String key = iterator2.next();
 			System.out.println(key + " : " + map.get(key));
+		}
+		System.out.println("= = = 3. set °è¿­ = = =");
+		HashSet<Friend> set = new HashSet<Friend>();
+		set.add(new Friend("È«±æµ¿", "02-717-7777"));
+		set.add(new Friend("È«±æµ¿", "02-717-7777"));
+		set.add(new Friend("È«±æµ¿", "02-717-7777"));
+		Iterator<Friend> iterator3 = set.iterator();
+		while(iterator3.hasNext()) {
+			System.out.println(iterator3.next());
 		}
 	}
 }
