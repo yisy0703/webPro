@@ -1,5 +1,9 @@
 package com.lec.ex2_datastream;
-import java.io.*;
+import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 // OutputStream를 보조(조금 발전된 스트림)
 public class Ex01_DataOutputStream {
 	public static void main(String[] args) {

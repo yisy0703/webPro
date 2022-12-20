@@ -1,5 +1,9 @@
 package com.lec.ex4_bufferedReader;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 public class Ex01 {
 	public static void main(String[] args) {
 		Reader reader = null;

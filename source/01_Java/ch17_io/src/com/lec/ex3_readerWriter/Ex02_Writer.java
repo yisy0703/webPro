@@ -1,5 +1,7 @@
 package com.lec.ex3_readerWriter;
-import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 public class Ex02_Writer {
 	public static void main(String[] args) {
 		Writer writer = null;

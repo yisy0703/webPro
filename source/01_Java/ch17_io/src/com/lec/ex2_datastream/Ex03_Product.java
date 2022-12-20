@@ -1,5 +1,12 @@
 package com.lec.ex2_datastream;
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 // x를 입력할때까지 재고등록(물건명, 가격, 재고수량):file출력 -> x를 입력하면 등록된 모든 재고 목록을 출력 

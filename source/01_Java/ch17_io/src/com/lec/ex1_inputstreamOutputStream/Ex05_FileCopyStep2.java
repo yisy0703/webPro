@@ -1,5 +1,10 @@
 package com.lec.ex1_inputstreamOutputStream;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 // d:/webPro/note/bts.mp4 => d:/webPro/note/bts_copy.mp4( 8,075,033 byte )
 public class Ex05_FileCopyStep2 {
 	public static void main(String[] args) {

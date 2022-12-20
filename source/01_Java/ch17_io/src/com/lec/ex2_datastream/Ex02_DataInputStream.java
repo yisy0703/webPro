@@ -1,5 +1,8 @@
 package com.lec.ex2_datastream;
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 // DataInputStream은 InputStream의 보조 스트림
 public class Ex02_DataInputStream {
 	public static void main(String[] args) {
