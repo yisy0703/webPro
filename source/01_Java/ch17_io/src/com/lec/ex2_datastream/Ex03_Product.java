@@ -10,7 +10,7 @@ public class Ex03_Product {
 		DataOutputStream dos = null;
 		Scanner scanner = new Scanner(System.in);
 		try {
-			fos = new FileOutputStream("src/com/lec/ex2_datastream/product.dat");
+			fos = new FileOutputStream("src/com/lec/ex2_datastream/product.dat", true);
 			dos = new DataOutputStream(fos);
 			while(true) {
 				System.out.print("입고된 재고가 더 있나요(입력:Y/종료:X) : ");
