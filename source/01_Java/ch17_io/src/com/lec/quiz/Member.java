@@ -15,7 +15,10 @@ public class Member {
 	}
 	@Override
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
-		return name + "\t" + tel + "\t" + sdf.format(birthday) + "积\t" + address+"\n";
+		if(birthday!=null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
+			return name + "\t" + tel + "\t" + sdf.format(birthday) + "积\t" + address+"\n";
+		}
+		return name + "\t" + tel + "\t积老葛抚\t" + address+"\n";
 	}
 }

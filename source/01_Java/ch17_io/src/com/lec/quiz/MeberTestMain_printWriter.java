@@ -1,6 +1,9 @@
 package com.lec.quiz;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,7 +11,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-public class MeberTestMain_writer {
+public class MeberTestMain_printWriter {
 	public static void main(String[] args) {
 		// N(n)을 입력할 때까지 회원정보 add
 		ArrayList<Member> members = new ArrayList<Member>();
@@ -49,21 +52,26 @@ public class MeberTestMain_writer {
 		}while(true);
 		scanner.close();
 		// N(n)을 입력하면 ArrayList 정보를 파일과 콘솔에 출력
-		Writer writer = null;
+		//Writer writer = null;
+		PrintWriter printWriter = null;
 		try {
-			writer = new FileWriter("src/com/lec/quiz/member.txt");
+			//writer = new FileWriter("src/com/lec/quiz/member.txt");
+			printWriter = new PrintWriter("src/com/lec/quiz/member.txt");
 			for(Member member : members) {
 				System.out.print(member);
-				writer.write(member.toString());
+				//writer.write(member.toString());
+				printWriter.print(member.toString());
 			}
 			String msg = String.format("\t\t\t.... 이하 %d명 가입", members.size());
 			System.out.println(msg);
-			writer.write(msg);
+			//writer.write(msg);
+			printWriter.println(msg);
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}finally {
 			try {
-				if(writer!=null) writer.close();
+				//if(writer!=null) writer.close();
+				if(printWriter!=null) printWriter.close();
 			} catch (Exception ignore) { 
 				System.out.println(ignore.getMessage());
 			}
