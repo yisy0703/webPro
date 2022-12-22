@@ -146,9 +146,35 @@ SELECT * FROM EMP WHERE EMPNO IN (7902, 7788, 7566);
     -- ex. 직책이 MANAGER이거나 ANALYST인 사원의 모든 필드
 SELECT * FROM EMP WHERE JOB IN ('MANAGER', 'ANALYST');
 
- -- (3) LIKE 
+ -- (3) LIKE %(0글자이상), _(한글자)를 포함한 패턴
+    -- ex. 이름이 M으로 시작하는 사원의 모든 필드
+SELECT * FROM EMP WHERE ENAME LIKE 'M%'; -- M, MA, MAA, ..MZZZ
+    -- ex. 이름에 N이 들어가는 사원의 모든 필드
+SELECT * FROM EMP WHERE ENAME LIKE '%N%';
+    -- ex. 이름에 N이 들어가거나 job에 N이 들어가는 사원의 모든 필드
+SELECT * FROM EMP WHERE ENAME LIKE '%N%' OR JOB LIKE '%N%';
+    -- ex. 이름이 'S'로 끝나는 사원의 모든 필드
+SELECT * FROM EMP WHERE ENAME LIKE '%S';
+    -- ex. SAL이 5로 끝나는 사원의 모든 필드
+SELECT * FROM EMP WHERE SAL LIKE '%5';
+    -- ex. 82년도에 입사한 사원의 모든 필드
+SELECT * FROM EMP WHERE TO_CHAR(HIREDATE, 'RR/MM/DD') LIKE '82/%';
+    -- ex. 1월에 입사한 사원의 모든 필드
+SELECT * FROM EMP WHERE HIREDATE LIKE '__/01/__';
+    -- ex. 이름에 '%'가 들어간 사원의 모든 필드
+INSERT INTO EMP VALUES (9999, 'LISA%', NULL, NULL, NULL, 6000, 1500, 40); 
+SELECT * FROM EMP WHERE ENAME='LISA%';
+SELECT * FROM EMP WHERE ENAME LIKE '%\%%' ESCAPE '\';
+ROLLBACK; -- DML(데이터 조작어;추가, 수정, 삭제, 검색)를 취소
 
-
+ -- (4) IS NULL (널인지를 검색할 때)
+    -- ex. 상여금이 없는 사원의 모든 필드(COMM이 NULL, 0)
+SELECT * FROM EMP WHERE COMM IS NULL OR COMM=0;
+    -- ex. 상여금을 받는 사원의 모든 필드(comm이 null이 아니고 0도 아님)
+SELECT * FROM EMP WHERE NOT COMM IS NULL AND COMM!=0;
+SELECT * FROM EMP WHERE COMM IS NOT NULL AND COMM!=0;
+-- SELECT * FROM EMP WHERE COMM NOT IS NULL AND COMM!=0; 불가
+-- SELECT * FROM EMP WHERE COMM != NULL AND COMM!=0; 불가
 
 
 
