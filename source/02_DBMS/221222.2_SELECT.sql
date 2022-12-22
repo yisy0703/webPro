@@ -83,43 +83,67 @@ SELECT DISTINCT JOB FROM EMP;
 SELECT DISTINCT DEPTNO FROM EMP;
 
 -- ★ 연습문제 꼭 풀기
---1. emp 테이블의 구조 출력
+    --1. emp 테이블의 구조 출력
 DESC EMP; 
---2. emp 테이블의 모든 내용을 출력 
+    --2. emp 테이블의 모든 내용을 출력 
 SELECT * FROM EMP;
---3. 현 scott 계정에서 사용가능한 테이블 출력
+    --3. 현 scott 계정에서 사용가능한 테이블 출력
 SHOW USER;
 SELECT * FROM TAB;
---4. emp 테이블에서 사번, 이름, 급여, 업무, 입사일 출력
+    --4. emp 테이블에서 사번, 이름, 급여, 업무, 입사일 출력
 SELECT EMPNO, ENAME, SAL, JOB, HIREDATE FROM EMP;
---5. emp 테이블에서 급여가 2000미만인 사람의 사번, 이름, 급여 출력
+    --5. emp 테이블에서 급여가 2000미만인 사람의 사번, 이름, 급여 출력
 SELECT EMPNO, ENAME, SAL FROM EMP WHERE SAL<2000;
---6. 입사일이 81/02이후에 입사한 사람의 사번, 이름, 업무, 입사일 출력
+    --6. 입사일이 81/02이후에 입사한 사람의 사번, 이름, 업무, 입사일 출력
 SELECT EMPNO, ENAME, JOB, HIREDATE FROM EMP WHERE HIREDATE >= '81/02/01';
 
--- ※날짜설정이 RR/MM/DD가 아닌 경우의 고려
+    -- ※날짜설정이 RR/MM/DD가 아닌 경우의 고려
 ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD';
 SELECT EMPNO, ENAME, JOB, HIREDATE FROM EMP 
     WHERE TO_CHAR(HIREDATE,'RR/MM/DD') >= '81/02/01';
---7. 업무가 SALESMAN인 사람들 모든 자료 출력
+    --7. 업무가 SALESMAN인 사람들 모든 자료 출력
 SELECT * FROM EMP WHERE JOB = 'SALESMAN';
---8. 업무가 CLERK이 아닌 사람들 모든 자료 출력
+    --8. 업무가 CLERK이 아닌 사람들 모든 자료 출력
 SELECT * FROM EMP WHERE JOB != 'CLERK';
 SELECT * FROM EMP WHERE JOB <> 'CLERK';
 SELECT * FROM EMP WHERE JOB ^= 'CLERK';
 SELECT * FROM EMP WHERE NOT JOB = 'CLERK';
---9. 급여가 1500이상이고 3000이하인 사람의 사번, 이름, 급여 출력
+    --9. 급여가 1500이상이고 3000이하인 사람의 사번, 이름, 급여 출력
 SELECT EMPNO, ENAME, SAL FROM EMP WHERE SAL>=1500 AND SAL<=3000;
---10. 부서코드가 10번이거나 30인 사람의 사번, 이름, 업무, 부서코드 출력
+    --10. 부서코드가 10번이거나 30인 사람의 사번, 이름, 업무, 부서코드 출력
 SELECT EMPNO, ENAME, JOB, DEPTNO FROM EMP WHERE DEPTNO=10 OR DEPTNO=30;
---11. 업무가 SALESMAN이거나 급여가 3000이상인 사람의 사번, 이름, 업무, 부서코드 출력
+    --11. 업무가 SALESMAN이거나 급여가 3000이상인 사람의 사번, 이름, 업무, 부서코드 출력
 SELECT EMPNO, ENAME, JOB, DEPTNO FROM EMP WHERE JOB='SALESMAN' OR SAL>=3000;
---12. 급여가 2500이상이고 업무가 MANAGER인 사람의 사번, 이름, 업무, 급여 출력
+    --12. 급여가 2500이상이고 업무가 MANAGER인 사람의 사번, 이름, 업무, 급여 출력
 SELECT EMPNO, ENAME, JOB, SAL FROM EMP WHERE SAL>=2500 AND JOB = 'MANAGER';
---13.“ename은 XXX 업무이고 연봉은 XX다” 스타일로 모두 출력(연봉은 SAL*12+COMM)
+    --13.“ename은 XXX 업무이고 연봉은 XX다” 스타일로 모두 출력(연봉은 SAL*12+COMM)
 SELECT ENAME||'은(는) '||job||'업무이고 연봉은'||(SAL*12+NVL(COMM,0)) ||'다' FROM EMP;
--- CF. "ENAME의 상여는 800"
-SELECT ENAME || '이 상여는' || NVL(COMM,0) FROM EMP;
+    -- CF. "ENAME의 상여는 800" (연결연산자로 하면 NULL은 출력 안 됨)
+SELECT ENAME || '의 상여금은 ' || NVL(COMM,0) FROM EMP;
+
+-- 8. SQL연산자(BETWEEN, IN, LIKE, IS NULL)
+ -- (1) BETWEEN A AND B ; A부터 B까지 (A, B포함)
+    -- ex.SAL이 1500이상 3000이하인 직원의 사번, 이름, 급여
+SELECT EMPNO, ENAME, SAL FROM EMP WHERE SAL>=1500 AND SAL<=3000;
+SELECT EMPNO, ENAME, SAL FROM EMP WHERE SAL BETWEEN 1500 AND 3000;
+SELECT EMPNO, ENAME, SAL FROM EMP WHERE SAL BETWEEN 3000 AND 1500; -- 불가
+    -- ex. sal이 1500미만, 3000초과
+SELECT * FROM EMP WHERE SAL NOT BETWEEN 1500 AND 3000;
+    -- ex. 이름이 'A','B','C'로 시작하는 직원의 모든 필드
+SELECT * FROM EMP WHERE ENAME BETWEEN 'A' AND 'D' AND ENAME!='D'; -- 'A'~'D'까지/'D'는 제외
+    -- ex. 82년도에 입사한 직원의 모든 필드 출력
+SELECT * FROM EMP WHERE HIREDATE BETWEEN '82/01/01' AND '82/12/31';
+
+ -- (2) IN
+    -- ex. 부서번호가 10, 20, 40번 부서인 직원의 모든 필드
+SELECT * FROM EMP WHERE DEPTNO=10 OR DEPTNO=20 OR DEPTNO=40;
+SELECT * FROM EMP WHERE DETPNO IN (10,20,40);
+    -- ex. 부서번호가 10,20,40번을 제외한 부서 직원의 모든 필드
+SELECT * FROM EMP WHERE NOT (DEPTNO=10 OR DEPTNO=20 OR DEPTNO=40);
+SELECT * FROM EMP WHERE DEPTNO NOT IN (10,20,40);
+    -- ex. 사번이 7902, 7788, 7566인 사원의 모든 필드
+
+
 
 
 
