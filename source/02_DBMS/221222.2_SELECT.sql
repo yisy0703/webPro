@@ -76,6 +76,7 @@ SELECT ENAME, NVL(TO_CHAR(MGR),'CEO') MGR FROM EMP;
 -- 6. 연결연산자(||) : 필드나 문자를 연결
 SELECT ENAME || '은' || JOB EMPLOYEE FROM EMP;
     -- ex. 모든 사원에 대하여 'SMITH : ANNUAL SALARY = XXXX' 포맷으로 출력 (연봉=SAL*12+COMM)
+SELECT ENAME || ' : ANNUAL SALARY = ' || (SAL*12+NVL(COMM,0)) MGESSAGE FROM EMP;
 
 
 
