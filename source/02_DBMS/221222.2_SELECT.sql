@@ -63,7 +63,19 @@ SELECT * FROM EMP WHERE DEPTNO=10 OR JOB='MANAGER';
 SELECT * FROM EMP WHERE DEPTNO != 10;
 SELECT * FROM EMP WHERE NOT DEPTNO = 10;
 
+-- 5. 산술연산자
+SELECT EMPNO, ENAME, SAL, SAL*1.1 UPGRADESAL FROM EMP;
+    -- ex. 모든 사원의 이름(ename), 월급(sal), 상여(comm), 연봉(sal*12+comm)을 출력
+SELECT ENAME, SAL, COMM, SAL*12+COMM 연봉 FROM EMP;
+    -- 산술연산의 결과는 NULL을 포함하면 결과는 NULL
+    -- NVL(NULL일 수도 있는 필드명, 대치값)을 이용 ; 필드명과 대치값은 타입이 일치
+SELECT ENAME, SAL, COMM, SAL*12+NVL(COMM, 0) 연봉 FROM EMP;
+    -- 모든 사원의 ENAME, MGR(상사사번)을 출력 (상사가 없으면 CEO로 출력)
+SELECT ENAME, NVL(TO_CHAR(MGR),'CEO') MGR FROM EMP;
 
+-- 6. 연결연산자(||) : 필드나 문자를 연결
+SELECT ENAME || '은' || JOB EMPLOYEE FROM EMP;
+    -- ex. 모든 사원에 대하여 'SMITH : ANNUAL SALARY = XXXX' 포맷으로 출력 (연봉=SAL*12+COMM)
 
 
 
