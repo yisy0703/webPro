@@ -46,14 +46,13 @@ SELECT ENAME, SAL, HIREDATE, D.DEPTNO, DNAME
     WHERE E.DEPTNO=D.DEPTNO AND COMM IS NULL AND SAL>=1200
     ORDER BY DNAME, SAL DESC;
     
-    -- 탄탄EX. NEW YORK에서 근무하는 사원의 이름과 급여를 출력하시오
+    -- 탄탄ex1. NEW YORK에서 근무하는 사원의 이름과 급여를 출력하시오
+    
+    -- 탄탄ex2. ACCOUNTING 부서 소속 사원의 이름과 입사일을 출력하시오
 
-    -- 탄탄EX. ACCOUNTING 부서 소속 사원의 이름과 입사일을 출력하시오
+    -- 탄탄ex3. 직급이 MANAGER인 사원의 이름, 부서명을 출력하시오
 
-    -- 탄탄EX. 직급이 MANAGER인 사원의 이름, 부서명을 출력하시오
-
-    -- 탄탄EX. Comm이 null이 아닌 사원의 이름, 급여, 부서코드, 근무지를 출력하시오.
-
+    -- 탄탄ex4. Comm이 null이 아닌 사원의 이름, 급여, 부서코드, 근무지를 출력하시오.
 
 
 
