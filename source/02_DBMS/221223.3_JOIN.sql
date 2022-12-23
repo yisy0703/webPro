@@ -179,7 +179,7 @@ SELECT W.ENAME, M.ENAME MANAGER
     FROM EMP W, EMP M 
     WHERE W.MGR=M.EMPNO;
   --2. 이름, 급여, 업무, 직속상사명
-SELECT W.ENAME, W.SAL, W.JOB, M.ENAME MANAGER
+SELECT W.ENAME, W.SAL, W.JOB, M.ENAME "MANAGER"
     FROM EMP W, EMP M
     WHERE W.MGR=M.EMPNO;
   --3. 이름, 급여, 업무, 직속상사명 . (상사가 없는 직원까지 전체 직원 다 출력.
@@ -189,7 +189,7 @@ SELECT W.ENAME, W.SAL, W.JOB, NVL(M.ENAME,'없음') MANAGER
     WHERE W.MGR=M.EMPNO(+);
   --4. 이름, 급여, 부서명, 직속상사명
 SELECT W.ENAME, W.SAL, DNAME, M.ENAME MANAGER
-  FROM EMP W, EMP M, DEPT D 
+  FROM EMP W, EMP M, DEPT D
   WHERE W.DEPTNO=D.DEPTNO AND W.MGR=M.EMPNO;
   --5. 이름, 급여, 부서코드, 부서명, 근무지, 직속상사명, (상사가 없는 직원까지 전체 직원 다 출력)
 SELECT W.ENAME, W.SAL, W.DEPTNO, DNAME, LOC, M.ENAME MANAGER
