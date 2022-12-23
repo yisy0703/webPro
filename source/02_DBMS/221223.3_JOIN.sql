@@ -151,10 +151,72 @@ SELECT E2.ENAME
     FROM EMP E1, DEPT D1, EMP E2, DEPT D2
     WHERE E1.DEPTNO=D1.DEPTNO AND E2.DEPTNO=D2.DEPTNO
         AND E1.ENAME='SCOTT' AND D1.LOC=D2.LOC AND E2.ENAME <> 'SCOTT';
+-- 홍데이터 50번부터 데이터 원상복귀(삭제)
+ROLLBACK;
 
+-- ★ 3. OUTER JOIN ; EQUI JOIN & SELF JOIN시 조건에 만족하지 않는 행까지 나타나게
+-- (1) SELF JOIN에서의 OUTER JOIN
+SELECT W.ENAME, W.MGR, M.EMPNO, M.ENAME
+    FROM EMP W, EMP M
+    WHERE W.MGR = M.EMPNO(+);
+    -- ex. "SMITH의 상사는 FORD" ... "KING의 상사는 없다"
+SELECT W.ENAME || '의 상사는 ' || NVL(M.ENAME, '없다')
+    FROM EMP W, EMP M
+    WHERE W.MGR = M.EMPNO(+);
+    -- ex. 말단사원
+SELECT M.EMPNO, M.ENAME
+    FROM EMP W, EMP M
+    WHERE W.MGR(+)=M.EMPNO AND W.ENAME IS NULL;
+-- (2) EQUI JOIN에서의 OUTER JOIN
+SELECT * FROM EMP ; -- 14행
+SELECT * FROM DEPT; -- 4행 (10,20,30,40 부서)
+SELECT * FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO; -- 40번 부서 출력 안됨
+SELECT * FROM EMP E, DEPT D WHERE E.DEPTNO(+)=D.DEPTNO; -- 40번 부서 포함
 
+-- 셤 연습문제 PART 1
+--1. 이름, 직속상사명
 
+--2. 이름, 급여, 업무, 직속상사명
 
+--3. 이름, 급여, 업무, 직속상사명 . (상사가 없는 직원까지 전체 직원 다 출력.
+    --상사가 없을 시 '없음'으로 출력)
+
+--4. 이름, 급여, 부서명, 직속상사명
+
+--5. 이름, 급여, 부서코드, 부서명, 근무지, 직속상사명, (상사가 없는 직원까지 전체 직원 다 출력)
+
+--6. 이름, 급여, 등급, 부서명, 직속상사명. 급여가 2000이상인 사람
+
+--7. 이름, 급여, 등급, 부서명, 직속상사명, (직속상사가 없는 직원까지 전체직원 부서명 순 정렬)
+
+--8. 이름, 급여, 등급, 부서명, 연봉, 직속상사명. 연봉=(급여+comm)*12 단 comm이 null이면 0
+
+--9. 8번을 부서명 순 부서가 같으면 급여가 큰 순 정렬
+
+--  PART2
+--1.EMP 테이블에서 모든 사원에 대한 이름, 부서번호, 부서명을 출력하는 SELECT 문장을 작성하여라.
+
+--2. EMP 테이블에서 NEW YORK에서 근무하고 있는 사원에 대하여 이름, 업무, 급여, 부서명을 출력
+
+--3. EMP 테이블에서 보너스를 받는 사원에 대하여 이름,부서명,위치를 출력
+
+--4. EMP 테이블에서 이름 중 L자가 있는 사원에 대하여 이름,업무,부서명,위치를 출력
+
+--5. 사번, 사원명, 부서코드, 부서명을 검색하라. 사원명기준으로 오름차순정열
+
+--6. 사번, 사원명, 급여, 부서명을 검색하라. 
+    --단 급여가 2000이상인 사원에 대하여 급여를 기준으로 내림차순으로 정열하시오
+
+--7. 사번, 사원명, 업무, 급여, 부서명을 검색하시오. 단 업무가 MANAGER이며 급여가 2500이상인
+-- 사원에 대하여 사번을 기준으로 오름차순으로 정열하시오.
+
+--8. 사번, 사원명, 업무, 급여, 등급을 검색하시오. 단, 급여기준 내림차순으로 정렬하시오
+
+--9. 사원테이블에서 사원명, 사원의 상사를 검색하시오(상사가 없는 직원까지 전체)
+
+--10. 사원명, 상사명, 상사의 상사명을 검색하시오
+
+--11. 위의 결과에서 상위 상사가 없는 모든 직원의 이름도 출력되도록 수정하시오
 
 
 
