@@ -97,6 +97,14 @@ SELECT * FROM EMP WHERE INSTR(HIREDATE, '09' ,7) = 0;
   --  LPAD(STR, 자리수) : STR을 자리수만큼 확보하고 왼쪽 빈자리에 ' '로 출력
   --  RPAD(STR, 자리수, 채울문자) : STR을 자리수만큼 확보하고 오른쪽 빈자리에 채울문자로 출력
   --  RPAD(STR, 자리수) : STR을 자리수만큼 확보하고 오른쪽 빈자리에 ' '로 출력
+SELECT LPAD('ORACLE', 10, '#') FROM DUAL;
+SELECT RPAD('ORACLE', 10, '*') FROM DUAL;
+SELECT ENAME, SAL FROM EMP;
+DESC EMP; -- 이름은 10문자까지 SAL은 5자리까지 입력 가능
+SELECT RPAD(ENAME, 11, '-'), LPAD(SAL, 6, '*') FROM EMP;
+    -- ex. 사번, 이름(7369 S**** / 7654 M***** / 7521 W*** ..) - SUBSTR, LENGTH, RPAD
+SELECT EMPNO, ENAME FROM EMP;
+    -- 
 
 
 
