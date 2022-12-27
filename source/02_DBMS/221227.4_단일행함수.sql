@@ -193,7 +193,36 @@ SELECT TRUNC(SYSDATE, 'YEAR') FROM DUAL; -- 같은해 1월1일
 SELECT TRUNC(SYSDATE, 'MONTH') FROM DUAL; -- 같은달 1일
 SELECT TRUNC(SYSDATE, 'DAY') FROM DUAL; -- 지난 일요일
 SELECT TO_CHAR(TRUNC(SYSDATE), 'RR/MM/DD HH24:MI') FROM DUAL; -- 오늘 0시0분
-    -- -- ex. 이름, 입사일, 첫월급날(11일)
+    -- ex1. 이름, 입사일, 첫월급날(11일) : 10일이전:이번달11 / 11일이후면 다음달11
+                       -- ROUND의 기준은 15,16을 10,11로 
+SELECT ENAME, HIREDATE, ROUND(HIREDATE+5, 'MONTH')+10 FROM EMP; -- 월급날 11일
+    -- ex2. 월급날 10일 : 9일까지는 이번달, 10일부터는 다음달
+SELECT ENAME, HIREDATE, ROUND(HIREDATE+6, 'MONTH')+9 FROM EMP;
+    -- ex3. 월급날 25일 : 24일까지는 이번달, 25일부터는 다음달
+SELECT ENAME, HIREDATE, ROUND(HIREDATE-9, 'MONTH')+24 FROM EMP;
+
+-- 4. 형변환 함수 (TO_CHAR:문자로 변환하는 함수, TO_DATE:날짜형으로 변환하는 함수)
+-- (1) TO_CHAR(날짜형, '출력형식')
+    -- YYYY 년도4자리 / RR 년도2자리 / MM 월 / DD 일 / DY 요일 
+    -- HH24 / HH12 / AM이나 PM / MI 분 / SS초
+    -- 출력형식에 문자를 포함할 경우 ""
+SELECT ENAME, TO_CHAR(HIREDATE, 'YYYY-MM-DD HH24:MI:SS') FROM EMP;
+SELECT TO_CHAR(SYSDATE, 'YYYY"년"MM"월"DD"일" DY"요일" AM HH12"시"MI"분"SS"초"') FROM DUAL;
+SELECT TO_CHAR(SYSTIMESTAMP, 'RR-MM-DD AM HH12:MI:SS:FF') FROM DUAL;
+
+-- (2) TO_CHAR(숫자, '출력형식')
+    -- 0 : 자릿수, 출력형식의 자릿수가 많으면 0으로 채움
+    -- 9 : 자릿수, 출력형식의 자릿수가 많아도 숫자만큼만 출력
+    -- , : 세자리마다 , 가능
+    -- . : 소수점
+    -- $ : 통화단위 $추가하고자 할 때
+    -- L : 지역통화단위를 추가하고자 할 때
+SELECT TO_CHAR(12345678, '000,000,000.00') FROM DUAL; -- 012,345,678
+SELECT TO_CHAR(12345678, '999,999,999.99') FROM DUAL; -- 12,345,678
+SELECT TO_CHAR(100.76, '999.9') FROM DUAL; -- 소수점 자리수가 부족할 경우 반올림
+SELECT TO_CHAR(1200, 'L9,999') FROM DUAL;
+DESC EMP; -- SAL NUMBER(7,2) ; 전체 자리수는 7자리
+SELECT ENAME, SAL, TO_CHAR(SAL, '$99,999') FROM EMP;
 
 
 
