@@ -84,8 +84,13 @@ SELECT INSTR('ABCABC', 'B') FROM DUAL; -- 처음부터 찾아서 처음나오는 B의 위치 : 
 SELECT INSTR('ABCABC', 'B', 3) FROM DUAL; --3번째문자부터 찾아서 처음 나오는 B의 위치 : 5
 SELECT INSTR('ABCABC', 'B', -3) FROM DUAL;--뒤3번째부터 뒤로 찾아 처음 나오는 B의 위치 : 2
 SELECT INSTR('ABCABCABC', 'B', -3) FROM DUAL; -- 뒤3번째부터 뒤로 찾아 처음 나오는 B위치 : 5
-    --
-
+    -- 9월에 입사한 사원(INSTR이용) 'RR/MM/DD'
+ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD';
+SELECT * FROM EMP WHERE INSTR(HIREDATE, '09', 4)=4;
+SELECT * FROM EMP WHERE INSTR(TO_CHAR(HIREDATE,'RR/MM/DD'), '09', 4)=4;
+    -- 9일에 입사한 사원의 모든 필드(INSTR이용)
+    
+    -- 9일 아닌 다른 날에 입사한 사원의 모든 필드(INSTR이용)
 
 
 
