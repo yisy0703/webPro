@@ -106,11 +106,17 @@ SELECT RPAD(ENAME, 11, '-'), LPAD(SAL, 6, '*') FROM EMP;
 SELECT EMPNO, RPAD(SUBSTR(ENAME, 1, 1), LENGTH(ENAME), '*') NAME
     FROM EMP;
     -- ex. 사번, 이름, 직책(9자리확보), 입사일 -- LPAD, SUBSTR, LENGTH, ||, CONCAT, ...
-      -- (7369 SMITH ----****K 80/12/**)
-      -- (7499 ALLEN --******N 81/02/**)
-      -- (7566 JONES ---*****R 81/02/**)
-
-      
+      -- (7369 SMITH ____****K 80/12/**)
+      -- (7499 ALLEN __******N 81/02/**)
+      -- (7566 JONES ___*****R 81/02/**)
+SELECT EMPNO, ENAME, LPAD(LPAD(SUBSTR(JOB, -1, 1), LENGTH(JOB), '*'), 9) JOB,
+        SUBSTR(HIREDATE, 1, 6) || '**'
+    FROM EMP;
+SELECT EMPNO, ENAME, LPAD(LPAD(SUBSTR(JOB, -1, 1), LENGTH(JOB), '*'), 9) JOB,
+        RPAD(SUBSTR(HIREDATE, 1, 6), LENGTH(HIREDATE), '*')
+    FROM EMP;
+    
+    
     -- ex. 이름의 세번째 자리 글자가 R인 사원의 모든 필드 출력(LIKE이용, INSTR이용, SUBSTR이용)
 
 
