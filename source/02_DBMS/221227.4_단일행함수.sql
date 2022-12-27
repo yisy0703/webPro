@@ -73,6 +73,9 @@ SELECT * FROM EMP WHERE SUBSTR(TO_CHAR(HIREDATE,'RR/MM/DD'), -2, 2) = '09';
 
 -- ④ LENGTH(STR) : STR의 글자수
    -- LENGTHB(STR) : STR의 바이트 수
+SELECT LENGTH('ABCD') FROM DUAL; -- 글자수
+SELECT LENGTHB('ABCD') FROM DUAL; -- 바이트수
+-- 쉬는 시간입니다 --
 
 
 
