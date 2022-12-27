@@ -1,0 +1,1 @@
+-- [ V ] 그룹함수 : SUM, AVG, MIN, MAX, COUNT, STDDEV(표준편차), VARIANCE(분산)
