@@ -109,7 +109,7 @@ SELECT RPAD(ENAME, 11, '-'), LPAD(SAL, 6, '*') FROM EMP;
       -- (7499 ALLEN __******N 81/02/**)
       -- (7566 JONES ___*****R 81/02/**)
 
-
+    -- ex. 이름의 세번째 자리 글자가 R인 사원의 모든 필드 출력(LIKE이용, INSTR이용, SUBSTR이용)
 
 
 
