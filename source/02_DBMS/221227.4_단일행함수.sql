@@ -231,7 +231,23 @@ SELECT * FROM EMP
     WHERE HIREDATE BETWEEN TO_DATE('81/05/01','RR/MM/DD') 
         AND TO_DATE('83/05/01', 'RR/MM/DD');
 
+-- (4) TO_NUMBER(문자, "패턴")
+SELECT '3456'+1 FROM DUAL;
+SELECT TO_NUMBER('3,456', '9,999')+1 FROM DUAL;
 
+-- 5. NVL(널일수도있는데이터, 널이면대신할 값) - 매개변수 2개의 타입 일치
+    -- ex. 사원이름, 직속상사이름(직속상사가 없으면 CEO로 출력)
+SELECT W.ENAME, NVL(M.ENAME, 'CEO')
+    FROM EMP W, EMP M
+    WHERE W.MGR=M.EMPNO(+);
+    -- ex. 사원이름, 직속상사의 사번(직속상사가 없으면 'CEO'로 출력)
+SELECT ENAME, NVL(TO_CHAR(MGR), 'CEO') MGR FROM EMP;
+DESC EMP;
+
+-- 6. ETC
+-- (1)
+
+-- (2)
 
 
 
