@@ -120,6 +120,9 @@ SELECT EMPNO, ENAME, LPAD(LPAD(SUBSTR(JOB, -1, 1), LENGTH(JOB), '*'), 9) JOB,
     FROM EMP;    
     
     -- ex. 이름의 세번째 자리 글자가 R인 사원의 모든 필드 출력(LIKE이용, INSTR이용, SUBSTR이용)
+SELECT * FROM EMP WHERE ENAME LIKE '__R%';
+SELECT * FROM EMP WHERE INSTR(ENAME, 'R', 3) = 3; -- RARA까지 출력되기 위해 3번째글자부터 검색
+SELECT * FROM EMP WHERE INSTR(ENAME, 'R') = 3; -- RARA
 
 
 
