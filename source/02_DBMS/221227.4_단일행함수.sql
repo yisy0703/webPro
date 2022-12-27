@@ -78,6 +78,14 @@ SELECT LENGTHB('ABCD') FROM DUAL; -- 바이트수
 SELECT LENGTH('오라클') FROM DUAL; -- 결과 : 3
 SELECT LENGTHB('오라클') FROM DUAL; -- 결과 : 9
 
+-- ⑤ INSTR(STR, 찾을문자) : STR에서 첫번째 문자부터 찾을문자가 나오는 위치(없으면 0)
+  --  INSTR(STR, 찾을문자, 시작위치) : STR에서 시작위치 문자부터 찾을문자가 나오는 위치
+SELECT INSTR('ABCABC', 'B') FROM DUAL; -- 처음부터 찾아서 처음나오는 B의 위치 : 2
+SELECT INSTR('ABCABC', 'B', 3) FROM DUAL; --3번째문자부터 찾아서 처음 나오는 B의 위치 : 5
+SELECT INSTR('ABCABC', 'B', -3) FROM DUAL;--뒤3번째부터 뒤로 찾아 처음 나오는 B의 위치 : 2
+SELECT INSTR('ABCABCABC', 'B', -3) FROM DUAL; -- 뒤3번째부터 뒤로 찾아 처음 나오는 B위치 : 5
+    --
+
 
 
 
