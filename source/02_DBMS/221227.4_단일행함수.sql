@@ -115,7 +115,9 @@ SELECT EMPNO, ENAME, LPAD(LPAD(SUBSTR(JOB, -1, 1), LENGTH(JOB), '*'), 9) JOB,
 SELECT EMPNO, ENAME, LPAD(LPAD(SUBSTR(JOB, -1, 1), LENGTH(JOB), '*'), 9) JOB,
         RPAD(SUBSTR(HIREDATE, 1, 6), LENGTH(HIREDATE), '*')
     FROM EMP;
-    
+SELECT EMPNO, ENAME, LPAD(LPAD(SUBSTR(JOB, -1, 1), LENGTH(JOB), '*'), 9) JOB,
+        TO_CHAR(HIREDATE, 'RR/MM/') || '**'
+    FROM EMP;    
     
     -- ex. 이름의 세번째 자리 글자가 R인 사원의 모든 필드 출력(LIKE이용, INSTR이용, SUBSTR이용)
 
