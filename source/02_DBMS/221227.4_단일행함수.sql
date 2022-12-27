@@ -89,9 +89,14 @@ ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD';
 SELECT * FROM EMP WHERE INSTR(HIREDATE, '09', 4)=4;
 SELECT * FROM EMP WHERE INSTR(TO_CHAR(HIREDATE,'RR/MM/DD'), '09', 4)=4;
     -- 9일에 입사한 사원의 모든 필드(INSTR이용)
-    
+SELECT * FROM EMP WHERE INSTR(HIREDATE, '09', 7) = 7;
     -- 9일 아닌 다른 날에 입사한 사원의 모든 필드(INSTR이용)
+SELECT * FROM EMP WHERE INSTR(HIREDATE, '09' ,7) = 0;
 
+-- ⑥ LPAD(STR, 자리수, 채울문자) : STR을 자리수만큼 확보하고 왼쪽 빈자리에 채울문자로 출력
+  --  LPAD(STR, 자리수) : STR을 자리수만큼 확보하고 왼쪽 빈자리에 ' '로 출력
+  --  RPAD(STR, 자리수, 채울문자) : STR을 자리수만큼 확보하고 오른쪽 빈자리에 채울문자로 출력
+  --  RPAD(STR, 자리수) : STR을 자리수만큼 확보하고 오른쪽 빈자리에 ' '로 출력
 
 
 
