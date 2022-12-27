@@ -179,7 +179,14 @@ SELECT NEXT_DAY(SYSDATE, '토') FROM DUAL;
 
 -- ⑥ LAST_DAY(특정시점) : 특정시점의 말일(28,29,30,31)
 SELECT LAST_DAY(SYSDATE) FROM DUAL;
+    -- ex. 이름, 입사일, 첫월급날(월급날은 말일)
+SELECT ENAME, HIREDATE, LAST_DAY(HIREDATE) FROM EMP;
 
+-- ⑦ ROUND(날짜, XX) : 날짜 반올림 (xx: YEAR, MONTH, DAY)
+  --  TRUNC(날짜, XX) : 날짜 버림
+SELECT ROUND(34.5678, 2) FROM DUAL;
+SELECT ROUND(SYSDATE, 'YEAR') FROM DUAL ; -- 결과 : 가까운 1월1일
+SELECT ROUND(SYSDATE, 'MONTH') FROM DUAL; -- 결과 : 가까운 1일 (1~15일까지는 이번달1일/16일 이후는 다음달 1일)
 
 
 
