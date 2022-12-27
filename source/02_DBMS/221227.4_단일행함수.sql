@@ -51,6 +51,34 @@ SELECT CONCAT(CONCAT('AB','CD'), CONCAT('EF','GH')) FROM DUAL;
 SELECT CONCAT(CONCAT(ENAME, '는 '), CONCAT(JOB, '다')) FROM EMP;
 SELECT ENAME || '는 ' || JOB || '다' FROM EMP;
 
+-- ③ SUBSTR(STR, 시작위치, 문자갯수) : STR을 시작위치부터 문자갯수만큼 문자 추출
+                    -- (시작위치가 1부터, 시작위치가 음수이면 끝부터 자리수를 셉니다)
+  -- SUBSTRB(STR, 시작바이트위치, 문자바이트수)
+SELECT SUBSTR('ORACLE', 3, 2) FROM DUAL; -- 3번째 글자부터 2글자 추출
+SELECT SUBSTRB('ORACLE', 3, 2) FROM DUAL;-- 3번째 바이트부터 2바이트 추출
+SELECT SUBSTR('데이터베이스', 4, 3) FROM DUAL; -- 4번째 글자부터 3글자 추출(베이스)
+SELECT SUBSTRB('데이터베이스', 4, 3) FROM DUAL;-- 4번째 바이트부터 3바이트 추출(이)
+    -- O R A C L E
+    -- 1 2 3 4 5 6(위치)
+    ---6-5-4-3-2-1(위치)
+SELECT SUBSTR('WELCOME TO ORACLE', -1, 1) FROM DUAL; -- -1번째 글자부터 한글자 추출
+SELECT SUBSTR('ORACLE', -2, 2) FROM DUAL; -- 마지막 글자 2글자 추출
+SELECT SUBSTR(123, 2, 1) FROM DUAL; -- 숫자도 가능(숫자를 문자로 바꿔 2번째 부터 1글자 추출)
+    -- ex. 9월에 입사한 사원의 모든 필드 'RR/MM/DD'
+SELECT * FROM EMP WHERE SUBSTR(HIREDATE, 4, 2)='09'; -- DATE형도 가능
+SELECT * FROM EMP WHERE SUBSTR(TO_CHAR(HIREDATE,'RR/MM/DD'), 4, 2)='09';
+    -- ex. 9일에 입사한 사원의 모든 필드 'RR/MM/DD'
+SELECT * FROM EMP WHERE SUBSTR(HIREDATE, -2, 2) = '09';
+SELECT * FROM EMP WHERE SUBSTR(TO_CHAR(HIREDATE,'RR/MM/DD'), -2, 2) = '09';
+
+-- ④ LENGTH(STR) : STR의 글자수
+   -- LENGTHB(STR) : STR의 바이트 수
+
+
+
+
+
+
 
 
 
