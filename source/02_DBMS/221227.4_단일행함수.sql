@@ -103,8 +103,11 @@ SELECT ENAME, SAL FROM EMP;
 DESC EMP; -- 이름은 10문자까지 SAL은 5자리까지 입력 가능
 SELECT RPAD(ENAME, 11, '-'), LPAD(SAL, 6, '*') FROM EMP;
     -- ex. 사번, 이름(7369 S**** / 7654 M***** / 7521 W*** ..) - SUBSTR, LENGTH, RPAD
-SELECT EMPNO, ENAME FROM EMP;
-    -- 
+    
+    -- ex. 사번, 이름, 직책(9자리확보), 입사일 
+      -- (7369 SMITH ____****K 80/12/**)
+      -- (7499 ALLEN __******N 81/02/**)
+      -- (7566 JONES ___*****R 81/02/**)
 
 
 
