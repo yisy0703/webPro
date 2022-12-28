@@ -100,6 +100,21 @@ SELECT DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';-- JOI
         WHERE (JOB, DEPTNO) = (SELECT JOB, DEPTNO  FROM EMP WHERE ENAME='SCOTT')
             AND ENAME <> 'SCOTT';
 
+-- ★ 3. 다중행 서브쿼리 : IN, ALL, ANY=SOME, EXISTS
+-- (1) IN : 서브쿼리 결과 중 하나라도 일치하면 참
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- ★ 총 연습문제
 --1. 사원테이블에서 가장 먼저 입사한 사람의 이름, 급여, 입사일
 SELECT ENAME, SAL, HIREDATE
