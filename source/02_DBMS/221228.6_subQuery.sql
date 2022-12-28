@@ -16,13 +16,30 @@ SELECT DNAME FROM DEPT
 
 SELECT DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';-- JOIN이용
 
--- 서브쿼리 종류(2)다중행 서브쿼리(서브쿼리 실행결과가 2행이상) : IN, > ALL, ANY, EXISTS
+-- 서브쿼리 종류(2)다중행 서브쿼리(서브쿼리 실행결과가 2행이상) : IN, > ALL, ANY(SOME), EXISTS
     -- ex. job이 MANAGER인 사람의 부서이름
     SELECT DEPTNO FROM EMP WHERE JOB='MANAGER'; -- 서브쿼리 결과가 3행
     SELECT DNAME FROM DEPT 
         WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE JOB='MANAGER'); -- 메인쿼리
 
-
+-- ★ 2. 단일행서브쿼리
+    -- ex. SCOTT과 동일한 부서번호에서 근무하는 사원의 이름과 급여
+    SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'; -- 서브쿼리
+    SELECT ENAME, SAL FROM EMP 
+        WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT') AND ENAME <> 'SCOTT'; -- 메인쿼리
+    -- ex. SCOTT과 동일한 근무지에서 근무하는 사원의 이름과 급여
+        -- 데이터 추가 (DALLAS 50번 부서, 50번 부서의 HONG 사원)
+        SELECT * FROM DEPT WHERE LOC='DALLAS';
+        INSERT INTO DEPT VALUES (50, 'IT', 'DALLAS');
+        INSERT INTO EMP (EMPNO, ENAME, DEPTNO) VALUES (9999, 'HONG', 50);
+        SELECT * FROM EMP;
+    SELECT LOC FROM DEPT D, EMP E
+        WHERE D.DEPTNO=E.DEPTNO AND ENAME='SCOTT'; -- 서브쿼리
+    SELECT ENAME, SAL
+        FROM EMP E, DEPT D
+        WHERE E.DEPTNO=D.DEPTNO AND LOC=(SELECT LOC FROM DEPT D, EMP E
+                    WHERE D.DEPTNO=E.DEPTNO AND ENAME='SCOTT')
+            AND ENAME != 'SCOTT'; -- 메인쿼리
 
 
 
