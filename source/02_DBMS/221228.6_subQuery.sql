@@ -60,6 +60,37 @@ SELECT DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';-- JOI
         (SELECT MAX(HIREDATE) FROM EMP) LASTDAY,
         (SELECT ENAME FROM EMP WHERE HIREDATE=(SELECT MAX(HIREDATE) FROM EMP)) LASTMAN
     FROM DUAL;
+    
+    -- ex. SCOTT 과 같은 부서에 근무하는 사람들의 급여합
+    SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'; -- 서브쿼리
+    SELECT SUM(SAL) FROM EMP 
+        WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'); -- 메인쿼리
+    -- ex. soctt과 동일한 job을 가진 사원의 모든 필드
+    SELECT JOB FROM EMP WHERE ENAME='SCOTT'; -- 서브쿼리 
+    SELECT * FROM EMP WHERE JOB=(SELECT JOB FROM EMP WHERE ENAME='SCOTT'); -- 메인쿼리
+    -- ex. DALLAS에서 근무하는 사원의 이름과 부서번호
+    SELECT DEPTNO FROM DEPT WHERE LOC='DALLAS'; -- 서브쿼리
+    SELECT ENAME, DEPTNO FROM EMP 
+        WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC='DALLAS'); -- 메인쿼리
+    -- ex. 'KING'이 직속상사인 사원의 이름과 급여
+    SELECT EMPNO FROM EMP WHERE ENAME='KING'; -- 서브쿼리
+    SELECT ENAME, SAL FROM EMP
+        WHERE MGR=(SELECT EMPNO FROM EMP WHERE ENAME='KING'); -- 메인쿼리
+    
+    SELECT W.ENAME, W.SAL
+        FROM EMP W, EMP M
+        WHERE W.MGR=M.EMPNO AND M.ENAME='KING'; -- SELF JOIN이용
+    -- ex1. 평균급여 이하로 받는 사원의 이름과 급여를 출력
+    SELECT AVG(SAL) FROM EMP; -- 서브쿼리
+    SELECT ENAME, SAL FROM EMP WHERE SAL <= (SELECT AVG(SAL) FROM EMP); -- 메인쿼리
+    -- ex2. 평균급여 이하로 받는 사원의 이름과  급여, 평균급여를 출력
+    SELECT ENAME, SAL, ROUND((SELECT AVG(SAL) FROM EMP)) "AVG_SAL"
+        FROM EMP
+        WHERE SAL < (SELECT AVG(SAL) FROM EMP); -- 메인쿼리
+    
+    -- ex3. 평균급여 이하로 받는 사원의 이름과  급여, 평균급여와의 차이를 출력
+
+
 
 
 
