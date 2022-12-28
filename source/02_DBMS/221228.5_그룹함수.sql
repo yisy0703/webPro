@@ -51,8 +51,13 @@ SELECT DNAME, MAX(SAL), AVG(SAL) AVG_SAL
 
     -- ex. SAL이 5000미만인 사원에 대해서만 부서번호별 사원수, 최대급여, 최소급여, 평균급여
             -- (부서번호 순 정렬)
+SELECT DEPTNO, COUNT(*), MAX(SAL), MIN(SAL), AVG(SAL)
+    FROM EMP
+    WHERE SAL<5000
+    GROUP BY DEPTNO
+    ORDER BY DEPTNO;
 
-
+    -- 
 
 
 
