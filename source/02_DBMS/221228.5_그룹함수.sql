@@ -139,7 +139,7 @@ SELECT JOB, SUM(SAL)
 SELECT DEPTNO, AVG(SAL), SUM(SAL), MIN(SAL) FROM EMP GROUP BY DEPTNO;
 
 --12. 위의 11번을 수정하여, 부서별 급여평균 최대치, 부서별 급여합의 최대치, 부서별 최소급여의 최대치를 출력
-SELECT MAX(AVG(SAL)), MAX(SUM(SAL)), MAX(MIN(SAL)) FROM EMP GROUP BY DEPTNO;
+SELECT max(AVG(SAL)), max(SUM(SAL)), max(MIN(SAL)) FROM EMP GROUP BY DEPTNO;
 
 --13. 사원 테이블에서 아래의 결과를 출력
 --   H_YEAR	COUNT(*)	MIN(SAL)	MAX(SAL)	AVG(SAL)	SUM(SAL)
