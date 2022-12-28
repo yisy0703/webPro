@@ -40,6 +40,16 @@ SELECT DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';-- JOI
         WHERE E.DEPTNO=D.DEPTNO AND LOC=(SELECT LOC FROM DEPT D, EMP E
                     WHERE D.DEPTNO=E.DEPTNO AND ENAME='SCOTT')
             AND ENAME != 'SCOTT'; -- 메인쿼리
+        ROLLBACK; -- DML(추가, 수정, 삭제, 검색) 명령어 취소
+    -- ex. 최초입사일과 최초입사자를 출력
+    SELECT MIN(HIREDATE) FROM EMP; -- 단일행 서브쿼리
+    SELECT HIREDATE, ENAME FROM EMP
+        WHERE HIREDATE = (SELECT MIN(HIREDATE) FROM EMP); -- 메인쿼리
+    -- ex. 최근입사일과 최근입사자를 출력
+    SELECT MAX(HIREDATE) FROM EMP; -- 서브쿼리
+    SELECT HIREDATE, ENAME FROM EMP
+        WHERE HIREDATE = (SELECT MAX(HIREDATE) FROM EMP); -- 메인쿼리
+
 
 
 
