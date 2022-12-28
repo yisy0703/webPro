@@ -11,6 +11,23 @@ SELECT SUM(COMM) FROM EMP; -- 평균 : 2200/14(157.14) OR 2200/4(550)
 SELECT SUM(COMM), COUNT(COMM), AVG(COMM) FROM EMP; -- 모든 그룹함수는 null값을 제외
 SELECT COUNT(*) FROM EMP; -- 테이블 행수
 
+--sal의 평균, 합, 최소값, 최대값, 분산, 표준편차, 갯수(평균, 분산, 표준편차 소수점 한자리에서 반올림)
+SELECT ROUND(AVG(SAL),1), SUM(SAL), MIN(SAL), MAX(SAL), 
+        ROUND(VARIANCE(SAL),1), ROUND(STDDEV(SAL),1)
+    FROM EMP;
+SELECT AVG(SAL)-2*STDDEV(SAL), AVG(SAL)+2*STDDEV(SAL) FROM EMP; -- 95.44%의 SAL
+-- 탄탄ex1. 입사한지 가장 오래된 사원의 입사일과 가장 최근에 입사한 사원의 입사일을 출력. 
+ 
+-- 탄탄ex2. (결과) 80/12/17:14620일째 83/01/12:13864일째
+
+
+-- 탄탄ex3.  (결과) 80년12월17일 최초입사:14,620일째 83년01월12일 최근입사 :13,864일째
+
+-- 탄탄ex4. 10번 부서 소속의 사원 중에서 커미션을 받는 사원의 수를 구해 보시오.
+
+
+
+
 
 
 
