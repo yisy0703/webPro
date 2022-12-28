@@ -180,10 +180,8 @@ SELECT DEPTNO, COUNT(*)
     GROUP BY DEPTNO 
     HAVING COUNT(*)>=6;
     
---18. 급여가 높은 순서대로 등수를 부여하여 다음과 같은 결과가 나오게 하시오. 
--- (힌트 self join, group by, count사용)
+--18. 급여가 높은 순서대로 등수(self join, group by, count사용)
 --ENAME	    등수
---________________________
 --KING		1
 --SCOTT		2
 --……
