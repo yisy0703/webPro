@@ -89,7 +89,10 @@ SELECT DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';-- JOI
         WHERE SAL < (SELECT AVG(SAL) FROM EMP); -- 메인쿼리
     
     -- ex3. 평균급여 이하로 받는 사원의 이름과  급여, 평균급여와의 차이를 출력
-
+    SELECT ENAME, SAL, ABS(ROUND((SELECT AVG(SAL) FROM EMP))-SAL) "DIFF"
+        FROM EMP
+        WHERE SAL < (SELECT AVG(SAL) FROM EMP);
+    
 
 
 
