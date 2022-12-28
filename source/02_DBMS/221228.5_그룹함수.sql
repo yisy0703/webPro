@@ -57,7 +57,13 @@ SELECT DEPTNO, COUNT(*), MAX(SAL), MIN(SAL), AVG(SAL)
     GROUP BY DEPTNO
     ORDER BY DEPTNO;
 
-    -- 
+-- ★ 3. HAVING 절 : 그룹함수의 결과 조건
+    -- 부서번호별 평균 급여(평균급여가 2000이상인 부서만 출력)
+SELECT DEPTNO, AVG(SAL) AVG_SAL   
+    FROM EMP              
+    GROUP BY DEPTNO       
+    HAVING AVG(SAL) > 2000 -- HAVING 절에서 필드의 별칭 사용 불가
+    ORDER BY DEPTNO;  -- 필드의 별칭은 ORDER BY절에만 사용 가능
 
 
 
