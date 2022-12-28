@@ -146,10 +146,26 @@ SELECT DEPTNO, MAX(SAL) FROM EMP GROUP BY DEPTNO; -- 서브쿼리
 SELECT EMPNO, ENAME, SAL, DEPTNO FROM EMP
     WHERE (DEPTNO, SAL) IN (SELECT DEPTNO, MAX(SAL) FROM EMP GROUP BY DEPTNO);
 --탄탄ex2. 직급(JOB)이 MANAGER인 사람의 속한 부서의 부서 번호와 부서명과 지역을 출력(IN)
+SELECT DEPTNO FROM EMP WHERE JOB='MANAGER'; -- 서브쿼리
+SELECT DEPTNO, DNAME, LOC 
+    FROM DEPT 
+    WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE JOB='MANAGER'); -- 메인쿼리
 
---탄탄ex3. 급여가 3000이상인 사람들 중 연봉 등급을 나누어서 해당 등급별 최고 연봉을 받는 사람들의 사번, 이름, 직업, 입사일, 급여, 급여등급을 출력
-
---탄탄ex4. 응용심화 : 입사일 분기별로 가장 높은 연봉을 받는 사람들의 분기, 사번, 이름, JOB, 상사사번, 입사일, 급여, 상여를 출력하세요
+--탄탄ex3. 급여가 3000이상인 사람들 중 연봉 등급을 나누어서 해당 등급별 최고 연봉을
+    -- 받는 사람들의 사번, 이름, 직업, 입사일, 급여, 급여등급을 출력
+SELECT GRADE, MAX(SAL)
+    FROM EMP, SALGRADE
+    WHERE SAL BETWEEN LOSAL AND HISAL AND SAL >= 3000
+    GROUP BY GRADE; -- 서브쿼리
+SELECT EMPNO, ENAME, JOB, HIREDATE, SAL, GRADE
+    FROM EMP, SALGRADE
+    WHERE SAL BETWEEN LOSAL AND HISAL AND
+        (GRADE, SAL) IN (SELECT GRADE, MAX(SAL)
+                        FROM EMP, SALGRADE
+                        WHERE SAL BETWEEN LOSAL AND HISAL AND SAL >= 3000
+                        GROUP BY GRADE)
+    ORDER BY GRADE;
+--탄탄ex4. 입사일 분기별로 가장 높은 연봉을 받는 사람들의 분기, 사번, 이름, JOB, 상사사번, 입사일, 급여, 상여를 출력하세요
 
 --탄탄ex5. 연봉이 3000미만인 사람 중에 가장 최근에 입사한 사람의 사원번호와 이름, 연봉, 입사일을 출력
 
