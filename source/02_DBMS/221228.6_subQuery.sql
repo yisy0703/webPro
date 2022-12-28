@@ -179,12 +179,16 @@ SELECT TO_CHAR(HIREDATE, 'Q') "QUARTER", EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, 
             (SELECT TO_CHAR(HIREDATE, 'Q'), MAX(SAL) 
                 FROM EMP GROUP BY TO_CHAR(HIREDATE, 'Q'))
     ORDER BY QUARTER; -- 메인 쿼리
---탄탄ex5. 연봉이 3000미만인 사람 중에 가장 최근에 입사한 사람의 사원번호와 이름, 연봉, 입사일을 출력
-
---탄탄ex6. SALESMAN 모든 사원들 보다 급여를 많이 받는 사원들의 이름과 급여와 직급(담당 업무)를 출력하되 영업 사원은 출력하지 않는다.(ALL이용)
-
+--탄탄ex5. 급여가 3000미만인 사람 중에 가장 최근에 입사한 사람의 사원번호와 이름, 급여, 입사일을 출력
+SELECT EMPNO, ENAME, SAL, HIREDATE FROM EMP
+    WHERE HIREDATE = (SELECT MAX(HIREDATE) FROM EMP WHERE SAL<3000);
+--탄탄ex6. SALESMAN 모든 사원들 보다 급여를 많이 받는 사원들의 이름과 급여와 직급(담당 업무)를 
+    -- 출력하되 영업 사원은 출력하지 않는다.(ALL이용)
+SELECT ENAME, SAL, JOB FROM EMP
+    WHERE SAL > ALL (SELECT SAL FROM EMP WHERE JOB='SALESMAN');
 --탄탄ex7. SALESMAN 일부 어떤 한 사원보다 급여를 많이 받는 사원들의 이름과 급여와 직급(담당 업무)를 출력하되 영업 사원도 출력(ANY)
-
+SELECT ENAME, SAL, JOB FROM EMP
+    WHERE SAL > ANY (SELECT SAL FROM EMP WHERE JOB='SALESMAN');
 
 
 -- ★ 총 연습문제
