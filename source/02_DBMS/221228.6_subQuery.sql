@@ -165,8 +165,11 @@ SELECT EMPNO, ENAME, JOB, HIREDATE, SAL, GRADE
                         WHERE SAL BETWEEN LOSAL AND HISAL AND SAL >= 3000
                         GROUP BY GRADE)
     ORDER BY GRADE;
---탄탄ex4. 입사일 분기별로 가장 높은 연봉을 받는 사람들의 분기, 사번, 이름, JOB, 상사사번, 입사일, 급여, 상여를 출력하세요
-
+--탄탄ex4. 입사일 분기별로 가장 높은 연봉을 받는 사람들의 
+    -- 분기, 사번, 이름, JOB, 상사사번, 입사일, 급여, 상여를 출력하세요
+SELECT HIREDATE, CEIL(EXTRACT(MONTH FROM HIREDATE)/3) "QUARTER" FROM EMP; -- 분기
+SELECT HIREDATE, CEIL(TO_CHAR(HIREDATE, 'MM')/3) "QUARTER" FROM EMP;
+SELECT HIREDATE, TO_CHAR(HIREDATE, 'Q') "QUARTER" FROM EMP;
 --탄탄ex5. 연봉이 3000미만인 사람 중에 가장 최근에 입사한 사람의 사원번호와 이름, 연봉, 입사일을 출력
 
 --탄탄ex6. SALESMAN 모든 사원들 보다 급여를 많이 받는 사원들의 이름과 급여와 직급(담당 업무)를 출력하되 영업 사원은 출력하지 않는다.(ALL이용)
