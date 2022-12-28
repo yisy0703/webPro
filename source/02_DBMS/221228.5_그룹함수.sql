@@ -31,7 +31,26 @@ SELECT TO_CHAR(MIN(HIREDATE), 'RR"년"MM"월"DD"일 최초입사:"') ||
        TO_CHAR(MAX(HIREDATE), 'RR"년"MM"월"DD"일 최근입사:"') ||
         TRIM(TO_CHAR(TRUNC(SYSDATE-MAX(HIREDATE)), '99,999')) || '일째' LAST
     FROM EMP; -- TO_CHAR가 연결연산자를 만나면 ' ' 자동 추가
--- 탄탄ex4. 10번 부서 소속의 사원 중에서 커미션을 받는 사원의 수를 구해 보시오.
+-- 탄탄ex4. 10번 부서 소속의 사원 중에서 COMM을 받는 사원의 수를 구해 보시오.
+SELECT COUNT(COMM) FROM EMP WHERE DEPTNO=10 AND COMM>0;
+--       3              1         2
+
+-- ★ 2. GROUP BY 절
+-- 부서번호별 최대 급여, 평균 급여 (부서번호 순 정렬)
+SELECT DEPTNO, MAX(SAL), AVG(SAL) FROM EMP GROUP BY DEPTNO ORDER BY DEPTNO;
+    -- GROUP BY 절에서는 컬럼의 별칭을 사용할 수 없다(ORDER BY절에서만 컬럼별칭 사용가능)
+SELECT DEPTNO 부서, MAX(SAL), AVG(SAL) FROM EMP GROUP BY DEPTNO ORDER BY 부서;
+--              3                          1             2            4
+
+-- 부서이름별 최대급여, 평균 급여 (평균급여순 정렬)
+SELECT DNAME, MAX(SAL), AVG(SAL) AVG_SAL
+    FROM EMP E, DEPT D
+    WHERE E.DEPTNO=D.DEPTNO
+    GROUP BY DNAME
+    ORDER BY AVG_SAL;
+
+    -- ex. SAL이 5000미만인 사원에 대해서만 부서번호별 사원수, 최대급여, 최소급여, 평균급여
+            -- (부서번호 순 정렬)
 
 
 
