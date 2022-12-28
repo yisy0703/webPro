@@ -277,8 +277,16 @@ SELECT EMPNO, ENAME
 -- 22. CHICAGO에서 근무하는 사원과 같은 업무를 하는 사원들의 이름,업무
 
 -- 23. 부서 평균 월급보다 월급이 높은 사원을 사번, 이름, 급여, 부서번호
-
--- 24. 업무별로 평균 월급보다 적은 월급을 받는 사원을 부서번호, 이름, 급여
+SELECT E.EMPNO, E.ENAME, E.SAL, E.DEPTNO
+    FROM EMP E
+    WHERE SAL > (SELECT AVG(SAL) FROM EMP WHERE DEPTNO=E.DEPTNO);
+  --   사번, 이름, 급여, 부서번호, 해당부서의 평균(반올림)
+SELECT E.EMPNO, E.ENAME, E.SAL, E.DEPTNO, 
+        ROUND((SELECT AVG(SAL) FROM EMP WHERE DEPTNO=E.DEPTNO)) AVG
+    FROM EMP E
+    WHERE SAL > (SELECT AVG(SAL) FROM EMP WHERE DEPTNO=E.DEPTNO);    
+    
+-- 24. 업무별로 평균 월급보다 적은 월급을 받는 사원을 부서번호, 이름, 급여(23번과 유사)
 
 -- 25. 적어도 한 명 이상으로부터 보고를 받을 수 있는 사원을 업무, 이름, 사번, 부서번호를 출력(단, 부서번호 순으로 오름차순 정렬)
 
