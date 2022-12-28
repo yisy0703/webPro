@@ -186,7 +186,8 @@ SELECT EMPNO, ENAME, SAL, HIREDATE FROM EMP
     -- 출력하되 영업 사원은 출력하지 않는다.(ALL이용)
 SELECT ENAME, SAL, JOB FROM EMP
     WHERE SAL > ALL (SELECT SAL FROM EMP WHERE JOB='SALESMAN');
---탄탄ex7. SALESMAN 일부 어떤 한 사원보다 급여를 많이 받는 사원들의 이름과 급여와 직급(담당 업무)를 출력하되 영업 사원도 출력(ANY)
+--탄탄ex7. SALESMAN 일부 어떤 한 사원보다 급여를 많이 받는 사원들의 이름과 급여와 직급(담당 업무)를 
+    -- 출력하되 영업 사원도 출력(ANY)
 SELECT ENAME, SAL, JOB FROM EMP
     WHERE SAL > ANY (SELECT SAL FROM EMP WHERE JOB='SALESMAN');
 
@@ -255,6 +256,34 @@ SELECT EMPNO, ENAME
     FROM EMP 
     WHERE SAL>=(SELECT AVG(SAL) FROM EMP) 
     ORDER BY SAL DESC;
+
+-- 14.  이름에 “T”가 있는 사원이 근무하는 부서에서 근무하는 모든 직원의 사원 번호,이름,급여(단 사번 순 출력)
+
+-- 15. 부서 위치가 Dallas인 모든 종업원에 대해 이름,업무,급여
+
+-- 16. EMP 테이블에서 King에게 보고하는 모든 사원의 이름과 급여
+
+-- 17. SALES부서 사원의 이름, 업무
+
+-- 18. 월급이 부서 30의 최저 월급보다 높은 사원의 모든 필드
+
+-- 19.  FORD와 업무도 월급도 같은 사원의 모든 필드
+
+-- 20. 이름이 JONES인 직원의 JOB과 같거나 FORD의 SAL 이상을 받는 사원의 정보를 이름, 업무, 부서번호, 급여
+    -- 단, 업무별 알파벳 순, 월급이 많은 순으로 출력
+
+-- 21. SCOTT 또는 WARD와 월급이 같은 사원의 정보를 이름,업무,급여
+
+-- 22. CHICAGO에서 근무하는 사원과 같은 업무를 하는 사원들의 이름,업무
+
+-- 23. 부서 평균 월급보다 월급이 높은 사원을 사번, 이름, 급여, 부서번호
+
+-- 24. 업무별로 평균 월급보다 적은 월급을 받는 사원을 부서번호, 이름, 급여
+
+-- 25. 적어도 한 명 이상으로부터 보고를 받을 수 있는 사원을 업무, 이름, 사번, 부서번호를 출력(단, 부서번호 순으로 오름차순 정렬)
+
+-- 26.  말단 사원의 사번, 이름, 업무, 부서번호
+
 
 
 
