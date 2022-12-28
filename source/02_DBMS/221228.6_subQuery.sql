@@ -107,8 +107,23 @@ SELECT DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';-- JOI
     SELECT ENAME, HIREDATE, DEPTNO FROM EMP
         WHERE (DEPTNO, HIREDATE) IN
                     (SELECT DEPTNO, MAX(HIREDATE) FROM EMP GROUP BY DEPTNO); -- 메인쿼리
+    -- ex. 급여가 3000이상 받는 사원이 소속된 부서의 사원들의 모든 필드
+    SELECT DEPTNO FROM EMP WHERE SAL >= 3000; -- 다중행 단일열 서브쿼리
+    SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE SAL >= 3000);--메인쿼리
 
-
+-- (2) ALL ; 서브쿼리 결과가 모두 만족하면 참
+    -- ex. 30번 부서직원 모두의 급여보다 큰 직원의 모든 필드
+    SELECT SAL FROM EMP WHERE DEPTNO=30; -- 950, 1250, 1500, 1600, 2850 서브쿼리
+    SELECT * FROM EMP
+        WHERE SAL > ALL (SELECT SAL FROM EMP WHERE DEPTNO=30); -- 다중행서브쿼리 이용
+    
+    SELECT * FROM EMP
+        WHERE SAL > (SELECT MAX(SAL) FROM EMP WHERE DEPTNO=30); -- 단일행서브쿼리 이용
+-- (3) ANY=SOME ; 서브쿼리 결과가 하나라도 만족하면 참
+    -- ex. 30번 부서직원 하나만이라도 급여가 큰 직원의 모든 필드
+    SELECT SAL FROM EMP WHERE DEPTNO=30; -- 다중행 단일열 서브쿼리
+    SELECT * FROM EMP
+        WHERE SAL > ANY (SELECT SAL FROM EMP WHERE DEPTNO=30); -- 다중행 서브쿼리 이용
 
 
 
