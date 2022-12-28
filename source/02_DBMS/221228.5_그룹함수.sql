@@ -26,7 +26,11 @@ SELECT MIN(HIREDATE)||':'||TRUNC(SYSDATE-MIN(HIREDATE))||'일째' FIRST,
     FROM EMP;
 
 -- 탄탄ex3.  (결과) 80년12월17일 최초입사:14,620일째 83년01월12일 최근입사 :13,864일째
-
+SELECT TO_CHAR(MIN(HIREDATE), 'RR"년"MM"월"DD"일 최초입사:"') ||
+        TRIM(TO_CHAR(TRUNC(SYSDATE-MIN(HIREDATE)), '99,999')) FIRST,
+       TO_CHAR(MAX(HIREDATE), 'RR"년"MM"월"DD"일 최근입사:"') ||
+        TRIM(TO_CHAR(TRUNC(SYSDATE-MAX(HIREDATE)), '99,999')) LAST
+    FROM EMP; -- TO_CHAR가 연결연산자를 만나면 ' ' 자동 추가
 -- 탄탄ex4. 10번 부서 소속의 사원 중에서 커미션을 받는 사원의 수를 구해 보시오.
 
 
