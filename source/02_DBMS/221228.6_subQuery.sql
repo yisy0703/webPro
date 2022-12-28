@@ -102,7 +102,11 @@ SELECT DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';-- JOI
 
 -- ★ 3. 다중행 서브쿼리 : IN, ALL, ANY=SOME, EXISTS
 -- (1) IN : 서브쿼리 결과 중 하나라도 일치하면 참
-
+    -- ex. 부서별 입사일이 가장 늦은 사람의 이름, 입사일, 부서번호
+    SELECT DEPTNO, MAX(HIREDATE) FROM EMP GROUP BY DEPTNO; -- 다중행 다중열 서브쿼리
+    SELECT ENAME, HIREDATE, DEPTNO FROM EMP
+        WHERE (DEPTNO, HIREDATE) IN
+                    (SELECT DEPTNO, MAX(HIREDATE) FROM EMP GROUP BY DEPTNO); -- 메인쿼리
 
 
 
