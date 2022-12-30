@@ -476,3 +476,26 @@ INSERT INTO STUDENT VALUES (NULL,'신길동',90, 3);  -- PRIMARY KEY 제약조건=(NOT 
 SELECT S.*, MAJOR_NAME, MAJOR_OFFICE_LOC 
     FROM STUDENT S, MAJOR M 
     WHERE S.MAJOR_CODE=M.MAJOR_CODE;
+    
+-- ★ DCL (사용자계정생성,  사용자권한부여, 권한박탈, 사용자계정삭제)
+CREATE USER scott2 IDENTIFIED BY tiger; -- scott2 계정 생성
+-- 권한 부여(세션부여)
+GRANT CREATE SESSION TO SCOTT2;
+-- 권한부여(table, VIEW 생성)
+CREATE ROLE ROLEex;
+GRANT CREATE TABLE, CREATE VIEW TO ROLEex;
+GRANT ROLEex TO SCOTT2;
+-- 권한부여(EMP테이블의 모든 권한)
+GRANT ALL ON EMP TO SCOTT2;
+-- 권한 부여(DEPT테이블의 SELECT권한)
+GRANT SELECT ON DEPT TO SCOTT2;
+
+-- 권한 박탈(DEPT테이블, EMP테이블 권한) ; 접속 해제 후 할 것을 추천
+REVOKE ALL ON EMP FROM SCOTT2;
+REVOKE SELECT ON DEPT FROM SCOTT2;
+-- 사용자 계정 삭제(접속 게정 삭제 불가)
+DROP USER scott2 CASCADE;
+
+
+
+
