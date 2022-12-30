@@ -1,3 +1,3 @@
 git add .
-git commit -m "dbms_DDL_DML"
+git commit -m "DBMS_ERD"
 git push -u origin main
