@@ -280,3 +280,21 @@ DELETE FROM EMP01 WHERE ENAME='FORD';
 DELETE FROM SAM01 WHERE JOB IS NULL;
 -- SAM01테이블에서 ENAME이 ORANGE인 사원을 삭제하시오
 DELETE FROM SAM01 WHERE ENAME='ORANGE';
+
+-- ★ ★ ★ 제약조건
+-- (1) PRIMARY KEY : 테이블의 각 행을 유일한 값으로 식별하기 위한 필드
+-- (2) FOREIGN KEY : 테이블의 열이 다른 테이블의 열을 참조
+-- (3) NOT NULL    : NULL을 포함하지 않는다
+-- (4) UNIQUE : 모든 행의 값이 유일해야. NULL값은 허용(NULL은 여러개 입력 가능)
+-- (5) CHECK (조건) : 해당 조건이 만족 (NULL값 허용)
+-- DEFAULT : 기본값 설정(해당 열의 데이터 입력을 하지 않으면 원래는 NULL이 들어갈 것을 DEFAULT값이)
+
+
+
+
+
+
+
+
+
+
