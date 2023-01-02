@@ -71,10 +71,13 @@ DROP SEQUENCE ORDERS_SEQ;
 CREATE SEQUENCE ORDERS_SEQ MAXVALUE 999 NOCACHE;
 
 -- ▒▒▒▒▒ 첫번째 홍길동님 주문서 (23.1.10) ▒▒▒▒▒
-INSERT INTO CART VALUES (CART_SEQ.NEXTVAL, 'abc', 'A1', 3, (select price from product where pcode='A1')*3);
-INSERT INTO CART VALUES (CART_SEQ.NEXTVAL, 'abc', 'B1', 1, (select price from product where pcode='B1')*1);
+INSERT INTO CART VALUES 
+    (CART_SEQ.NEXTVAL, 'abc', 'A1', 3, (select price from product where pcode='A1')*3);
+INSERT INTO CART VALUES 
+    (CART_SEQ.NEXTVAL, 'abc', 'B1', 1, (select price from product where pcode='B1')*1);
+SELECT * FROM CART;
 SELECT 
-    -- ORDER_DETAIL_SEQ.NEXTVAL odNO, 
+     ORDER_DETAIL_SEQ.NEXTVAL odNO, 
         TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.CURRVAL, '000')) ono, 
         pcode, qty, cost 
     FROM CART WHERE MID='abc'; -- cart 확인
@@ -112,12 +115,12 @@ DELETE FROM CART WHERE MID='abc';-- 장바구니 비우기
 --현재 주문번호만 SELECT절에 현재 시퀀스값을 이용하여 가져올 수 있으나 시퀀스.CURRVAL은 WHERE절에서 사용할 수 없음
 SELECT TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.CURRVAL, '000')) FROM DUAL; 
 
-SELECT * FROM ORDERS WHERE ONO=230102001;
+SELECT * FROM ORDERS WHERE ONO=230102002;
 
 SELECT O.PCODE, PNAME, PRICE, QTY, COST
     FROM ORDER_DETAIL O, PRODUCT P
     WHERE O.PCODE=P.PCODE AND
-        ONO=230102001;
+        ONO=230102002;
 
 -- ▒▒▒▒▒ 김김동님 주문서 (23.1.10) ▒▒▒▒▒
 INSERT INTO CART VALUES (CART_SEQ.NEXTVAL, 'def', 'A2', 20, (select price from product where pcode='A2')*20);
@@ -170,12 +173,12 @@ DELETE FROM CART WHERE MID='def'; -- 장바구니 비우기
 --현재 주문번호만 SELECT절에 현재 시퀀스값을 이용하여 가져올 수 있으나 시퀀스.CURRVAL은 WHERE절에서 사용할 수 없음
 SELECT TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.CURRVAL, '000')) FROM DUAL; 
 
-SELECT * FROM ORDERS WHERE ONO=230102002;
+SELECT * FROM ORDERS WHERE ONO=230102003;
 
 SELECT O.PCODE, PNAME, PRICE, QTY, COST
     FROM ORDER_DETAIL O, PRODUCT P
     WHERE O.PCODE=P.PCODE AND
-        ONO=230102002;
+        ONO=230102003;
         
 -- ▒▒▒▒▒ 홍길동님 주문서 (23.1.12) ▒▒▒▒▒
 -- ORDERS(주문)테이블
