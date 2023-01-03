@@ -157,6 +157,28 @@ SELECT ROWNUM, B.*
     WHERE RN BETWEEN 6 AND 10; -- 3 단계(TOP-N)
     
   -- 입사순으로 11번째부터 15번째인 사원의 모든 필드 출력(순서는 출력 안 함)
+  SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO
+    FROM (SELECT ROWNUM RN, A.*
+          FROM (SELECT * FROM EMP ORDER BY HIREDATE) A)
+    WHERE RN BETWEEN 11 AND 15;
+  DELETE FROM EMP WHERE EMPNO=1111;
+  COMMIT;
+  
+-- ★ <총 연습문제>
+-- 1. 부서명과 사원명을 출력하는 용도의 뷰, DNAME_ENAME_VU 를 작성하시오
+
+-- 2. 사원명과 직속상관명을 출력하는 용도의 뷰,  WORKER_MANAGER_VU를 작성하시오
+
+-- 3. 부서별 급여합계 등수를 출력하시오(부서번호, 급여합계, 등수). 
+
+-- 3-1. 부서별 급여합계 등수가 2~3등인 부서번호, 급여합계, 등수를 출력하시오.
+
+-- 4. 사원테이블에서 사번, 사원명, 입사일을 입사일이 최신에서 오래된 사원 순으로 정렬하시오
+
+-- 5. 사원테이블에서 사번, 사원명, 입사일을 입사일이 최신에서 오래된 사원 5명을 출력하시오
+
+-- 6. 사원 테이블에서 사번, 사원명, 입사일을 최신부터 오래된 순으로 6번째로 늦은 사원부터 10번째 사원까지 출력
+
   
 
 
