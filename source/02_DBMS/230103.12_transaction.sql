@@ -1,0 +1,1 @@
+-- [XI] 트랜젝션 명령어 : COMMIT(트랜잭션 반영), ROLLBACK(트랜잭션 취소), SAVEPOINT(트랜잭션 분할)
