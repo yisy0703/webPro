@@ -147,6 +147,21 @@ SELECT ROWNUM, B.*
   FROM (SELECT ROWNUM RN, A.*
         FROM (SELECT * FROM EMP ORDER BY SAL) A) B
   WHERE RN BETWEEN 6 AND 10;  -- 3단계 (TOP-N)
+  
+  -- ex. 이름을 알파벳 순서대로 정렬해서 6번째부터 10번째 출력(순서, 이름, 사번, job, mgr, hiredate)
+  SELECT ROWNUM RN, ENAME, EMPNO, JOB, MGR, HIREDATE
+    FROM (SELECT * FROM EMP ORDER BY ENAME); -- 2단계
+  SELECT * 
+    FROM (SELECT ROWNUM RN, ENAME, EMPNO, JOB, MGR, HIREDATE
+          FROM (SELECT * FROM EMP ORDER BY ENAME))
+    WHERE RN BETWEEN 6 AND 10; -- 3 단계(TOP-N)
+    
+  -- 입사순으로 11번째부터 15번째인 사원의 모든 필드 출력(순서는 출력 안 함)
+  
+
+
+
+
 
 
 
