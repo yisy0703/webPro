@@ -23,7 +23,7 @@ public class Ex2_selectWhereDeptno2 {
 			Class.forName(driver);//(1)
 			conn = DriverManager.getConnection(url, "scott","tiger");//(2)
 			stmt = conn.createStatement(); //(3)
-			rs = stmt.executeQuery(query1);
+			rs = stmt.executeQuery(query1); // (4) + (5)
 			if(rs.next()) {
 				System.out.println("원하는 부서번호 : " + deptno);
 				System.out.println("원하는 부서이름 : " + rs.getString("dname"));
