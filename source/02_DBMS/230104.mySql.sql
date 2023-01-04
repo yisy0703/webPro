@@ -287,9 +287,46 @@ delete from personal where pname='홍길동';
   -- ex. "이름는 job이다"
 select concat(pname, '는 ',job,'이다') msg from personal;
 select round(35.678); -- from 절이 없이도 실행 가능
-  
-  
+
+-- 시스템으로부터 현재 시점, 현재 날짜, 현재 시간
+select sysdate(); -- 현재 시점
+select now();
+select year(sysdate()), month(now()), day(now()), hour(now()), 
+		minute(now()), second(now());
+select case weekday(now())
+	when '0' then '월요일'
+    when '1' then '화요일'
+    when '2' then '수요일'
+    when '3' then '목요일'
+    when '4' then '금요일'
+    when '5' then '토요일'
+    when '6' then '일요일' end dayofweek;
+select dayname(now());
+select pname, dayname(startdate) from personal; -- 이름, 입사한 날의 요일
+select monthname(now());
+select pname, monthname(startdate) from personal;
+select date(now()), time(now());
+select pname, year(startdate), month(startdate), day(startdate) from personal;
+
+-- 시스템으로부터 현재 날짜
+select current_date();
+select curdate();
+-- 시스템으로부터 현재 시간
+select current_time();
+select curtime();
+
+-- date_format(날짜/시간, 포맷) => 문자
+-- date_format(문자, 포맷) => 날짜
+	-- 포맷 : %Y 2023(년도4자리) %y 23(년도2자리)
+    --       %m (01월, 02월,...) %c(1,2,...) %M 월이름(January), %b 짧은월이름(Jan)
+    --       %d (01, 02, 03,..) %e(1, 2, 3...)
+    --       %H (24시간)  %h (12시간) %p (오전, 오후) %i분 %s초
+select date_format(now(), '%Y년 %c월 %e일 %p %h시 %i분 %s초') now;
 -- ★ ★ ★ 
+
+
+
+
 
 
 
