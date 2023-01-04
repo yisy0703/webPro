@@ -238,7 +238,7 @@ select pname, pay, dname
 	-- 반올림한 해당부서평균
   -- 서브쿼리 이용
 select pname, pay, dno, 
-		round((select avg(pay) from personal where dno=p.dno)) "avg"
+		round((select avg(pay) from personal where dno=p.dno)) avg
 	from personal p
     where pay > (select avg(pay) from personal where dno=p.dno);
   -- inline view 이용
@@ -265,8 +265,9 @@ select pname, pay, dnoavg
 	where p.dno=a.dno;
     
 -- 20. 이름, 급여, 부서명, 해당부서평균
-	-- 서브 퀄리 이용
-select pname, pay, dname, (select avg(pay) from personal where dno=p.dno) dnoavg
+	-- 서브 쿼리 이용
+select pname, pay, dname, 
+		(select avg(pay) from personal where dno=p.dno) dnoavg
 	from personal p, division d
 	where p.dno=d.dno;
     -- inline view 이용
@@ -275,6 +276,21 @@ select pname, pay, dname, dnoavg
 		(select dno, avg(pay) dnoavg from personal group by dno) a
 	where p.dno=d.dno and p.dno=a.dno;
 
+-- ★ ★ ★ Oracle에서의 단일행함수와 다른 부분
+select curdate();
+insert into personal values
+	(1000, '홍길동', 'manager', 1001, curdate(), null, null, 40);
+select * from personal where pno=1000;
+set sql_safe_updates = 0;
+delete from personal where pname='홍길동';
+
+  -- ex. "이름는 job이다"
+select concat(pname, '는 ',job,'이다') msg from personal;
+select round(35.678); -- from 절이 없이도 실행 가능
+  
+  
 -- ★ ★ ★ 
 
--- ★ ★ ★ 
+
+
+
