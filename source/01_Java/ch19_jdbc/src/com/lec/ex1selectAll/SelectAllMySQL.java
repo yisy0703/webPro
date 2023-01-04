@@ -20,6 +20,7 @@ public class SelectAllMySQL {
 			stmt = conn.createStatement(); // 3단계 SQL전송 객체
 			rs   = stmt.executeQuery(sql); // 4단계SQL전송 + 5단계 SQL결과 받기
 			// 6단계 결과받아 원하는 로직 수행
+			System.out.println("사번\t이름\t직책\t상사사번\t입사일\t급여\t상여\t부서번호");
 			while(rs.next()) {
 				int    pno     = rs.getInt("pno");
 				String pname   = rs.getString("pname"); // pname 타이틀의 필드 값
@@ -31,6 +32,8 @@ public class SelectAllMySQL {
 				int pay   = rs.getInt("pay");
 				int bonus = rs.getInt("bonus");
 				int dno   = rs.getInt("dno");
+				System.out.printf("%d\t%s\t%s\t%d\t %TF\t %d\t%d\t%d\n",
+								pno, pname, job, manager, startdate, pay, bonus, dno);
 			}
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
