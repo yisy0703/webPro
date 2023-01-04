@@ -267,3 +267,5 @@ select pname, pay, dname, dnoavg
 	where p.dno=d.dno and p.dno=a.dno;
 
 -- ★ ★ ★ 
+
+-- ★ ★ ★ 
