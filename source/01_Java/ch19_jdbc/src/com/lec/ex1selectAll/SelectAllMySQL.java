@@ -32,13 +32,26 @@ public class SelectAllMySQL {
 				int pay   = rs.getInt("pay");
 				int bonus = rs.getInt("bonus");
 				int dno   = rs.getInt("dno");
-				System.out.printf("%d\t%s\t%s\t%d\t %TF\t %d\t%d\t%d\n",
+				if(job.length() <= 7) {
+					System.out.printf("%d\t%s\t%s\t\t%d\t %TF\t %d\t%d\t%d\n",
 								pno, pname, job, manager, startdate, pay, bonus, dno);
+				}else {
+					System.out.printf("%d\t%s\t%s\t%d\t %TF\t %d\t%d\t%d\n",
+							pno, pname, job, manager, startdate, pay, bonus, dno);
+				}
 			}
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+		}finally {
+			try { // 7단계 연결해제
+				if(rs  !=null) rs.close();
+				if(stmt!=null) stmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 	}
 }
