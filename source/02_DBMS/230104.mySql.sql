@@ -322,12 +322,24 @@ select curtime();
     --       %d (01, 02, 03,..) %e(1, 2, 3...)
     --       %H (24시간)  %h (12시간) %p (오전, 오후) %i분 %s초
 select date_format(now(), '%Y년 %c월 %e일 %p %h시 %i분 %s초') now;
--- ★ ★ ★ 
+select * from personal where startdate < '1990-08-08';
+select * from personal 
+	where startdate < date_format('1990-08-10', '%Y-%m-%d');
 
+-- format(숫자, 소수점자리수) -> 문자
+select pname, format(pay, 2) from personal; -- 소수점 2자리까지 안오고 세자리마다 ,
+select pname, format(pay, 0) from personal;
 
+-- 이름, 급여, 급여3000이상인지 여부
+select pname, pay,  if(pay>=3000, '이상','이하') result from personal;
+select pname, pay, bonus, if(bonus is null, 0, bonus) from personal;
+select pname, bonus, ifnull(bonus, 0) from personal;
 
-
-
-
-
-
+-- ★ ★ ★ top-n 구문 (rownum이 없고, limit 이용)
+select pname, pay from personal order by pay desc;
+-- limit n (1~ n등)
+select pname, pay from personal order by pay desc limit 5;
+-- limit n1, n2 (n1번째부터 n2개. 첫번째는 0번째)
+select pname, pay from personal order by pay desc limit 0, 5; -- 1등부터 5개
+select pname, pay from personal order by pay desc limit 5, 5; -- 6등부터 5개
+select pname, pay from personal order by pay desc limit 6, 3; -- 7등부터 3개
