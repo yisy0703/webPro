@@ -150,6 +150,7 @@ select pno, pname, pay from personal;
 
 -- 2. 급여가 2000~5000 사이 모든 직원의 모든 필드
 select * from personal where pay between 2000 and 5000;
+select * from personal where pay>=2000 && pay<=5000;
 
 -- 3. 부서번호가 10또는 20인 사원의 사번, 이름, 부서번호
 select pno, pname, dno from personal where dno in (10,20);
@@ -169,7 +170,7 @@ select pno, pname, dname
     where p.dno = d.dno;
 
 -- 7. 사번, 이름, 상사이름
-select w.pno, w.pname, m.pname "manager"
+select w.pno, w.pname, m.pname  manager
 	from personal w, personal m
     where w.manager=m.pno;
 
@@ -180,6 +181,14 @@ select w.pno, w.pname, m.pname "manager"
 select w.pno, w.pname, ifnull(m.pname, '★CEO★') "manager"
 	from personal w left outer join personal m
     on w.manager=m.pno;
+select w.pno, w.pname, if(m.pname is null, '★CEO★', m.pname) "manager"
+	from personal w left outer join personal m
+    on w.manager=m.pno;  
+-- 8-1. 사번, 이름, 상사이름, 부서명
+select w.pno, w.pname, m.pname "manager", dname
+	from division d, personal w left outer join personal m
+		on w.manager=m.pno
+	where d.dno=w.dno;
     
 -- 9. 이름이 s로 시작하는 사원 이름
 select pname from personal where pname like 's%';
