@@ -20,12 +20,11 @@ public class Ex2_InsertDept {
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, "scott", "tiger");
-			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(selectQuery);
 			System.out.print("입력할 부서번호는 ?");
 			int deptno = sc.nextInt();
-			// 중복체크
-			
-			rs = stmt.executeQuery(selectQuery);
+			pstmt.setInt(1, deptno);
+			rs = pstmt.executeQuery();
 			rs.next();
 			int cnt = rs.getInt("cnt");
 			if(cnt!=0) {
@@ -35,8 +34,13 @@ public class Ex2_InsertDept {
 				String dname = sc.next();
 				System.out.print("입력할 부서 위치는 ?");
 				String loc = sc.next();
-				
-				int result = stmt.executeUpdate(insertQuery);
+				rs.close();
+				pstmt.close();
+				pstmt = conn.prepareStatement(insertQuery);
+				pstmt.setInt(1, deptno);
+				pstmt.setString(2, dname);
+				pstmt.setString(3, loc);
+				int result = pstmt.executeUpdate();
 				System.out.println(result>0? "입력성공":"입력실패");
 			}
 		} catch (ClassNotFoundException e) {
@@ -45,8 +49,7 @@ public class Ex2_InsertDept {
 			System.out.println("중복된 부서번호이거나 길게 입력한 경우 : "+e.getMessage());
 		} finally {
 			try {
-				if(rs!=null)   rs.close();
-				if(stmt!=null) stmt.close();
+				if(pstmt!=null) pstmt.close();
 				if(conn!=null) conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
