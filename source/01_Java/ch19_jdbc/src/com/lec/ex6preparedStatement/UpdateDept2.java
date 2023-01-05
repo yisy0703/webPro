@@ -1,6 +1,7 @@
 package com.lec.ex6preparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,26 +13,30 @@ public class UpdateDept2 {
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		Scanner sc = new Scanner(System.in);
 		Connection conn = null;
-		Statement  stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet  rs   = null;
-		String selectQuery = "SELECT * FROM DEPT WHERE DEPTNO="+deptno;
-		String updateQuery = String.format("UPDATE DEPT SET DNAME='%s', LOC='%s' WHERE DEPTNO=%d",
-				dname, loc, deptno);
+		String selectQuery = "SELECT * FROM DEPT WHERE DEPTNO=?";
+		String updateQuery = "UPDATE DEPT SET DNAME=?, LOC=? WHERE DEPTNO=?";
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, "scott", "tiger");
-			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(selectQuery);
 			System.out.print("수정할 부서번호는 ?");
 			int deptno = sc.nextInt();
-			
-			rs = stmt.executeQuery(selectQuery);
+			pstmt.setInt(1, deptno); // ?를 채우기
+			rs = pstmt.executeQuery();
 			if(rs.next()) {//수정 진행
 				System.out.print("수정할 부서명은 ?");
 				String dname = sc.next();
 				System.out.print("수정할 위치는 ?");
 				String loc = sc.next();
-				
-				int result = stmt.executeUpdate(updateQuery);
+				rs.close();
+				pstmt.close();
+				pstmt = conn.prepareStatement(updateQuery);
+				pstmt.setString(1, dname);
+				pstmt.setString(2, loc);
+				pstmt.setInt(3, deptno);
+				int result = pstmt.executeUpdate();
 				if(result>0) {
 					System.out.println("수정성공");
 				}
@@ -45,7 +50,7 @@ public class UpdateDept2 {
 		} finally {
 			try {
 				if(rs!=null)   rs.close();
-				if(stmt!=null) stmt.close();
+				if(pstmt!=null) pstmt.close();
 				if(conn!=null) conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
