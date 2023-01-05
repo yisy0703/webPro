@@ -15,16 +15,14 @@ public class InsertDept2 {
 		Statement  stmt = null;
 		ResultSet  rs   = null;
 		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, "scott", "tiger");
-			stmt = conn.createStatement();
-			// 부서번호 받아 중복체크하고 중복된 부서번호가 아닐 경우 부서명, 근무지를 입력받아 insert
+			
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (SQLException e) {
 			System.out.println("중복된 부서번호이거나 길게 입력한 경우 : "+e.getMessage());
 		} finally {
 			try {
+				if(rs!=null)   rs.close();
 				if(stmt!=null) stmt.close();
 				if(conn!=null) conn.close();
 			} catch (SQLException e) {
