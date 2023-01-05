@@ -18,7 +18,7 @@ public class InsertDept2 {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			stmt = conn.createStatement();
-			
+			// 부서번호 받아 중복체크하고 중복된 부서번호가 아닐 경우 부서명, 근무지를 입력받아 insert
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (SQLException e) {
