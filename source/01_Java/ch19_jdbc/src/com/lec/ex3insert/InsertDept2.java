@@ -22,9 +22,21 @@ public class InsertDept2 {
 			int deptno = sc.nextInt();
 			// 중복체크
 			String selectQuery = "SELECT COUNT(*) CNT FROM DEPT WHERE DEPTNO="+deptno;
-			
-			
-			
+			rs = stmt.executeQuery(selectQuery);
+			rs.next();
+			int cnt = rs.getInt("cnt");
+			if(cnt!=0) {
+				System.out.println("중복된 부서번호는 입력 불가합니다");
+			}else {
+				System.out.print("입력할 부서명은 ?");
+				String dname = sc.next();
+				System.out.print("입력할 부서 위치는 ?");
+				String loc = sc.next();
+				String insertQuery = String.format("INSERT INTO DEPT VALUES (%d, '%s', '%s')", 
+																deptno, dname, loc);
+				int result = stmt.executeUpdate(insertQuery);
+				System.out.println(result>0? "입력성공":"입력실패");
+			}
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (SQLException e) {
