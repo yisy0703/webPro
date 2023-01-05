@@ -15,6 +15,15 @@ public class InsertDept2 {
 		Statement  stmt = null;
 		ResultSet  rs   = null;
 		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			stmt = conn.createStatement();
+			System.out.print("입력할 부서번호는 ?");
+			int deptno = sc.nextInt();
+			// 중복체크
+			String selectQuery = "SELECT COUNT(*) CNT FROM DEPT WHERE DEPTNO="+deptno;
+			
+			
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
