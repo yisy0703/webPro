@@ -4,7 +4,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
 // 수정할 부서번호를 받아 존재하는 부서번호인지 확인후, 부서명, 근무지 입력받아 update
 public class UpdateDept2 {
