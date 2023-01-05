@@ -52,6 +52,7 @@ public class PersonMng {
 						+ "(SELECT JNO FROM JOB WHERE JNAME=?), " + 
 						"            ?, ?, ?)";
 				try {
+					// 1단계 드라이버로드는 한번만 하면 됨(위에서 했음)
 					// 2~6단계
 				} catch (Exception e) {
 					// TODO: handle exception
