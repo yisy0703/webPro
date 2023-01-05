@@ -41,43 +41,64 @@ public class PersonMng {
 				
 			}
 		}// 직업명 가져오기
-		System.out.println(jobs);
+		//System.out.println(jobs);
 		do {
 			System.out.print("1:입력 || 2:직업별조회 || 3:전체조회 || 그외:종료");
 			fn = sc.next();
 			switch(fn) {
 			case "1" : // 이름, 직업명(jobs), 국,영, 수 받아 insert
 				sql = "INSERT INTO PERSON " + 
-						"    VALUES (PERSON_NO_SQ.NEXTVAL, ?, "
+						"    VALUES (PERSON_PNO_SQ.NEXTVAL, ?, "
 						+ "(SELECT JNO FROM JOB WHERE JNAME=?), " + 
 						"            ?, ?, ?)";
 				try {
-					// 1단계 드라이버로드는 한번만 하면 됨(위에서 했음)
-					// 2~6단계
-				} catch (Exception e) {
-					// TODO: handle exception
+					// 1단계 드라이버로드는 한번만 하면 됨(위에서 했음). 2~6단계
+					conn = DriverManager.getConnection(url, "scott", "tiger");//(2)
+					
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
 				} finally {
 					// 7단계 close
+					try {
+						if(pstmt!=null) pstmt.close();
+						if(conn !=null) conn.close();
+					} catch (SQLException e) {
+						System.out.println(e.getMessage());
+					}
 				}
 				break;
 			case "2": // 직업명받아 직업 출력
 				sql = "";
 				try {
 					// 2~6단계
-				} catch (Exception e) {
-					// TODO: handle exception
+					conn = DriverManager.getConnection(url, "scott", "tiger");//(2)
+				}  catch (SQLException e) {
+					System.out.println(e.getMessage());
 				} finally {
-					// 7단계 close
+					try {
+						if(rs   !=null) rs.close();
+						if(pstmt!=null) pstmt.close();
+						if(conn !=null) conn.close();
+					} catch (SQLException e) {
+						
+					}
 				}
 				break;
 			case "3":
 				sql = "";
 				try {
 					// 2~6단계
-				} catch (Exception e) {
-					// TODO: handle exception
+					conn = DriverManager.getConnection(url, "scott", "tiger");//(2)
+				}  catch (SQLException e) {
+					System.out.println(e.getMessage());
 				} finally {
-					// 7단계 close
+					try {
+						if(rs   !=null) rs.close();
+						if(pstmt!=null) pstmt.close();
+						if(conn !=null) conn.close();
+					} catch (SQLException e) {
+						
+					}
 				}
 				break;
 			}
