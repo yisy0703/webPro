@@ -14,6 +14,22 @@ public class InsertDept2 {
 		Connection conn = null;
 		Statement  stmt = null;
 		ResultSet  rs   = null;
-		
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			stmt = conn.createStatement();
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (SQLException e) {
+			System.out.println("중복된 부서번호이거나 길게 입력한 경우 : "+e.getMessage());
+		} finally {
+			try {
+				if(stmt!=null) stmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 }
