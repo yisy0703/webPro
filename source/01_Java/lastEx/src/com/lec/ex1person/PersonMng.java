@@ -106,15 +106,3 @@ public class PersonMng {
 		System.out.println("BYE");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
