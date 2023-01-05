@@ -14,6 +14,7 @@ public class InsertDept {
 		Statement  stmt = null;
 		System.out.print("입력할 부서번호는 ?");
 		int deptno = sc.nextInt();
+		// 부서번호 중복 체크
 		System.out.print("입력할 부서명은 ?");
 		String dname = sc.next();
 		System.out.print("입력할 부서 위치는 ?");
