@@ -54,7 +54,19 @@ public class PersonMng {
 				try {
 					// 1단계 드라이버로드는 한번만 하면 됨(위에서 했음). 2~6단계
 					conn = DriverManager.getConnection(url, "scott", "tiger");//(2)
-					
+					pstmt = conn.prepareStatement(sql);//(3)
+					System.out.print("입력할 이름은?");
+					pstmt.setString(1, sc.next());
+					System.out.print("직업"+jobs+"은? ");
+					pstmt.setString(2, sc.next());
+					System.out.print("국어는 ?");
+					pstmt.setInt(3, sc.nextInt());
+					System.out.print("영어는 ?");
+					pstmt.setInt(4, sc.nextInt());
+					System.out.print("수학는 ?");
+					pstmt.setInt(5, sc.nextInt());
+					int result = pstmt.executeUpdate(); // (4)+(5)
+					System.out.println(result>0 ? "입력성공":"입력실패"); // (6)
 				} catch (SQLException e) {
 					System.out.println(e.getMessage());
 				} finally {
@@ -68,10 +80,15 @@ public class PersonMng {
 				}
 				break;
 			case "2": // 직업명받아 직업 출력
-				sql = "";
+				sql = "SELECT ROWNUM RANK, A.*" + 
+						"  FROM (SELECT PNAME||'('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM" + 
+						"            FROM PERSON P, JOB J" + 
+						"            WHERE P.JNO=J.JNO AND JNAME=?" + 
+						"            ORDER BY SUM DESC) A";
 				try {
-					// 2~6단계
-					conn = DriverManager.getConnection(url, "scott", "tiger");//(2)
+				// 2~6단계
+					conn = DriverManager.getConnection(url, "scott", "tiger");// (2)
+					
 				}  catch (SQLException e) {
 					System.out.println(e.getMessage());
 				} finally {
@@ -85,10 +102,15 @@ public class PersonMng {
 				}
 				break;
 			case "3":
-				sql = "";
+				sql = "SELECT ROWNUM RANK, A.*" + 
+						"  FROM (SELECT PNAME||'('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM" + 
+						"            FROM PERSON P, JOB J" + 
+						"            WHERE P.JNO=J.JNO" + 
+						"            ORDER BY SUM DESC) A";
 				try {
 					// 2~6단계
-					conn = DriverManager.getConnection(url, "scott", "tiger");//(2)
+					conn = DriverManager.getConnection(url, "scott", "tiger");// (2)
+					
 				}  catch (SQLException e) {
 					System.out.println(e.getMessage());
 				} finally {
