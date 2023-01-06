@@ -36,8 +36,14 @@ public class PersonDaoTest {
 				System.out.println(d);
 			}//for
 		}//if
+		System.out.println("Á÷¾÷¸í :"+dao.jnamelist());
 	}//main
 }
+
+
+
+
+
 
 
 

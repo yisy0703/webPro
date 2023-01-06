@@ -111,7 +111,7 @@ public class PersonDao {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
-				PersonDto dto = new PersonDto();
+				PersonDto dto = new PersonDto(); // ★ dto 객체생성은 while문 안에
 				dto.setRank(rs.getInt("rank"));
 				dto.setPname(rs.getString("pname"));
 				dto.setJname(rs.getString("jname"));
