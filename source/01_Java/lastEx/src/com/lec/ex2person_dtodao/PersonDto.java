@@ -31,6 +31,7 @@ public class PersonDto {
 		return rank + "µî\t" + pname + "\t" + jname + "\t" + kor + "\t" + eng
 				+ "\t" + mat + "\t" + sum;
 	}
+	// setter & getter
 	public int getRank() {
 		return rank;
 	}
