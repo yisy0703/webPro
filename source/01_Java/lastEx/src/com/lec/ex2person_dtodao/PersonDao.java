@@ -58,6 +58,39 @@ public class PersonDao {
 	public ArrayList<PersonDto> selectJname(String jname){
 		ArrayList<PersonDto> dtos = new ArrayList<PersonDto>();
 		// DB 결과를 dtos에 add한다
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT ROWNUM RANK, A.*" + 
+				"  FROM (SELECT PNAME||'('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM" + 
+				"            FROM PERSON P, JOB J" + 
+				"            WHERE P.JNO=J.JNO AND JNAME=?" + 
+				"            ORDER BY SUM DESC) A";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, jname);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int rank = rs.getInt("rank");
+				String pname = rs.getString("pname");
+				//String jname = rs.getString("jname");
+				int kor = rs.getInt("kor");
+				int eng = rs.getInt("eng");
+				int mat = rs.getInt("mat");
+				dtos.add(new PersonDto(pname, jname, kor, eng, mat));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		return dtos;
 	}
 	// 3번 기능 DB에 전체 select한 결과를 ArrayList<PersonDto>로 return
