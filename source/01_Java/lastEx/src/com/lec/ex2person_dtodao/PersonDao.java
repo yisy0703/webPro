@@ -79,7 +79,8 @@ public class PersonDao {
 				int kor = rs.getInt("kor");
 				int eng = rs.getInt("eng");
 				int mat = rs.getInt("mat");
-				dtos.add(new PersonDto(pname, jname, kor, eng, mat));
+				int sum = rs.getInt("sum");
+				dtos.add(new PersonDto(rank, pname, jname, kor, eng, mat, sum));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -106,7 +107,7 @@ public class PersonDao {
 				"            WHERE P.JNO=J.JNO" + 
 				"            ORDER BY SUM DESC) A";
 		try {
-			conn = DriverManager.getConnection(url, "scott", "");
+			conn = DriverManager.getConnection(url, "scott", "tiger");
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
@@ -141,7 +142,7 @@ public class PersonDao {
 		ResultSet         rs    = null;
 		String sql = "SELECT JNAME FROM JOB";
 		try {
-			conn = DriverManager.getConnection(url);
+			conn = DriverManager.getConnection(url, "scott", "tiger");
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
