@@ -86,9 +86,28 @@ public class PersonMng {
 						"            WHERE P.JNO=J.JNO AND JNAME=?" + 
 						"            ORDER BY SUM DESC) A";
 				try {
-				// 2~6단계
+					// 2~6단계
 					conn = DriverManager.getConnection(url, "scott", "tiger");// (2)
-					
+					pstmt = conn.prepareStatement(sql); // (3)
+					System.out.print("직업은"+jobs+"?");
+					pstmt.setString(1, sc.next());
+					rs = pstmt.executeQuery(); // (4) + (5)
+					if(rs.next()) { // 직업별 출력
+						System.out.println("rank\t이름\t직업\t국\t영\t수\t총점");
+						do {
+							int    rank  = rs.getInt("rank");
+							String pname = rs.getString("pname");
+							String jname = rs.getString("jname");
+							int    kor = rs.getInt("kor");
+							int    eng = rs.getInt("eng");
+							int    mat = rs.getInt("mat");
+							int    sum = rs.getInt("sum");
+							System.out.println(rank+"등\t"+pname+"\t"+jname+"\t"+kor+"\t"+
+									eng+"\t"+mat+"\t"+sum);
+						}while(rs.next());
+					}else {
+						System.out.println("해당 직업의 사람이 입력되지 않았습니다");
+					}
 				}  catch (SQLException e) {
 					System.out.println(e.getMessage());
 				} finally {
@@ -110,7 +129,24 @@ public class PersonMng {
 				try {
 					// 2~6단계
 					conn = DriverManager.getConnection(url, "scott", "tiger");// (2)
-					
+					pstmt = conn.prepareStatement(sql); // (3)
+					rs = pstmt.executeQuery(); // (4) + (5)
+					if(rs.next()) { // 직업별 출력
+						System.out.println("rank\t이름\t직업\t국\t영\t수\t총점");
+						do {
+							int    rank  = rs.getInt("rank");
+							String pname = rs.getString("pname");
+							String jname = rs.getString("jname");
+							int    kor = rs.getInt("kor");
+							int    eng = rs.getInt("eng");
+							int    mat = rs.getInt("mat");
+							int    sum = rs.getInt("sum");
+							System.out.println(rank+"등\t"+pname+"\t"+jname+"\t"+kor+"\t"+
+									eng+"\t"+mat+"\t"+sum);
+						}while(rs.next());
+					}else {
+						System.out.println("해당 직업의 사람이 입력되지 않았습니다");
+					}
 				}  catch (SQLException e) {
 					System.out.println(e.getMessage());
 				} finally {
