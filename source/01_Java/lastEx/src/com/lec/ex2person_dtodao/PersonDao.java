@@ -41,9 +41,16 @@ public class PersonDao {
 			pstmt.setInt(4, dto.getEng());
 			pstmt.setInt(5, dto.getMat());
 			result = pstmt.executeUpdate();
-			System.out.println(result==SUCCESS ? "성공":"실패");
+			System.out.println(result==SUCCESS ? "입력성공":"입력실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		return result;
 	}
