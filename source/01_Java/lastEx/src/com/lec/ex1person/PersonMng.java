@@ -56,7 +56,8 @@ public class PersonMng {
 					conn = DriverManager.getConnection(url, "scott", "tiger");//(2)
 					pstmt = conn.prepareStatement(sql);//(3)
 					System.out.print("입력할 이름은?");
-					pstmt.setString(1, sc.next());
+					String pname = sc.next();
+					pstmt.setString(1, pname);
 					System.out.print("직업"+jobs+"은? ");
 					pstmt.setString(2, sc.next());
 					System.out.print("국어는 ?");
@@ -145,7 +146,7 @@ public class PersonMng {
 									eng+"\t"+mat+"\t"+sum);
 						}while(rs.next());
 					}else {
-						System.out.println("해당 직업의 사람이 입력되지 않았습니다");
+						System.out.println("등록된 사람이 없습니다");
 					}
 				}  catch (SQLException e) {
 					System.out.println(e.getMessage());
