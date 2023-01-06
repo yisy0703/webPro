@@ -133,7 +133,33 @@ public class PersonDao {
 		}
 		return dtos;
 	}
-	// jname들을 Vector<String>로 return
+	// jname들을 ArrayList<String>로 return
+	public ArrayList<String> jnamelist(){
+		ArrayList<String> jnames = new ArrayList<String>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT JNAME FROM JOB";
+		try {
+			conn = DriverManager.getConnection(url);
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				jnames.add(rs.getString("jname"));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} // close
+		} // try-catch-finally
+		return jnames;
+	}
 }
 
 
