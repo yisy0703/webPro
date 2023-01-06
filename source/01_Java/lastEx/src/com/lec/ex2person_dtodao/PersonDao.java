@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 public class PersonDao {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
@@ -94,7 +95,44 @@ public class PersonDao {
 		return dtos;
 	}
 	// 3번 기능 DB에 전체 select한 결과를 ArrayList<PersonDto>로 return
-	
+	public ArrayList<PersonDto> selectAll(){
+		ArrayList<PersonDto> dtos = new ArrayList<PersonDto>();
+		Connection conn = null;
+		Statement  stmt = null;
+		ResultSet  rs   = null;
+		String sql = "SELECT ROWNUM RANK, A.*" + 
+				"  FROM (SELECT PNAME||'('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM" + 
+				"            FROM PERSON P, JOB J" + 
+				"            WHERE P.JNO=J.JNO" + 
+				"            ORDER BY SUM DESC) A";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "");
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				PersonDto dto = new PersonDto();
+				dto.setRank(rs.getInt("rank"));
+				dto.setPname(rs.getString("pname"));
+				dto.setJname(rs.getString("jname"));
+				dto.setKor(rs.getInt("kor"));
+				dto.setEng(rs.getInt("eng"));
+				dto.setMat(rs.getInt("mat"));
+				dto.setSum(rs.getInt("sum"));
+				dtos.add(dto);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs  !=null) rs.close();
+				if(stmt!=null) stmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return dtos;
+	}
 	// jname들을 Vector<String>로 return
 }
 
