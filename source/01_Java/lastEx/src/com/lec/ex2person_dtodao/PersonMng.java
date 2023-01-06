@@ -45,8 +45,15 @@ public class PersonMng {
 				}
 				break;
 			case "3":
-				
-			}
+				dtos = dao.selectAll();
+				if(dtos.size()==0) {
+					System.out.println("등록된 사람이 없습니다");
+				}else {
+					for(int idx=0 ; idx<dtos.size() ; idx++) {
+						System.out.println(dtos.get(idx));
+					}//for
+				}//if
+			}//switch
 		}while(fn.equals("1") || fn.equals("2") || fn.equals("3"));
 		System.out.println("BYE");
 	}
