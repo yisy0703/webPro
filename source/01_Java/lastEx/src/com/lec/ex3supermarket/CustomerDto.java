@@ -8,6 +8,7 @@ public class CustomerDto {
 	private int    camount;
 	private String levelName;
 	private int    forLevelUp;
+	public CustomerDto() { }
 	public CustomerDto(int cid, String ctel, String cname, int cpoint, int camount, String levelName, int forLevelUp) {
 		this.cid = cid;
 		this.ctel = ctel;
@@ -42,5 +43,26 @@ public class CustomerDto {
 	}
 	public int getForLevelUp() {
 		return forLevelUp;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public void setCtel(String ctel) {
+		this.ctel = ctel;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public void setCpoint(int cpoint) {
+		this.cpoint = cpoint;
+	}
+	public void setCamount(int camount) {
+		this.camount = camount;
+	}
+	public void setLevelName(String levelName) {
+		this.levelName = levelName;
+	}
+	public void setForLevelUp(int forLevelUp) {
+		this.forLevelUp = forLevelUp;
 	}
 }

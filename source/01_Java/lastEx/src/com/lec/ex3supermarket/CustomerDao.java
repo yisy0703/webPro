@@ -79,7 +79,45 @@ public class CustomerDao {
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "";
+		String sql = "SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, " + 
+		"   (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID)  forLevelUp" + 
+		"  FROM CUSTOMER C, CUS_LEVEL L" + 
+		"  WHERE C.LEVELNO=L.LEVELNO AND CTEL LIKE '%'||?";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchTel);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+//				int    cid       = rs.getInt("cid");
+//				String ctel      = rs.getString("ctel");
+//				String cname     = rs.getString("cname");
+//				int    cpoint    = rs.getInt("cpoint");
+//				int    camount   = rs.getInt("camount");
+//				String levelName = rs.getString("levelName");
+//				int    forLevelUp= rs.getInt("forLevelUp");
+//				dtos.add(new CustomerDto(cid, ctel, cname, cpoint, camount, levelName, forLevelUp));
+				CustomerDto dto = new CustomerDto();
+				dto.setCid(rs.getInt("cid"));
+				dto.setCtel(rs.getString("ctel"));
+				dto.setCname(rs.getString("cname"));
+				dto.setCpoint(rs.getInt("cpoint"));
+				dto.setCamount(rs.getInt("camount"));
+				dto.setLevelName(rs.getString("levelName"));
+				dto.setForLevelUp(rs.getInt("forLevelUp"));
+				dtos.add(dto);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}//close
+		}//try¹®
 		return dtos;
 	}
 	
