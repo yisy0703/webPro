@@ -219,17 +219,113 @@ public class CustomerDao {
 		}//try문
 		return levelNames;
 	}
-	// 4. 등급별 고객 출력 : public ArrayList<CustomerDto> levelNameGetCustomers(String levelName)
-	
-	// 5. 전체 출력 : public ArrayList<CustomerDto> getCustomers()
-	
-	// 6. 회원탈퇴 : public int deleteCustomer(String ctel)
-	
+	// 4. 등급별 고객 출력 
+	public ArrayList<CustomerDto> levelNameGetCustomers(String levelName){
+		ArrayList<CustomerDto> dtos = new ArrayList<CustomerDto>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, " + 
+		"   (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID) forLevelUp" + 
+		"  FROM CUSTOMER C, CUS_LEVEL L" + 
+		"  WHERE C.LEVELNO=L.LEVELNO AND LEVELNAME=?" + 
+		"  ORDER BY CAMOUNT DESC";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, levelName);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+//				int    cid       = rs.getInt("cid");
+//				String ctel      = rs.getString("ctel");
+//				String cname     = rs.getString("cname");
+//				int    cpoint    = rs.getInt("cpoint");
+//				int    camount   = rs.getInt("camount");
+//				String levelName = rs.getString("levelName");
+//				int    forLevelUp= rs.getInt("forLevelUp");
+//				dtos.add(new CustomerDto(cid, ctel, cname, cpoint, camount, levelName, forLevelUp));
+				CustomerDto dto = new CustomerDto();
+				dto.setCid(rs.getInt("cid"));
+				dto.setCtel(rs.getString("ctel"));
+				dto.setCname(rs.getString("cname"));
+				dto.setCpoint(rs.getInt("cpoint"));
+				dto.setCamount(rs.getInt("camount"));
+				dto.setLevelName(rs.getString("levelName"));
+				dto.setForLevelUp(rs.getInt("forLevelUp"));
+				dtos.add(dto);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}//close
+		}//try문
+		return dtos;
+	}
+	// 5. 전체 출력 : 
+	public ArrayList<CustomerDto> getCustomers(){
+		ArrayList<CustomerDto> dtos = new ArrayList<CustomerDto>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, " + 
+			"     (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID)  forLevelUp" + 
+			"  FROM CUSTOMER C, CUS_LEVEL L" + 
+			"  WHERE C.LEVELNO=L.LEVELNO " + 
+			"  ORDER BY CAMOUNT DESC";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int    cid       = rs.getInt("cid");
+				String ctel      = rs.getString("ctel");
+				String cname     = rs.getString("cname");
+				int    cpoint    = rs.getInt("cpoint");
+				int    camount   = rs.getInt("camount");
+				String levelName = rs.getString("levelName");
+				int    forLevelUp= rs.getInt("forLevelUp");
+				dtos.add(new CustomerDto(cid, ctel, cname, cpoint, camount, levelName, forLevelUp));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}//close
+		}//try문
+		return dtos;
+	}
+	// 6. 회원탈퇴 : 
+	public int deleteCustomer(String ctel) {
+		int result = FAIL;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM CUSTOMER WHERE CTEL=?";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, ctel);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}	
 }
-
-
-
-
-
-
-
