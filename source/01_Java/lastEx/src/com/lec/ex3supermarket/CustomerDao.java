@@ -120,10 +120,61 @@ public class CustomerDao {
 		}//try문
 		return dtos;
 	}
-	
-	// 3. 물품구입 : public int buy(int cid, int price)
-	
-	// 3번 물품구입 후 구매자 정보 출력 : public CustomerDto getCustomer(int cid)
+	// 3. 물품구입 : 
+	public int buy(int cid, int price) {
+		int result = FAIL;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE CUSTOMER " + 
+				"      SET CPOINT = CPOINT + (?*0.05)," + 
+				"          CAMOUNT = CAMOUNT + ?," + 
+				"          LEVELNO = (SELECT L.LEVELNO" + 
+				"                      FROM CUSTOMER, CUS_LEVEL L" + 
+				"                      WHERE CAMOUNT+? BETWEEN LOW AND HIGH " + 
+				"                            AND CID=?)" + 
+				"      WHERE CID = ?";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, price);
+			pstmt.setInt(2, price);
+			pstmt.setInt(3, price);
+			pstmt.setInt(4, cid);
+			pstmt.setInt(5, cid);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
+	// 3번 물품구입 후 구매자 정보 출력 : 
+	public CustomerDto getCustomer(int cid) {
+		CustomerDto dto = null;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME," + 
+			"  (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID)  forLevelUp" + 
+			"  FROM CUSTOMER C, CUS_LEVEL L" + 
+			"  WHERE C.LEVELNO=L.LEVELNO AND CID = ?";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cid);
+			rs = pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return dto;
+	}
 	
 	// 4번 전 levelName들 정보 추출 : public ArrayList<String> getLevelNames()
 	
@@ -134,3 +185,10 @@ public class CustomerDao {
 	// 6. 회원탈퇴 : public int deleteCustomer(String ctel)
 	
 }
+
+
+
+
+
+
+
