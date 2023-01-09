@@ -37,6 +37,38 @@ public class CustomerDaoTest {
 		}
 		System.out.println("=== 4. 레벨별 출력 ===");
 		System.out.println("고객레벨명 : " + dao.getLevelNames());
+		customers = dao.levelNameGetCustomers("NORMAL");
+		if(customers.size()==0) {
+			System.out.println("NORMAL 레벨 고객이 없습니다.");
+		}else {
+			System.out.println("아이디\t전화\t\t이름\t포인트\t구매누적액\t고객레벨\t레벨업을위한추천구매액");
+			for(CustomerDto customer : customers) {
+				System.out.println(customer);
+			}
+		}
+		System.out.println("=== 5. 전체 출력 ===");
+		customers = dao.getCustomers();
+		if(customers.isEmpty()) {
+			System.out.println("고객이 없습니다.");
+		}else {
+			System.out.println("아이디\t전화\t\t이름\t포인트\t구매누적액\t고객레벨\t레벨업을위한추천구매액");
+			for(CustomerDto customer : customers) {
+				System.out.println(customer);
+			}//for
+		}//if
+		System.out.println("=== 6. 회원탈퇴 ===");
+		result = dao.deleteCustomer("010-7777-7777");
+		System.out.println(result==CustomerDao.SUCCESS? "삭제성공":"유효한 전화번호가 아닙니다");
+		System.out.println("=== 5. 전체 출력 ===");
+		customers = dao.getCustomers();
+		if(customers.isEmpty()) {
+			System.out.println("고객이 없습니다.");
+		}else {
+			System.out.println("아이디\t전화\t\t이름\t포인트\t구매누적액\t고객레벨\t레벨업을위한추천구매액");
+			for(CustomerDto customer : customers) {
+				System.out.println(customer);
+			}//for
+		}//if
 	}
 }
 
