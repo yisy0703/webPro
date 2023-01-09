@@ -20,7 +20,7 @@ public class CustomerDto {
 	}
 	@Override
 	public String toString() {
-		return cid +"\t" + ctel + "\t\t" + cname + "\t" +cpoint +"\t" + camount +
+		return cid +"\t" + ctel + "\t" + cname + "\t" +cpoint +"\t" + camount +
 					"\t" + levelName + "\t" +forLevelUp;
 	}
 	public int getCid() {

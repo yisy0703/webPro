@@ -228,7 +228,7 @@ public class CustomerDao {
 		String sql = "SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, " + 
 		"   (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID) forLevelUp" + 
 		"  FROM CUSTOMER C, CUS_LEVEL L" + 
-		"  WHERE C.LEVELNO=L.LEVELNO AND LEVELNAME=?" + 
+		"  WHERE C.LEVELNO=L.LEVELNO AND LEVELNAME=UPPER(?)" + 
 		"  ORDER BY CAMOUNT DESC";
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
