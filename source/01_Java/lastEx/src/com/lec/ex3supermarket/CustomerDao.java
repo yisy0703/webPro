@@ -169,15 +169,56 @@ public class CustomerDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cid);
 			rs = pstmt.executeQuery();
-			
+			if(rs.next()) { // 검색결과가 있을 경우(cid가 있을 경우), dto에 CustomerDto객체 생성하여 할당
+				//int    cid       = rs.getInt("cid");
+				String ctel      = rs.getString("ctel");
+				String cname     = rs.getString("cname");
+				int    cpoint    = rs.getInt("cpoint");
+				int    camount   = rs.getInt("camount");
+				String levelName = rs.getString("levelName");
+				int    forLevelUp= rs.getInt("forLevelUp");
+				dto = new CustomerDto(cid, ctel, cname, cpoint, camount, levelName, forLevelUp);
+			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		}
+		}finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}//close
+		}//try문
 		return dto;
 	}
-	
-	// 4번 전 levelName들 정보 추출 : public ArrayList<String> getLevelNames()
-	
+	// 4번 전 levelName들 정보 추출 
+	public ArrayList<String> getLevelNames(){
+		ArrayList<String> levelNames = new ArrayList<String>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT LEVELNAME FROM CUS_LEVEL";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				levelNames.add(rs.getString("levelName"));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}//close
+		}//try문
+		return levelNames;
+	}
 	// 4. 등급별 고객 출력 : public ArrayList<CustomerDto> levelNameGetCustomers(String levelName)
 	
 	// 5. 전체 출력 : public ArrayList<CustomerDto> getCustomers()
