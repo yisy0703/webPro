@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8"/><!-- utf-8 / euc-kr(cp949 / ms949) 완성형 -->
+  <title>첫예제</title>
+  <style> /* 디자인 영역(CSS/CSS3) */
+    body{
+      background-color: lightyellow;
+      font-size:30pt;
+    }
+  </style>
+  <script> /* 동적인 부분 */
+    name = prompt("What's your name?", "Hong"); // 취소를 클릭하면 'null' 리턴
+    if (name != 'null' && name != '') { 
+      document.write(name + "~ Welcome<br>");
+    }
+  </script>
+</head>
+<body>
+  <!-- body 부분에는 웹문서에 출력될 정보 -->
+  안녕하세요 <br />
+  오늘부터 웹표준          수업시작합니다<br />
+  Hello, World!
+</body>
+</html>
