@@ -1,14 +1,59 @@
 package com.lec.ex3supermarket;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class CustomerDao {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url    = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 	public final static int SUCCESS = 1;
 	public final static int FAIL    = 0;
 	// dao는 싱글톤으로 구현/ private 생성자에는 driver로드
+	private static CustomerDao INSTANCE = new CustomerDao();
+	public static CustomerDao getInstance() {
+		return INSTANCE;
+	}
+	private CustomerDao() {
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	// 1. 회원가입 :
+	public int insertCustomer(CustomerDto dto) {
+		int result = FAIL;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO CUSTOMER (CID, CTEL, CNAME)" + 
+						"  VALUES (CUSTOMER_CID_SEQ.NEXTVAL, ?, ?) ";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getCtel());
+			pstmt.setString(2, dto.getCname());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;		
+	}
+	public int insertCustomer(String ctel, String cname) {
+		int result = FAIL;
+		//
+		return result;
+	}
 	
-	// 1. 회원가입 : public int insertCustomer(String ctel, String cname)
-	
-  // public int insertCustomer(CustomerDto dto)
+  
 	
 	// 2. 폰뒤4자리(풀번호) 검색  : 
 	// public ArrayList<CustomerDto> ctelGetCustomers(String searchTel)
