@@ -22,10 +22,20 @@ SELECT CNAME, CAMOUNT, HIGH+1-CAMOUNT,
 SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
      (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID)  forLevelUp
   FROM CUSTOMER C, CUS_LEVEL L
-  WHERE C.LEVELNO=L.LEVELNO; -- DAO에 들어갈 QUERY
+  WHERE C.LEVELNO=L.LEVELNO AND CTEL LIKE '%'||'9999'; -- DAO에 들어갈 QUERY
   
 -- 3. 물품구입 (cid, price 입력받아 cpoint, camout, levelno update)
     -- public int buy(int cid, int price)
+    -- 1단계 : CPOINT, CAMOUNT 수정
+    UPDATE CUSTOMER 
+      SET CPOINT = CPOINT + (1000000*0.05),
+          CAMOUNT = CAMOUNT + 1000000
+      WHERE CID = 1;
+    -- 2단계 : 수정된 CAMOUNT에 따라 LEVELNO 조정
+    
+    -- DAO에 들어갈 QUERY 완성 (1단계 + 2단계)
+    
+    
     
 -- 3번 후 바뀐 고객 정보를 출력 (cid, ctel, cname, cpoint, camount, levelname, forLevelUp)
     -- public CustomerDto getCustomer(int cid)
