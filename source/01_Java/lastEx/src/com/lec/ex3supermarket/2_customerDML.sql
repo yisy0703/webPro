@@ -19,6 +19,11 @@ SELECT CNAME, CAMOUNT, HIGH+1-CAMOUNT,
   FROM CUSTOMER C, CUS_LEVEL L
   WHERE C.LEVELNO=L.LEVELNO; -- 이용할 서브쿼리 만들기
 
+SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
+     (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID)  forLevelUp
+  FROM CUSTOMER C, CUS_LEVEL L
+  WHERE C.LEVELNO=L.LEVELNO; -- DAO에 들어갈 QUERY
+  
 -- 3. 물품구입 (cid, price 입력받아 cpoint, camout, levelno update)
     -- public int buy(int cid, int price)
     
