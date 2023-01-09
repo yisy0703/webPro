@@ -32,21 +32,49 @@ SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME,
           CAMOUNT = CAMOUNT + 1000000
       WHERE CID = 1;
     -- 2단계 : 수정된 CAMOUNT에 따라 LEVELNO 조정
+    SELECT CNAME, CAMOUNT, C.LEVELNO 현레벨, L.LEVELNO 바뀔레벨, LOW, HIGH
+      FROM CUSTOMER C, CUS_LEVEL L
+      WHERE CAMOUNT BETWEEN LOW AND HIGH;
+    SELECT L.LEVELNO
+      FROM CUSTOMER, CUS_LEVEL L
+      WHERE CAMOUNT BETWEEN LOW AND HIGH AND CID=1; -- CID가 1인 데이터의 바뀔레벨
+    UPDATE CUSTOMER 
+      SET LEVELNO = (SELECT L.LEVELNO
+                      FROM CUSTOMER, CUS_LEVEL L
+                      WHERE CAMOUNT BETWEEN LOW AND HIGH AND CID=1)
+      WHERE CID=1; -- LEVELNO수정
     
     -- DAO에 들어갈 QUERY 완성 (1단계 + 2단계)
-    
-    
+    UPDATE CUSTOMER 
+      SET CPOINT = CPOINT + (1000000*0.05),
+          CAMOUNT = CAMOUNT + 1000000,
+          LEVELNO = (SELECT L.LEVELNO
+                      FROM CUSTOMER, CUS_LEVEL L
+                      WHERE CAMOUNT+1000000 BETWEEN LOW AND HIGH 
+                            AND CID=1)
+      WHERE CID = 1;
+    SELECT * FROM CUSTOMER WHERE CID=1;
     
 -- 3번 후 바뀐 고객 정보를 출력 (cid, ctel, cname, cpoint, camount, levelname, forLevelUp)
     -- public CustomerDto getCustomer(int cid)
-    
+SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
+     (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID)  forLevelUp
+  FROM CUSTOMER C, CUS_LEVEL L
+  WHERE C.LEVELNO=L.LEVELNO AND CID=1;
+  
 -- 4번 전 고객등급명들 추출
-    -- public ArrayList<String> 
-
+    -- public ArrayList<String> getLevelNames()
+SELECT LEVELNAME FROM CUS_LEVEL;
+  
 -- 4. 고객 등급별 출력 
     -- (levelname을 입력받아 cid, ctel, cname, cpoint, camount, levelname, forLevelUp출력)
     -- public ArrayList<CustomerDto> levelNameGetCustomers(String levelName)
-
+SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
+     (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID)  forLevelUp
+  FROM CUSTOMER C, CUS_LEVEL L
+  WHERE C.LEVELNO=L.LEVELNO AND LEVELNAME='NORMAL'
+  ORDER BY CAMOUNT DESC;
+  
 -- 5. 고객 전체 출력
     -- (cid, ctel, cname, cpoint, camount, levelname, forLevelUp출력)
     -- public ArrayList<CustomerDto> getCustomers()
