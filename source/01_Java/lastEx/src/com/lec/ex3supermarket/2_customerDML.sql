@@ -78,10 +78,16 @@ SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME,
 -- 5. 고객 전체 출력
     -- (cid, ctel, cname, cpoint, camount, levelname, forLevelUp출력)
     -- public ArrayList<CustomerDto> getCustomers()
+SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
+     (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID)  forLevelUp
+  FROM CUSTOMER C, CUS_LEVEL L
+  WHERE C.LEVELNO=L.LEVELNO 
+  ORDER BY CAMOUNT DESC;
   
 -- 6.  회원탈퇴 (ctel을 입력받아 delete)
     -- public int deleteCustomer(String ctel)
-    
+DELETE FROM CUSTOMER WHERE CTEL='010-6666-6666';
+ROLLBACK;
     
     
     
