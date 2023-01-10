@@ -82,7 +82,17 @@
         <td>생년월일</td>
         <td><input type="date" name="birth" /></td>
       </tr>
-     
+      <tr>
+        <td>본인 git url</td>
+        <td><input type="url" name="git" /></td>
+      </tr>
+      <tr>
+        <td>좋아하는 색상<br />좋아하는 정도</td>
+        <td>
+          <input type="color" name="color" /><br />
+          0<input type="range" name="range" min="0" max="100" step="10" />100
+        </td>
+      </tr>
       <tr>
         <th colspan="2">
           <input type="submit" value="입력" />
@@ -91,6 +101,5 @@
       </tr>
     </table>
   </form>
-  
 </body>
 </html>
