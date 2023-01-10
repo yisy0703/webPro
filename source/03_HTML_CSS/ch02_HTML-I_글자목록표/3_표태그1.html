@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    table{
+      background-color:#000000; /*검정*/
+      margin: 10px 20px; /*밖여백 : 위, 오른쪽, 아래, 왼쪽*/
+    }
+    tr{background-color:#FFFFFF; /*흰색*/}
+    td{
+      padding: 5px 10px; /*안여백 : 위, 오른쪽, 아래, 왼쪽 */
+      text-align:center; /* 글씨 가운데 정렬 */
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <caption>병합이 없는 기본 테이블</caption>
+    <tr>
+      <td>1행1열</td><td>1행2열</td><td>1행3열</td><td>1행4열</td>
+    </tr>
+    <tr>
+      <td>2행1열</td><td>2행2열</td><td>2행3열</td><td>2행4열</td>
+    </tr>
+    <tr>
+      <td>3행1열</td><td>3행2열</td><td>3행3열</td><td>3행4열</td>
+    </tr>
+  </table>
+  <table>
+    <caption>열병합과 행병합을 한 테이블</caption>
+    <tr>
+      <th colspan="3">제목(진하고가운데정렬)</th><th>제목4</th>
+    </tr>
+    <tr>
+      <td colspan="2">1행1열, 2열</td><td>1행3열</td><td>1행4열</td>
+    </tr>
+    <tr>
+      <td>2행1열</td><td>2행2열</td><td rowspan="2">2행과 3행 3열</td><td>2행4열</td>
+    </tr>
+    <tr>
+      <td>3행1열</td><td>3행2열</td><td>3행4열</td>
+    </tr>
+  </table>
+</body>
+</html>
