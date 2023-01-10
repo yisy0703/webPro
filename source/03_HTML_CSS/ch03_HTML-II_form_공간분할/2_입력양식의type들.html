@@ -31,7 +31,63 @@
         <td><input type="number" name="career" max="60" min="0" />년</td>
       </tr>
       <tr>
-        <th colspan="2"><input type="submit" value="입력" /></th>
+        <td>이메일</td>
+        <td><input type="email" name="email" /></td>
+      </tr>
+      <tr>
+        <td>사진</td>
+        <td><input type="file" name="filename" /></td>
+      </tr>
+      <tr>
+        <td>성별</td>
+        <td>
+          <input type="radio" name="gender" value="m" checked="checked"/>남
+          <input type="radio" name="gender" value="f" />여
+        </td>
+      </tr>
+      <tr>
+        <td>사용언어</td>
+        <td>
+          <input type="checkbox" name="lang" value="kor" checked="checked"/>한국어
+          <input type="checkbox" name="lang" value="eng" />영어
+          <input type="checkbox" name="lang" value="chi" />중국어
+        </td>
+      </tr>
+      <tr>
+        <td>국적</td>
+        <td>
+          <select name="nation">
+            <option value="대한민국">대한민국</option>
+            <option>미국</option>
+            <option>중국</option>
+            <option>인도</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>좋아하는 음식</td>
+        <td>
+          <select name="food" multiple="multiple" size="3">
+            <option>볶음밥</option><option>비빔밥</option>
+            <option>주먹밥</option><option>김치알밥</option>
+            <option>짬뽕</option><option>탕수육</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>자기소개</td>
+        <td><textarea name="intro" cols="25" rows="3"></textarea></td>
+      </tr>
+      <tr>
+        <td>생년월일</td>
+        <td><input type="date" name="birth" /></td>
+      </tr>
+     
+      <tr>
+        <th colspan="2">
+          <input type="submit" value="입력" />
+          <input type="reset" value="초기화" />
+        </th>
       </tr>
     </table>
   </form>
