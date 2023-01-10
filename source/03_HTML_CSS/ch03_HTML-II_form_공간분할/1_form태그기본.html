@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    td{text-align:center; /*글씨 가운데 정렬*/
+       padding: 2px; /*안여백 위 오른쪽, 아래, 왼쪽 */
+    }
+  </style>
+</head>
+<body>
+  닉 네 임 : <input type="text" name="nickname" />
+  <!--form태그 밖의 input은 파라미터 전달 불가. form태그 method는 기본이 get방식-->
+  <form action="" method="get">
+    <table>
+      <tr>
+        <td>아이디</td><td><input type="text" name="uid" /></td>
+      </tr>
+      <tr>
+        <td>비밀번호</td><td><input type="password" name="upw" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" value="로그인" /></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
