@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+  전송 안 되는 파라미터 <input type="text" name="test" />
+  <form action="" method="get">
+    <p>
+      전화 <input type="tel" name="tel" placeholder="000-0000-0000"
+                 required="required" />
+    </p>
+    <p>
+      카드 <input type="text" name="card" placeholder="xxxx-xxxx" />
+    </p>
+    <p>
+      업무 <select name="job">
+            <option>분석</option>
+            <option>설계</option>
+            <option>구현</option>
+            <option>테스트</option>
+            <option>유지보수</option>
+           </select>
+    </p>
+    <p>
+      업무2 <input type="text" name="job2" list="joblist" />
+          <datalist id="joblist">
+            <option>분석</option>
+            <option>설계</option>
+            <option>구현</option>
+            <option>테스트</option>
+            <option value="유지보수"></option>
+          </datalist>
+    </p>
+    <input type="text" name="hiddenParam" value="hiddenValue" />
+    <input type="submit" value="전송합니다" />
+  </form>
+</body>
+</html>
