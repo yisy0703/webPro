@@ -15,12 +15,7 @@
   <script>
     function chk() { 
       // submit 안 일어나는 조건 : title에 입력하지 않았거나 name에 2글자 미만 입력
-      if (!frm.title.value.trim()) { // 빈문자("",'')는 false
-        alert("제목을 꼭 입력하세요");
-        frm.title.value = "";
-        frm.title.focus(); // frm.title에 커서가 깜박깜박
-        return false;
-      } else if (frm.name.value.length < 2) {
+      if (frm.name.value.length < 2) {
         alert('작성자명은 2글자 이상 입력하세요');
         frm.name.focus();
         return false;
@@ -35,11 +30,14 @@
       <caption><h2>게시판</h2></caption>
       <tr>
         <td>제목</td>
-        <td><input type="text" name="title" size="30"/></td>
+        <td>
+          <!--유효성 우선순위 : 태그유효성검사 > javaScript 유효성검사-->
+          <input type="text" name="title" size="30" required="required" />
+        </td>
       </tr>
       <tr>
         <td>작성자</td>
-        <td><input type="text" name="name" size="30"/></td>
+        <td><input type="text" name="name" size="30" /></td>
       </tr>
       <tr>
         <td>본문</td>
