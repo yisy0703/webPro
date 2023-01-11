@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    table#top {background-color:#cccccc;}
+    td {
+      background-color:white; 
+      padding:10px; /*안여백*/
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <table id="top">
+      <caption><h1>회원가입</h1></caption>
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <th>아이디</th>
+              <td><input type="text" name="uid" /></td>
+            </tr>
+            <tr>
+              <th>비밀번호</th>
+              <td><input type="text" name="uid" /></td>
+            </tr>
+            <tr>
+              <th>확인비밀번호</th>
+              <td><input type="text" name="uid2" /></td>
+            </tr>
+            <tr>
+              <th>이 름</th>
+              <td><input type="text" name="uname" /></td>
+            </tr>
+            <tr>
+              <th>전 화</th>
+              <td><input type="tel" name="utel"></td>
+            </tr>
+            <tr>
+              <th>생년월일</th>
+              <td><input type="date" name="ubirth" /></td>
+            </tr>
+            <tr>
+              <th><center>성 별</center></th>
+              <td>
+                <input type="radio" name="gender" value="m">남
+                <input type="radio" name="gender" value="f">여
+              </td>
+            </tr>
+            <tr>
+              <th colspan="2"><input type="submit" /></th>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ul>
+            <li>주민등록없이 전화번호로 회원가입</li>
+            <li>
+              대부분 서비스가 이용 가능합니다.<br />
+              (단, 일부 실명확인 후 이용 가능)
+            </li>
+            <li>정보변경은 추후 가능</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
