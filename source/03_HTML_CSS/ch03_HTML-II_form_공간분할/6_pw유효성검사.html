@@ -3,8 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <title></title>
+  <style>
+    td{text-align:center;}
+  </style>
+  <script>
+    function chk() {
+      if (frm.id.value.length < 4) {
+        alert('아이디는 4글자 이상 필수입력입니다');
+        frm.id.focus();
+        return false;
+      } else if (!frm.pw.value) {
+        alert('비밀번호를 입력하세요');
+        frm.pw.focus();
+        return false;
+      } else if (frm.pw.value != frm.pwChk.value) {
+        alert('비밀번호를 확인하세요');
+        frm.pw.value = '';
+        frm.pwChk.value = '';
+        frm.pw.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
 </head>
 <body>
-
+  <form action="" method="get" name="frm" onsubmit="return chk()">
+    <table>
+      <tr>
+        <td>아이디</td><td><input type="text" name="id"/></td>
+      </tr>
+      <tr>
+        <td>비밀번호</td><td><input type="password" name="pw" /></td>
+      </tr>
+      <tr>
+        <td>비밀번호</td><td><input type="password" name="pwChk" /></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="가입" />
+        </td>
+      </tr>
+    </table>
+  </form>
 </body>
 </html>
