@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script>
+    /* 정규표현식(regex)
+      1. 참조 (https://goo.gl/HLntbd 위키백과)
+      2. 간략문법  
+        \d (숫자와 매치, [0-9]와 동일)
+        \D (숫자가 아닌 것)
+        \w (영문자나 숫자, [a-zA-Z0-9]와 동일)
+        \W (영문자나 숫자가 아닌 문자)
+        . (문자)
+        {2,}  (2번 이상 반복)
+        {2,4} (2~4회 반복)
+        +     (1번 이상 반복)
+        *     (0번 이상 반복)
+        ?     (0번이나 1번 의미)
+
+      3. 정규표현식 연습장 : https://www.regexpal.com  ,  http://regexr.com
+          ex1. ip 주소 : 0.0.0.0 ~ 255.255.255.255
+            => ([0-9]{1,3}\.){3}[0-9]{1,3}
+        ex2. 전화번호 : 02 712 6100 / 010 9999 9999 / 010-9999-9999 / 010.9999.9999 / 02)717.6541
+               01099999999
+          => \d{2,3}[\.-) ]?\d{3,4}[ \.-]?\d{4}
+        ex3. 주민등록번호 : 981212-2054545 / 9812122054545
+          => \d{2}[0-1]\d[0-3]\d-?[1-4]\d{6}
+        ex4. 이메일 : yi09@naver.com / yi@sec.co.kr
+          => \w+@\w+(\.\w+){1,2}
+      4. 소스 구현
+     */
+  </script>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>필드에 입력형식의 힌트도 주고 패턴도 확인하는 인터페이스</legend>
+      <ul>
+        <li>
+          연락처 <input type="text" name="tel" 
+                     placeholder="000-0000-0000/00-000-0000" 
+                     pattern="\d{2,3}-[0-9]{3,4}-[0-9]{4}"
+                     title="전화번호 형식을 지켜주세요"
+                     required="required"/>
+        </li>
+        <li>
+          카드 <input type="text" name="card"
+                    placeholder="xxxx-xxxx-xxxx-xxxx"
+                    pattern="\d{4}-\d{4}-\d{4}-\d{4}"
+                    title="카드번호는 숫자4자리-숫자4자리-숫자4자리-숫자4자리입니다" />
+        </li>
+        <li>
+          이메일 <input type="text" name="email"
+                     placeholder="아이디@domain.com/아이디@domain.co.kr"
+                     pattern="\w+@\w+(\.\w+){1,2}"
+                     title="이메일 형식을 지켜 주세요" />
+        </li>
+      </ul>
+    </fieldset>
+    <p>
+      <center>
+        <input type="submit" value="입력완료" />
+        <input type="reset" value="입력취소" />
+      </center>
+    </p>
+  </form>
+</body>
+</html>
