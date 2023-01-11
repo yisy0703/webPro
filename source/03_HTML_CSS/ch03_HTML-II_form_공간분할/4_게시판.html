@@ -14,9 +14,18 @@
   </style>
   <script>
     function chk() { 
-      // submit 안 일어나는 조건 : "", 0은 false
-      alert(frm.title.value);
-
+      // submit 안 일어나는 조건 : title에 입력하지 않았거나 name에 2글자 미만 입력
+      if (!frm.title.value.trim()) { // 빈문자("",'')는 false
+        alert("제목을 꼭 입력하세요");
+        frm.title.value = "";
+        frm.title.focus(); // frm.title에 커서가 깜박깜박
+        return false;
+      } else if (frm.name.value.length() < 2) {
+        alert('작성자명은 2글자 이상 입력하세요');
+        frm.name.focus();
+        return false;
+      }
+      return true;
     }
   </script>
 </head>
