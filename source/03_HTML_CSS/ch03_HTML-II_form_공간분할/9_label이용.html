@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>필수 입력 사항</legend>
+      <ul>
+        <li>
+          <label for="name">이 &nbsp; 름 <strong>*</strong></label>
+          <input type="text" name="name" id="name" required="required"
+                 autofocus="autofocus" />
+        </li>
+        <li>
+          <label for="id">아이디 <strong>*</strong></label>
+          <input type="text" name="id" id="id" required="required"/>
+        </li>
+        <li>
+          <label for="pw">비밀번호 <strong>*</strong></label>
+          <input type="password" name="pw" id="pw" required="required" />
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <legend>추가입력 사항</legend>
+      <ul>
+        <li>
+          <label for="tel">전화번호</label>
+          <input type="text" name="tel" id="tel" />
+        </li>
+        <li>
+          <label for="email">이메일</label>
+          <input type="email" name="email" id="email" />
+        </li>
+        <li>
+          사용기술
+          <input type="checkbox" name="tech" value="java" id="java" />
+          <label for="java">JAVA</label>
+          <input type="checkbox" name="tech" value="dbms" id="dbms" />
+          <label for="dbms">DMBS</label>
+          <input type="checkbox" name="tech" value="html" id="html" />
+          <label for="html">HTML</label>
+        </li>
+      </ul>
+    </fieldset>
+    <p><center><input type="submit" /></center></p>
+  </form>
+</body>
+</html>
