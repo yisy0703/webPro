@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    div#nav {
+      width: 900px;
+      margin: 0 auto;
+    }
+    #nav ul{overflow:hidden;}
+    #nav ul li {
+      float: left;
+      list-style: none;
+      border: 1px solid gray;
+      padding: 10px;
+      margin: 2px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+      #nav ul li > a {
+        color: black;
+        text-decoration: none;
+      }
+
+      #nav ul li:nth-child(2n+1) { /* ul밑의 li중 홀수번째, 첫번째는 1*/
+        background-color: orange;
+      }
+
+      #nav ul li:nth-child(2n) {
+        background-color: yellow;
+      }
+
+      #nav ul li:first-child { /*ul밑의 첫번째 li*/
+        border-radius: 20px 0 0 20px; /* 좌상 우상 우하 좌하*/
+        background-color:lightgray;
+      }
+
+      #nav ul li:last-child {
+        border-radius: 0 20px 20px 0;
+        background-color:lightgray;
+      }
+  </style>
+</head>
+<body>
+  <div id="nav">
+    <ul>
+      <li><a href="#1">menu1</a></li>
+      <li><a href="#2">menu2</a></li>
+      <li><a href="#3">menu3</a></li>
+      <li><a href="#4">menu4</a></li>
+      <li><a href="#5">menu5</a></li>
+      <li><a href="#6">menu6</a></li>
+      <li><a href="#7">menu7</a></li>
+      <li><a href="#8">menu8</a></li>
+    </ul>
+  </div>
+</body>
+</html>
