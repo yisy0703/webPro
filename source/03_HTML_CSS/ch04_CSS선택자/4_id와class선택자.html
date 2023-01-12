@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    div{border:1px solid gray;}
+    #header{ /* id선택자는 # */
+      width:600px; /*가로 사이즈 600px*/
+      margin:0 auto;
+      background-color:yellow;
+      text-align: center; /*글씨 가운데 정렬(수평)*/
+      text-decoration:underline; /* 밑줄 */
+    }
+    #wrap {
+      width: 600px; /*가로 사이즈 600px*/
+      margin: 0 auto;
+      background-color: aqua;
+      overflow: hidden; /*부모단에 overflow:hidden*/
+    }
+    #wrap #content{
+      float:left;
+      width:350px; /*#content=가로(350px)+테두리(2px)=352px*/
+      height:300px;
+      text-align:center;
+    }
+    #wrap #content .menu1, #wrap #content .menu2{
+      color:darkblue;
+    }
+    .menu1 {/*class선택자 앞에는 . */
+      font-size:1.5em; /*원래 글씨 크기의 1.5배 */
+    }
+    .menu2 {
+      font-weight:bold; /*글씨 진하게*/
+    }
+    #wrap #side_banner{
+     float:left; 
+     width:246px; /*#side_banner=가로(246px)+테두리(2px)=248px*/
+     height:300px;
+    }
+    #footer{clear:both;}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>HEADER</h1>
+  </div>
+  <div id="wrap">
+    <div id="content">
+      <h2>content</h2>
+      <ul>
+        <li class="menu1">menu1</li>
+        <li class="menu2">menu2</li>
+        <li class="menu1">menu3</li>
+        <li class="menu2">menu4</li>
+        <li class="menu1">menu5</li>
+      </ul>
+    </div>
+    <div id="side_banner">
+      <h2>BANNER</h2>
+      <a href="http://www.daum.net">
+        <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png"
+             alt="다음로고" />
+      </a>
+    </div>
+  </div>
+  <div id="footer">
+    <h1>FOOTER</h1>
+  </div>
+</body>
+</html>
