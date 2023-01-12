@@ -4,15 +4,19 @@
   <meta charset="utf-8" />
   <title></title>
   <style>
+    *{
+      margin:0; padding:0;
+      color:red;
+    }
     div{border:1px solid gray;}
-    #header{ /* id선택자는 # */
+    div#header{ /* id선택자는 # */
       width:600px; /*가로 사이즈 600px*/
       margin:0 auto;
       background-color:yellow;
       text-align: center; /*글씨 가운데 정렬(수평)*/
       text-decoration:underline; /* 밑줄 */
     }
-    #wrap {
+    div#wrap {
       width: 600px; /*가로 사이즈 600px*/
       margin: 0 auto;
       background-color: aqua;
@@ -24,13 +28,13 @@
       height:300px;
       text-align:center;
     }
-    #wrap #content .menu1, #wrap #content .menu2{
+    #wrap #content ul li.menu1, #wrap #content li.menu2{
       color:darkblue;
     }
-    .menu1 {/*class선택자 앞에는 . */
+    li.menu1 {/*class선택자 앞에는 . */
       font-size:1.5em; /*원래 글씨 크기의 1.5배 */
     }
-    .menu2 {
+    li.menu2 {
       font-weight:bold; /*글씨 진하게*/
     }
     #wrap #side_banner{
