@@ -7,7 +7,38 @@
     #wrap{
       width:350px; margin:0 auto;
     }
-    
+    #header{
+      text-align:center;
+      color:orange;
+    }
+    #section{
+      border-top:1px solid gray;
+      border-bottom:1px solid gray;
+    }
+    #section h4[title^='남자']{
+      background:url(0112/man.png) no-repeat;
+      padding: 0 0 0 30px; /* 왼쪽 안여백*/
+      padding-left: 30px;
+    }
+    #section h4[title^='여자']{
+      background:url('0112/woman.png') no-repeat;
+      padding: 0 0 0 30px;
+    }
+    #section a{
+      text-decoration:none; color:blue;
+    }
+    #section a[href$='docx']{
+      background:url('0112/word.png') center right no-repeat;
+      padding: 0 30px;
+    }
+    #section a[href$='xlsx']{
+      background:url('0112/excel.png') center right no-repeat;
+      padding: 0 30px;
+    }
+    #footer{
+      text-align:center;
+      color:#555555;
+    }
   </style>
 </head>
 <body>
@@ -16,15 +47,16 @@
       <h1>객실안내</h1>
     </div>
     <div id="section">
-      <h4 title="남자 도미토리">남자 도미토리</h4>
-      <ul>
-        <li>공동취사실 및 욕실 사용</li>
-        <li>1인 20,000원</li>
-      </ul>
+
       <h4 title="여자 도미토리">여자 도미토리</h4>
       <ul>
         <li>취사 완비 및 실내 욕실 사용</li>
         <li>1인 30,000원</li>
+      </ul>
+      <h4 title="남자 도미토리">남자 도미토리</h4>
+      <ul>
+        <li>공동취사실 및 욕실 사용</li>
+        <li>1인 20,000원</li>
       </ul>
       <p><a href="0112/intro.docx">유의사항 다운로드</a></p>
       <p><a href="0112/intro.xlsx">객실자료 다운로드</a></p>
