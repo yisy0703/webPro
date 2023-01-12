@@ -11,10 +11,39 @@
       overflow:hidden;
     }
     .left, .right{
+      float:left;
       background-color:lightgray;
       border:1px solid gray;
-      width:
+      width:150px; height:150px;
     }
+    .center {
+      float: left;
+      background-color: lightgray;
+      border: 1px solid gray;
+      width:694px; height:150px;
+    }
+    #content > div {height:300px;}
+    /* border-radius 뒹굴리기 */
+    #header .left, #footer .right{border-radius: 30px 0;}
+    #header .center              {border-radius:0 0 30px 30px;}
+    #header .right, #footer .left{border-radius:0 30px;}
+    #content .left  {border-radius:0 30px 30px 0;}
+    #content .center{border-radius:30px;}
+    #content .right {border-radius:30px 0 0 30px;}
+    #footer .center {border-radius:30px 30px 0 0;}
+    /* #content .center에 관한 부분 */
+    #content .center #nav ul {overflow:hidden;}
+    #content .center #nav ul li{
+      float:left; list-style:none; font-weight:bold;font-size:32px;
+      width :33%;
+      text-align:center;
+    }
+    #content .center #nav ul li a{text-decoration:none; color:black;}
+    #content .center #academy h2 {text-align:center; padding:20px;}
+    #content .center #academy p  {padding:20px; }
+    /* #content .right에 관한 부분 */
+    #content .right ol li:nth-child(9)~li{color:red;}
+    /*#content .right li:nth-last-child(-n+3){color:red;}*/
   </style>
 </head>
 <body>
@@ -34,7 +63,7 @@
         </ul>
       </div>
       <div id="academy">
-        <h3>풀스택 개발자 양성과정</h3>
+        <h2>풀스택 개발자 양성과정</h2>
         <p>
           한글입숨:웅대한 청춘의 꾸며 얼마나 보내는 아름다우냐? 바로 열락의 군영과 청춘의 같으며, 심장은 청춘을 광야에서 황금시대다. 그들에게 생명을 청춘은 운다. 끓는 인생을 이것이야말로 풍부하게 구하지 있을 사막이다.
         </p>
