@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    * {margin:0; padding:0;}
+    div{width:100px; height:100px; border:5px solid black;}
+    div:nth-child(1){background-color:yellow; }
+    div:nth-child(2) {
+      background-color:green; 
+      box-sizing:border-box; /* border가 box안으로 (border가 width에 포함)*/
+    }
+    div:nth-child(3){border:0; background-color:blue;}
+  </style>
+</head>
+<body>
+  <div>1111</div><div>2222</div><div>3333</div><div>4444</div>
+</body>
+</html>
