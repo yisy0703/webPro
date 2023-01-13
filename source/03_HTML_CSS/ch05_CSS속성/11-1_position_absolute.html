@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    *{margin:0; padding:0;}
+    div{width:100px; height:100px; opacity:0.7; border:1px solid red;}
+    #div1{
+      position:absolute; /*절대좌표*/
+      top:0; left:0;
+      background-color:red;
+    }
+    #div2{
+      position:absolute;
+      top:50px; left:50px;
+      background-color:green;
+    }
+    #div3{
+      position:absolute;
+      top:100px; left:100px;
+      background-color:blue;
+    }
+    #div4{
+      position:absolute;
+      top:200px; left:200px;
+      width:200px; height:200px; background-color:yellow; opacity:1;
+    }
+    #div5{
+      position:absolute;
+      top:50px; left:50px;
+      background-color:red;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1">div1</div>
+  <div id="div2">div2</div>
+  <div id="div3">div3</div>
+  <div id="div4">div4
+    <div id="div5">div5</div>
+  </div>
+</body>
+</html>
