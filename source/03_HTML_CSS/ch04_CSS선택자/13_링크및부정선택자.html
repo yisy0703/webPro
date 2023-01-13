@@ -14,7 +14,7 @@
     #content ul li a:after{/* 링크 선택 */
       content: ' - ' attr(href);
     }
-    #content ul li.web a{
+    #content ul li:not(.web) a{ /*부정선택자*/
       background-color:yellow;
     }
     #footer ul{
