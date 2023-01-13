@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    div {
+      width: 100px; /* block타입은 width를 지정하지 않으면 부모 width*/
+      height: 100px; /*block타입은 안의 내용만큼 */
+      margin:5px;
+    }
+    div:nth-child(1){
+      border-width : 2px;
+      border-left-width:5px;
+      border-style : double;
+      border-top-style : dotted;
+      border-left-color : red;
+      border-bottom-color:green;
+      border-top-color : blue;
+      border-right-color:black;
+    }
+    div:nth-child(2){
+      border-left : 2px dashed red;
+      border-right : 2px dashed red;
+    }
+  </style>
+</head>
+<body>
+  <div>1111</div><div>1111</div>
+</body>
+</html>
