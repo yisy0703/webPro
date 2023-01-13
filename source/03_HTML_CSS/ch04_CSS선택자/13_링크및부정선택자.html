@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    #wrap {width:700px; margin:0 auto;}
+    #header{text-align:center; border-bottom:1px solid gray;}
+    #content ul li a{
+      color:blue;
+      text-decoration:none;
+      font-size:1.5em;
+    }
+    #content ul li a:after{/* 링크 선택 */
+      content: ' - ' attr(href);
+    }
+    #content ul li.web a{
+      background-color:yellow;
+    }
+    #footer ul{
+      border-top: 1px solid gray;
+      overflow:hidden;
+    }
+    #footer ul li{
+      float:left;
+      list-style:none;
+      padding : 15px 10px;
+    }
+    #footer ul li:first-child{
+      padding-top:22px;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="header">
+      <h1>제목이나 회사명(링크선택자, 부정선택자)</h1>
+    </div>
+    <div id="content">
+      <ul>
+        <li><a href="http://www.naver.com" target="_blank">네이버</a></li>
+        <li class="web"><a href="http://www.google.com" target="_blank">구글</a></li>
+        <li><a href="http://www.daum.net" target="_blank">다음</a></li>
+        <li><a href="http://www.yahoo.com" target="_blank">야후</a></li>
+        <li><a href="hhttps://zum.com/" target="_blank">zum</a></li>
+      </ul>
+    </div>
+    <div id="footer">
+      <ul>
+        <li><img src="0112/logo.png" alt="회사고로" /></li>
+        <li><img src="0112/add.png" alt="회사정보" /></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
