@@ -78,6 +78,6 @@ header .lnb ul li a{font-weight: bold; display: block;}
 #content{
     width: 1000px; margin: 0 auto;
 }
-/* * * * * * * #content의 section1 * * * * * * */
-
-/* * * * * * * #content의 section2 * * * * * * */
+/* * * * * * * #content의 .section1 * * * * * * */
+#content 
+/* * * * * * * #content의 .section2 * * * * * * */
