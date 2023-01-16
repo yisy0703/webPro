@@ -6,7 +6,14 @@
   <link href="화면설계평가1.css" rel="stylesheet" type="text/css" />
   <style>
     /* 서브 메뉴 처리 CSS*/
-    .subMenu > li {}
+    .subMenu > li {list-style:none;}
+    .subMenu {
+      display:none;
+      background-color: white;
+    }
+    #nav > ul > li:hover .subMenu{
+      display:block;
+    }
   </style>
 </head>
 <body>
