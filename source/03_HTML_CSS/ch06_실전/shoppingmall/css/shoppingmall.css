@@ -82,6 +82,8 @@ header .lnb ul li a{font-weight: bold; display: block;}
 #content .section1{
     overflow: hidden;
 }
+#content .section1 .slide_banner{width:700px;}
+#content .section1 .side_banner{width:300px;}
 #content .section1 > div{
     border: 1px solid gray; box-sizing: border-box;
     float: left;
@@ -89,17 +91,16 @@ header .lnb ul li a{font-weight: bold; display: block;}
     line-height: 400px;
     text-align: center;
 }
-#content .section1 .slide_banner{width:700px;}
-#content .section1 .side_banner{width:300px;}
 /* * * * * * * #content의 .section2 * * * * * * */
 #content .section2 .hit_product {margin: 10px 0;}
 #content .section2 .hit_product,
 #content .section2 .md_product {
-    border: 1px solid gray;
+    border: 1px solid gray;    
 }
 #content .section2 .hit_product ul,
 #content .section2 .md_product ul{
     overflow: hidden;
+    /*width:998px = 마진5개 35px */
 }
 #content .section2 .hit_product ul li,
 #content .section2 .md_product ul li{
@@ -107,12 +108,12 @@ header .lnb ul li a{font-weight: bold; display: block;}
     height: 400px; line-height: 400px; text-align: center;
     border: 1px solid gray;
     box-sizing: border-box;
-    width:240.7px; 
+    width:240.7px; /* 전체 998px - 마진 5개 35px  = 963. 963/4 */
     margin-right: 7px;
 }
 #content .section2 .hit_product ul li:first-child,
 #content .section2 .md_product ul li:first-child{
-    margin-left: 7px; /* 240.7*4 + 7*5 = 997.8px */
+    margin-left: 7px;
 }
 /* * * * * * * footer * * * * * */
 footer{
