@@ -1,22 +1,77 @@
 /* * * * * * * 페이지 초기화 * * * * * * */
 @font-face{
-    font-family: 'Rowdies-Regular';
-    src:url('../font/Rowdies-Regular.ttf'); /* css파일기준으로 */
+    font-family: 'Merriweather-Regular';
+    src:url('../font/Merriweather-Regular.ttf'); /* css파일기준으로 */
+}
+@font-face{
+    font-family: 'Merriweather-Light';
+    src:url('../font/Merriweather-Light.ttf'); /* css파일기준으로 */
 }
 * {
     margin: 0; padding: 0;
-    font-family: 'Rowdies-Regular';
+    font-family: 'Merriweather-Regular';
 }
 a {text-decoration: none; color:black;}
 li{list-style: none;}
-header{
-    width:1000px;
-    margin: 0 auto;
-}
 /* * * * * * * header의 .gnb  * * * * * * */
-
+header .gnb{
+    width:100%;
+    background-color: black;
+}
+header .gnb ul{
+    width:1000px; margin: 0 auto;
+    overflow: hidden;
+    height: 30px; line-height: 30px;
+}
+header .gnb ul li{
+    float: left; 
+    width: 80px; margin: 0 10px;
+    text-align: center; /*메뉴를 li의 가운데로 글씨 배치(a태그에도 적용됨)*/
+}
+header .gnb a{color:white;}
 /* * * * * * * header의 .logo  * * * * * * */
-
+header .logo {
+    font-family: 'Dancing Script', cursive;
+    width:200px; margin: 30px auto;
+    border: 1px solid gray;
+    height: 100px;
+    line-height: 100px;
+    font-size: 2em;
+    text-align: center;
+}
 /* * * * * * * header의 .hitmenu  * * * * * * */
-
+header .hitmenu ul{
+    width:1000px; margin: 0 auto 3px;
+    overflow: hidden;
+}
+header .hitmenu ul li{
+    float: right;
+    border:1px solid #777777;
+}
+header .hitmenu ul li a{
+    display: block; padding: 10px 30px;
+}
+header .hitmenu ul li:first-child{
+    border-radius:0 10px 10px 0;
+}
+header .hitmenu ul li:last-child { 
+    border-radius:10px 0 0 10px;
+}
 /* * * * * * * header의 .lnb  * * * * * * */
+header .lnb{
+    border-top: 1px dashed #333333;
+    border-bottom: 1px dashed #333333;
+}
+header .lnb ul{
+    width:1000px; margin: 0 auto; overflow:hidden;
+}
+header .lnb ul li{
+    float:left; width:12.5%; text-align:center;
+    height: 30px; line-height: 30px;
+}
+header .lnb ul li a{font-weight: bold;}
+/* * * * * * * header의 .lnb  * * * * * * */
+#content {
+    width: 1000px;
+    margin: 0 auto;
+  }
