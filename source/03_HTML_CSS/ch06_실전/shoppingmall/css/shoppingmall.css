@@ -117,7 +117,7 @@ header .lnb ul li a{font-weight: bold; display: block;}
 }
 /* * * * * * * footer * * * * * */
 footer{
-    width:1000px; margin: 5px auto;
+    width:1000px; margin: 5px auto 0;
     height: 150px;
     overflow: hidden;
 }
