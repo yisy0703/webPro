@@ -27,7 +27,7 @@ div {
   margin:10px auto;
   overflow:hidden;
 }
-#nav ul > li{ /* 자손선택자 */
+#nav > ul > li{ /* 자손선택자 */
   float:left;
   list-style: none;
   background-color: pink;
