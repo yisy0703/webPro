@@ -54,7 +54,7 @@ div {
   overflow: hidden;
   /*width:778px; 전체 800px에서 margin과 padding, border 뺀 것*/
 }
-/* 622 = 600 + 22(좌우 margin + 좌우padding + 좌우 border */
+/* 622 = 600 + 22(좌우 margin + 좌우padding + 좌우 border) */
 #section #content{
   float:left; height:300px; width:600px; 
 }
@@ -71,15 +71,14 @@ div {
 /* * * * * * * background image * * * * * * */
 #background_image {
   background: url('back.jpg') right bottom no-repeat;
-  /* position이 왼쪽에서 100%, 위쪽에서 100%위치에 배경 배치 */
-  background: url('back.jpg') 100% 100% no-repeat;
-  background: url('back.jpg') 50% 100% no-repeat;
-  background-size: 120%;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;   left: 0;
-  margin: 0;padding: 0;
-  z-index: -9;
-  opacity: 0.3;
+  /*position이 왼쪽에서 100%, 위쪽에서 100%위치에 배경 배치 */
+  background: url('back.jpg') 100% 100% no-repeat;/*위와 동일 */
+  background: url('back.jpg') 40% 100% no-repeat;
+  background-size:120%;
+  width:100%; height:100%;
+  position:absolute;
+  left:0 ; top:0;
+  margin:0; padding:0;
+  z-index:-9; /* 겹쳤을 때 뒤로 */
+  opacity:0.3;
 }
