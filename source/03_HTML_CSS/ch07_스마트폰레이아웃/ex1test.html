@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100px; height: 100px; background-color: red;
+      display: none;
+    }
+    #toggle:checked ~ div{display: block;}
+    #toggle {display: none;}
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="toggle">
+  <p>
+    중간에 내용이 많아도 상관없어요
+  </p>
+  <label for="toggle">
+    <img src="ex1/menu.png" alt="메뉴">
+  </label>
+  <div>토글부분(gnb)</div>
+</body>
+</html>

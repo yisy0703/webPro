@@ -5,8 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0,
                 user-scalable=yes, minimum-scale=0.7, maximum-scale=1.5">
   <title>Document</title>
+  <style>
+    /* * * * * 페이지 초기화 * * * * */
+    *{margin: 0; padding: 0;}
+    li{list-style: none;}
+    a {text-decoration: none;}
+    /* * * * * header * * * * */
+    header{
+      background: url('ex1/bg_header.png');
+      height: 45px; line-height: 45px; text-align: center;
+      position: relative;
+    }
+    header .left{position: absolute; left:10px; top:7px}
+    header .right{position: absolute; right:10px; top:7px;}
+  </style>
 </head>
 <body>
-  
+  <input type="checkbox" id="toggle">
+  <header>
+    <a href="#" class="left">
+      <img src="ex1/category.png">
+    </a>
+    <h1>Mobile</h1>
+    <label for="toggle" class="right">
+      <img src="ex1/menu.png">
+    </label>
+  </header>
+  <div id="gnb">
+    <ul>
+      <li><a href="#g1">gnb1</a></li>
+      <li><a href="#g2">gnb2</a></li>
+      <li><a href="#g3">gnb3</a></li>
+      <li><a href="#g4">gnb4</a></li>
+      <li><a href="#g5">gnb5</a></li>
+      <li><a href="#g6">gnb6</a></li>
+      <li><a href="#g7">gnb7</a></li>
+      <li><a href="#g8">gnb8</a></li>
+    </ul>
+  </div>
+  <div id="lnb">
+    <ul>
+      <li><a href="l1">lnb1</a></li>
+      <li><a href="l2">lnb2</a></li>
+      <li><a href="l3">lnb3</a></li>
+      <li><a href="l4">lnb4</a></li>
+      <li><a href="l5">lnb5</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="content_header">
+      <h1>홍길동</h1>
+    </div>
+    <div class="content_body">
+      <p>
+        소설 '홍길동전'의 주인공으로 초능력을 부리는 인물로 코리안 슈퍼히어로의 시초이자 대표 격이다.
+      </p>
+      <p>
+        작가 허균이 동기로 삼은, 연산군 통치기에 활동한 도적인 홍길동과는 발음이 같지만 한자가 다르다. 이것은 저자인 허균이 두 사람을 분리하기 위한 장치인 듯 하다.
+        물론 실재했던 홍길동도 실제 행적 여부와 무관하게 후대에는 의적 비슷하게 일부 반가에서 인기를 끌기도 했다. 소설을 지은 허균은 이러한 평판을 빌려서 조선 시대의 계급 지상주의를 비판하는 다크 히어로로서 의적 캐릭터 홍길동을 창조했다. 허균의 동시대 인물 택당 이식은 택당잡저에서 허균이 홍길동을 창조할 때 《수호전》에서 등장하는 도적들에서 영감을 얻었다 한다.
+      </p>
+    </div>
+  </div>
+  <footer>
+    <div class="logo">
+      <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="다음로고">
+    </div>
+    <div class="info">
+      좋은 시스템(회사이름)
+    </div>
+    <div class="address">
+      서울시 서대문구 신촌로 114, 2F(대현동, 은하빌딩)
+    </div>
+  </footer>
 </body>
 </html>
