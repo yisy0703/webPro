@@ -47,6 +47,23 @@
       width:50px; height: 50px;
       border: 0; outline: 0;
       background: url('ex2/search.png') no-repeat;
+      position: absolute;
+      top:0; right:0;
+    }
+    /* * * * * #lnb * * * * */
+    #lnb ul{
+      overflow: hidden;
+      margin: 7px 0; /*위 아래만 밖여백 */
+    }
+    #lnb ul li{
+      float: left; width: 16.66%;
+      text-align: center;
+      height: 30px; line-height: 30px; text-align: center;
+      border-right: 2px solid #ea8f00;
+      box-sizing: border-box;
+    }
+    #lnb ul li:last-child{
+      border: 0;
     }
   </style>
 </head>
@@ -64,5 +81,15 @@
       </form>
     </div>
   </header>
+  <div id="lnb">
+    <ul>
+      <li><a href="#l1">lnb1</a></li>
+      <li><a href="#l2">lnb2</a></li>
+      <li><a href="#l3">lnb3</a></li>
+      <li><a href="#l4">lnb4</a></li>
+      <li><a href="#l5">lnb5</a></li>
+      <li><a href="#l6">lnb6</a></li>
+    </ul>
+  </div>
 </body>
 </html>
