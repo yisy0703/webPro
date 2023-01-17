@@ -33,7 +33,39 @@
     #toggle:checked ~ #gnb {display: block;}
     #toggle{display: none;}
     /* * * * *  #lnb * * * * */
-    #lnb 
+    #lnb ul{overflow: hidden;}
+    #lnb ul li{
+      float: left; width: 20%;
+      height: 60px; line-height: 60px; text-align: center;
+      background-color: #137163;
+      border: 1px solid white;
+      box-sizing: border-box;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    #lnb ul li a{color:white;}
+    /* * * * * #content * * * * * */
+    #content{
+      padding: 10px;
+    }
+    #content .content_header{
+      padding: 10px;
+      border-bottom: 1px solid gray;
+    }
+    #content .content_body p:first-child{
+      color:deepskyblue;
+      font-weight: bold;
+      padding: 10px 0;
+      /* 말줄임 태그(ellipsis) = 한줄만 출력*/
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #content .content_body p:last-child{
+      background: url('ex1/bg_image.png') -500px -200px;
+      padding: 10px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
