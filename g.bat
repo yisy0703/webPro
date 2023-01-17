@@ -1,3 +1,3 @@
 git add .
-git commit -m "smartphone_layout"
+git commit -m "tab_layout"
 git push -u origin main
