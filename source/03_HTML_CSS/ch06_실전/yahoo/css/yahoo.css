@@ -31,3 +31,28 @@ header #header_nav .survivalFootball p{
 }
 header #header_nav .survivalFootball img{width:16px;padding:5px;}
 
+/* * * * * * * #header_info * * * * * * */
+header #header_info {
+  width:1000px; margin: 0 auto; overflow: hidden;
+}
+header #header_info .logo{margin:10px; float:left;}
+header #header_info .search {float:left;}
+header #header_info .search input:not(.btn_search){
+  width:400px; font-size: 20px;
+  border: 1px solid #3488d9;
+  outline: none;
+  margin-top: 20px;
+  padding:5px;
+}
+header #header_info .search input.btn_search{
+  width:124px; height: 37px;
+  background: url('../img/search_btn.png') no-repeat;
+  border: 0;
+  color: white;
+  cursor: pointer;
+}
+header #header_info .service{float:right;}
+header #header_info .service ul li{
+  float: left; margin:30px 30px 0 0;
+}
+
