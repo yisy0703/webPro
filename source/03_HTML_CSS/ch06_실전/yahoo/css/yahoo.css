@@ -11,8 +11,7 @@ a{text-decoration:none; color:black;}
 li{list-style:none;}
 /* * * * * * * #header_nav * * * * * * */
 header #header_nav{
-  width:100%;
-  min-width: 800px; /* 최소한의 가로 사이즈 */
+  min-width: 900px; /* 최소한의 가로 사이즈 */
   height: 25px;
   line-height: 25px; /* 수직 가운데 정렬은 텍스트만 적용 (img에는 적용 안 됨)*/
   background-color: #2d1152;
