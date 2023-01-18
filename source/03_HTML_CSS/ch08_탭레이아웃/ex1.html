@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* * * * * 페이지 초기화 * * * * */
+    *{margin: 0; padding: 0;}
+    li{list-style: none;}
+    a {text-decoration: none;}
+    body {min-width: 900px;}
+    /* * * * * header * * * * */
+    header{
+      height: 100px; line-height: 100px; padding: 10px;
+      background-color: rgb(117, 53, 108); color:white; font-size: 2em;
+      font-weight: bold;
+    }
+    /* * * * * #nav_gnb (ul이 2개. 하나는 왼쪽으로 인접. 하나는 오른쪽으로 인접) * * * * */
+    #nav_gnb {
+      overflow: hidden;
+      background-color: #333333;
+      height: 80px; line-height: 80px; text-align: center;
+    }
+    #nav_gnb ul:first{float: left;}
+    #nav_gnb ul:last-child{float: right;}
+    #nav_gnb ul li{float: left;}
+    #nav_gnb ul li a{
+      color: white; font-weight: bold;
+      width:125px; display: block;
+      border-right: 1px solid gray;
+    }
+    #nav_gnb ul:last-child li:first-child a{ border-left: 1px solid gray;}
+    /* * * * *  section * * * * */
+    section{
+      overflow: hidden;
+      background-color: #EEEE33;
+    }
+    /* * * * *  section의 #nav_lnb : 고정가로 사이즈 : 100px * * * * */
+    section #nav_lnb{
+      float: left; width:100px;
+    }
+    section #nav_lnb ul a{
+      display: block;
+      padding: 10px 20px;
+      color: #777777;
+      border-bottom: 2px dashed #777777;
+      font-size: 1.2em; font-weight: bold;
+    }
+    /* * * * *  section의 #content_wrap : width를 100%(margin-right를 -100px)  * * * * */
+    section #content_wrap{
+      float:left;
+      width: 100%;
+      margin-right: -100px;
+      background-color: #FFFFCC;
+    }
+    section #content_wrap #content{
+      padding: 20px 120px 20px 20px;
+      text-align: justify;
+    }
+    section #content div {margin: 0 0 20px 0;}
+    section #content div:nth-child(1) img{
+      float: left; margin: 10px 10px 0 0;
+    }
+    section #content div:nth-child(2) img{
+      float: right; margin: 10px 0 0 10px;
+    }
+    section #content div:nth-child(4) img{
+      float: left; margin: 10px 10px 0 0;
+    }
+    /* * * * * footer * * * * */
+    footer{
+      background-color: lightgray; 
+      height: 100px; text-align: center;
+    }
+    footer p:first-child{
+      font-weight: bold;
+      font-size: 1.3em;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p>Web site for Tablet-PC</p>
+  </header>
+  <div id="nav_gnb">
+    <ul>
+      <li><a href="#g1">Gnb1</a></li>
+      <li><a href="#g2">Gnb2</a></li>
+      <li><a href="#g3">Gnb3</a></li>
+      <li><a href="#g4">Gnb4</a></li>
+      <li><a href="#g5">Gnb5</a></li>
+    </ul>
+    <ul>
+      <li><a href="#g6">Gnb6</a></li>
+      <li><a href="#g7">Gnb7</a></li>
+    </ul>
+  </div>
+  <section>
+    <div id="nav_lnb">
+      <ul>
+        <li><a href="#b1">Btn1</a></li><li><a href="#b2">Btn2</a></li>
+        <li><a href="#b3">Btn3</a></li><li><a href="#b4">Btn4</a></li>
+        <li><a href="#b5">Btn5</a></li><li><a href="#b6">Btn6</a></li>
+        <li><a href="#b7">Btn7</a></li><li><a href="#b8">Btn8</a></li>
+        <li><a href="#b9">Btn9</a></li>
+      </ul>
+    </div><!-- #nav_lnb-->
+    <div id="content_wrap">
+      <div id="content">
+        <div>
+          <h1>What is Lorem Ipsum?</h1>
+          <img src="img/img.jpg" alt="샵화">
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+          </p>
+        </div>
+        <div>
+          <h1>What is Lorem Ipsum?</h1>
+          <img src="img/img.jpg" alt="샵화">
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+          </p>
+        </div>
+        <div>
+          <h1>What is Lorem Ipsum?</h1>
+          <img src="img/img.jpg" alt="샵화">
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+          </p>
+        </div>
+        <div>
+          <img src="https://via.placeholder.com/100x100" alt="더미이미지">
+          <img src="https://via.placeholder.com/100x100" alt="더미이미지">
+          <img src="https://via.placeholder.com/100x100" alt="더미이미지">
+          <p>
+            t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+          </p>
+        </div>
+      </div> <!--#content -->
+    </div><!-- #content_wrap -->
+  </section>
+  <footer>
+    <p>홍길동 주식회사</p>
+    <p>Copyright ⓒ Gildong Co., All rights reserved.</p>
+  </footer>
+</body>
+</html>

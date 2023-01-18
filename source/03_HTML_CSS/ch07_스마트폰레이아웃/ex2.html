@@ -65,6 +65,54 @@
     #lnb ul li:last-child{
       border: 0;
     }
+    /* * * * * section의 #section1 * * * * */
+    section #section1{margin: 7px;}
+    section #section1 .row1, section #section1 .row2, section #section1 .row3{
+      overflow: hidden;
+    }
+    section #section1 .row1 > div,
+    section #section1 .row2 > div,
+    section #section1 .row3 > div{
+      float: left; width: 50%; height: 135px;
+      border: 2px solid white;
+      box-sizing: border-box;
+    }
+    section #section1 img{width:100%; height: 100%;}
+    /* * * * * section의 #section2 * * * * */
+    section #section2{margin: 7px;}
+    section #section2 ul li{
+      border: 1px solid gray;
+      padding: 7px;
+      /* 말줄임 태그(ellipsis) */
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    /* * * * * section의 #section3 * * * * */
+    section #section3 ul li{
+      border: 1px solid gray;
+      margin: 7px; padding: 10px; height: 100px;
+      position: relative; /* p.img태그를 position잡을 예정 */
+    }
+    section #section3 ul li p.img{
+      position: absolute;
+      left:10px; top:10px;
+      width:100px; height: 100px;
+    }
+    section #section3 ul li p.txt{
+      padding-left: 120px;
+    }
+    section #section3 ul li p.txt span:first-child{
+      display: block;
+      /* 말줄임 태그 */
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      font-weight: bold; color:navy; 
+      font-size: 1.2em;
+    }
+    /* * * * * footer * * * * */
+    footer{
+      background-color: orange;
+      text-align: center;
+    }
+    footer p:last-child{padding: 0px auto 3px; font-size: .9em;}
   </style>
 </head>
 <body>
@@ -91,5 +139,95 @@
       <li><a href="#l6">lnb6</a></li>
     </ul>
   </div>
+  <section>
+    <div id="section1">
+      <div class="row1">
+        <div>
+          <a href="https://v.daum.net/v/20230118093547275">
+            <img src="https://img1.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202301/18/NEWS1/20230118093549148czdx.jpg"
+                  alt="1행1열">
+          </a>
+        </div>
+        <div>
+          <a href="https://v.daum.net/v/20230118093302164">
+            <img src="https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202301/18/hani21/20230118093304811hkzt.jpg"
+                  alt="1행2열">
+          </a>
+        </div>
+      </div> <!--.row1-->
+      <div class="row2">
+        <div>
+          <a href="https://v.daum.net/v/20230118093302164">
+            <img src="https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202301/18/hani21/20230118093304811hkzt.jpg"
+                  alt="2행1열">
+          </a>
+        </div>
+        <div>
+          <a href="https://v.daum.net/v/20230118093547275">
+            <img src="https://img1.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202301/18/NEWS1/20230118093549148czdx.jpg"
+                  alt="2행2열">
+          </a>
+        </div>
+      </div><!-- .row2 -->
+      <div class="row3">
+        <div>
+          <a href="https://v.daum.net/v/20230118093547275">
+            <img src="https://via.placeholder.com/300x200" alt="3행1열">
+          </a>
+        </div>
+        <div>
+          <a href="https://v.daum.net/v/20230118093547275">
+            <img src="https://via.placeholder.com/400x300" alt="3행2열">
+          </a>
+        </div>
+      </div>
+    </div><!-- #section1 -->
+    <div id="section2">
+      <ul>
+        <li>
+          <a href="https://v.daum.net/v/20230118091449454">
+            파란새 상징 조형물도 경매 내놨다. 돈 되는 건 다 파는 트위터에 팔 건가벼? 진짜인감. 한줄이상 일부러 만듦
+          </a>
+        </li>
+        <li>
+          <a href="https://v.daum.net/v/20230118093308178">
+            붉은색 부채 같은 꽁지깃의 매력
+          </a>
+        </li>
+        <li>
+          <a href="https://v.daum.net/v/20230118091449454">
+            파란새 상징 조형물도 경매 내놨다. 돈 되는 건 다 파는 트위터에 팔 건가벼? 진짜인감. 한줄이상 일부러 만듦
+          </a>
+        </li>
+        <li>
+          <a href="https://v.daum.net/v/20230118093308178">
+            붉은색 부채 같은 꽁지깃의 매력
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="section3">
+      <ul>
+        <li>
+          <p class="img"><img src="https://via.placeholder.com/100x100"></p>
+          <p class="txt">
+            <span>첫번째 span은 말줄임을 할 예정입니다. block타입으로 전환도 할 예정입니다.</span>
+            <span>두번째 span은 말줄임 안 할 예정입니다. 두번째 span은 말줄임 안 할 예정입니다. </span>
+          </p>
+        </li>
+        <li>
+          <p class="img"><img src="https://via.placeholder.com/100x100"></p>
+          <p class="txt">
+            <span>첫번째 span은 말줄임을 할 예정입니다. block타입으로 전환도 할 예정입니다.</span>
+            <span>두번째 span은 말줄임 안 할 예정입니다. 두번째 span은 말줄임 안 할 예정입니다. </span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <footer>
+    <p><img src="ex2/logo.png" alt="회사로고"></p>
+    <p>서울시 서대문구 XX동 XX빌딩 2F</p>
+  </footer>
 </body>
 </html>

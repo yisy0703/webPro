@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 페이지초기화 */
+    *{margin: 0; padding: 0;}
+    li {list-style: none;}
+    a{
+      text-decoration: none; color:black; font-weight: bold; display: block;
+    }
+    /* 공통부분 */
+    #wrap{
+      border: 1px solid gray; text-align: justify;
+    }
+    #wrap #header{
+      height: 100px; line-height: 100px; text-align: center;
+      border: 1px solid gray;
+      box-sizing: border-box;
+    }
+    #wrap #nav ul{overflow: hidden;}
+    #wrap #nav ul li{
+      float: left;
+      height: 60px; line-height: 60px; text-align: center;
+      border: 1px solid gray;
+      box-sizing: border-box;
+    }
+    #content{padding: 10px;}
+    #footer {
+      height: 70px; line-height: 70px; text-align: center;
+      background-color: gray;
+    }
+    @media screen and (max-width:959px) { /*스마트폰용 화면*/
+      #wrap{
+        width: 100%; background-color: lightpink; margin: 3px;
+        font-size: 1.2em;
+      }
+      #wrap #nav ul li{ width:33.3%}
+      #wrap #nav ul li:nth-child(2),
+      #wrap #nav ul li:nth-child(4){display: none;}
+    } 
+    @media screen and (min-width:960px) and (max-width:1200px) {/* 탭용 화면 */
+      #wrap{
+        width:100%; background-color: lightgreen; margin: 3px;
+        font-size: 1.1em;
+      }
+      #wrap #nav ul li{ width:25%}
+      #wrap #nav ul li:nth-child(2){display: none;}
+    }    
+    @media screen and (min-width:1201px) {/* pc 용 화면 */
+      #wrap{
+        width:800px; margin: 3px auto;
+      }
+      #wrap #nav ul li{ width:20%}
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="header"><h1>반응형 웹</h1></div>
+    <div id="nav">
+      <ul>
+        <li><a href="#1">menu1</a></li>
+        <li><a href="#2">menu2</a></li>
+        <li><a href="#3">menu3</a></li>
+        <li><a href="#4">menu4</a></li>
+        <li><a href="#5">menu5</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <h2>What is Lorem Ipsum?</h2>
+      <p>
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </p>
+    </div>
+    <div id="footer">홍길동 주식회사</div>
+  </div>
+</body>
+</html>

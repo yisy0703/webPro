@@ -1,0 +1,92 @@
+/* * * * * * * * * * 페이지 초기화 * * * * * * * * * * */
+*{margin:0; padding:0;}
+li{list-style:none;}
+a{text-decoration:none; color:black; display: block;}
+/* * * * * * * * * * 페이지 전체 * * * * * * * * * * */
+#wrap {
+  width: 1000px;
+  margin: 20px auto;
+}
+/* * * * * * * * * * nav * * * * * * * * * * */
+nav{
+  overflow:hidden;text-align: center;
+}
+/* 전체 1000px 중 메뉴7개와 빈공간 1개로 1000/8=125px(한 li 공간)*/
+nav ul li {width: 85px; margin: 10px; padding: 5px 10px;}
+nav #nav_left ul li{
+  float:left; 
+}
+nav #nav_right ul li {
+  float:right; 
+}
+nav #nav_left ul li:first-child{
+  display: block;
+  border: 1px solid gray;
+  background-color: #FDEADA;
+}
+/* * * * * * * * * * #content * * * * * * * * * * */
+#content{
+  overflow:hidden;
+}
+#content #title {
+  border-bottom:1px solid gray;
+  padding:10px;
+  margin-bottom : 10px;
+}
+#content #lnb {
+  float: left;
+  width: 180px;
+  height: 200px;
+  margin-left: 15px;
+}
+#content #lnb ul li {
+  line-height: 30px;
+  padding: 2px 30px;
+  border: 1px solid gray;
+  font-size: .9em;
+}
+#content #lnb ul li:nth-child(4) {
+  font-weight: bold;
+  background-color: #FDEADA;
+}
+#content #my_content {
+  width: 750px;
+  border: 1px solid gray;
+  float: left;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+#content #my_content #sub_title{
+  border-bottom: 1px solid gray;
+  height: 30px;
+  line-height: 30px;
+  font-size: 0.9em;
+  padding-left: 5px;
+}
+#content #my_content #modify table{
+  width:70%;
+  margin:30px auto;
+}
+#content #my_content #modify table td{
+  padding:3px;
+}
+#content #my_content #modify table input[type='text'],
+#content #my_content #modify table input[type='email'] {
+  width: 90%; height:25px;
+  border:1px solid gray;
+}
+#content #my_content #modify table input[type='submit']{
+  padding:2px 10px;
+}
+#content #my_content #modify table tr:last-child td {
+  text-align: center;
+}
+/* * * * * * * * * * footer * * * * * * * * * * */
+footer {
+  clear:both;
+  background-color: #FDEADA;
+  border:1px solid gray;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+}
