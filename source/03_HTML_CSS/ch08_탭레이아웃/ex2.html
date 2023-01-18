@@ -5,6 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    /* * * * * 페이지 초기화 * * * * */
+    *{margin: 0; padding: 0;}
+    li{list-style: none;}
+    a {text-decoration: none; color:white; font-weight: bold;}
+    /* * * * * #top_bar * * * * */
+    #top_bar{
+      height: 100px; line-height: 100px; text-align: center;
+      background-color: #FFD800;
+      position: fixed;
+      top:0; left:0; right:0;
+    }
+    #top_bar ul{overflow: hidden;}
+    #top_bar ul li{
+      float: left; width: 16.66%;
+      border-right: 1px dotted gray;
+      box-sizing: border-box;
+      font-size: 1.2em;
+    }
+    #top_bar ul li:last-child{border: 0;}
+  </style>
 </head>
 <body>
   <div id="top_bar">
