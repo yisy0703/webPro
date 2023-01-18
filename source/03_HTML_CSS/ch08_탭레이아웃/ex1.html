@@ -48,6 +48,37 @@
       border-bottom: 2px dashed #777777;
       font-size: 1.2em; font-weight: bold;
     }
+    /* * * * *  section의 #content_wrap : width를 100%(margin-right를 -100px)  * * * * */
+    section #content_wrap{
+      float:left;
+      width: 100%;
+      margin-right: -100px;
+      background-color: #FFFFCC;
+    }
+    section #content_wrap #content{
+      padding: 20px 120px 20px 20px;
+      text-align: justify;
+    }
+    section #content div {margin: 0 0 20px 0;}
+    section #content div:nth-child(1) img{
+      float: left; margin: 10px 10px 0 0;
+    }
+    section #content div:nth-child(2) img{
+      float: right; margin: 10px 0 0 10px;
+    }
+    section #content div:nth-child(4) img{
+      float: left; margin: 10px 10px 0 0;
+    }
+    /* * * * * footer * * * * */
+    footer{
+      background-color: lightgray; 
+      height: 100px; text-align: center;
+    }
+    footer p:first-child{
+      font-weight: bold;
+      font-size: 1.3em;
+      padding-top: 20px;
+    }
   </style>
 </head>
 <body>
