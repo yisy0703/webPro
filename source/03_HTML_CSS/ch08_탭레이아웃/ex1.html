@@ -17,6 +17,37 @@
       background-color: rgb(117, 53, 108); color:white; font-size: 2em;
       font-weight: bold;
     }
+    /* * * * * #nav_gnb (ul이 2개. 하나는 왼쪽으로 인접. 하나는 오른쪽으로 인접) * * * * */
+    #nav_gnb {
+      overflow: hidden;
+      background-color: #333333;
+      height: 80px; line-height: 80px; text-align: center;
+    }
+    #nav_gnb ul:first{float: left;}
+    #nav_gnb ul:last-child{float: right;}
+    #nav_gnb ul li{float: left;}
+    #nav_gnb ul li a{
+      color: white; font-weight: bold;
+      width:125px; display: block;
+      border-right: 1px solid gray;
+    }
+    #nav_gnb ul:last-child li:first-child a{ border-left: 1px solid gray;}
+    /* * * * *  section * * * * */
+    section{
+      overflow: hidden;
+      background-color: #EEEE33;
+    }
+    /* * * * *  section의 #nav_lnb : 고정가로 사이즈 : 100px * * * * */
+    section #nav_lnb{
+      float: left; width:100px;
+    }
+    section #nav_lnb ul a{
+      display: block;
+      padding: 10px 20px;
+      color: #777777;
+      border-bottom: 2px dashed #777777;
+      font-size: 1.2em; font-weight: bold;
+    }
   </style>
 </head>
 <body>
