@@ -1,0 +1,6 @@
+/* content(PC 스크린용) */
+#wrap .content{
+  background-color: darkgreen;
+  color: white;
+  padding: 30px 10px;
+}
