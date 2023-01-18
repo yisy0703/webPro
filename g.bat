@@ -1,3 +1,3 @@
 git add .
-git commit -m "반응형웹"
+git commit -m "tab_layout"
 git push -u origin main
