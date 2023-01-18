@@ -70,6 +70,33 @@
     section #section1 .row1, section #section1 .row2, section #section1 .row3{
       overflow: hidden;
     }
+    section #section1 .row1 > div,
+    section #section1 .row2 > div,
+    section #section1 .row3 > div{
+      float: left; width: 50%; height: 135px;
+      border: 2px solid white;
+      box-sizing: border-box;
+    }
+    section #section1 img{width:100%; height: 100%;}
+    /* * * * * section의 #section2 * * * * */
+    section #section2{margin: 7px;}
+    section #section2 ul li{
+      border: 1px solid gray;
+      padding: 7px;
+      /* 말줄임 태그(ellipsis) */
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    /* * * * * section의 #section3 * * * * */
+    section #section3 ul li{
+      border: 1px solid gray;
+      margin: 7px; padding: 10px; height: 100px;
+      position: relative; /* p.img태그를 position잡을 예정 */
+    }
+    section #section3 ul li p.img{
+      position: absolute;
+      left:10px; top:10px;
+      width:100px; height: 100px;
+    }
   </style>
 </head>
 <body>
