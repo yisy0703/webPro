@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+    // 자료형 : string, number, boolean, function, object(array), undefined
+    var variable;
+    document.write("1. variable 타입:" + typeof(variable) + ' - 값:'+variable+'<br>');
+    variable = '이름은 "홍길동"입니다';
+    document.write("2. variable 타입:" + typeof(variable) + ' - 값:'+variable+'<br>');
+    variable = -86565.5356;
+    document.write("3. variable 타입:" + typeof(variable) + ' - 값:'+variable+'<br>');
+    variable = false;
+    document.write("4. variable 타입:" + typeof(variable) + ' - 값:'+variable+'<br>');
+    variable = function(){ 
+      alert('함수속'); 
+    };
+    document.write("5. variable 타입:" + typeof(variable) + ' - 값:'+variable+'<br>');
+    //variable(); // 함수를 호출
+    variable = {'name':'홍길동', 'age':20};
+    document.write("6. variable 타입:" + typeof(variable) + ' - 값:'+variable+'<br>');
+    /*
+    class Person{
+      private String name;
+      private int age;
+      매개변수 있는 생성자
+    }
+    Person variable = new Person("홍길동",20);
+    variable.name은 홍길동/variable.age는 20
+    */
+    variable = [10, '홍길동', function(){}, true, {name:'홍',age:30}, [1,2,3]]; // 배열
+    document.write("7. variable 타입:" + typeof(variable) + ' - 값:'+variable+'<br>');
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
