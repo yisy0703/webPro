@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+    i = Number('a');
+    document.write('i = ' + i + ' - i의 타입은 ' + typeof(i) + '<br>');
+    i = 10/3;
+    document.write('10/3 = ' + i +'<br>');
+    i = 10/0;//10/0.000000000000000000000000000~0000000001
+    document.write('10/0 = ' + i + ' - i의 타입은 ' + typeof(i) + '<br>');
+    document.write('i가 NaN인가 여부 : ' + isNaN(i) + '<br>');
+    document.write('i가 유한수인가 여부 : ' + isFinite(i));
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
