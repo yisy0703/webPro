@@ -6,9 +6,14 @@
   <script>
     /* i = 20; i = "홍길동"; */
     al_pha = 20; // var를 사용하면 전역변수 vs let(지역변수)
+    alert(1); // submit이 이루어진 이후라서 F12키를 눌러도 에러를 못 볼 경우
+    console.log(1);
     alert('al_pha값은 ' + al_pha); // 고의적인 error
+    alert(2);
     al_pha = 'Hello';
+    alert(3);
     alert('바뀐 al_pha값은 ' + al_pha);
+    alert(4);
   </script>
 </head>
 <body>
