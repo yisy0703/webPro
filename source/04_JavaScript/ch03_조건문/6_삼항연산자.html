@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    p {text-align: center;}
+  </style>
+  <script>
+    function chk(){
+      // 힌트
+      if(!frm.su1.value){
+        alert('첫번째수를 입력하세요');
+        frm.su1.focus();
+        return false;
+      }else if(!frm.su2.value){
+        alert('두번째수를 입력하세요');
+        frm.su2.focus();
+        return false;
+      }
+      // 몇번째수가 얼마 더 큰지 경고창과 화면에 출력
+
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <form name="frm" onsubmit="return chk()">
+    <fieldset>
+      <p>
+        <label for="su1">첫번째 수</label> :
+        <input type="number" name="su1" id="su1">
+      </p>
+      <p>
+        <label for="su2">두번째 수</label> :
+        <input type="number" name="su2" id="su2">
+      </p>
+      <p><input type="submit" value="결과"></p>
+    </fieldset>
+  </form>
+</body>
+</html>
