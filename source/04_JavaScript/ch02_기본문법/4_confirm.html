@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+    answer = confirm("확인 취소 중 선택 : 수강신청하시겠습니까?");
+    document.write('결과 : ' +typeof(answer) +'/'+ answer +'<br>');
+    /* === : 값과 타입이 일치해야 true
+       == : 타입이 일치하지 않을 경우 일치시켜서 비교한 후 같으면 true */
+    if(answer === true){
+      document.write("확인을 누르셨네");
+    }else{
+      document.write("취소를 누르셨네");
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
