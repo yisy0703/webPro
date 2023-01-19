@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    img {width: 300px;}
+  </style>
+  <script>
+    // const date = new Date();
+    // const hour = date.getHours(); // 0~23
+    const hour = new Date().getHours();
+    if(hour <12 ){
+      document.write('상쾌한 오전입니다<br>');
+      document.write('<img src="https://png.pngtree.com/thumb_back/fw800/background/20210909/pngtree-the-most-beautiful-sunset-in-the-afternoon-image_835318.jpg" alt="am사진">');
+    }else{
+      document.write('따스한 오후입니다<br>');
+      document.write('<img src="ch03_img/pm.jpg" alt="pm사진">');
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
