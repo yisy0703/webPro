@@ -3,6 +3,11 @@
   <head>
   <meta charset="UTF-8">
   <title></title>
+  <style>
+    table{width:100px; margin: 10px auto; }
+    caption{font-size: 0.9em; text-decoration: underline;}
+    td{text-align: center;}
+  </style>
   <script>
     // 사용자로부터 구구단 수(2~9)를 입력받아 해당 구구단 출력
     do{
@@ -13,10 +18,12 @@
         break;
       }
     }while(true);
-    document.write('<h3>' + su + '단 구구단</h3>');
+    document.write('<table>');
+    document.write('<caption>' + su + '단 구구단</caption>');
     for(var i=1 ; i<10 ; i++){
-      document.write(su + '*' + i + '=' + (su*i) + '<br>');
+      document.write('<tr><td>'+su + '*' + i + '=' + (su*i) + '</td></tr>');
     }
+    document.write('</table>');
   </script>
 </head>
 <body>
