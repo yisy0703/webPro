@@ -11,7 +11,7 @@
     while(confirm('누적할래?')){
       ++cnt;
       scoreStr = prompt('누적할 점수?');
-      score = parseInt(scoreStr);
+      score = Number(scoreStr);
       if(scoreStr!=null && scoreStr!='' && !isNaN(score) && score>=0 && score<=100){
         sum += score;
         right++;
