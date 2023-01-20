@@ -10,14 +10,24 @@
     for(var idx=0 ; idx<arr.length ; idx++){
       document.write(idx +'번째 : ' + arr[idx] +'<br>');
     }
-    // 2. for-in 문
+    // 2. for-in 문(object나 array에서 모두 사용)
     document.write('<h3> 2. for-in문</h3>');
     for(var idx in arr){
       document.write(idx + '번째 : ' + arr[idx] + '<br>');
     }
     // 3. forEach함수1
-
-    // 4. forEach함수2
+    document.write('<h3> 3. forEach함수</h3>');
+    // 배열명:arr 
+    // 데이터는 273, 32, '홍길동'
+    // 인덱스는 0,   1,  2
+    arr.forEach(function(data, idx){
+      document.write(idx +'번째 : ' + data +'<br>');
+    });
+    // 4. forEach함수2 - 배열 반복시 index가 필요없을 때
+    document.write('<h3>4. index없이 forEach함수 사용</h3>')
+    arr.forEach(function(data){
+      document.write(data+'<br>');
+    });
   </script>
 </head>
 <body>

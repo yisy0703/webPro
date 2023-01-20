@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    var cnt = 0 ; // 횟수
+    var startTime = new Date().getTime(); // 현재 시점의 밀리세컨
+    do{
+      cnt++;
+    }while(new Date().getTime() <= startTime+1000 );
+    document.write('횟수 : ' + cnt +'번<br>'); // cnt = 709741
+    var cntStr = String(cnt); // '709741'
+    var temp = cntStr.length % 3;
+    for(var idx=0 ; idx<cntStr.length ; idx++){
+      if(temp==0){
+        temp = 3;
+        if(idx!=0){
+          document.write(',');
+        }
+      }
+      document.write(cntStr[idx]);
+      temp --;
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
