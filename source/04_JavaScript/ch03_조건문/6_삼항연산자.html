@@ -31,7 +31,11 @@
         msg = "<p>두 수가 같다</p>";
       }
       document.body.innerHTML += msg;
-
+      frm.su1.value = num1;
+      frm.su2.value = num2;
+      let alertMsg = msg.substring(3);
+      alertMsg = alertMsg.substring(0, alertMsg.indexOf('</p>'));
+      alert(alertMsg);
       return false;
     }
   </script>
