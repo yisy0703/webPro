@@ -4,17 +4,23 @@
   <meta charset="UTF-8">
   <title></title>
   <script>
-    var i = Number(prompt('i의 j승을 구하려는데 i값은?'));
-    var j = Number(prompt('i의 j승을 구하려는데 j값은?'));
+    // var i = Number(prompt('i의 j승을 구하려는데 i값은?'));
+    // var j = Number(prompt('i의 j승을 구하려는데 j값은?'));
     
-    document.write('i('+i+')의 j('+j+')은 ' + pow(i, j) +'<br>');
+    // document.write('i('+i+')의 j('+j+')은 ' + pow(i, j) +'<br>');
+    document.write('pow(2, 3) = ' + pow(2, 3) +'<br>');
+    // 선언된 매개변수보다 많은 경우 뒷부분은 무시
+    document.write('pow(2, 3, 10) = ' + pow(2, 3, 10) +'<br>');
+    // 선언된 매개변수보다 적은 매개변수일 경우 나머지는 undefined로 
+    document.write('pow(2) = ' + pow(2) +'<br>');
+    document.write('pow() = ' + pow() +'<br>');
 
     function pow(x, y){ // x의 y승을 return 하는 함수
       var result = 1;
       for(var cnt=1 ; cnt<=y ; cnt++){
         result *= x; // result = result*x;
       }
-      return result;
+      //return result; // return이 없으면 undefined
     }
   </script>
 </head>
