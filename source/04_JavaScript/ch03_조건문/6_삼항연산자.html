@@ -19,6 +19,18 @@
         return false;
       }
       // 몇번째수가 얼마 더 큰지 경고창(alert)과 화면에 출력(document.body.innerHTML이용)
+      let num1 = Number(frm.su1.value);
+      let num2 = Number(frm.su2.value);
+      let difference = (num1 > num2) ? (num1-num2) : (num2-num1);
+      let msg;
+      if(num1>num2){
+        msg = "<p>첫번째 수가 " + difference + "만큼 더 크다</p>";
+      }else if(num2>num1){
+        msg = "<p>두번째 수가 " + difference + "만큼 더 크다</p>";
+      }else{
+        msg = "<p>두 수가 같다</p>";
+      }
+      document.body.innerHTML += msg;
 
       return false;
     }
