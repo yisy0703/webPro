@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>    
+    var i = 'hello';
+    document.write(i +'<br>');
+    //functionVar(10); // 익명함수호출은 변수의 이름에 ()를 붙여 호출
+    var functionVar = function(i){  // 함수표현식
+      alert(' test '+j); 
+    }; // 익명함수
+    // 화살표함수에서 매개변수가 한개인 경우, 소괄호 생략할 수 있다.
+    // 화살표함수에서 명령어가 한개인 경우, 중괄호 생략할 수 있다.
+    functionVar = i => alert(' test ' + i);
+    document.write(functionVar + '<br>');
+    document.write(typeof(functionVar)+'<br>');
+    // 익명호출시에는 함수형 변수에 할당후 변수를 통해 호출
+    functionVar(10); // 익명함수호출은 변수의 이름에 ()를 붙여 호출
+  </script>
+</head>
+<body>
+
+</body>
+</html>
