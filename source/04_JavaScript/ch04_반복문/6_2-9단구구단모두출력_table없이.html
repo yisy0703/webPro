@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    p{margin: 3px; text-decoration: underline; text-align: center;}
+    span{
+      text-align: center; padding: 2px 10px; 
+      display: inline-block; width: 70px;
+    }
+  </style>
+  <script>
+    document.write('<p>2~9단까지 구구단들</p>');
+    for (var i = 2; i <= 9; i++) {
+      document.write('<span> ' + i + ' 단</span>');
+    }
+    document.write('<br>');
+    // 2~9단 출력
+    for (var i = 1; i <= 9; i++) {
+      for (var j = 2; j <= 9; j++) {
+        document.write('<span>'+j+'*'+i+'='+(j * i)+'</span>');
+      }
+      document.write('<br>');
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
