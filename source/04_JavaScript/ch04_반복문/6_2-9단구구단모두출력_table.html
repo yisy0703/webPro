@@ -4,22 +4,29 @@
   <meta charset="UTF-8">
   <title></title>
   <style>
-    p{text-align: center;}
-    span{display: inline-block; margin: 0 10px; width:70px;}
+    table{width:500px; margin: 0 auto; border: 1px solid red;}
+    caption{margin: 2px;}
+    td{
+      text-align: center; padding: 2px 10px;
+    }
   </style>
   <script>
-    document.write('<p>2~9단까지 구구단들</p>');
+    document.write('<table>');
+    document.write('<caption>2~9단까지 구구단들</caption>');
+    document.write('<tr>');
     for (var i = 2; i <= 9; i++) {
-      document.write('<span> ' + i + ' 단</span>');
+      document.write('<td> ' + i + ' 단</td>');
     }
+    document.write('</tr>');
     // 2~9 단까지 구구단 출력
-    document.write('<br>');
     for (var i = 1; i <= 9; i++) {
+      document.write('<tr>');
       for (var j = 2; j <= 9; j++) {
-        document.write('<span>'+j+'*'+i+'='+(j * i)+'</span>');
+        document.write('<td>'+j+'*'+i+'='+(j * i)+'</td>');
       }
-      document.write('<br>');
+      document.write('</tr>');
     }
+    document.write('</table>');
   </script>
 </head>
 <body>
