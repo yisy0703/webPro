@@ -22,9 +22,11 @@
       if(arr[i] == '라'){
         //arr.splice(i, 1, '대체값'); // i번째 인덱스값 1개 제거하고 '대체값'으로 다시 채움
         arr.splice(i, 1); // i번째 인덱스 값 1개 제거
+        i--;
+        document.write(i+'번째 제거 후 원본 : ' + arr +' 길이 :'+ arr.length +'<br>' );
       }
     }
-    document.write('라 제거 후 원본 : ' + arr )
+    document.write('라 제거 후 원본 : ' + arr );
   </script>
 </head>
 <body>
