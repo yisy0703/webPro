@@ -5,16 +5,35 @@
   <title></title>
   <style>
     body{
-      background-image: url(ch05_img/img03.png);
-      background-size: 100%;
       text-decoration: underline;
+      font-size: 3em;
     }
   </style>
   <script>
-    
+    var s = 0;
+    var col = ['yellow','blue','red'];
+    var img = [ 'url(ch05_img/img01.png)',
+                'url(ch05_img/img02.png)',
+                'url(ch05_img/img03.png)'];
+    var timerId = setInterval(function()  {
+      document.write(new Date() + '<br>');
+      //document.body.innerHTML = new Date() +'<br>';
+      //document.body.style.backgroundImage = 'url(ch05_img/img0' + (s%3+1) + '.png)';
+      document.body.style.backgroundImage = img[s % img.length];
+      document.body.style.backgroundSize = '100%';
+      document.body.style.fontWeight = 'blod';
+      document.body.style.fontSize = '1.5em';
+      document.body.style.color = col[s % col.length];
+      s++;
+    }, 1000);
+    setTimeout(function(){
+      clearInterval(timerId);
+      document.write('DONE');
+      //document.body.innerHTML += 'DONE';
+    }, 10000);
   </script>
 </head>
 <body>
-  <span>1초후부터 시간 출력</span>
+  1초후부터 시간 출력
 </body>
 </html>
