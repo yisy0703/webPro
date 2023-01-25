@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script> /* A가 만든 부분 */
+    function square(x){
+      return x*x;
+    }
+    function pythagoras(width, height){
+      return Math.sqrt(square(width)+square(height));
+    }
+  </script>
+  <script> /* B가 만든 부분 */
+    function square(w, h, hypotenuse){
+      //return (w*w) + (h*h) === (hypotenuse*hypotenuse);
+      if(w*w + h*h === hypotenuse*hypotenuse){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+  <script>
+    alert('빗변의 길이 : ' + pythagoras(3,4));
+    alert('직각삼각형 여부 : ' + square(3, 4, 5));
+  </script>
+</body>
+</html>
