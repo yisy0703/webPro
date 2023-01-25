@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="8_sumAll.js"></script>
+  <script>
+    var sum = sumAll(); // -999 (매개변수가 없으면 -999를 리턴)
+    document.write('sumAll() = ' + sum + '<br>');
+    var sum = sumAll(1); // 1 (매개변수가 1개 이상이면 누적값리턴)
+    document.write('sumAll(1) = ' + sum + '<br>');
+    var sum = sumAll(1, 2, 3, 4, 5); // 15
+    document.write('sumAll(1, 2, 3, 4, 5) = ' + sum + '<br>');
+  </script>
+</head>
+<body>
+
+</body>
+</html>
