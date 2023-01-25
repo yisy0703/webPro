@@ -14,11 +14,15 @@
     //   setTimeout(function(){ alert(i); }, 0);
     // }
     // 자기호출함수 이용
-    for(var i=0 ; i<3 ; i++){
-      (function(x){
-        setTimeout(function(){alert(x);}, 0);
-      })(i);
-    }
+    // for(var i=0 ; i<3 ; i++){
+    //   (function(x){
+    //     setTimeout(function(){alert(x);}, 0);
+    //   })(i);
+    // }
+    // 배열 이용
+    [0,1,2].forEach(function(data, idx){ 
+      setTimeout(function(){alert(data);}, 0);
+    });
   </script>
 </head>
 <body>
