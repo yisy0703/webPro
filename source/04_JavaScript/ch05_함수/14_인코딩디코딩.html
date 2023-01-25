@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    // 인코딩해서 전송
+    // 받는 측은 받은 데이터를 디코딩해서 원본으로 해석
+    var str = '이젠';
+    document.write('원본 str : ' + str + '<br>');
+    var encodeStr = encodeURIComponent(str);
+    document.write('인코딩한 str : ' + encodeStr + '<br>');
+    var decodeStr = decodeURIComponent(encodeStr);
+    document.write('디코딩한 str : ' + decodeStr );
+  </script>
+</head>
+<body>
+
+</body>
+</html>
