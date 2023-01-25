@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <title></title>
   <script> /* A가 만든 부분 */
-    function square(x){
-      return x*x;
-    }
     function pythagoras(width, height){
+      // 내부함수 : 함수내에 선언된 함수
+      // 내부 함수 사용 이유 : 충돌을 피하고자
+      function square(x){
+        return x*x;
+      }
       return Math.sqrt(square(width)+square(height));
     }
   </script>
