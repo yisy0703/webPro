@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    var arr = [1, 2, 300]; // 출력:forEach()함수이용, 일반for문, for-in문
+    //var arr = {0:1, 1:2, 2:300};
+    for(var idx in arr){
+      document.write(idx + " : " + arr[idx] + '<br>');
+    }
+    var obj = {'name':'홍길동', 'age':20}; // 출력:for-in문
+    for(var key in obj){
+      document.write(key + " : " + obj[key] + '<br>');
+    }
+    obj.address = '서울시';
+    document.write('<h2>address추가후</h2>')
+    for(var key in obj){
+      document.write(key + " : " + obj[key] + '<br>');
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
