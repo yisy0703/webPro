@@ -5,9 +5,9 @@
   <title></title>
   <script>
     // 다른 개발자의 로직에 영향을 주지 않으려고 -> 내부함수, 자기호출함수
-    (function (){
-      alert('자기호출함수1');
-    })();
+    (function (i){
+      alert('자기호출함수' + i);
+    })(1);
     function pythagoras(width, height){
       return Math.sqrt((function(x){
                           return x*x;

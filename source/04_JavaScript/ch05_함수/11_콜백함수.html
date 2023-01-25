@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    // 콜백함수(매개변수에 들어온 함수)
+    function callTenTimes(callback){
+      for(var i=0 ; i<10 ; i++){
+        callback(); // 콜백함수(매개변수에 들어온 함수)
+      }
+    }
+    var funVar = function(){
+      document.write(new Date() + '<br>');
+    } ;
+    callTenTimes(funVar);
+  </script>
+</head>
+<body>
+
+</body>
+</html>
