@@ -9,8 +9,14 @@
       alert('자기호출함수1');
     })();
     function pythagoras(width, height){
-      return Math.sqrt((function(w){return w*w;})(width)+square(height));
+      return Math.sqrt((function(x){
+                          return x*x;
+                        })(width) + 
+                        (function(x){
+                          return x*x;
+                        })(height));
     }
+    alert('빗변 : ' + pythagoras(3,4));
   </script>
 </head>
 <body>
