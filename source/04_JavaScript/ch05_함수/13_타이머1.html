@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    //var fun = function(){alert('3초 지났다');};
+    //setTimeout(fun, 3000);
+    var id = setTimeout(function(){ 
+      alert('3초 지났다');
+    }, 3000);
+    var cnt = 0;
+    nowTime = new Date().getTime(); // 현재 밀리세컨
+    while(new Date().getTime() < nowTime + 2000){
+      cnt++;
+    }
+    // setTimeout을 while문 수행 후에 중지
+    // clearTimeout(id);
+    document.write('2초 동안 ' + cnt +'번 while문 반복 수행');
+  </script>
+</head>
+<body>
+
+</body>
+</html>
