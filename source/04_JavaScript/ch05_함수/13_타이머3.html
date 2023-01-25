@@ -3,8 +3,14 @@
   <head>
   <meta charset="UTF-8">
   <title></title>
-  <script>
-    
+  <script> // 경고창 순서 : A - C - B
+    // alert('A');
+    // setTimeout(function(){ alert('B');}, 0);
+    // alert('C');
+    // 브라우저 화면에 AC write -> 0초 후에 B write
+    document.write('A');
+    setTimeout(function(){ document.body.innerHTML +=  'B'}, 0);
+    document.write('C');
   </script>
 </head>
 <body>

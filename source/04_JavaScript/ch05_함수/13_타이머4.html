@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    // 경고창 순서 : 3 -> 3 -> 3
+    // for(var i=0 ; i<3 ; i++){
+    //   setTimeout(function(){ alert(i); }, 0);
+    // }
+    // 경고창 순서 : 0 -> 1 -> 2
+    // 지역변수 이용
+    // for(let i=0 ; i<3 ; i++){
+    //   setTimeout(function(){ alert(i); }, 0);
+    // }
+    // 자기호출함수 이용
+    for(var i=0 ; i<3 ; i++){
+      (function(x){
+        setTimeout(function(){alert(x);}, 0);
+      })(i);
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
