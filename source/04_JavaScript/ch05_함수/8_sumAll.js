@@ -10,7 +10,7 @@ function sumAll(){
   }
   return result;
 }
-console.log(sumAll());
-console.log(sumAll(3));
-console.log(sumAll(1,2,3,4));
-console.log(sumAll(1,2,3,10,100));
+// console.log(sumAll());
+// console.log(sumAll(3));
+// console.log(sumAll(1,2,3,4));
+// console.log(sumAll(1,2,3,10,100));
