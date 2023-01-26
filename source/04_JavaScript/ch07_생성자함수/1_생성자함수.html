@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    /* class Student{
+         private String name;
+         public Student(String name){
+          this.name = name;
+         }
+    }
+    Student s = new Student("홍길동");
+    */
+    function Student(name, kor, mat, eng, sci){
+      this.name = name;
+      this.kor = kor;
+      this.mat = mat;
+      this.eng = eng;
+      this.sci = sci;
+      this.getSum = function(){
+        return this.kor + this.mat + this.eng + this.sci;
+      };
+      this.getAvg = function(){
+        return this.getSum() / 4;
+      };
+      this.toString = function(){
+        var output = '';
+        for(var key in this){
+          if(key!='getSum' && key!='getAvg' && key!='toString'){
+            output += key + ':' + this[key] + ' &nbsp; '
+          }else if(key=='getSum' || key=='getAvg'){
+            output += key.substring(3).toUpperCase() + ':' + this[key]() + ' &nbsp; ';
+          } // if
+        } // for
+        return output;
+      }; // toString
+    } // 생성자함수 (Student)
+    var s = new Student('홍길동', 99, 91, 80, 77);
+  </script>
+</head>
+<body>
+
+</body>
+</html>
