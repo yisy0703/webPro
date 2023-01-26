@@ -31,6 +31,23 @@
     }
     objNum.method1();
     priNum.method1();
+    // (2) objNum 객체에 메소드 추가
+    objNum.method2 = function(){
+      document.write('objNum에 추가<br>');
+    };
+    objNum.method2();
+    // priNum.method2(); // 불가
+    // (3) priNum에 메소드 추가 불가
+    priNum.method3 = function(){
+      document.write('안될듯');
+    };
+    // priNum.method3(); 불가
+    // (4) Object의 prototype에 메소드 추가
+    Object.prototype.method4 = function(){
+      document.write('<hr>' + this);
+    };
+    objNum.method4();
+    priNum.method4();
   </script>
 </head>
 <body>
