@@ -36,7 +36,20 @@
         return output;
       }; // toString
     } // 생성자함수 (Student)
-    var s = new Student('홍길동', 99, 91, 80, 77);
+    let students = [new Student('홍길동', 99, 88, 77, 66),
+                    new Student('박길동', 60, 50, 40, 88),
+                    new Student('신길동', 70, 50, 40, 88),
+                    new Student('유길동', 50, 50, 40, 88),
+                    new Student('지워짐', 99, 99, 99, 99),];
+    students.forEach(function(data, idx){
+      document.write(idx + '번째 ' + data + '<br>');
+    });
+    students.pop(); // 배열 마지막 idx의 값을 지움
+    document.write('<h3>pop 후</h3>');
+    students.forEach(function(data, idx){
+      document.write(idx + '번째 ' + data + '<br>');
+    });
+    document.write(students.length + '명 남음');
   </script>
 </head>
 <body>
