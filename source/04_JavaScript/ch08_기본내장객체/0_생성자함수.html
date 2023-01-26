@@ -8,6 +8,18 @@
       this.width = width;
       this.height = height;
     }
+    Rectangle.prototype.area = function(){
+      return this.width = this.height;
+    }
+    var rect1 = new Rectangle(5,7);
+    var rect2 = new Rectangle(2,4);
+    document.write('rect1의 생성자 : ' + rect1.constructor + '<br>');
+    document.write('rect2의 생성자 : ' + rect2.constructor + '<br>');
+    if(rect1.constructor == rect2.constructor){
+      document.write('rect1과 rect2의 타입은 같다');
+    }else{
+      document.write('rect1과 rect2의 타입은 다르다');
+    }
   </script>
 </head>
 <body>

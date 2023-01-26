@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    /* 자바에서의 기본자료형과 객체자료형의 차이
+    Integer iObj = new Integer(10);
+    iObj.toString(); 가능
+    int     i    = 10;
+    i.toString(); 불가 */
+    // 자바스크립트에서 기본데이터타입(number, string, boolean) vs 객체데이터타입
+    var priNum = 273.21; // 기본데이터타입 var priNum = new Number(273.21); 처럼 실행
+    var objNum = new Number(273.21); // 객체데이터타입
+    document.write('priNum의 타입 : ' + typeof(priNum) + '<br>'); // number
+    document.write('objNum의 타입 : ' + typeof(objNum) + '<br>'); // object
+    // constructor : 생성자함수
+    document.write('priNum의 생성자함수 : ' + priNum.constructor + '<br>');
+    document.write('objNum의 생성자함수 : ' + objNum.constructor + '<br>');
+    if(priNum.constructor == objNum.constructor) {
+      document.write('priNum과 objNum의 저장된 타입은 같다');
+    }else{
+      document.write('priNum과 objNum의 저장된 타입은 다르다');
+    }
+    // Number.toFixed(1) : 소수점 1자리까지만 추출
+    document.write(objNum.toFixed(1) + '<br>');
+    document.write(priNum.toFixed(1) + '<br>');
+    // (1) 내장 생성자 함수 prototype에 메소드 추가
+    Number.prototype.method1 = function(){
+      document.write('Number타입이면 다 호출 가능<br>');
+    }
+    objNum.method1();
+    priNum.method1();
+  </script>
+</head>
+<body>
+
+</body>
+</html>
