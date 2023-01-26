@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    var num = 273.5590332; // var num = new Number(273.5590332);
+    document.write('num = ' + num +'<br>');
+    document.write('지수형 표현 : ' + num.toExponential(5) + '<br>');
+    document.write('소수점 1자리까지(반올림) :' + num.toFixed(1) + '<br>');
+    // Math.round(숫자) : 소수점에서 반올림
+    document.write('소수점 1자리까지(반올림) :' + Math.round(num*10) / 10 + '<br>');
+
+    document.write('소수점 1자리까지(반올림) :' + Math.round(num, 1) + '(오답)<br>');
+  </script>
+</head>
+<body>
+
+</body>
+</html>
