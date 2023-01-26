@@ -3,6 +3,7 @@
   <head>
   <meta charset="UTF-8">
   <title></title>
+  <script src="5_replaceAll.js"></script>
   <script>
     let person = {
       name : '홍길동', // 속성변수
@@ -23,9 +24,10 @@
     };
     alert(person); // alert(person.toString());
     // string.replace(oldStr, newStr) ; string에서 oldStr을 newStr로 교체(처음 하나만)
-    document.write(person.toString().replace('\n','<br>'));
+    // document.write(person.toString().replace('\n','<br>'));
+    document.write(replaceAll(person.toString(), '\n','<br>'));
     person.address = '서울 서대문';
-    document.write(person.toString().replace('\n','<br>'));
+    document.write(replaceAll(person.toString(), '\n','<br>'));
     // for-in문 이용 / for-of문
     // arr = [10,20,30]; // 배열출력
     // for(var idx in arr){
