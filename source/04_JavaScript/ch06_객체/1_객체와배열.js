@@ -5,6 +5,9 @@ class Person {
   Person(String name, int age){
     this.name = name; this.age=age;
   }
+  public void method(){
+    ~
+  }
 }
 Person person = new Person("홍길동", 20);
 */
