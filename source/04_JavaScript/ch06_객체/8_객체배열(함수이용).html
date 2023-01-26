@@ -32,8 +32,14 @@
       };
       return resultObj;      
     }
-    var students = [makeStudent('홍길동',9,9,9,9),
-                    makeStudent('김길동',99,99,99,99)];
+    var students = [makeStudent('홍길동', 90, 94, 92, 99),
+                    makeStudent('김길동', 99, 99, 99, 99),];
+    students.push(makeStudent('신길동', 50, 60, 70, 80));
+    students.push(makeStudent('박길동', 60, 80, 20, 50));
+    students.push(makeStudent('유길동', 70, 90, 50, 60));
+    students.forEach(function(data, idx){
+      document.write(idx + '번째 <br>' + data + '<hr>');
+    });
   </script>
 </head>
 <body>
