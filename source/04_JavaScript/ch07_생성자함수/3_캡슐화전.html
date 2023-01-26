@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    function Rectangle(width, height){
+      this.width = width;
+      this.height = height;
+    }
+    Rectangle.prototype.getArea = function(){
+      return this.width * this.height;
+    };
+    Rectangle.prototype.toString = function(){
+      return '가로 : ' + this.width + ', 세로 : ' + this.height + 
+                                              ', 넓이 : ' + this.getArea();
+    };
+    var rect = new Rectangle(5, 7);
+    document.write(rect + '<br>');
+    rect.height=70;
+    document.write(rect);
+  </script>
+</head>
+<body>
+
+</body>
+</html>

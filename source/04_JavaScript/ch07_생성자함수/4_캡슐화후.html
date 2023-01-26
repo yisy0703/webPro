@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    function Rectangle(w, h){
+      var width = w; // 지역변수
+      var height = h;
+      this.getWidth = function(){return width;};
+      this.getHeight = function(){return height;};
+      this.setWidth = function(w){width = w;};
+      this.setHeight = function(h){height = h;};
+    }
+    Rectangle.prototype.getArea = function(){
+      return this.getWidth() * this.getHeight();
+    };
+    var rect = new Rectangle(5,7);
+    document.write('rect의 가로 : ' + rect.getWidth() + '<br>'); // rect.w, rect.width불가
+    document.write('rect의 세로 : ' + rect.getHeight() + '<br>');
+    document.write('넒이 : ' + rect.getArea() + '<br>');
+    rect.setHeight(70);
+    document.write('<h3>수정후</h3>');
+    document.write('rect의 가로 : ' + rect.getWidth() + '<br>'); // rect.w, rect.width불가
+    document.write('rect의 세로 : ' + rect.getHeight() + '<br>');
+    document.write('넒이 : ' + rect.getArea() + '<br>');
+  </script>
+</head>
+<body>
+
+</body>
+</html>
