@@ -24,7 +24,22 @@
           width = w;
         }
       };
-    }
+      this.setHeight = function(h){
+        if(h<0){
+          throw '음수 길이로 수정 불가합니다';
+        }else{
+          height = h;
+        }
+      };
+    }// 생성자 함수
+    Rectangle.prototype.getArea = function(){
+      return this.getWidth()*this.getHeight();
+    }; // 생성자 함수와 프로토타입이 완성
+
+    var rect = new Rectangle(5, -7); // 22분
+    document.write('가로 : ' + rect.getWidth() + '<br>');
+    document.write('세로 : ' + rect.getHeight() + '<br>');
+    document.write('넓이 : ' + rect.getArea() + '<br>');
   </script>
 </head>
 <body>
