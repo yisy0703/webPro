@@ -36,7 +36,12 @@
       return this.getWidth()*this.getHeight();
     }; // 생성자 함수와 프로토타입이 완성
 
-    var rect = new Rectangle(5, -7); // 22분
+    try{
+      var rect = new Rectangle(5, -7); 
+    }catch(e){
+      // 예외발생되면 공사중페이지로 이동
+      location.href = '공사중.html';
+    }
     document.write('가로 : ' + rect.getWidth() + '<br>');
     document.write('세로 : ' + rect.getHeight() + '<br>');
     document.write('넓이 : ' + rect.getArea() + '<br>');
