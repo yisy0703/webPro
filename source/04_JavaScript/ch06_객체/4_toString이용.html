@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    let person = {
+      name : '홍길동', // 속성변수
+      age : 20,
+      eat : function(food){ // 메소드 내에서 this 키워드 생략 불가
+        var msg = this.age + '살 ' + this.name +'님은 ' + food +'를 먹습니다';
+        alert(msg);
+      },
+    };
+  </script>
+</head>
+<body>
+
+</body>
+</html>
