@@ -5,6 +5,35 @@
   <title></title>
   <script>
     // 객체를 만드는 함수 이용
+    function makeStudent(name, kor, mat, eng, sci){
+      let resultObj = {
+        'name': name,
+        'kor' : kor,
+        'mat' : mat,
+        'eng' : eng,
+        'sci' : sci,
+        getSum : function(){
+          return this.kor + this.mat + this.eng + this.sci;
+        },
+        getAvg : function(){
+          return this.getSum() / 4;
+        },
+        toString : function(){
+          var output = '';
+          for(var key in this){
+            if(key!='getSum' && key!='getAvg' && key!='toString'){
+              output += key + ':' + this[key] + ' &nbsp; '
+            }else if(key=='getSum' || key=='getAvg'){
+              output += key.substring(3).toUpperCase() + ':' + this[key]() + ' &nbsp; ';
+            } // if
+          } // for
+          return output;
+        },
+      };
+      return resultObj;      
+    }
+    var students = [makeStudent('홍길동',9,9,9,9),
+                    makeStudent('김길동',99,99,99,99)];
   </script>
 </head>
 <body>
