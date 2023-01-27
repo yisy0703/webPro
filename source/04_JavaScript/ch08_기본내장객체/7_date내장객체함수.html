@@ -3,6 +3,7 @@
   <head>
   <meta charset="UTF-8">
   <title></title>
+  <script src="dateIntervalDay.js"></script>
   <script>
     var today = new Date();
     document.write('today : ' + today + '<br>');
@@ -10,7 +11,7 @@
     document.write('오늘 : '  + today.toLocaleDateString() + '<br>');
     document.write('시간 : '  + today.toLocaleTimeString() + '<br>');
     var openday = new Date(2022, 10, 28, 9, 30, 0); // 개강시점
-    var limitday = new Date(2023, 4, 12, 12, 20, 0); // 수료시점: 월은 -1필수
+    var limitday = new Date(2023, 4, 12, 14, 0, 0); // 수료시점: 월은 -1필수
     document.write(today.getIntervalDay(openday) +'일 지남');
     document.write(openday.getIntervalDay(today) +'일 지남');
     document.write(today.getIntervalDay(limitday) + '일 남음');

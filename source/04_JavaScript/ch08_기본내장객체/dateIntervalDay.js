@@ -9,7 +9,7 @@ Date.prototype.getIntervalDay = function(that){ // this~that까지의 기간 날
   var day = intervalMiliSec / (1000*60*60*24);
   return Math.trunc(day);
 };
-var openday = new Date(2022, 10, 28, 9, 30, 0); // 개강시점
-var limitday = new Date(2023, 4, 12, 12, 20, 0); // 수료시점: 월은 -1필수
-console.log(openday.getIntervalDay(limitday) + '일');
-console.log(new Date().getIntervalDay(limitday) + '일');
+// var openday = new Date(2022, 10, 28, 9, 30, 0); // 개강시점
+// var limitday = new Date(2023, 4, 12, 12, 20, 0); // 수료시점: 월은 -1필수
+// console.log(openday.getIntervalDay(limitday) + '일');
+// console.log(new Date().getIntervalDay(limitday) + '일');
