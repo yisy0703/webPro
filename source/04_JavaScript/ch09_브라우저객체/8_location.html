@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    *{text-align: center;}
+  </style>
+  <script>
+    var sec = 0;
+    var id = setInterval(function(){
+      sec++;
+      document.body.innerHTML += '<h'+ (sec+1)+'>' + sec + '초 지남</h'+(sec+1)+'>';
+    }, 1000);
+    setTimeout(function(){
+      clearInterval(id);
+      // 페이지 변경 방법
+      location.href = '9_history.html';
+      // location = '9_history.html';
+      // location.assign('9_history.html');
+    }, 5000);
+  </script>
+</head>
+<body>
+  <h1>잠시 후 페이지 이동이 있겠습니다</h1>
+</body>
+</html>
