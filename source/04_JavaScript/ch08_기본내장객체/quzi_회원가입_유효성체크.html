@@ -35,6 +35,7 @@
        */
     function chk(){
       var patternNum = /[0-9]/; // 숫자 패턴 (test함수 사용)
+      //var patternName = /^[a-zA-Z가-힣]{1,}$/; // 이름패턴(match함수 이용)
       var patternLower = /[a-z]/; // 소문자패턴
       var patternUpper = /[A-Z]/; // 대문자패턴    
       var patternSpc = /[~`!@#$%^&*()-_+=|\\\[\]{}'";:?,.\/]/; // 특수문자패턴(\\->\, \/->/, \[->[, \]->])
@@ -62,7 +63,7 @@
       //         mail.indexOf('@')==0 ||    // @가 맨앞
       //         mail.lastIndexOf('@') == mail.length - 1 || // @가 맨뒤
       //         mail.indexOf('@') != mail.lastIndexOf('@') || // @가 2개 이상 나옴
-      //         mail.indexOf('@') > mail.indexOf('.')){
+      //         mail.indexOf('@') > mail.lastIndexOf('.')){
       //   alert('1방법.메일 형식을 확인하세요');
       //   frm.mail.focus();
       //   return false;
