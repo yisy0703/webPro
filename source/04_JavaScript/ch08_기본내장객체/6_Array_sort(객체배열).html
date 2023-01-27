@@ -24,7 +24,20 @@
                     new Student('김길동', 100, 100),
                     new Student('박동군', 70, 91),
                     new Student('유길동', 99, 49),
-                    new Student('이길동', 80, 50),]
+                    new Student('이길동', 80, 50),];
+  var originalStudents = []; // 깊은 복사 (vs. 얕은 복사:주소값 할당)
+  students.forEach(function(data){
+    originalStudents.push(data);
+  });
+  students.sort();
+  document.write('<h3>정렬전</h3>');
+  originalStudents.forEach(function(data, idx){
+    document.write(idx + ":" + data);
+  });
+  document.write('<h3>ascii 코드순 정렬 후</h3>');
+  students.forEach(function(data, idx){
+    document.write(idx + ':' + data);
+  });
   </script>
 </head>
 <body>
