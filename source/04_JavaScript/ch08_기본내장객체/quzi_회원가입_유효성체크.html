@@ -33,7 +33,67 @@
         . : '\n'을 제외한 임의의 한문자 자리수
         \. : .문자
        */
-    
+    function chk(){
+      var patternNum = /[0-9]/; // 숫자 패턴 (test함수 사용)
+      var patternLower = /[a-z]/; // 소문자패턴
+      var patternUpper = /[A-Z]/; // 대문자패턴    
+      var patternSpc = /[~`!@#$%^&*()-_+=|\\\[\]{}'";:?,.\/]/; // 특수문자패턴(\\->\, \/->/, \[->[, \]->])
+
+      var patternMail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/; // math함수 사용
+
+      var name = frm.name.value.trim();
+      var mail = frm.mail.value.trim();
+      var pw = frm.pw.value.trim();
+      var pwchk = frm.pwchk.value.trim();
+      if(!name){
+        alert('이름은 필수 입력사항입니다');
+        frm.name.focus();
+        return false;
+      }else if( patternSpc.test(name) || patternNum.test(name)){
+        alert('이름을 확인하세요. 이름에는 특수문자나 숫자의 사용이 불가합니다');
+        frm.name.focus();
+        return false;
+      }else if(!mail){
+        alert('메일은 필수 입력사항입니다');
+        frm.mail.focus();
+        return false;
+      // 2방법이나 3방법 추천
+      // }else if(mail.indexOf('@')==-1 || // @가 없음
+      //         mail.indexOf('@')==0 ||    // @가 맨앞
+      //         mail.lastIndexOf('@') == mail.length - 1 || // @가 맨뒤
+      //         mail.indexOf('@') != mail.lastIndexOf('@') || // @가 2개 이상 나옴
+      //         mail.indexOf('@') > mail.indexOf('.')){
+      //   alert('1방법.메일 형식을 확인하세요');
+      //   frm.mail.focus();
+      //   return false;
+      // }else if(!mail.match(patternMail)){
+      //   alert('2방법.메일 형식을 확인하세요');
+      //   frm.mail.focus();
+      //   return false;
+      }else if(!patternMail.test(mail)){
+        alert('3방법.메일 형식을 확인하세요');
+        frm.mail.focus();
+        return false;      
+      }else if (!pw) {
+        alert('비밀번호를 입력하세요');
+        frm.pw.focus();
+        return false;
+      } else if (pw != pwchk) {
+        alert('비밀번호가 일치하지 않습니다');
+        frm.pw.value = '';
+        frm.pwchk.value = '';
+        frm.pw.focus();
+        return false;
+      } else if (!patternNum.test(pw) ||
+        !patternLower.test(pw) ||
+        !patternUpper.test(pw) ||
+        !patternSpc.test(pw) ||
+        pw.length < 4) {
+          alert('비밀번호에 숫자, 대문자, 소문자, 특수문자를 모두 포함한 4글자 이상입니다');
+          frm.pw.focus();
+          return false;
+      }      
+    }
   </script>
 </head>
 <body>
@@ -41,7 +101,8 @@
     <table>
       <tr>
         <th>이름</th>
-        <td><input type="text" name="name" placeholder="특수문자와 숫자 못 와" /></td>
+        <td><input type="text" name="name" placeholder="특수문자와 숫자 못 와" 
+                        autofocus="autofocus"/></td>
       </tr>
       <tr>
         <th>메일</th>
