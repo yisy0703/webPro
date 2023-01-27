@@ -38,6 +38,32 @@
   students.forEach(function(data, idx){
     document.write(idx + ':' + data);
   });
+  // 총점 기준으로 내림차순 정렬
+  students.sort(function(left, right){
+    return right.getSum() - left.getSum(); // 양수면 left가 앞
+  });
+  document.write('<h3>총점 기준 내림차순 정렬</h3>');
+  students.forEach(function(data, idx){
+    document.write(idx + ':' + data);
+  });
+
+  // 국어 기준으로 오름차순 정렬
+  students.sort(function(left, right){
+    return left.kor - right.kor;
+  });
+  document.write('<h3>국어 기준 오름차순 정렬</h3>');
+  students.forEach(function(data, idx){
+    document.write(idx + ':' + data);
+  });
+
+  // 평균 기준으로 top 3 추출
+  students.sort(function(left, right){
+    return right.getAvg() - left.getAvg();
+  });
+  document.write('<h3>평균 기준으로 top 3 추출</h3>');
+  students.slice(0,3).forEach(function(data, idx){
+    document.write(idx + ':' + data);
+  });
   </script>
 </head>
 <body>
