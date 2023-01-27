@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    function Student(name, kor, mat){ // 생성자 함수
+      this.name = name;
+      this.kor  = kor;
+      this.mat  = mat;
+    }
+    Student.prototype.getSum = function(){
+      return this.kor + this.mat;
+    };
+    Student.prototype.getAvg = function(){
+      return this.getSum() / 2;
+    } 
+    Student.prototype.toString = function(){
+      return this.name + '(' + this.kor +','+this.mat +','
+                              + this.getSum() + ',' + this.getAvg() +')<br>';
+    }
+    // 생성자함수와 ㅏprototype 
+    var students = [new Student('홍길동', 80, 90),
+                    new Student('김길동', 100, 100),
+                    new Student('박동군', 70, 91),
+                    new Student('유길동', 99, 49),
+                    new Student('이길동', 80, 50),]
+  </script>
+</head>
+<body>
+
+</body>
+</html>
