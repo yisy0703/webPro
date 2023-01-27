@@ -4,7 +4,19 @@
   <meta charset="UTF-8">
   <title></title>
   <style>
-    
+    table {width:350px; margin:20px auto; padding:20px 10px;}
+    table, input[type='text'], input[type='password']{
+      border: 1px solid #385d81;
+    }
+    input[type='submit'], input[type='reset'], input[type='button'] {
+      background-color: #385d81;
+      border:0; outline:none;
+      color:white;
+      border-radius:3px;
+      padding:10px 20px;
+      margin:10px 5px;
+    }
+    td, th{padding:5px 10px; text-align:center;}
   </style>
   <script>
     /*정규표현식 : 정규표현식 연습장(http://www.regexr.com)을 통해 만들어진 정규표현식 test
@@ -25,6 +37,32 @@
   </script>
 </head>
 <body>
-  
+  <form action="#" name="frm" onsubmit="return chk()">
+    <table>
+      <tr>
+        <th>이름</th>
+        <td><input type="text" name="name" placeholder="특수문자와 숫자 못 와" /></td>
+      </tr>
+      <tr>
+        <th>메일</th>
+        <td><input type="text" name="mail" placeholder="메일 형식에 맞추세요" /></td>
+      </tr>
+      <tr>
+        <th>비밀번호</th>
+        <td><input type="password" name="pw" placeholder="특수문자,대문자,소문자,숫자 포함" /></td>
+      </tr>
+      <tr>
+        <th>비밀번호</th>
+        <td><input type="password" name="pwchk" placeholder="4글자 이상" /></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="회원가입" />
+          <input type="reset" value="취소" />
+          <input type="button" value="로그인" />
+        </td>
+      </tr>
+    </table>
+  </form>
 </body>
 </html>
