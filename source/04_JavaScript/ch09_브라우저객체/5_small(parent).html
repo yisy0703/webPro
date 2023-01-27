@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    var child;
+    function openLarge(){
+      child = open('5_large(child).html', '', 'width=500,height=610,left=100');
+      if(!child){
+        alert('팝업차단 해제하세요');
+      }
+    }
+    function closeLarge(){
+      child.close();
+    }
+  </script>
+</head>
+<body>
+  <h2>작은 그림의 parent 창</h2>
+  <img src="ch09_img/small.jpg" alt="작은그림"
+    onmouseover="openLarge()"
+    onmouseout="closeLarge()">
+</body>
+</html>
