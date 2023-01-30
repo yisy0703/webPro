@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>INDEX</title>
+  <script>
+    window.onload = function(){
+      // 방법1) 1.h1태그생성 2.textNode생성 3.textNode를 h1에연결 4.h1태그를 body에 추가
+      var h1 = document.createElement('h1');
+      var textNode = document.createTextNode('추가한 h1태그 안의 text');
+      h1.appendChild(textNode);
+      document.body.appendChild(h1);
+      // 방법2) 1.img태그생성 2.src속성변경 3.body에 img태그를 추가
+      var img = document.createElement('img');
+      img.setAttribute('src','img/red.jpg');
+      document.body.appendChild(img);
+      // 방법3) innerHTML를 이용
+      document.body.innerHTML += '<h2>방법3으로 추가</h2>';
+    };
+  </script>
+</head>
+<body>
+  <h1>Text Node</h1>
+  <img src="img/orange.jpg" alt="오렌지"/>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    var header1, header2;
+    var id;
+    var header1toggle=0, header2toggle=0;
+    window.onload = function(){
+      header1 = document.getElementById('header-1');
+      header1.innerHTML = '날짜와 시간';
+      header2 = document.getElementById('header-2');
+      header2.innerHTML = new Date().toLocaleString();
+      id = setInterval(function(){}, 1000);
+    };
+    function change(n){
+      if(n === 1){
+        //header1토글
+      }else  if(n==2){
+        // 타이머(header2) 토글 -> 
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1 id="header-1">HEADER-1</h1>
+  <h1 id="header-2">HEADER-2(시간)</h1>
+  <button onclick="change(1)">header-1 토글</button>
+  <button onclick="change(2)">header-2 토글(타이머토글)</button>
+</body>
+</html>
