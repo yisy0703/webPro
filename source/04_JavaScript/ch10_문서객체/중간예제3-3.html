@@ -11,7 +11,7 @@
   </style>
   <script>
     var color = ['red','orange','yellow','green','blue','navy', 'violet', 'white'];
-    var wrap;
+    var message;
     window.onload = function(){
       var tds = document.querySelectorAll('td');
       for(var idx in tds){
@@ -19,19 +19,14 @@
       }
     };
     function showMessage(n){
-      // 문서객체생성 방법 1번 이용(1_문서객체생성.html 참조)
-      var h2 = document.createElement('h2');
-      var textNode = document.createTextNode('야호 거의 끝났다');
-      wrap = document.getElementById('wrap');
-      h2.appendChild(textNode);
-      h2.setAttribute('class','message');      
-      wrap.appendChild(h2);
-      h2.style.color = color[n];      
+      // 문서객체생성 방법 5번 이용(1_문서객체생성.html 참조)
+      message = document.querySelector('.message');
+      message.innerHTML = '야호 거의 끝났다';
+      message.style.color = color[n];
       document.body.style.backgroundColor = 'black';
     }
     function removeMassage(){
-      var message = document.getElementsByClassName('message');
-      wrap.removeChild(message[0]);
+      message.innerHTML = '';
       document.body.style.backgroundColor = 'white';
     }
   </script>
@@ -40,7 +35,7 @@
   <div id="wrap">
     <h6>중간예제3. 마우스를 올리면 바탕화면에 해당 색 메세지가</h6>
     <table>
-      <tr onmouseout="removeMassage()">
+      <tr  onmouseout="removeMassage()">
         <td onmouseover="showMessage(0)"></td>
         <td onmouseover="showMessage(1)"></td>
         <td onmouseover="showMessage(2)"></td>
@@ -50,7 +45,7 @@
         <td onmouseover="showMessage(6)"></td>
       </tr>
     </table>
-    
+    <h2 class="message"></h2>
   </div>
 </body>
 </html>

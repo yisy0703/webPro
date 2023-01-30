@@ -3,11 +3,26 @@
   <head>
   <meta charset="UTF-8">
   <title></title>
+  <style>
+    div{width:300px; margin:0 auto; border:1px solid blue; text-align:center;}
+  </style>
   <script>
-    
+    function go(num){
+      var url = ['http://www.naver.com', 'http://www.daum.net',
+                  'http://www.google.com', 'http://www.youtube.com'];
+      location.href = url[num];
+    }
   </script>
 </head>
 <body>
-
+  <div>
+    <h2>중간예제2. 메뉴</h2>
+    <p>
+      <button onclick="go(0)">네이버</button>
+      <button onclick="go(1)">다음</button>
+      <button onclick="go(2)">구글</button>
+      <button onclick="go(3)">유투브</button>
+    </p>
+  </div>
 </body>
 </html>
