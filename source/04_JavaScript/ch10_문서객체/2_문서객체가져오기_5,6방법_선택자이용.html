@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    window.onload = function(){
+      // querySelector(선택자) -  5방법 : 해당 선택자 하나(여러개일 경우 처음 하나)
+      // querySelectorAll(선택자) - 6방법 : 해당 선택자 모두. 배열로
+      var header1 = document.querySelector('h1');
+      header1.innerHTML = '첫번째만';
+      var head = document.querySelectorAll('h1.header'); // 배열로 받음
+      for(var idx in head){
+        head[idx].style = 'background-color:yellow; color:red';
+      }
+      var param = document.querySelectorAll('input[type=text]')[0];
+      param.value = '맛있는 점심식사 하세요';
+    };
+  </script>
+</head>
+<body>
+  <h1 class="header">HEADER1</h1>
+  <h1 class="header">HEADER2</h1>
+  <input type="text" name="param">
+</body>
+</html>

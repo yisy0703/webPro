@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    span {color:red;}
+  </style>
+  <script>
+    var wrap;
+    function append(){
+      // wrap = document.getElementById('wrap');
+      // wrap = document.getElementsByTagName('div')[0];
+      // wrap = document.querySelector('div#wrap');
+      // wrap = document.querySelectorAll('div#wrap')[0];
+      document.body.innerHTML += '<h1>HEADER</h1>';
+      var header = document.querySelectorAll('h1');
+      for(var i in header){
+        header[i].innerHTML += '<span>#<span>';
+      }
+    }
+    function remove(){
+      var h1 = document.getElementsByTagName('h1');
+      for(var i=0 ; i<h1.length ; i++){
+        document.body.removeChild(h1[i]);
+      }
+    }
+  </script>
+</head>
+<body>
+  <button onclick="remove()">h1태그 싹 다 제거하기</button>
+  <button onclick="append()">h1태그 추가하기</button>
+  <h1>HEADER</h1>
+  <h1>HEADER</h1>
+  <h1>HEADER</h1>
+</body>
+</html>
