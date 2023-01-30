@@ -3,8 +3,33 @@
   <head>
   <meta charset="UTF-8">
   <title></title>
+  <style>
+    #wrap {width:300px; margin: 50px auto;}
+    #wrap h1{
+      width: 250px; margin: 30px auto;
+      font-size: 24px;
+      text-align: center;
+      background-color: lightpink;
+      border:1px solid red;
+      padding: 20px 10px;
+      border-radius: 10px 40px;
+      cursor: pointer;
+    }
+    #wrap input, #wrap span#part{
+      width:150px; height: 20px;
+      border: 1px solid pink;
+      display: inline-block;
+      text-align: left;
+    }
+    #wrap p {text-align: center;}
+  </style>
   <script>
-    
+    function childOpen(){
+      var child = open('4_child.html','','width=600,height=600,left=100');
+      if(!child){
+        alert('팝업 차단 해제해 주세요');
+      }
+    }
   </script>
 </head>
 <body>
