@@ -16,10 +16,10 @@
         pw.focus();
       }else if(!gender[0].checked && !gender[1].checked){
         alert('성별을 선택하세요');
-      }else if(genger[0].checked){
-        alert('남자 ' + id + '님 비번 ' + pw);
+      }else if(gender[0].checked){
+        alert('남자 ' + id.value + '님 비번 ' + pw.value);
       }else if(gender[1].checked){
-        alert('여자 ' + id + '님 비번 ' + pw);
+        alert('여자 ' + id.value + '님 비번 ' + pw.value);
       }
     }
   </script>
