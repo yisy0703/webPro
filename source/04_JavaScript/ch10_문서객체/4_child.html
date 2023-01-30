@@ -5,9 +5,36 @@
   <title></title>
   <style>
     #wrap{width:450px; margin: 0 auto;}
+    #wrap h1 {color:red; margin-top: 50px; text-align: center;}
+    #wrap h3{
+      padding: 20px; margin: 10px;
+      border: 1px solid red;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
   </style>
   <script>
-    
+    window.onload = function(){
+      // parent와 child간의 데이터 통신
+      // parent에서 할 일 : child창 open()하기
+      // child에서 할 일 : opener(parent)의 id의 데이터 받아, 내 document 객체에 뿌리기
+      var name = opener.document.getElementById('name').value;
+      var date = opener.document.getElementById('date').value;
+      var parentData = document.getElementById('parentData');
+      parentData.innerHTML = '넘어온 이름:'+ 
+                              (name ? name : '없음') + 
+                              ', 날짜:' + 
+                              (date ? date : '날짜선택안함');
+      var modifyName = document.getElementById('modifyName');
+      modifyName.value = name;
+    };
+    function sendData(part){
+      var modifyName = document.getElementById('modifyName').value;
+      opener.document.getElementById('name').value = modifyName;
+      opener.document.getElementById('part').innerHTML = part;
+      close();
+    }
   </script>
 </head>
 <body>
@@ -17,10 +44,10 @@
     <h2 id="parentData"></h2>
     <h2>이름 수정 가능 <input type="text" id="modifyName"></h2>
     <hr>
-    <h3>인사로 하고 닫기</h3>
-    <h3>재무로 하고 닫기</h3>
-    <h3>총무로 하고 닫기</h3>
-    <h3>개발로 하고 닫기</h3>
+    <h3 onclick="sendData('인사')">인사로 하고 닫기</h3>
+    <h3  onclick="sendData('재무')">재무로 하고 닫기</h3>
+    <h3  onclick="sendData('총무')">총무로 하고 닫기</h3>
+    <h3  onclick="sendData('개발')">개발로 하고 닫기</h3>
   </div>
 </body>
 </html>
