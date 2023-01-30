@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    window.onload = function(){
+      // id로 가져오기    : document.getElementById(id명) : 엘리먼트 하나 return
+      // class로 가져오기 : document.getElementsByClassName(class명) : 배열 return
+      var clock1 = document.getElementsByClassName('clock1');
+      clock1[0].innerHTML = new Date().toLocaleDateString();
+      clock1[1].innerHTML = '<b>'+ new Date().toLocaleTimeString() +'</b>';
+      var clock2 = document.getElementsByClassName('clock2')[0];
+      clock2.value = new Date().toLocaleString(); // 태그 추가 안 됨
+      //document.body.style = 'background-color:yellow';
+      //document.body.style.backgroundColor = 'yellow';
+      //clock2.style = 'color:red; font-size:32px;';
+      // clock2.style.color = 'red';
+      // clock2.style.fontSize = '32px';
+      clock2.style.cssText = 'color:red; font-size:32px;';
+    };
+  </script>
+</head>
+<body>
+  <h1 class="clock1 clockh1"></h1>
+  <p class="clock1 clockp"></p>
+  <input type="text" class="clock2"/>
+</body>
+</html>

@@ -19,8 +19,26 @@
     function change(n){
       if(n === 1){
         //header1토글
+        if(header1toggle === 0){
+          header1.innerHTML = '현재';
+          header1toggle = 1;
+        }else if(header1toggle == 1){
+          header1.innerHTML = '날짜와 시간';
+          header1toggle = 0;
+        }
       }else if(n == 2){
-        // 타이머(header2) 토글 -> 
+        // 타이머(header2) 토글 
+        if(header2toggle == 0){
+          // 타이머 중지
+          clearInterval(id);
+          header2toggle = 1;
+        }else if(header2toggle == 1){
+          // 타이머 가동
+          id = setInterval(()=>{
+            header2.innerHTML = new Date().toLocaleString();
+          }, 1000);
+          header2toggle = 0;
+        }
       }
     }
   </script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    function loginChk(){
+      var id = document.getElementsByName('id')[0];
+      var pw = document.getElementsByName('pw')[0];
+      var gender = document.getElementsByName('gender');
+      if(!id.value){
+        alert('아이디를 입력하세요');
+        id.focus();
+      }else if(!pw.value){
+        alert('비밀번호를 입력하세요');
+        pw.focus();
+      }else if(!gender[0].checked && !gender[1].checked){
+        alert('성별을 선택하세요');
+      }else if(genger[0].checked){
+        alert('남자 ' + id + '님 비번 ' + pw);
+      }else if(gender[1].checked){
+        alert('여자 ' + id + '님 비번 ' + pw);
+      }
+    }
+  </script>
+</head>
+<body>
+  <h3>로그인</h3>
+  <form action="" method="get">
+    <p>I D <input type="text" name="id"></p>
+    <p>PW <input type="password" name="pw"></p>
+    <p>
+      성별
+      <input type="radio" name="gender" value="m">남자
+      <input type="radio" name="gender" value="f">여자
+    </p>
+    <p><input type="button" value="로그인" onclick="loginChk()"></p>
+  </form>
+</body>
+</html>
