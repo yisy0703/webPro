@@ -12,12 +12,14 @@
       header1.innerHTML = '날짜와 시간';
       header2 = document.getElementById('header-2');
       header2.innerHTML = new Date().toLocaleString();
-      id = setInterval(function(){}, 1000);
+      id = setInterval(()=>{
+        header2.innerHTML = new Date().toLocaleString();
+      }, 1000);
     };
     function change(n){
       if(n === 1){
         //header1토글
-      }else  if(n==2){
+      }else if(n == 2){
         // 타이머(header2) 토글 -> 
       }
     }
