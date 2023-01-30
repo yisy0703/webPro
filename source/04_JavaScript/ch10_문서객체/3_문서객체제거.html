@@ -21,9 +21,12 @@
     }
     function remove(){
       var h1 = document.getElementsByTagName('h1');
-      for(var i=0 ; i<h1.length ; i++){
-        document.body.removeChild(h1[i]);
-      }
+      // for(var i=0 ; i<h1.length ; i++){ 안 됨
+      //   document.body.removeChild(h1[i]);
+      // }
+      // for(var i=h1.length-1 ; i>=0 ; i--){
+      //   document.body.removeChild(h1[i]);
+      // }
     }
   </script>
 </head>
