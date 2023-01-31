@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    var img;
+    window.onload = function(){
+      img = document.getElementsByTagName('img')[0];
+    };
+    function mousedown(){
+      img.setAttribute('src', 'img/but2.gif');
+    }
+    function mouseup(){
+      img.setAttribute('src', 'img/but1.gif');
+    }
+  </script>
+</head>
+<body>
+  <img src="img/but1.gif" alt="클릭전" 
+        onmousedown="mousedown()"
+        onmouseup="mouseup()"/>
+</body>
+</html>

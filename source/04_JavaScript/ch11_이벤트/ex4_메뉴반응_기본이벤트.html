@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script>
+    var overImg = ['img/0over.jpg', 'img/1over.jpg', 'img/2over.jpg', 'img/3over.jpg'];
+    var outImg = ['img/0out.jpg', 'img/1out.jpg', 'img/2out.jpg', 'img/3out.jpg'];
+    var imgs;
+    window.onload = function () {
+      imgs = document.getElementsByTagName('img');
+      for (let i = 0; i < imgs.length; i++) { // var로 쓰면 i값이 
+        imgs[i].onmouseover = function () {
+          // this.src = overImg[i];
+          this.setAttribute('src', overImg[i]);
+        };
+        imgs[i].onmouseout = function () {
+          // this.src = outImg[i];
+          this.setAttribute('src', outImg[i]);
+        };
+      }//for
+    };
+  </script>
+</head>
+<body>
+  <img src="img/0out.jpg" />
+  <img src="img/1out.jpg" />
+  <img src="img/2out.jpg" />
+  <img src="img/3out.jpg" />
+</body>
+</html>
