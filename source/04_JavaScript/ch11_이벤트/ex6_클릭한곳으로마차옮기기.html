@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    img {position: absolute; display: none; z-index: -9; }
+  </style>
+  <script>
+    window.onclick = function () {
+      var msg = document.querySelector('p.msg');
+      msg.innerHTML = 'screen좌표값 : ' + event.screenX +',' + event.screenY + '<br>';
+      let x = event.offsetX;
+      let y = event.offsetY;
+      msg.innerHTML += 'offset좌표값 : ' + x + ',' + y;
+      var img = document.getElementsByTagName('img')[0];
+      img.style.display = 'inline'; // 'block', 'inline-block' 모두 가능
+      img.style.left = x+'px';
+      img.style.top = y+'px';
+    };
+  </script>
+</head>
+<body>
+  <p class="msg">클릭하면 클릭한 곳에 마차가 옮겨지고 좌표가 출력됩니다</p>
+  <img src="img/car.gif" alt="마차">
+</body>
+</html>

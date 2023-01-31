@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    table {width: 500px;margin: 10px auto;background-color: darkgreen;}
+    td {background-color: white;padding: 50px;text-align: center; }
+    p {text-align:center;}
+  </style>
+  <script>
+    window.onload = function () {
+      var tds = document.getElementsByTagName('td');
+      var idx = 4; // 현위치
+      tds[idx].style.backgroundColor = 'yellow';
+      var positionIdx = document.querySelector('p.position b');
+      this.onkeyup = function(){
+        switch(event.keyCode){ 
+          case 37: // 좌(37)
+            if(idx%3 != 0){
+              idx--;
+            }else{
+              idx += 2;
+            }
+            break;
+          case 38: // 상(38)
+            if(idx>=3){
+              idx -= 3;
+            }else{
+              idx += 6;
+            }
+            break;
+          case 39: // 우(39)
+            if(idx%3 != 2){
+              idx++;
+            }else{
+              idx -= 2;
+            }
+            break;
+          case 40: // 하(40)
+            if(idx<=5){
+              idx += 3;
+            }else{
+              idx -= 6;
+            }
+            break;
+          default:
+            // 다른거 누르면 리스터 함수 더 이상 암 것도 안 함
+            return;
+        }
+        for (var i = 0; i < tds.length; i++) {
+          tds[i].style.backgroundColor = 'white';
+        }
+        tds[idx].style.backgroundColor = 'yellow';
+        positionIdx.innerHTML = idx;
+      }; // keyup
+    }; // onload
+  </script>
+</head>
+<body>
+  <table>
+    <tr><td>0</td><td>1</td><td>2</td></tr>
+    <tr><td>3</td><td>4</td><td>5</td></tr>
+    <tr><td>6</td><td>7</td><td>8</td></tr>
+  </table>
+  <p class="position">현위치 : <b>4</b></p>
+</body>
+</html>
