@@ -3,11 +3,27 @@
   <head>
   <meta charset="UTF-8">
   <title></title>
+  <style>
+    p{text-align: center; margin-top: 20px;}
+  </style>
   <script>
-    
+    var id, openerId;
+    window.onload = function(){
+      openerId = opener.document.getElementById('id');
+      id = document.getElementsByName('id')[0];
+      id.value = openerId.value;
+    };
+    function confirmOK(){
+      openerId.value = id.value;
+      close()
+    }
   </script>
 </head>
 <body>
-
+  <p>
+    ID <input type="text" name="id"/>
+    <button>체크</button>
+  </p>
+  <p><button onclick="confirmOK();">아이디사용</button></p>
 </body>
 </html>
