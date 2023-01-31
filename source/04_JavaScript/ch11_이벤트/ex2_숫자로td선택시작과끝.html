@@ -6,28 +6,41 @@
   <style>
     table{width:500px; margin: 10px auto; background-color: darkgreen;}
     td{background-color: white;padding: 50px; text-align: center;}
+    p{text-align: center;}
   </style>
   <script>
+    var start = false;
     window.onkeyup = function(){
       // 우측숫자 : 96(0), 97(1) ... 104(8)
       // 위측숫자 : 48(0), 49(1) .. 56(8)
+      // s(작동시작) : 83
+      // x(작동중지) : 88
       var tds = document.getElementsByTagName('td');
       var key = event.keyCode;
-      if(key>=96 && key<=104){
+      var msg = document.getElementsByClassName('msg')[0];
+      //alert('입력한 키보드' + String.fromCodePoint(key) +'의 키값은 ' + key);
+      if(key == 83 ){
+        start = true;
+        msg.innerHTML = '작동 개시(중지를 원하시면 x)되었습니다';
+      }else if(key == 88){
+        start = false;
+        msg.innerHTML = '작동 중지(개시를 원하시면 s)되었습니다';
+      }else if(start && key>=96 && key<=104){
         for(var i=0 ; i<tds.length ; i++){
           tds[i].style.backgroundColor = 'white';
         }
         tds[key-96].style.backgroundColor = 'yellow';
-      }else if(key>=48 && key<=56){
+      }else if(start && key>=48 && key<=56){
         for(var i=0 ; i<tds.length ; i++){
           tds[i].style.backgroundColor = 'white';
         }
-        tds[key - 48].style.backgroundColor = 'yellow';
+        tds[key - 48].style.backgroundColor = 'red';
       }
     };
   </script>
 </head>
 <body>
+  <p class="msg">s:작동시작 / x:작동중지</p>
   <table>
     <tr><td>0</td><td>1</td><td>2</td></tr>
     <tr><td>3</td><td>4</td><td>5</td></tr>
