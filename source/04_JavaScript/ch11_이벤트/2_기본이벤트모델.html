@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    window.onload = function(){
+      var header = document.getElementById('header');
+      var p      = document.getElementsByTagName('p')[0];
+      var cnt = 0;
+      for(var key in header){
+        ++cnt;
+        if (key == 'onclick'){
+          p.innerHTML += key + ':' + header[key] + '<br>';
+        }
+      }
+      p.innerHTML += 'h1태그 문서 객체의 속성갯수는 ' + cnt +'<br>';
+      // 기본 이벤트 모델(고전적 이벤트 모델) : 이벤트 속성에 function을 할당
+      // on으로 시작하는 속성 : 이벤트속성 ex.onclick
+      // 이벤트 이름 : click
+      // 이벤트 속성 변수 : onclick
+      // 이벤트 리스너 함수 : whenClick
+      let whenClick = () => {
+        alert('click했네');
+      };
+      header.onclick = whenClick;
+    };
+  </script>
+</head>
+<body>
+  <h1 id="header">Click 해 봐</h1>
+  <p></p>
+</body>
+</html>
