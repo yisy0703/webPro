@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    h1 {cursor: pointer;}
+    span:nth-child(1){color:red;}
+    span:nth-child(2){color:orange;}
+    span:nth-child(3){color:yellow;}
+    span:nth-child(4){color:green;}
+    span:nth-child(5){color:blue;}
+  </style>
+  <script>
+    var cnt = 0;
+    window.onload = function(){  
+      document.querySelector('h1').onclick = function(){
+        this.innerHTML += '<span> ♥ </span>';
+        // click 이벤트는 5번만 가능하도록 : 5번째 click이벤트 발생시 이벤트 제거
+        cnt ++;
+        if(cnt >= 5){
+          this.onclick = null; // 이벤트 제거
+        }
+      };
+    };
+  </script>
+</head>
+<body>
+  <h1>좋아요</h1>
+</body>
+</html>

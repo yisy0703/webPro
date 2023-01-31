@@ -6,12 +6,14 @@
   <script>
     window.onload = function(){
       var header = document.getElementsByClassName('header');
-
-      header[0].onclick = ()=>{
-        header[0].style.color = 'red';
-        header[0].style.border = '1px solid orange';
-      };
-    };
+      for(var idx in header){
+        header[idx].onclick = function(){
+          // this : 클릭 이벤트가 발생된 컴포넌트 객체. this 사용시 화살표 함수 불가
+          this.style.color = 'red';
+          this.style.border = '1px solid orange';
+        }; // 이벤트 리스너
+      } // for문
+    }; // onload
   </script>
 </head>
 <body>

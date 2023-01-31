@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    window.onload = function(){
+      document.querySelector('form').onsubmit = function(){ // 디폴트 이벤트 제한
+        var pw = document.querySelector('input[name="pw"]');
+        var pw1 = document.querySelector('input[name="pw1"]');
+        if(!pw.value){
+          alert('비밀번호를 입력하세요');
+          pw.focus();
+          return false; // 이벤트 제한 (디폴트 이벤트가 실행 안 됨)
+        }else if(pw.value != pw1.value){
+          alert('비밀번호를 확인하세요');
+          pw.value = '';
+          pw1.value = '';
+          pw.focus();
+          return false; // 이벤트 제한
+        }
+      };
+    };
+  </script>
+</head>
+<body>
+  <form>
+    PW <input type="password" name="pw"><br>
+    PW <input type="password" name="pw1"><br>
+    <input type="submit">
+  </form>
+</body>
+</html>
