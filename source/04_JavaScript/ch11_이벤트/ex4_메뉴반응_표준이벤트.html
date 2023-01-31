@@ -7,7 +7,7 @@
     var overImg = ['img/0over.jpg', 'img/1over.jpg', 'img/2over.jpg', 'img/3over.jpg'];
     var outImg = ['img/0out.jpg', 'img/1out.jpg', 'img/2out.jpg', 'img/3out.jpg'];
     window.onload = function () {
-      varimgs = document.getElementsByTagName('img');
+      var imgs = document.getElementsByTagName('img');
       for (let i = 0; i < imgs.length; i++) { // var로 쓰면 i값이 
         imgs[i].addEventListener('mouseover', function(){
           // this.src = overImg[i];
