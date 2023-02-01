@@ -8,5 +8,5 @@ class Person{
     return this.first + this.second;
   }
 } // class
-var kim = new Person('홍길동', 100, 90);
-var son = new Person('손흥민');
+var hong = new Person('홍길동', 100, 60);
+console.log('홍길동의 sum : ', hong.sum());
