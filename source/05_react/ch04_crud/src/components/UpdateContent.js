@@ -1,14 +1,12 @@
 import { Component } from "react";
 
-class CreateContent extends Component{
+class UpdateContent extends Component{
   render(){
     return(
       <article>
-        <h2>CREATE</h2>
+        <h2>UPDATE</h2>
         <form action="/create_process" method="get" onSubmit={function(event){
             event.preventDefault();
-            //console.log(event.target.desc.value);
-            //debugger;
             this.props.onChangePage(
               event.target.title.value,
               event.target.desc.value
@@ -18,10 +16,10 @@ class CreateContent extends Component{
         }.bind(this)}>
           <p><input type="text" name="title" placeholder="title"/></p>
           <p><textarea name="desc" placeholder="desc"></textarea></p>
-          <p><input type="submit" value="추가"/></p>
+          <p><input type="submit" value="수정"/></p>
         </form>
       </article>
     );
   }
 }
-export default CreateContent;
+export default UpdateContent;

@@ -5,6 +5,7 @@ import TOC from './components/TOC';
 import ReadContent from './components/ReadContent';
 import Control from './components/Control';
 import CreateContent from './components/CreateContent';
+import UpdateContent from './components/UpdateContent';
 
 class App extends Component{
   constructor(props){
@@ -43,10 +44,27 @@ class App extends Component{
       _article = <ReadContent title={data.title} desc={data.desc}></ReadContent>
     }else if(this.state.mode === 'create'){
       _article = <CreateContent onChangePage={function(_title, _desc){
-        alert(_title + '/' + _desc);
-      }}></CreateContent>
+        // this.state.contents에 {id:max_content_id+1, title:_title, desc:_desc}를 push
+        this.max_content_id ++;
+        // this.state.contents.push( // state의 값을 변경하려면 setState()함수 이용
+        //   {id:this.max_content_id, title:_title, desc:_desc}
+        // );
+        // 1방법
+        //var _contents = [ ... this.state.contents]; // 깊은 복사
+        //_contents.push({id:this.max_content_id, title:_title, desc:_desc});
+        // 2방법
+        // var _contents = this.state.contents.concat(
+        //                   {id:this.max_content_id, title:_title, desc:_desc}
+        //                 );
+        // 3방법
+        var _contents = Array.from(this.state.contents); // 깊은 복사
+        _contents.push({id:this.max_content_id, title:_title, desc:_desc});
+        this.setState({
+          contents : _contents,
+        });
+      }.bind(this)}></CreateContent>
     }else if(this.state.mode === 'update'){
-
+      _article = <UpdateContent></UpdateContent>
     }// if(mode)
     return _article;
   } // getContent()
