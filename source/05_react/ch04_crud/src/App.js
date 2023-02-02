@@ -65,9 +65,23 @@ class App extends Component{
       }.bind(this)}></CreateContent>
     }else if(this.state.mode === 'update'){
       var _content = this.getReadContent();
-      _article = <UpdateContent data={_content} onChangePage={function(){
-
-      }}></UpdateContent>
+      _article = <UpdateContent data={_content} onChangePage={function(_id, _title, _desc){
+        // id가 _id인 contents안의 객체값을 교체 ({id:_id, title:_title, desc:_desc})
+        var _contents = Array.from(this.state.contents);
+        for(var idx=0 ; idx<_contents.length ; idx++){
+          if(_contents[idx].id === _id){
+            //_contents[idx] = {id:_id, title:_title, desc:_desc};
+            _contents[idx].title = _title;
+            _contents[idx].desc = _desc;
+            break;
+          } // if
+        }//for - _contents 교체완료
+        this.setState({
+          contents : _contents,
+          mode : 'read',
+        });
+        // mode를 read로
+      }.bind(this)}></UpdateContent>
     }// if(mode)
     return _article;
   } // getContent()
@@ -89,10 +103,38 @@ class App extends Component{
           });
         }.bind(this)}></TOC>
         <Control onChangePage={function(_mode){
-          //this.state.mode = _mode;
-          this.setState({
-            mode : _mode,
-          });
+          if(_mode === 'delete'){
+            if(window.confirm('삭제하시면 복구 불가합니다. 삭제 진행할까요?')){
+              // this.state.selected_content_id가 id인 contents안의 객체를 제거
+              var _contents = Array.from(this.state.contents);
+              for(var idx=0 ; idx<_contents.length ; idx++){
+                if(_contents[idx].id === this.state.selected_content_id){
+                  _contents.splice(idx, 1); //  idx번째 1개 제거
+                  // this.state.selected_content_id를 다른 id로 하기 위한 정렬 작업
+                  var first; // id를 기준으로 오름차순 정렬후 첫번째 객체의 id
+                  if(_contents.length>0){
+                    first = Array.from(_contents).sort(function(left, right){
+                              return left.id - right.id; // 오름차순 정렬
+                            }).slice(0,1)[0].id;
+                  }else{
+                    first = 0;
+                  } // if
+                  // mode를 welcome나 read
+                  // this.state.selected_content_id를 다른 id로 
+                  this.setState({
+                    contents : _contents,
+                    mode : 'welcome',
+                    selected_content_id : first,
+                  });
+                  break;
+                }//if
+              }//for              
+            }//if (confirm)
+          }else{
+            this.setState({
+              mode : _mode,
+            });
+          }
         }.bind(this)}></Control>
         {this.getContent()}
       </div>
