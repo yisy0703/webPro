@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 class TOC extends Component{
   render(){
+    console.log('TOC render');
     var lists = [];
     // this.props.data를 받아 <li><a href="1.html">HTML</a></li> 형태의 배열로 lists 
     var data = this.props.data;

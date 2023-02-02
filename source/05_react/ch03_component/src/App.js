@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Component} from 'react';
-//import Subject from './components/Subject';
+import Subject from './components/Subject';
 import TOC from './components/TOC';
 import ReadContent from './components/ReadContent';
 
@@ -20,6 +20,7 @@ class App extends Component{
   }
 
   render(){
+    console.log('app render');
     var _title, _desc = null;
     if(this.state.mode === 'welcome'){
       _title = this.state.welcome.title;
@@ -30,9 +31,14 @@ class App extends Component{
     }
     return (
       <div>
-        {/* <Subject title={this.state.subject.title} 
-                sub={this.state.subject.sub}></Subject>  */}
-        <header className='subject_h'>
+        <Subject title={this.state.subject.title} 
+                sub={this.state.subject.sub}
+                onChangePage={function(){
+                  this.setState({
+                    mode : 'welcome',
+                  });
+                }.bind(this)}></Subject>
+        {/* <header className='subject_h'>
           <h1>
             <a href="/" onClick={function(event){
                 event.preventDefault(); // a 태그의 기본 event기능을 막음
@@ -45,7 +51,7 @@ class App extends Component{
             </a>
           </h1>
           {this.state.subject.sub}
-        </header>
+        </header> */}
         <TOC data={this.state.contents}></TOC>
         <ReadContent title={_title} 
                 desc={_desc}></ReadContent>
