@@ -64,7 +64,10 @@ class App extends Component{
         });
       }.bind(this)}></CreateContent>
     }else if(this.state.mode === 'update'){
-      _article = <UpdateContent></UpdateContent>
+      var _content = this.getReadContent();
+      _article = <UpdateContent data={_content} onChangePage={function(){
+
+      }}></UpdateContent>
     }// if(mode)
     return _article;
   } // getContent()

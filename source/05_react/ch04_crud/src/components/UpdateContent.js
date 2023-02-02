@@ -14,8 +14,11 @@ class UpdateContent extends Component{
             event.target.title.value = '';
             event.target.desc.value = '';
         }.bind(this)}>
-          <p><input type="text" name="title" placeholder="title"/></p>
-          <p><textarea name="desc" placeholder="desc"></textarea></p>
+          <p>
+            <input type="text" name="title" placeholder="title" value={this.props.data.title}
+              />
+          </p>
+          <p><textarea name="desc" placeholder="desc" value={this.props.data.desc}></textarea></p>
           <p><input type="submit" value="수정"/></p>
         </form>
       </article>
