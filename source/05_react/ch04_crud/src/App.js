@@ -42,7 +42,9 @@ class App extends Component{
       var data = this.getReadContent();
       _article = <ReadContent title={data.title} desc={data.desc}></ReadContent>
     }else if(this.state.mode === 'create'){
-      _article = <CreateContent></CreateContent>
+      _article = <CreateContent onChangePage={function(_title, _desc){
+        alert(_title + '/' + _desc);
+      }}></CreateContent>
     }else if(this.state.mode === 'update'){
 
     }// if(mode)
