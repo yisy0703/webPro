@@ -8,7 +8,7 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      mode : 'read',
+      mode : 'welcome',
       selected_content_id : 1,
       subject : {title:'WEB', sub:'World wide web!'},
       contents : [
@@ -18,10 +18,9 @@ class App extends Component{
       ],
       welcome : {title:'WELCOME', desc:'Hello, React!!!'},
     };
-  }
+  } // 생성자
 
-  render(){
-    console.log('app render');
+  getContent(){
     var _title, _desc = null;
     if(this.state.mode === 'welcome'){
       _title = this.state.welcome.title;
@@ -36,6 +35,8 @@ class App extends Component{
         } // if
       } // for
     }// if(mode)
+  } // getContent()
+  render(){    
     return (
       <div>
         <Subject title={this.state.subject.title} 
@@ -51,8 +52,7 @@ class App extends Component{
             selected_content_id : Number(id),
           });
         }.bind(this)}></TOC>
-        <ReadContent title={_title} 
-                desc={_desc}></ReadContent>
+        {this.getContent()}
       </div>
     );
   }
