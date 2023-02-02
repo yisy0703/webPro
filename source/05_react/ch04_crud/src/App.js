@@ -4,6 +4,7 @@ import Subject from './components/Subject';
 import TOC from './components/TOC';
 import ReadContent from './components/ReadContent';
 import Control from './components/Control';
+import CreateContent from './components/CreateContent';
 
 class App extends Component{
   constructor(props){
@@ -40,10 +41,14 @@ class App extends Component{
     }else if(this.state.mode === 'read'){
       var data = this.getReadContent();
       _article = <ReadContent title={data.title} desc={data.desc}></ReadContent>
+    }else if(this.state.mode === 'create'){
+      _article = <CreateContent></CreateContent>
+    }else if(this.state.mode === 'update'){
+
     }// if(mode)
     return _article;
   } // getContent()
-  
+
   render(){    
     return (
       <div>
@@ -60,7 +65,12 @@ class App extends Component{
             selected_content_id : Number(id),
           });
         }.bind(this)}></TOC>
-        <Control></Control>
+        <Control onChangePage={function(_mode){
+          //this.state.mode = _mode;
+          this.setState({
+            mode : _mode,
+          });
+        }.bind(this)}></Control>
         {this.getContent()}
       </div>
     );
