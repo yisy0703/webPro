@@ -65,6 +65,13 @@ class App extends Component{
         });
       }.bind(this)}></CreateContent>
     }else if(this.state.mode === 'update'){
+      if(this.state.selected_content_id == 0){
+        alert('데이터가 존재하지 않습니다');
+        this.setState({
+          mode : 'welcome',
+        });
+        return;
+      }
       var _content = this.getReadContent();
       _article = <UpdateContent data={_content} onChangePage={function(_id, _title, _desc){
         // id가 _id인 contents안의 객체값을 교체 ({id:_id, title:_title, desc:_desc})
