@@ -66,7 +66,7 @@ class App extends Component{
       }.bind(this)}></CreateContent>
     }else if(this.state.mode === 'update'){
       // 데이터가 없어서 selected_content_id가 0일 경우 welcome모드로
-      if(this.state.selected_content_id == 0){
+      if(this.state.selected_content_id === 0){
         alert('데이터가 존재하지 않습니다');
         this.setState({
           mode : 'welcome',
