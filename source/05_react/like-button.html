@@ -2,6 +2,9 @@
 <head>
   <meta charset="utf-8">
   <title></title>
+  <style>
+    h2, button {display:inline-block; margin:10px;}
+  </style>
 </head>
 <body>
 <div>다른 부분</div>
@@ -27,14 +30,12 @@
       if (this.state.liked) {
         return <h2>You liked this.</h2>;
       }
-      return ( // 형제 태그 나란히 못 와. 부모태그 하나만 가능. 프레그먼트 가능
-      <div>
+      return ( 
           <button onClick={()=>{
             this.setState({liked:true});
           }}>
-            {this.state.liked ? '이건 안 나와':'Like'}
+            {this.state.liked ? 'x':'지금은 모르겠으나 앞으로 좋아요'}
           </button>
-        </div>
       );
     }
   }
@@ -43,7 +44,7 @@
   ReactDOM.createRoot(document.querySelector('#root')).render(
     <div>
       jQuery : 
-      <LikeButton liked='1'/>
+      <LikeButton liked='1'/><br/>
       React : 
       <LikeButton liked='0'/>
     </div>
