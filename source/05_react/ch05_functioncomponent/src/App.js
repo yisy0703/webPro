@@ -3,6 +3,7 @@ import TOC from './components/TOC';
 import Control from './components/Control';
 import ReadContent from './components/ReadContent';
 import CreateContent from './components/CreateContent';
+import UpdateContent from './components/UpdateContent';
 import React, {useState} from 'react';
 
 function App() {
@@ -48,7 +49,29 @@ function App() {
       setNextId(nextId+1)
     }}></CreateContent>
   }else if(mode === 'update'){
+    let _content;
+    for(var idx=0 ; idx<contents.length ; idx++){
+      if(contents[idx].id === selectedId){
+        _content = contents[idx];
+        break;
+      }
+    }// for
+    _article = <UpdateContent data={_content} onUpdate={(_title, _body)=>{
+      // alert(_title + '/' + _body);
+      // contents를 복제한 _contents의 id가 selectedId랑 같은 _contents안의 객체를 변경
+      let _contents = [...contents];
+      for(var idx=0 ; idx<_contents.length ; idx++){
+        if(_contents[idx].id === selectedId){
+          _contents[idx] = {id:selectedId, title:_title, body:_body};
+          //_contents[idx].title = title;
+          //_contents[idx].body = _body;
+          break;
+        }//if
+      }//for - _contents 변경 완료
 
+      setContents(_contents)
+      setMode('read');
+    }}></UpdateContent>
   }
   return (
     <>
