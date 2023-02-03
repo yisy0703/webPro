@@ -1,0 +1,47 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+   h2, button {display:inline-block; margin:10px;}
+  </style>
+</head>
+<body>
+<div>다른 부분</div>
+<hr>
+<div id="root"></div>
+<!-- 개발용 -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!-- 배포용 -->
+<!--<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>-->
+<!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>-->
+<!-- 실무에서는 배포용보다 웹팩이나 바벨로 사용한다 -->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+  'use strict';
+  function LikeButton(props){
+    const [liked, setLiked] = React.useState(Boolean(Number(props.liked)));
+    
+    if(liked){
+      return <h2>You liked this.</h2>;
+    }
+    return (
+      <button onClick={()=>{setLiked(true);}}>
+        Like : {liked ? "좋아요":"지금은 모르겠으나 앞으로 좋아요"}
+      </button>
+    );
+  }
+</script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.querySelector('#root')).render(
+    <div>
+      jQuery : 
+      <LikeButton liked='1'/><br/>
+      React : 
+      <LikeButton liked='0'/>
+    </div>
+  );
+</script>
+</body>
+</html>
