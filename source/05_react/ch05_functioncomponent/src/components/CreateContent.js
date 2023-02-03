@@ -8,6 +8,8 @@ const CreateContent = props =>{
           //console.log(event.target.title.value);
           //debugger;
           props.onCreate(event.target.title.value, event.target.body.value);
+          event.target.title.value = '';
+          event.target.body.value = '';
         }}>
         <p><input type="text" name="title" placeholder="title"/></p>
         <p><textarea name="body" placeholder="body"></textarea></p>

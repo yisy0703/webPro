@@ -11,7 +11,7 @@ function App() {
   // let mode = _mode[0];
   // let setMode = _mode[1];
   let [mode, setMode] = useState('read');
-  let maxId = 3; // 현재 contents(삭제되었을 수도 있는)의 가장 큰 id. create모드에서 사용
+  let [nextId, setNextId] = useState(4);
   let [selectedId, setSelectedId] = useState(2);
   let [contents, setContents] = useState([
     {id:1, title:'HTML', body:'HTML is HyperText Markup Langauge.'},
@@ -40,12 +40,12 @@ function App() {
   }else if(mode === 'create'){
     _article = <CreateContent onCreate={(_title, _body)=>{
       // alert(_title + '/' + _body);
-      // maxId++ ; {id:4, title:_title, body:_body}객체를 contents에 추가
-      maxId ++ ;
+      // {id:4, title:_title, body:_body}객체를 contents에 추가
       let _contents = Array.from(contents); // 깊은 복사한 _contents에 push
-      _contents.push({id:maxId, title:_title, body:_body});
+      _contents.push({id:nextId, title:_title, body:_body});
       setContents(_contents);
-      setSelectedId(maxId);
+      setSelectedId(nextId);
+      setNextId(nextId+1)
     }}></CreateContent>
   }else if(mode === 'update'){
 
