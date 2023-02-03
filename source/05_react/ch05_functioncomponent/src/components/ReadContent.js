@@ -1,8 +1,8 @@
-const ReadContent = () => {
+const ReadContent = ({title, body}) => {
   return (
     <article>
-      <h2>HTML</h2>
-      HTML is HyperText Markup Langauge.
+      <h2>{title}</h2>
+      {body}
     </article>
   );
 };

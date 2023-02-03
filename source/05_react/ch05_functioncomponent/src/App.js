@@ -14,7 +14,7 @@ function App() {
       <Subject title="Web" sub="World wide web!"></Subject>
       <TOC data={contents}></TOC>
       <Control></Control>
-      <ReadContent></ReadContent>
+      <ReadContent title="CSS" body="CSS is for design."></ReadContent>
     </>
   );
 }
