@@ -5,8 +5,13 @@ const TOC = props => {
     lists.push(
       <li key={data[idx].id}>
         <a href={data[idx].id+'.html'} 
-            data-id={data[idx].id}
-            id={data[idx].id}>
+            id={data[idx].id}
+            onClick={ event => {
+              event.preventDefault();
+              //console.log(event.target.id); //event.target:이벤트가 발생된 태그 객체
+              //debugger;
+              props.onChangeMode(Number(event.target.id));
+            }}>
           {data[idx].title}
         </a>
       </li>
