@@ -2,6 +2,7 @@ import Subject from './components/Subject';
 import TOC from './components/TOC';
 import Control from './components/Control';
 import ReadContent from './components/ReadContent';
+import CreateContent from './components/CreateContent';
 import React, {useState} from 'react';
 
 function App() {
@@ -36,6 +37,18 @@ function App() {
       }
     }
     _article = <ReadContent title={_title} body={_body}></ReadContent>
+  }else if(mode === 'create'){
+    _article = <CreateContent onCreate={(_title, _body)=>{
+      // alert(_title + '/' + _body);
+      // maxId++ ; {id:4, title:_title, body:_body}객체를 contents에 추가
+      maxId ++ ;
+      let _contents = Array.from(contents); // 깊은 복사한 _contents에 push
+      _contents.push({id:maxId, title:_title, body:_body});
+      setContents(_contents);
+      setSelectedId(maxId);
+    }}></CreateContent>
+  }else if(mode === 'update'){
+
   }
   return (
     <>
@@ -50,7 +63,9 @@ function App() {
         setSelectedId(_id);
         setMode('read');
       }}></TOC>
-      <Control></Control>
+      <Control onChangeMode={(_mode)=>{
+        setMode(_mode);
+      }}></Control>
       {_article}
     </>
   );
