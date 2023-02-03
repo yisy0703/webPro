@@ -1,11 +1,5 @@
-const Subject = () => {
-  return (
-    <header>
-      <h1>WEB</h1>
-      World wide web!
-    </header>
-  );
-};
+import Subject from './components/Subject';
+
 const TOC = () => {
   return (
     <nav>
@@ -19,7 +13,7 @@ const TOC = () => {
 };
 const Control = () => {
   return (
-    <ul class="Control">
+    <ul className="Control">
       <li><button>create</button></li>
       <li><button>update</button></li>
       <li><button>delete</button></li>
