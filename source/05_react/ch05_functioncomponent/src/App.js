@@ -87,7 +87,30 @@ function App() {
         setMode('read');
       }}></TOC>
       <Control onChangeMode={(_mode)=>{
-        setMode(_mode);
+        if(_mode === 'delete'){
+          if(window.confirm('삭제 복구 불가합니다. 삭제하시겠습니까?')){
+            // delete 작업
+            let _contents = [...contents];
+            for(let idx=0 ; idx<_contents.length ; idx++){
+              if(_contents[idx].id === selectedId){
+                _contents.splice(idx, 1); // idx번째 1개 제거
+                let _id;
+                if(_contents.length>0){
+                  //_id = _contents[0].id; // 제일 작은 id값을 selectedId로
+                  _id = _contents[_contents.length-1].id; // 제일큰 id값을 selectedId로
+                }else{
+                  _id = 0;
+                } // if
+                setContents(_contents);
+                setMode('read');
+                setSelectedId(_id);
+                break;
+              }//if
+            }//for
+          } // if - confirm
+        }else{
+          setMode(_mode);
+        }
       }}></Control>
       {_article}
     </>
