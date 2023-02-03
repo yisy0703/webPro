@@ -1,9 +1,10 @@
 import './Subject.css';
-const Subject = () => {
+const Subject = props => {
+  // props.title = '수정불가. ReadOnly';
   return (
     <header className="Subject">
-      <h1>WEB</h1>
-      World wide web!
+      <h1>{props.title}</h1>
+      {props.sub}
     </header>
   );
 };

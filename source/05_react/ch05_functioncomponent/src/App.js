@@ -1,38 +1,18 @@
 import Subject from './components/Subject';
+import TOC from './components/TOC';
+import Control from './components/Control';
+import ReadContent from './components/ReadContent';
 
-const TOC = () => {
-  return (
-    <nav>
-      <ol>
-        <li><a href="1.html">HTML</a></li>
-        <li><a href="2.html">CSS</a></li>
-        <li><a href="3.html">JavaScript</a></li>
-      </ol>
-    </nav>
-  );
-};
-const Control = () => {
-  return (
-    <ul className="Control">
-      <li><button>create</button></li>
-      <li><button>update</button></li>
-      <li><button>delete</button></li>
-    </ul>
-  );
-};
-const ReadContent = () => {
-  return (
-    <article>
-      <h2>HTML</h2>
-      HTML is HyperText Markup Langauge.
-    </article>
-  );
-};
 function App() {
+  let contents = [
+    {id:1, title:'HTML', body:'HTML is HyperText Markup Langauge.'},
+    {id:2, title:'CSS', body:'CSS is for design.'},
+    {id:3, title:'JavaScript', body:'JavaScript is for interactive.'}
+  ];
   return (
     <>
-      <Subject></Subject>
-      <TOC></TOC>
+      <Subject title="Web" sub="World wide web!"></Subject>
+      <TOC data={contents}></TOC>
       <Control></Control>
       <ReadContent></ReadContent>
     </>
