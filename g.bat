@@ -1,3 +1,3 @@
 git add .
-git commit -m "react_function"
+git commit -m "linux"
 git push -u origin main
