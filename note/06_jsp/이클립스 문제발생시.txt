@@ -1,0 +1,18 @@
+1. 문제가 자주 발생해서 이클릭스 소스 정리
+   1) 이클립스 닫는다
+   2) 소스 프로젝트를 제외한 나머지 전부 삭제
+   3) 톰캣 폴더도 삭제
+   4) 다운받은 톰캣을 다시 압축을 푼 후,  옮긴다
+   5) 이클립스를 실행
+   6) Window-preferrnce에서
+   	6.1 Encoding (UTF-8)
+	      a. window -> preferences -> general -> workspace
+	      b. window -> preferences -> web -> css files
+	      c. window -> preferences -> web -> HTML files
+	      d. window -> preferences -> web -> jsp files
+    	6.2 Test Web browser
+	       window -> webBrowser-> Chrome 
+   7) 하단servers 탭에서 new를 클릭하여 tomcat설정
+      apache에 있는 tomcat을 선택하고 tomcat9.0을 연결하고 8090포트 등 정보 세가지 수정
+
+    8)프로젝트들 import   
