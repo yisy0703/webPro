@@ -24,7 +24,7 @@ public class Ex3_gugudan extends HttpServlet {
 		//out.println("<link href=\"/ch03_semiServlet/css/ex2.css\" rel=\"stylesheet\">");
 		out.println("</head>");
 		out.println("<body>");
-		out.print("<h2>"+num+"단 구구단</h2>");
+		out.println("<h2>"+num+"단 구구단</h2>");
 		for(int i=1 ; i<=9 ; i++) {
 			out.printf("<p>%d * %d = %d </p>", num, i, num*i);
 		}
