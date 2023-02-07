@@ -1,0 +1,16 @@
+{
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    }
+  },
+  "ecmaVersion": 5,
+  "ide": {
+    "scriptPaths": [
+      
+    ]
+  }
+}
