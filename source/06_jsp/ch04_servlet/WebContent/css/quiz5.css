@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body { background-color: #FFF0B5;font-size: 9pt; }
-table {border: pink solid 2px; margin:0 auto;}
+table { border: pink solid 2px; margin:0px auto; }
 tr {background-color: #FFE271;}
 tr:HOVER {background-color: orange;cursor: pointer;}
 td,th {text-align: center; padding: 5pt;}
