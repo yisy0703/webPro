@@ -20,6 +20,28 @@ public class Quiz5 extends HttpServlet {
 	}
 	private void actionDo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		String title = request.getParameter("title");
+		String writer = request.getParameter("writer");
+		String content = request.getParameter("content");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<link href='css/quiz5.css' rel='stylesheet'>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<table>");
+		out.println("<tr><th colspan='2'>반갑습니다 "+writer+"님</th></tr>");
+		out.println("<tr><th>글제목</th><td>"+title+"</td></tr>");
+		out.println("<tr><th>내용</th><td><pre>"+content+"</pre></td></tr>");
+		out.println("</table>");
+		out.println("</body>");
+		out.println("</html>");
+		out.close();
 	}
 }
+
+
+
+
+

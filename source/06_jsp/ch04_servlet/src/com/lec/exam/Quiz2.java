@@ -22,6 +22,17 @@ public class Quiz2 extends HttpServlet {
 	}
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<link href=\"css/quiz2.css\" rel=\"stylesheet\"");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<h2>반가워요 "+ name +"님!<br>" + address +"에 사시는군요</h2>");
+		out.println("</body></html>");
+		out.close();
 	}
 }

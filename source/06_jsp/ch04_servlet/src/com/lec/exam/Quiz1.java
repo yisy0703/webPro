@@ -21,6 +21,27 @@ public class Quiz1 extends HttpServlet {
 		actionDo(request, response);
 	}
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String[] su = request.getParameterValues("su");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<link href=\"css/quiz1.css\" rel=\"stylesheet\"");
+		out.println("</head>");
+		out.println("<body>");
+		if(su!=null) {
+			for(String s: su) {
+				int dansu = Integer.parseInt(s);
+				out.println("<h4>"+dansu + "단</h4>");
+				for(int i=1 ; i<=9 ; i++) {
+					out.printf("%d * %d = %d<br>", dansu, i, dansu*i);
+				}
+			}
+		}else {
+			out.println("<h4>선택된 구구단이 없습니다</h4>");
+		}
+		out.println("</body>");
+		out.println("</html>");
+		out.close();
 	}
 }
