@@ -7,11 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet(urlPatterns = {"/Ex4_initParam"},
+
+/*@WebServlet(urlPatterns = {"/Ex4_initParam"},
 			initParams = {@WebInitParam(name="id", value="root"),
 						  @WebInitParam(name="pw", value="mysql"),
 						  @WebInitParam(name="jdbcdriver", value="com.mysql.jdbcDriver")}
-			)
+			)*/
 public class Ex4_initParam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

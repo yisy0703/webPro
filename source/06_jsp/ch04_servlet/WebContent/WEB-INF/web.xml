@@ -9,4 +9,40 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+  	<servlet-name>Ex4_InitParam</servlet-name>
+  	<servlet-class>com.lec.lect.Ex4_initParam</servlet-class>
+  	<init-param>
+  		<param-name>id</param-name>
+  		<param-value>root</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>pw</param-name>
+  		<param-value>mysql</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>jdbcdriver</param-name>
+  		<param-value>com.mysql.Driver</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Ex4_InitParam</servlet-name>
+  	<url-pattern>/Ex4</url-pattern>
+  </servlet-mapping>
 </web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
