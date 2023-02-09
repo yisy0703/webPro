@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function(){
+			document.querySelector('form').onsubmit = function(){
+				//var hobby = document.getElementsByName('hobby');
+				var hobby = document.querySelectorAll('input[type=checkbox]');
+				var checkedCnt = 0;
+				//var checkedHobby = '';
+				for(var i=0 ; i<hobby.length ; i++){
+					checkedCnt += hobby[i].checked; // checkedCnt = checkedCnt + hobby[i].checked;
+					//if(hobby[i].checked){
+					//	checkedHobby += hobby[i].value + ' ';
+					//}
+				}// for
+				if(!checkedCnt){
+					alert('취미를 한개 이상 선택하셔야 합니다.');
+					return false;
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<form action="">
+		<p>
+			취미 : <input type="checkbox" name="hobby" value="독서">독서
+					<input type="checkbox" name="hobby" value="등산">등산
+					<input type="checkbox" name="hobby" value="연주">연주
+					<input type="checkbox" name="hobby" value="기타" checked="checked">기타
+		</p>
+		<p><input type="submit"></p>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
