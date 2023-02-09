@@ -22,7 +22,19 @@ public class Ex2 extends HttpServlet {
 		out.println("<html>");
 		out.println("<body>");
 		if(menu!=null) {
-			out.println("<h2>선택한 메뉴는 " + Arrays.toString(menu)+"</h2>");
+//			out.println("<h2>선택한 메뉴는 " + Arrays.toString(menu)+"</h2>");
+			out.println("<h2>선택한 메뉴는 ");
+//			for(String m : menu) {
+//				out.println(m + "  ");
+//			}
+			for(int i=0 ; i<menu.length ; i++) {
+				if(i == menu.length-1) {
+					out.println(menu[i]);
+				}else {
+					out.println(menu[i] + ", ");
+				}
+			}
+			out.println("입니다</h2>");
 		}else {
 			out.println("<h2>선택한 메뉴가 없습니다</h2>");
 		}
