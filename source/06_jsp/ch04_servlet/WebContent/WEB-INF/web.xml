@@ -9,9 +9,19 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 공유 파라미터의 지정은 web.xml -->
+  <context-param>
+  	<param-name>contextId</param-name>
+  	<param-value>scott</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>contextPw</param-name>
+  	<param-value>tiger</param-value>
+  </context-param>
   <servlet>
   	<servlet-name>Ex4_InitParam</servlet-name>
   	<servlet-class>com.lec.lect.Ex4_initParam</servlet-class>
+  	<!--  한 서블리세에서만 쓸 수 있는 초기화 파라미터 (서블릿에서 명시, web.xml에서 명시) -->
   	<init-param>
   		<param-name>id</param-name>
   		<param-value>root</param-value>

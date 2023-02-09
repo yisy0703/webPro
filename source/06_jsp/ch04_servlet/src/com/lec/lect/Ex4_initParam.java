@@ -27,6 +27,13 @@ public class Ex4_initParam extends HttpServlet {
 		System.out.println("id = " + id);
 		System.out.println("pw = " + pw);
 		System.out.println("driver = " + driver);
+		// 공유파라미터는 프로젝트내의 모든 서블릿에서 공유
+		String contextId = getServletContext().getInitParameter("contextId");
+		String contextPw = getServletContext().getInitParameter("contextPw");
+		response.getWriter().append("conetxtId = " + contextId + ", ");
+		response.getWriter().append("contextPw = " + contextPw) ;
+		System.out.println("contextId = " + contextId);
+		System.out.println("contextPw = " + contextPw);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
