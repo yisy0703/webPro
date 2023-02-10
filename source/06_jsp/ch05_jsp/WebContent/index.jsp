@@ -7,6 +7,6 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<%@include file="main/footer.jsp" %>
+	<% response.sendRedirect("lect2_innerObject/ex4_ageInput.html");%>
 </body>
 </html>
