@@ -16,7 +16,7 @@
 		String pw = request.getParameter("pw");
 		if(id==null || !id.equals("aaa") || pw==null || !pw.equals("111")){
 			//String msg = "Check the ID and PW";
-			String msg = "아이디와 비밀번호를 확인하세요";
+			String msg = "<b>아이디와 비밀번호를<br> 확인하세요<b>";
 			msg = URLEncoder.encode(msg, "utf-8");
 			response.sendRedirect("ex5_loginFrm.jsp?msg="+msg);
 		}/* else{
