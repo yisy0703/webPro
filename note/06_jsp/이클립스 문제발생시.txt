@@ -16,3 +16,9 @@
       apache에 있는 tomcat을 선택하고 tomcat9.0을 연결하고 8090포트 등 정보 세가지 수정
 
     8)프로젝트들 import   
+
+   9) 한프로젝트라도 실행시킨 후 IPv4로 변경
+eclipse > Run > Run Configuration > Apache Tomcat > Tomcat v8.5 Server >
+	Arguiments > 
+	Program arguments에 "-Djava.net.preferIPv4Stack=true" 입력
+	VM arguments:에 "-Djava.net.preferIPv4Stack=true" 입력
