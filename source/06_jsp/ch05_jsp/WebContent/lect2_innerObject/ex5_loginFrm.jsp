@@ -17,7 +17,12 @@
 		</table>
 	</form>
 	<div id="msg">
-		
+		<%
+			String msg = request.getParameter("msg");
+			if(msg!=null){
+				out.print(msg);
+			}
+		%>
 	</div>
 </body>
 </html>
