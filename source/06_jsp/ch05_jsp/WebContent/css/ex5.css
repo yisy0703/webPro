@@ -1,0 +1,4 @@
+@charset "UTF-8";
+body { background-color: lightyellow;}
+td{text-align: center; padding:2px 5px;}
+#msg {color:red; text-align: center;}

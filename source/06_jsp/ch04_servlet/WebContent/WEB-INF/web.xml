@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>ch04_servlet</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 공유 파라미터의 지정은 web.xml -->
+  <context-param>
+  	<param-name>contextId</param-name>
+  	<param-value>scott</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>contextPw</param-name>
+  	<param-value>tiger</param-value>
+  </context-param>
+  <servlet>
+  	<servlet-name>Ex4_InitParam</servlet-name>
+  	<servlet-class>com.lec.lect.Ex4_initParam</servlet-class>
+  	<!--  한 서블리세에서만 쓸 수 있는 초기화 파라미터 (서블릿에서 명시, web.xml에서 명시) -->
+  	<init-param>
+  		<param-name>id</param-name>
+  		<param-value>root</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>pw</param-name>
+  		<param-value>mysql</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>jdbcdriver</param-name>
+  		<param-value>com.mysql.Driver</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Ex4_InitParam</servlet-name>
+  	<url-pattern>/Ex4</url-pattern>
+  </servlet-mapping>
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

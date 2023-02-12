@@ -1,0 +1,11 @@
+{
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    }
+  },
+  "ecmaVersion": 5
+}
