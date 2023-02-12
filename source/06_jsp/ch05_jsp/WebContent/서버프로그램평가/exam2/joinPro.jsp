@@ -26,15 +26,15 @@
 	<div id="joinForm_wrap">
 		<div id="join_title">회원가입정보</div>
 		<h2>name : <%=name %></h2>
-		<h2>id : <%=id %></h2>
-		<%-- <h2>pw : <%
+		<h3>id : <%=id %></h3>
+		<%-- <h3>pw : <%
 					for(int i=0 ; i< pw.length() ; i++){
 						out.print('*');
-					}%></h2> --%>
-		<h2>pw : <%=pw.replaceAll("[a-zA-Z0-9~`!@#$%^&*()\\-_+=|\\{}\\[\\]:;\"'?/<>,\\.]", "*") %></h2>
-		<h2>birth : <%=birth %></h2>
-		<h2>birth : <%=birthTimestamp %></h2>
-		<h2>hobby : <% 
+					}%></h3> --%>
+		<h3>pw : <%=pw.replaceAll("[a-zA-Z0-9~`!@#$%^&*()\\-_+=|\\{}\\[\\]:;\"'?/<>,\\.]", "*") %></h3>
+		<%-- <h3>birth : <%=birth %></h3> --%>
+		<h3>birth : <%=birthTimestamp %></h3>
+		<h3>hobby : <% 
 				if(hobby!=null) {
 					for(int i=0 ; i<hobby.length ; i++)
 						if(i==hobby.length-1)
@@ -44,18 +44,18 @@
 				}else {
 					out.print("없음");
 				}
-		%></h2>
-		<h2>gender : <%=gender %></h2>
-		<h2>email : <%=email %></h2>
-		<h2>mailSend : <%
+		%></h3>
+		<h3>gender : <%=gender %></h3>
+		<h3>email : <%=email %></h3>
+		<h3>mailSend : <%
 				if(mailSend!=null){
 					out.print(Arrays.toString(mailSend));
 				}else{
 					out.print("모두 수신 거부");
 				}
-		%></h2>
-		<h2>가입일 : <%=new Date(System.currentTimeMillis()) %></h2>
-		<h2>가입IP : <%=request.getRemoteAddr() %></h2>
+		%></h3>
+		<h3>가입일 : <%=new Date(System.currentTimeMillis()) %></h3>
+		<h3>가입IP : <%=request.getRemoteAddr() %></h3>
 	</div>
 	<%@ include file="footer.jsp" %><!-- jsp 소스가 include -->
 </body>
