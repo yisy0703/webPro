@@ -9,7 +9,7 @@
 	<link href="<%=conPath %>/css/login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+	<jsp:include page="../member/header.jsp"/>
 	<div id="loginForm_wrap">
 		<div id="login_title">로그인</div>
 		<form action="<%=conPath%>/member/loginPro.jsp" method="post">

@@ -31,6 +31,7 @@
 	String email 			= request.getParameter("email");
 	String[] mailSend = request.getParameterValues("mailSend");
 %>
+	<jsp:include page="../member/header.jsp"/>
 	<div id="joinForm_wrap">
 		<div id="join_title">회원가입정보</div>
 		<h2>name : <%=name %></h2>

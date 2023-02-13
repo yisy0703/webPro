@@ -17,6 +17,7 @@
 			response.sendRedirect("login.jsp?msg=xx");
 		}
 	%>
+	<jsp:include page="../member/header.jsp"/>
 	<br><br><br><br><br><br>
 	<div id="loginForm_wrap">
 		<div id="login_title">로그인 결과</div>

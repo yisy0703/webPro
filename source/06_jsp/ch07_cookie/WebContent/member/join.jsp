@@ -45,7 +45,7 @@
 	</script>
 </head>
 <body>
-
+	<jsp:include page="../member/header.jsp"/>
 	<div id="joinForm_wrap">
 		<div id="join_title">회원가입</div>
 		<form action="joinPro.jsp" method="post">
