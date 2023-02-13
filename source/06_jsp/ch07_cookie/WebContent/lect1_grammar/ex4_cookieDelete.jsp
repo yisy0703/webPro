@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>특정 쿠키(쿠키이름이 cooieName인 쿠키) 삭제하기</h1>
-	<%	// 같은 이름의 쿠키를 생성해서 유효시간을 0초가 setting한후 response 탑재
+	<%	// 같은 이름의 쿠키를 생성해서 유효시간을 0초로 setting한후 response 탑재
 	
 	%>
 </body>
