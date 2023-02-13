@@ -1,13 +1,47 @@
 < jsp 동작 원리 >
-브라우저에서 http://127.0.0.1:8090/ch02_semiJSP/hello.jsp
+브라우저에서 http://127.0.0.1:8090/ch05_jsp/index.jsp
 
 - 소스폴더
- : D:\webPro\source\06_jsp\ch02_semiJSP\WebContent\hello.jsp
+ : D:\webPro\source\06_jsp\ch05_jsp\WebContent\index.jsp
 
-- 실행폴더 (실행은 톰캣에 의해)
- : D:\webPro\IDE\apache-tomcat-9\wtpwebapps\ch02_semiJSP에 
+- 실행폴더 (톰캣이 배포한 폴더)
+ : D:\webPro\IDE\apache-tomcat-9\wtpwebapps\ch05_jsp에 
    소스 폴더의 webContent폴더의 내용을 복사
 
 - jsp를 서블릿(자바)으로 바꾸는 폴더
-  : D:\webPro\IDE\apache-tomcat-9\work\Catalina\localhost\ch02_semiJSP\org\apache\jsp\hello_jsp.java
+  : D:\webPro\IDE\apache-tomcat-9\work\Catalina\localhost\ch05_jsp\org\apache\jsp\index_jsp.java
+
+<내가 사용자가 사용하도록 웹서버에 배포 : 나의 톰캣의 webapps 폴더에 x라는 이름의 context root로 배포>
+1. 톰캣의 webapps 폴더 밑에 x폴더 생성
+
+2. 소스폴더의 webContent폴더(D:\webPro\source\06_jsp\ch05_jsp\WebContent)에 있는 모든 내용을 1에서 생성한 x폴더 밑에 복사
+
+3. 소스폴더의 build(D:\webPro\source\06_jsp\ch05_jsp\build)밑에 있는 classes폴더를 
+    2에서 생성된 x/WEB-INF밑에 복사
+
+4. 톰캣 startup (bin/startup)
+
+5. 브라우저의 url에 다음을 입력하여 실행 :  http://localhost:8090/x 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

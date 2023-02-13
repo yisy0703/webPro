@@ -17,6 +17,7 @@
 	String id     		= request.getParameter("id");
 	String pw 				= request.getParameter("pw");
 	String birth 			= request.getParameter("birth");
+	Date   birthDate  = Date.valueOf(birth);
 	Timestamp birthTimestamp = Timestamp.valueOf(birth + " 00:00:00");
 	String[] hobby 		= request.getParameterValues("hobby");
 	String gender 		= request.getParameter("gender");
