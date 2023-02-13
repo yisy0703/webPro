@@ -22,7 +22,7 @@
 					pwChk.value = '';
 					pw.focus();
 					return false;
-				}else	if(!email.value.match(patternMail)){
+				}else	if(email.value && !email.value.match(patternMail)){
 		      alert('메일 형식을 확인하세요');
 		      email.focus();
 		      return false;
@@ -108,8 +108,8 @@
 					<td colspan="2">
 						<input type="submit" value="가입하기" class="joinBtn_style">
 						<input type="reset" value="다시하기" class="joinBtn_style">
-						<input type="button" value="뒤로가기" class="joinBtn_style" 
-											onclick="history.back();">
+						<input type="button" value="로그인" class="joinBtn_style" 
+											onclick="location.href='<%=conPath%>/member/login.jsp'">
 					</td>
 				</tr>
 			</table>
