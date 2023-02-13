@@ -14,9 +14,8 @@
 }
 #joinForm_wrap table td {width: 300px;}
 .name, .id, .pw, .pwChk, .birth, .email, .mailSend {
-	border: 1px solid #D4A190; height:20px;
-	width:95%; padding:3px;
-	outline:0;	
+	border: 1px solid #D4A190; height:20px;	width:95%; padding:3px;
+	outline:0;
 }
 .mailSend  {height: 60px;}
 .joinBtn_style {
