@@ -26,11 +26,11 @@
 		      alert('메일 형식을 확인하세요');
 		      email.focus();
 		      return false;
-		    }else if(!mailOption[0].selected && !mailOption[1].selected 
+		    }/* else if(!mailOption[0].selected && !mailOption[1].selected 
 					&& !mailOption[2].selected && !mailOption[3].selected ){
 					alert('메일수신을 한가지 이상 선택해 주세요');
 					return false;
-				}
+				} */
 				/* 바로 위의 if문을 아래로 변경 가능() 
 				var mailOptionCnt = 0;
 				for(var i=0 ; i<mailOption.length ; i++){
@@ -88,7 +88,7 @@
 				</tr>
 				<tr>
 					<th><label for="email">이메일</label></th>
-					<td><input type="text" name="email" id="email" class="email" required="required"></td>
+					<td><input type="text" name="email" id="email" class="email"></td>
 				</tr>
 				<tr>
 					<th>메일수신</th>
