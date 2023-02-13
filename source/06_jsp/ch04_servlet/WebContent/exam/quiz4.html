@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function(){
+			var form = document.querySelectorAll('form');
+			for(var i=0 ; i<form.length ; i++){
+				form[i].onsubmit = function(){
+					var backColor = this.querySelectorAll('input[type="radio"]');
+					var colorChk = 0;
+					for(var i = 0; i<backColor.length ; i++){
+						colorChk += backColor[i].checked;
+					}
+					if(!colorChk){
+						alert('색상을 선택하셔야 합니다');
+						return false;
+					} // if					
+				}; // onsubmit
+			} // for
+		};
+	</script>
+</head>
+<body>
+	<fieldset>
+		<legend>배경색 선택(GET방식)</legend>
+		<form action="../Quiz4" method="get">			
+			빨강<input type="radio" name="backColor" value="red">
+			주황<input type="radio" name="backColor" value="orange">
+			노랑<input type="radio" name="backColor" value="yellow">
+			초록<input type="radio" name="backColor" value="green">
+			파랑<input type="radio" name="backColor" value="blue">
+			남색<input type="radio" name="backColor" value="navy">
+			보라<input type="radio" name="backColor" value="violet">
+			<input type="submit" value="선택확인">
+		</form>
+	</fieldset>
+	<!-- value를 위와 같이 color로 넘기는 방법과 아래와 같이 index를 넘기는 방법 모두 사용  -->
+	<fieldset>
+		<legend>배경색 선택(POST방식)</legend>
+		<form action="../Quiz4" method="post">			
+			빨강<input type="radio" name="backColorIdx" value="0">
+			주황<input type="radio" name="backColorIdx" value="1">
+			노랑<input type="radio" name="backColorIdx" value="2">
+			초록<input type="radio" name="backColorIdx" value="3">
+			파랑<input type="radio" name="backColorIdx" value="4">
+			남색<input type="radio" name="backColorIdx" value="5">
+			보라<input type="radio" name="backColorIdx" value="6">
+			<input type="submit" value="선택확인">
+		</form>
+	</fieldset>
+</body>
+</html>

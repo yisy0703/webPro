@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function(){
+			document.querySelector("form").onsubmit = function(){
+				var su = document.getElementById("su");
+				var suNum = Number(su.value.trim());
+				if(isNaN(suNum) || suNum <=0 || suNum%1!=0){
+					alert('자연수를 입력하세요');
+					su.value = '';
+					su.focus();
+					return false;
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<form action="../Quiz3">
+		<fieldset>
+			<legend>누적하고 싶은 최종 수 입력</legend>
+			<input type="number" name="su" id="su">
+			<input type="submit" value="누적결과">
+		</fieldset>
+  </form>
+</body>
+</html>
