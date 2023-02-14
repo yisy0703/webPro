@@ -6,8 +6,14 @@
 	if(session.getAttribute("name")!=null){
 		response.sendRedirect("welcome.jsp");
 	}
-	// 
-%>
+	// msg처리
+	String msg = request.getParameter("msg");
+	if(msg!=null){
+%>	
+		<script>
+			alert('<%=msg%>');
+		</script>	
+<%}%>
 <!DOCTYPE html>
 <html>
 <head>
