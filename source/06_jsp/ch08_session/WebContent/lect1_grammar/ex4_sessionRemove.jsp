@@ -10,19 +10,28 @@
 	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<%
-		// 세션에 추가한 모든 데이터 list
-		out.println("<h1>모든 세션 속성들</h1>");
-		Enumeration<String> sAttrNames = session.getAttributeNames();
+	<%// 세션 삭제 (로그아웃시 사용)
+		// 특정한 세션을 삭제하기(세션의 특정 속성을 삭제하기)
+		session.removeAttribute("sessionNum");// sessionNum 세션(속성) 삭제
+		out.println("<h3>sessionNum 삭제 후 모든 세션 list </h3>");
 		int cnt = 0;
+		Enumeration<String> sAttrNames = session.getAttributeNames();
 		while(sAttrNames.hasMoreElements()){
 			String sname = sAttrNames.nextElement();
 			String svalue = session.getAttribute(sname).toString();
-			out.println("<h2>"+sname+"(세션속성 이름) : " + svalue + "(세션값)</h2>");
+			out.println("<p>"+sname+"(세션속성 이름) : " + svalue+"(세션값)</p>");
 			cnt++;
-		}//while
+		}
 		if(cnt==0){
-			out.println("<h2>세션 속성이 없습니다</h2>");
+			out.println("<h3>세션 속성이 없습니다</h3>");
+		}
+		// 모든 세션 삭제하기
+		session.invalidate(); // setAttribute했던 모든 세션 속성 다 제거. 세션ID도 제거. 세션추가시 새로운 ID발부
+		out.println("<h3>session.invalidate() 후");
+		if(request.isRequestedSessionIdValid()){ // 유효한 세션 attribute가 있는지
+			out.println("<h3>유효한 세션이 있음</h3>");
+		}else{
+			out.println("<h3>유효한 세션이 없음</h3>");
 		}
 	%>
 	<hr>
@@ -35,7 +44,6 @@
 	<a href="ex4_sessionRemove.jsp">세션 삭제(특정 세션이나 모든 세션 데이터)</a>
 </body>
 </html>
-
 
 
 

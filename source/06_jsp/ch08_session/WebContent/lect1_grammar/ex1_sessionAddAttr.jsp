@@ -28,7 +28,7 @@
 	<h2>세션의 유효시간 : <%=session.getMaxInactiveInterval() %></h2>
 	<hr>
 	<a href="ex1_sessionAddAttr.jsp">세션 데이터 추가</a><br>
-	<a href="ex2_sessionGet.jsp">특정 세션 GET</a><br><br>
+	<a href="ex2_sessionGet.jsp">특정 세션 GET</a><br>
 	<a href="ex3_sessionList.jsp">세션 모든 데이터 리스트</a><br>
 	<a href="ex4_sessionRemove.jsp">세션 삭제(특정 세션이나 모든 세션 데이터)</a>
 </body>
