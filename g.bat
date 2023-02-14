@@ -1,3 +1,3 @@
 git add .
-git commit -m "jsp_cookie"
+git commit -m "jsp_session"
 git push -u origin main
