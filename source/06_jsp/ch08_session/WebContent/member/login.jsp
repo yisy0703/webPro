@@ -18,7 +18,13 @@
 				<tr>
 					<td><label for="id">아이디</label></td>
 					<td><input type="text" name="id" id="id" required="required"
-									autofocus="autofocus"></td>
+									autofocus="autofocus"
+									value="<%
+										String id = (String)session.getAttribute("id");
+										if(id!=null){
+											out.print(id);
+										}
+									%>"></td>
 				</tr>
 				<tr>
 					<td><label for="pw">비밀번호</label></td>

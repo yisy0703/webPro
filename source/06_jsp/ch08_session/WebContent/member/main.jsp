@@ -8,17 +8,19 @@
 	<title>Insert title here</title>
 	<style>
 		#mainForm_wrap{
-			height:600px; line-height: 600px; font-size: 32px;
+			width:1000px; margin: 10px auto; height: 600px; 
+			border: 1px solid #D4A190;
+			line-height: 600px;
 			text-align: center;
-			width:400px;            	
-			margin:0px auto; 
+			font-size: 3em; color: #A47160;
+			font-weight: bold;
 		}
 	</style>
 </head>
 <body>
 	<jsp:include page="../member/header.jsp"/>
 	<div id="mainForm_wrap">
-		CONTENT
+		main 화면
 	</div>
 	<jsp:include page="../member/footer.jsp"/>
 </body>

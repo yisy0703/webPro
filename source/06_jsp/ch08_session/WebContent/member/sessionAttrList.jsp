@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String conPath = request.getContextPath(); %>
@@ -19,17 +20,18 @@
 	<jsp:include page="../member/header.jsp"/>
 	<div id="mainForm_wrap">
 		<br><br>
-		<h3>쿠키 리스트</h3>
+		<h3>세션 데이터 리스트</h3>
 		<%
-			Cookie[] cookies = request.getCookies();
-			if(cookies!=null){
-				for(Cookie cookie : cookies){
-					String cname = cookie.getName();
-					String cvalue = cookie.getValue();
-					out.println("<p>" + cname +"(쿠키이름) : " + cvalue +"(쿠키값)</p>");
-				}
-			}else{
-				out.println("<p>존재하는 쿠키가 없습니다</p>");
+			Enumeration<String> sAttrNames = session.getAttributeNames();
+			int cnt = 0;
+			while(sAttrNames.hasMoreElements()){
+				cnt++;
+				String sname = sAttrNames.nextElement();
+				String svalue = session.getAttribute(sname).toString();
+				out.println(sname+"(세션명) : "+svalue+"(세션값)<br>");
+			}
+			if(cnt==0){
+				out.println("유효한 세션이 없습니다");
 			}
 		%>
 	</div>
