@@ -11,20 +11,20 @@
 <body>
 	<%
 		String name = (String)session.getAttribute("name");
-		String id   = (String)session.getAttribute("id");
+		if(name!=null){
+			// session.removeAttribute("id");
+			// session.removeAttribute("name");
+			session.invalidate();
+			out.println("<h2>성공적으로 로그아웃되었습니다</h2>");
+		}else{
+			out.println("<h2>로그인 상태가 아닙니다</h2>");
+		}
 	%>
-	<%if(name!=null){ // 로그인 상태%>
-		<h2><%=name %>(<%=id %>)님 안녕하세요</h2>
-		<button onclick="location.href='<%=conPath%>/lect2_login/logout.jsp'">로그아웃</button>
-	<%}else{ // 비 로그인 상태 %>
-		<h2>손님 안녕하세요. 로그인이 필요합니다</h2>
-		<button onclick="location.href='<%=conPath%>/lect2_login/login.jsp'">로그인</button>
-	<%} %>
+	<button onclick="location.href='login.jsp'">로그인</button>
+	<button onclick="location.href='welcome.jsp'">메인페이지</button>
 	<button onclick="location.href='sessionAttrList.jsp'">세션 들여다 보기</button>
 </body>
 </html>
-
-
 
 
 
