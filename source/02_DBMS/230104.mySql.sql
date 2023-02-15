@@ -343,3 +343,8 @@ select pname, pay from personal order by pay desc limit 5;
 select pname, pay from personal order by pay desc limit 0, 5; -- 1등부터 5개
 select pname, pay from personal order by pay desc limit 5, 5; -- 6등부터 5개
 select pname, pay from personal order by pay desc limit 6, 3; -- 7등부터 3개
+
+use kimdb;
+select * from personal;
+delete from personal;
+
