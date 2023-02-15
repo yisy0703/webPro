@@ -24,7 +24,7 @@
 		<p>
 			부서번호 
 			<select name="deptno">
-				<option></option>
+				<option value="0"></option>
 				<%
 					Connection        conn = null;
 					PreparedStatement pstmt = null;

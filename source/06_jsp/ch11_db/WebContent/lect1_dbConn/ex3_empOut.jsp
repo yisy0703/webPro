@@ -47,7 +47,7 @@
 					}while(rs.next());
 				}else{
 					// 해당 부서번호의 사원이 없는 경우
-					out.println("<tr><td colspan='4'>해당 부서 번호의 사원이 없습니다</td><tr>");
+					out.println("<tr><td colspan='4'>해당 부서 번호의 사원이 없습니다</td></tr>");
 				}
 			}catch(Exception e){
 				System.out.println(e.getMessage());
