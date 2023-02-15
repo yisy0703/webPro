@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function(){
+			document.querySelector('form').onsubmit = function(){
+				var studentNum = document.getElementsByName('studentNum')[0];
+				var name = document.getElementsByName('name')[0];
+				var score = document.getElementsByName('score')[0];
+				if(!studentNum.value){
+					alert('필수 입력사항입니다');
+					studentNum.focus();
+					return false;
+				}else if(!name.value){
+					alert('필수 입력사항입니다');
+					name.focus();
+					return false;
+				}
+				var select = document.querySelectorAll('select');
+				for(var idx = 0 ; idx<select.length ; idx++){
+					option = select[idx].querySelectorAll('option');
+					if(option[0].selected){ // 0번째 option 선택시 submit 제한
+						alert(option[0].value+'을 선택하세요');
+						select[idx].focus();
+						return false;
+					}
+				}	//for
+				if(!score.value){
+					alert('필수 입력사항입니다');
+					score.focus();
+					return false;
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<h2>개인정보 입력</h2>
+	<form action="step6.jsp" method="post">
+		<p>학번 <input type="text" name="studentNum"></p>
+		<p>이름 <input type="text" name="name"></p>
+		<p>학년 <select name="grade">
+						<option value="학년"></option>
+						<option value="1">1학년</option>
+						<option value="2">2학년</option>
+						<option value="3">3학년</option>
+						<option value="4">4학년</option>
+						<option value="5">5학년</option>
+						<option value="6">6학년</option>
+					 </select> 
+		</p>
+		<p>반 &nbsp; <select name="className">
+						<option value="반"></option>
+						<option value="A">A반</option>
+						<option value="B">B반</option>
+						<option value="C">C반</option>
+					 </select>
+		</p>
+		<p>점수 <input type="number" name="score" min="0" max="100"></p>
+		<p><input type="submit" value="입력"></p>
+	</form>
+</body>
+</html>
