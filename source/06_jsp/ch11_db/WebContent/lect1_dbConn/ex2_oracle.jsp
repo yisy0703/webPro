@@ -34,21 +34,22 @@
 			rs   = stmt.executeQuery(sql); // 4단계(SQL문 전송) + 5단계(SQL전송 결과받기)
 			if(rs.next()){ // 데이터 있는 경우
 				out.println("<tr><th>사번</th><th>이름</th><th>직책</th><th>상사사번</th>" +
-								"<th colspan='2'>입사일</th><th>급여</th><th>상여</th><th>부서번호</th></tr>");
+								"<th colspan='3'>입사일</th><th>급여</th><th>상여</th><th>부서번호</th></tr>");
 				do{
 					// 6단계 : 결과받아 적당한 로직 수행
 					int empno = rs.getInt("empno");
 					String ename = rs.getString("ename");
 					String job   = rs.getString("job");
-					int    mgr = rs.getInt("mgr");
-					//String hiredate = rs.getString("hiredate");
+					int    mgr   = rs.getInt("mgr");
+					String hiredate = rs.getString("hiredate");
 					Date hiredateD = rs.getDate("hiredate");
 					Timestamp hiredateT = rs.getTimestamp("hiredate");
 					int sal        = rs.getInt("sal");
 					int comm      = rs.getInt("comm");
 					int deptno        = rs.getInt("deptno");
 					out.println("<tr><th>"+empno+"</th><th>"+ename+"</th><th>"+job+"</th>"+
-									"<th>"+mgr+"</th><th>"+hiredateD+ "</th><th>"+hiredateT+"</th>"+
+									"<th>"+mgr+"</th><th>"+hiredate+ "</th><th>"+hiredateD+ 
+									"</th><th>"+hiredateT+"</th>"+
 									"<th>"+sal+"</th><th>"+comm+"</th><th>"+deptno+"</th></tr>");
 				}while(rs.next());
 			}else{ // 데이터가 없는 경우
