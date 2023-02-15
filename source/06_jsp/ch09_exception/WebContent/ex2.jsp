@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page errorPage="exceptionPage.jsp" %>
+<%@ page errorPage="exceptionPage.jsp" %><!-- web.xml의 예외페이지 처리보다 우선순위 높음 -->
 <!DOCTYPE html>
 <html>
 <head>
