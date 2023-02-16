@@ -66,7 +66,17 @@ public class EmpDao {
 		return dtos;
 	}
 	// searchName으로 empList를 반환
+	public ArrayList<EmpDto> searchNameEmpList(String schName){
+		ArrayList<EmpDto> dtos = new ArrayList<EmpDto>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String query = "";
+		return dtos;
+	}
 }
+
+
 
 
 
