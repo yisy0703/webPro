@@ -48,7 +48,6 @@
 		out.println("<table><tr><th>사번</th><th>이름</th><th>직책</th><th>상사사번</th>"
 						+"<th>입사일</th><th>급여</th><th>부서번호</th><th>부서명</th></tr>");
 		if(rs.next()){
-			
 			do{
 				int empno = rs.getInt("empno");
 				String ename = rs.getString("ENAME");
