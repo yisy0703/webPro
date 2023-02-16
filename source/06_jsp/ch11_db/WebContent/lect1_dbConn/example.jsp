@@ -22,8 +22,11 @@
 %>
 <body>
 	<form action="">
-		<p>사원명 <input type="text" name="searchName" value="<%=searchName.toUpperCase().trim()%>">
-				<input type="submit" value="검색">
+		<p>
+			사원명 
+			<input type="text" name="searchName" 
+							value="<%=searchName.toUpperCase().trim()%>">
+			<input type="submit" value="검색">
 		</p>
 	</form>
 <%
