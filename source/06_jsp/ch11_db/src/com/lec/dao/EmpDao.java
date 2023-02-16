@@ -71,7 +71,37 @@ public class EmpDao {
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String query = "";
+		String query = "SELECT E.*, DNAME FROM EMP E, DEPT D " + 
+				"  WHERE D.DEPTNO=E.DEPTNO and ENAME LIKE '%'||trim(UPPER(?))||'%'";
+		try {
+			conn = DriverManager.getConnection(url, uid, upw);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, schName);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int    empno   = rs.getInt("empno");
+				String ename   = rs.getString("ename");
+				String job     = rs.getString("job");
+				int    mgr     = rs.getInt("mgr");
+				Date   hiredate= rs.getDate("hiredate");
+				int    sal     = rs.getInt("sal");
+				int    comm    = rs.getInt("comm");
+				int    deptno  = rs.getInt("deptno");
+				String dname   = rs.getString("dname");
+				dtos.add(new EmpDto(empno, ename, job, mgr, hiredate, sal, comm, deptno, dname));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		return dtos;
 	}
 }
