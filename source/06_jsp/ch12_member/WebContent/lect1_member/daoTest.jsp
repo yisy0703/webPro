@@ -64,7 +64,7 @@
 		dto = dao.getMember("qqq");
 		out.println("qqq 아이디인 member : " + dto + "<br>");
 		out.println("<h3>5. 정보 수정 </h3>");
-		dto = new MemberDto("aaa", "111", "나몰라", null, null, null, null,
+		dto = new MemberDto("abcbcbc", "111", "나몰라", null, null, null, null,
 				"north@hong.com", null, "북한", null);
 		result = dao.modifyMember(dto);
 		if(result == MemberDao.SUCCESS){
