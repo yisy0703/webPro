@@ -31,6 +31,12 @@ public class MemberDao {
 			System.out.println(e.getMessage());
 		}
 	}
+	// connection 객체를 return
+	private Connection getConnection() throws SQLException {
+		Connection conn = DriverManager.getConnection(url, "scott", "tiger");
+		return conn;
+	}
+	
 	// 1. 회원가입시 id 중복체크 : 
 	public int confirmId(String id) {
 		int result = MEMBER_EXISTENT; // 초기화
@@ -39,7 +45,7 @@ public class MemberDao {
 		ResultSet         rs    = null;
 		String sql = "SELECT * FROM MEMBER WHERE ID=?";
 		try {
-			conn = DriverManager.getConnection(url, "scott", "tiger");
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
