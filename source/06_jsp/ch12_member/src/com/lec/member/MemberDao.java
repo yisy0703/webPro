@@ -41,10 +41,25 @@ public class MemberDao {
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			pstmt = conn.prepareStatement(sql);
-			
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				// 중복된 id라서 
+				result = MEMBER_EXISTENT;
+			}else {
+				// 사용한 id(없는 id)
+				result = MEMBER_NONEXISTENT;
+			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		return result;
 	}
