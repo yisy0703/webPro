@@ -69,12 +69,76 @@ public class MemberDao {
 		}
 		return result;
 	}
-	// 2. 회원가입 : public int joinMember(MemberDto dto)
-	// 3. 로그인 : public int loginCheck(String id, String pw)
+	// 2. 회원가입
+	public int joinMember(MemberDto dto) {
+		int result = FAIL;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO MEMBER " + 
+		"    (ID, PW, NAME, PHONE1, PHONE2, PHONE3, GENDER, EMAIL, BIRTH, ADDRESS, RDATE) " + 
+			"  VALUES" + 
+		"    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE)";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			pstmt.setString(3, dto.getName());
+			pstmt.setString(4, dto.getPhone1());
+			pstmt.setString(5, dto.getPhone2());
+			pstmt.setString(6, dto.getPhone3());
+			pstmt.setString(7, dto.getGender());
+			pstmt.setString(8, dto.getEmail());
+			pstmt.setDate(9, dto.getBirth());
+			pstmt.setString(10, dto.getAddress());
+			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS? "회원가입성공":"회원가입실패");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println("회원가입 실패 : " + dto);
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
+	// 3. 로그인 
+	public int loginCheck(String id, String pw) {
+		int result = LOGIN_FAIL_ID;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM MEMBER WHERE ID=?";
+		try {
+			conn = getConnection();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
 	// 4. ID로 dto가져오기 : 로그인 성공시 session에 setAttribute / 회원정보 수정시 회원정보 가져오기
 	//           : public MemberDto getMember(String id)
 	// 5. 회원정보수정 : public int modifyMember(MemberDto dto)
 }
+
+
+
+
+
+
 
 
 
