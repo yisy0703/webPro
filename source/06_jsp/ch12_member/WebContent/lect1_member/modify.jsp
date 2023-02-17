@@ -9,6 +9,9 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
+	<script>
+		// submit 이벤트 추가 : pw와 pwChk 같은지, email 유효성 검증 
+	</script>
 </head>
 <body>
 	<%! 
