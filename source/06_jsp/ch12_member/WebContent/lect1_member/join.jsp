@@ -12,29 +12,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
-	<script>
-		const infoConfirm = function(){
-			var patternMail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/; // macth함수 사용
-			if(join_frm.id.value<3){
-				alert('아이디는 반드시 3글자 이상');
-				join_frm.id.focus();
-				return;
-			}
-			if(! join_frm.pw.value){
-				alert('비밀번호는 필수입력사항입니다');
-				join_frm.pw.focus();
-				return;
-			}
-			if(join_frm.pw.value != join_frm.pwChk.value){
-				alert('비밀번호를 확인하세요');
-				join_frm.pw.value = '';
-				join_frm.pwChk.value = '';
-				join_frm.pw.focus();
-				return;
-			}
-			
-		};
-	</script>
+	<script src="<%=conPath%>/js/join.js"></script>
 </head>
 <body>
 	<form action="joinOk.jsp" method="post" name="join_frm">
@@ -71,7 +49,8 @@
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date" name="birth"></td> <%-- bin태그 사용시 날짜 입력하면 500에러 --%>
+				<td><input type="date" name="tempBirth"></td> 
+						<%-- 파라미터 이름을 birth로 하면 bin태그 사용시 날짜 입력하면 500에러 --%>
 			</tr>
 			<tr><th>주소</th><td><input type="text" name="address"></td></tr>
 			<tr>
