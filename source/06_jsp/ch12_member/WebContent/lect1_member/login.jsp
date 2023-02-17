@@ -15,7 +15,7 @@
 </head>
 <body>
 	<form action="loginOk.jsp" method="post">
-		<input type="text" name="method" value="<%=request.getParameter("method")%>">
+		<input type="hidden" name="method" value="<%=request.getParameter("method")%>">
 		<table>
 			<caption>로그인</caption>
 			<tr>
