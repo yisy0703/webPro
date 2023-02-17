@@ -1,10 +1,12 @@
 package com.lec.member;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class MemberDao {
 	public static final int SUCCESS = 1; // 회원가입, 정보수정시 성공할 때 리턴값
@@ -112,10 +114,24 @@ public class MemberDao {
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM MEMBER WHERE ID=?";
+		String sql = "SELECT ID, PW FROM MEMBER WHERE ID=?";
 		try {
 			conn = getConnection();
-			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				// 맞는 id
+				String dbPw = rs.getString("pw");
+				if(dbPw.equals(pw)) {// pw가 맞는지 체크
+					result = LOGIN_SUCCESS;
+				}else {
+					result = LOGIN_FAIL_PW;
+				}
+			}else {
+				// 틀린 id
+				result = LOGIN_FAIL_ID;
+			}			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -130,7 +146,42 @@ public class MemberDao {
 		return result;
 	}
 	// 4. ID로 dto가져오기 : 로그인 성공시 session에 setAttribute / 회원정보 수정시 회원정보 가져오기
-	//           : public MemberDto getMember(String id)
+	public MemberDto getMember(String id) {
+		MemberDto dto = null;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM MEMBER WHERE ID=?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String pw       = rs.getString("pw");
+				String name     = rs.getString("name");
+				String phone1   = rs.getString("phone1");
+				String phone2   = rs.getString("phone2");
+				String phone3   = rs.getString("phone3");
+				String gender   = rs.getString("gender");
+				String email    = rs.getString("email");
+				Date   birth    = rs.getDate("birth");
+				String address  = rs.getString("address");
+				Timestamp rdate = rs.getTimestamp("rdate");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return dto;
+	}
 	// 5. 회원정보수정 : public int modifyMember(MemberDto dto)
 }
 
