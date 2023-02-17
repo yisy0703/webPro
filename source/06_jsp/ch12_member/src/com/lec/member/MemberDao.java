@@ -1,4 +1,11 @@
 package com.lec.member;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class MemberDao {
 	public static final int SUCCESS = 1; // 회원가입, 정보수정시 성공할 때 리턴값
 	public static final int FAIL = 0; // 회원가입, 정보수정시 실패할 때 리턴값
@@ -24,6 +31,28 @@ public class MemberDao {
 			System.out.println(e.getMessage());
 		}
 	}
+	// 1. 회원가입시 id 중복체크 : 
+	public int confirmId(String id) {
+		int result = MEMBER_EXISTENT; // 초기화
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM MEMBER WHERE ID=?";
+		try {
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return result;
+	}
+	// 2. 회원가입 : public int joinMember(MemberDto dto)
+	// 3. 로그인 : public int loginCheck(String id, String pw)
+	// 4. ID로 dto가져오기 : 로그인 성공시 session에 setAttribute / 회원정보 수정시 회원정보 가져오기
+	//           : public MemberDto getMember(String id)
+	// 5. 회원정보수정 : public int modifyMember(MemberDto dto)
 }
 
 
