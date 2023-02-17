@@ -168,6 +168,8 @@ public class MemberDao {
 				Date   birth    = rs.getDate("birth");
 				String address  = rs.getString("address");
 				Timestamp rdate = rs.getTimestamp("rdate");
+				dto = new MemberDto(id, pw, name, phone1, phone2, phone3, gender, 
+							email, birth, address, rdate);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -182,19 +184,47 @@ public class MemberDao {
 		}
 		return dto;
 	}
-	// 5. 회원정보수정 : public int modifyMember(MemberDto dto)
+	// 5. 회원정보수정
+	public int modifyMember(MemberDto dto) {
+		int result = FAIL;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE MEMBER SET PW=?, " + 
+				"                  NAME=?, " + 
+				"                  PHONE1=?, " + 
+				"                  PHONE2=?, " + 
+				"                  PHONE3=?, " + 
+				"                  GENDER=?, " + 
+				"                  EMAIL=?, " + 
+				"                  BIRTH=?, " + 
+				"                  ADDRESS=? " + 
+				"	WHERE ID=?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getPw());
+			pstmt.setString(2, dto.getName());
+			pstmt.setString(3, dto.getPhone1());
+			pstmt.setString(4, dto.getPhone2());
+			pstmt.setString(5, dto.getPhone3());
+			pstmt.setString(6, dto.getGender());
+			pstmt.setString(7, dto.getEmail());
+			pstmt.setDate(8, dto.getBirth());
+			pstmt.setString(9, dto.getAddress());
+			pstmt.setString(10, dto.getId());
+			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS? "회원수정성공":"회원수정실패(id("+dto.getId()+")가없음)");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println("회원수정 실패 : " + dto);
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
