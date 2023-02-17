@@ -30,7 +30,7 @@ SELECT * FROM MEMBER WHERE ID='aaa';
 --           : public MemberDto getMember(String id)
 SELECT * FROM MEMBER WHERE ID='aaa';
 
--- 회원정보수정 : public int modifyMember(MemberDto dto)
+-- 5. 회원정보수정 : public int modifyMember(MemberDto dto)
 UPDATE MEMBER SET PW='111',
                   NAME='홍길숙',
                   PHONE1='031',
