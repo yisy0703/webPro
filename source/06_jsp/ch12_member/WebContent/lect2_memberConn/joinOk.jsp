@@ -1,4 +1,4 @@
-<%@page import="com.lec.member.MemberDao"%>
+<%@page import="com.lec.member.MemberDaoConn"%>
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -18,12 +18,12 @@
 			dto.setBirth(Date.valueOf(tempBirth));
 			// dto의 birth가 Timestamp형이면 : dto.setBirth(Timestamp.valueOf(tempBirth+" 00:00:00"));
 		}
-		MemberDao mDao = MemberDao.getInstance();
+		MemberDaoConn mDao = new MemberDaoConn();
 		int result = mDao.confirmId(dto.getId()); // ID 중복체크
-		if(result == MemberDao.MEMBER_NONEXISTENT){
+		if(result == MemberDaoConn.MEMBER_NONEXISTENT){
 			// 사용가능한 ID라서 회원가입 진행
 			result = mDao.joinMember(dto); // 회원가입
-			if(result == MemberDao.SUCCESS){
+			if(result == MemberDaoConn.SUCCESS){
 				// 회원가입 성공
 				session.setAttribute("id", dto.getId());
 	%>

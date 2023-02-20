@@ -21,7 +21,7 @@ SELECT * FROM MEMBER WHERE ID='aaa';
 INSERT INTO MEMBER 
     (ID, PW, NAME, PHONE1, PHONE2, PHONE3, GENDER, EMAIL, BIRTH, ADDRESS, RDATE) 
   VALUES
-    ('zzz','111','지길동','02','777','7777','m','hong@hong.com','1995-12-12','서울',SYSDATE);
+    ('aaa','111','지길동','02','777','7777','m','hong@hong.com','1995-12-12','서울',SYSDATE);
 
 -- 3. 로그인 : public int loginCheck(String id, String pw)
 SELECT * FROM MEMBER WHERE ID='aaa';
