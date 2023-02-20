@@ -19,7 +19,7 @@
 		header ul li a{
 			text-decoration: none;
 			font-weight: bold; font-size: 1.5em;
-			color:#005500;
+			color:#003300;
 		}
 	</style>
 </head>
@@ -44,16 +44,3 @@
 	</header>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

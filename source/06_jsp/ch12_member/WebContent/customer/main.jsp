@@ -25,16 +25,3 @@
 	<jsp:include page="../customer/footer.jsp"/>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

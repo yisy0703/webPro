@@ -10,7 +10,7 @@
 		#logoutForm_wrap{
 			height:600px; line-height: 600px; font-size: 32px;
 			text-align: center;
-			width:800px;            	
+			width:1000px;            	
 			margin:0px auto; 
 		}
 	</style>
@@ -20,27 +20,18 @@
 </head>
 <body>
 	<%
-		session.invalidate();
+		String msg = "";
+		if(session.getAttribute("customer")!=null){
+			session.invalidate();
+			msg = "<h4>로그아웃 되었습니다. 메인 페이지로 이동합니다</h4>";
+		}else{
+			msg = "<h4>로그인 상태가 아닙니다. 메인 페이지로 이동합니다</h4>";
+		}
 	%>
 	<jsp:include page="../customer/header.jsp"/>
 	<div id="logoutForm_wrap">
-		로그아웃되었습니다. 잠시후 페이지 이동이 있겠습니다
+		<%=msg %>
 	</div>
 	<jsp:include page="../customer/footer.jsp"/>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,17 +1,14 @@
 package com.lec.customer;
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-
 public class CustomerDao {
 	public static final int SUCCESS = 1; // 회원가입, 정보수정시 성공할 때 리턴값
 	public static final int FAIL = 0; // 회원가입, 정보수정시 실패할 때 리턴값
