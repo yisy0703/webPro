@@ -1,4 +1,4 @@
-<%@page import="com.lec.member.MemberDao"%>
+<%@page import="com.lec.member.MemberDaoConn"%>
 <%@page import="com.lec.member.MemberDto"%>
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -37,9 +37,9 @@
 		 			// 새비밀번호를 현비밀번호로 
 		 			dto.setPw(oldPw);
 		 		}
-		 		MemberDao mDao = MemberDao.getInstance();
+		 		MemberDaoConn mDao = new MemberDaoConn();
 		 		int result = mDao.modifyMember(dto);
-		 		if(result == MemberDao.SUCCESS){
+		 		if(result == MemberDaoConn.SUCCESS){
 		 			// 정보 수정성공
 		 			session.setAttribute("member", dto); // 수정된 정보를 session 속성으로 수정
 		 %>
