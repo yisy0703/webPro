@@ -22,3 +22,16 @@ eclipse > Run > Run Configuration > Apache Tomcat > Tomcat v9.0 Server >
 	Arguiments > 
 	Program arguments에 "-Djava.net.preferIPv4Stack=true" 입력
 	VM arguments:에 "-Djava.net.preferIPv4Stack=true" 입력
+  10) context.xml에 아래의 태그를 추가하고 동기화 시키기
+	<Resource 
+			auth="Container"
+			driverClassName = "oracle.jdbc.driver.OracleDriver"
+			url = "jdbc:oracle:thin:@localhost:1521:xe"
+			username = "scott"
+			password = "tiger"
+			name = "jdbc/Oracle11g" 
+			type = "javax.sql.DataSource"
+			maxActive = "10"
+			maxWait = "1000"
+		/>
+

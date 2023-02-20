@@ -8,6 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 public class MemberDaoConn {
 	public static final int SUCCESS = 1; // 회원가입, 정보수정시 성공할 때 리턴값
 	public static final int FAIL = 0; // 회원가입, 정보수정시 실패할 때 리턴값
@@ -16,26 +21,23 @@ public class MemberDaoConn {
 	public static final int LOGIN_SUCCESS = 1; // 로그인 성공시 리턴값
 	public static final int LOGIN_FAIL_PW = 0; // 로그인시 pw오류일 때 리턴값
 	public static final int LOGIN_FAIL_ID = -1;// 로그인시 id오류일 때 리턴값
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url    = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 	// 싱글톤
-	private static MemberDaoConn instance = new MemberDaoConn(); // 자기가 자기 클래스형 객체를 참조
-	public static MemberDaoConn getInstance() {
-//		if(instance==null) {
-//			instance = new MemberDao();
-//		}
-		return instance;
-	}
-	private MemberDaoConn() {
-		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+//	private static MemberDaoConn instance = new MemberDaoConn(); // 자기가 자기 클래스형 객체를 참조
+//	public static MemberDaoConn getInstance() {
+//		return instance;
+//	}
+//	private MemberDaoConn() {}
 	// connection 객체를 return
 	private Connection getConnection() throws SQLException {
-		Connection conn = DriverManager.getConnection(url, "scott", "tiger");
+		Connection conn = null;
+		// 컨넥션 풀의 DataSource안의 conn 객체를 리턴
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle11g");
+			conn = ds.getConnection(); // DataSource안의 conn을 가져오기
+		} catch (NamingException e) {
+			System.out.println(e.getMessage());
+		}
 		return conn;
 	}
 	
