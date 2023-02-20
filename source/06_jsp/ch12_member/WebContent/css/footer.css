@@ -1,0 +1,44 @@
+@charset "UTF-8";
+footer {
+	overflow:hidden;
+	width: 1000px;
+	margin: 0 auto;
+}
+footer div {
+	float:left;
+	height: 90px;
+}
+footer div.office_logo {
+	width: 300px;
+	text-align: center;
+}
+footer div.office_logo img {
+	margin-left:100px;
+	width:150px;
+	height: 60px;
+	padding:20px;
+}
+footer div.office_address{
+	width:700px;
+}
+footer div.office_address ul{
+	margin: 15px 20px 20px 20px;
+}
+footer div.office_address ul li{
+	padding:2px;
+	color:gray;
+	font-size: 0.8em;
+	list-style: none;
+}
+footer div.copyright{
+	clear: both;
+	border: 0;
+	width: 1000px;
+	height: 25px;
+	margin: 0 auto;
+	background-color: #D4A190;
+	color: white;
+	text-align: center;
+	line-height: 25px;
+	font-size: 0.9em;
+}
