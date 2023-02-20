@@ -15,8 +15,8 @@ import javax.sql.DataSource;
 public class CustomerDao {
 	public static final int SUCCESS = 1; // 회원가입, 정보수정시 성공할 때 리턴값
 	public static final int FAIL = 0; // 회원가입, 정보수정시 실패할 때 리턴값
-	public static final int MEMBER_EXISTENT = 0; // 중복된 ID일 때 리턴값
-	public static final int MEMBER_NONEXISTENT = 1; // 사용가능한 ID일 때 리턴값
+	public static final int CUSTOMER_EXISTENT = 0; // 중복된 ID일 때 리턴값
+	public static final int CUSTOMER_NONEXISTENT = 1; // 사용가능한 ID일 때 리턴값
 	public static final int LOGIN_SUCCESS = 1; // 로그인 성공시 리턴값
 	public static final int LOGIN_FAIL = 0; // 로그인 실패시 리턴값
 	// 싱글톤
@@ -38,5 +38,6 @@ public class CustomerDao {
 		return conn;
 	}
 	
+	// 1. 회원가입시 id 중복체크 : 
 	
 }
