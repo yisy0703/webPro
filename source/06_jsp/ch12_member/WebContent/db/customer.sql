@@ -17,7 +17,7 @@ SELECT COUNT(*) FROM CUSTOMER WHERE CID='aaa';
  
 -- 2. 회원가입 : public int joinCustmer(CustomerDto dto)
 INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CBIRTH, CGENDER)
-  VALUES ('bbb', '111', '홍', '010-9999-9999', 'h@h.com', '서울', 
+  VALUES ('aaa', '111', '홍', '010-9999-9999', 'h@h.com', '서울', 
         '1995-12-12', 'm');
         
 -- 3. 로그인 : public int loginCheck(String cid, String cpw)
@@ -37,9 +37,3 @@ UPDATE CUSTOMER SET CPW = '111',
           WHERE CID='aaa';
 SELECT * FROM CUSTOMER;
 COMMIT;
-
-
-
-
-
-
