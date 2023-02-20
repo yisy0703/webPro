@@ -1,0 +1,17 @@
+- com.lec.customer 패키지
+CustomerDto.java
+CustomerDao.java ( 컨넥션 풀 이용, 싱글톤 )
+footer.css
+header.css
+join.css
+- webContent/customer
+footer.jsp
+header.jsp ( 세션에 customer 속성 여부)
+main.jsp
+join.jsp
+joinPro.jsp (입력된 정보를 customer 테이블에 추가)
+login.jsp
+loginPro.jsp ( 세션에 customer 속성 추가)
+modify.jsp
+modifyPro.jsp (db와 세션 수정)
+logout.jsp
