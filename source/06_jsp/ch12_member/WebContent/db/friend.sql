@@ -12,5 +12,13 @@ SELECT * FROM FRIEND;
 -- 친구 추가
 INSERT INTO FRIEND VALUES (FRIEND_NO_SEQ.NEXTVAL, '홍길동','010-9999-9999');
 -- 친구 검색(추후 추가)
-
+SELECT * FROM FRIEND WHERE NAME LIKE '%'||'길'||'%' AND TEL LIKE '%'||'9999'||'%';
 COMMIT;
+
+
+
+
+
+
+
+
