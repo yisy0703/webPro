@@ -15,16 +15,23 @@ CREATE TABLE BOARD(
   RDATE   DATE DEFAULT SYSDATE     -- 글쓴 시점(날짜+시간)
 );
 -- 1. 글갯수
-
+SELECT COUNT(*) FROM BOARD;
 -- 2. 글목록(글그룹이 최신인 글이 위로)
-
+SELECT * FROM BOARD ORDER BY REF DESC;
 -- 3. 글쓰기(원글쓰기) - 글쓴이, 글제목, 글본문, 이메일, PW
-
+  -- 글번호를 생성
+  SELECT NVL(MAX(NUM),0)+1 FROM BOARD;
+INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, EMAIL, 
+                    PW, REF, RE_STEP, RE_INDENT, IP)
+  VALUES ((SELECT NVL(MAX(NUM),0)+1 FROM BOARD), '홍길동', '제목1', '본문\n방가', null,
+                    '111', (SELECT NVL(MAX(NUM),0)+1 FROM BOARD), 0, 0, '192.168.0.1' );
 -- 4. 글번호로 글상세보기 내용(DTO) 가져오기
 
 -- 5. 조회수 올리기
 
--- 6. 글삭제(비밀번호를 맞게 입력한 경우만 삭제)
+-- 6. 글 수정
+
+-- 7. 글삭제(비밀번호를 맞게 입력한 경우만 삭제)
 
 
 
