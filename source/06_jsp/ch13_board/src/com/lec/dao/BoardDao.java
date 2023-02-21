@@ -34,7 +34,7 @@ public class BoardDao {
 		}
 		return conn;
 	}
-//	-- 1. 글갯수 : SELECT COUNT(*) FROM BOARD;
+//	-- 1. 글갯수
 	public int getBoardTotalCnt() {
 		int totalCnt = 0;
 		Connection        conn  = null;
@@ -60,7 +60,7 @@ public class BoardDao {
 		}
 		return totalCnt;
 	}
-//	-- 2. 글목록 : 	SELECT * FROM BOARD ORDER BY REF DESC;
+//	-- 2. 글목록
 	public ArrayList<BoardDto> listBoard(){
 		ArrayList<BoardDto> dtos = new ArrayList<BoardDto>();
 		Connection        conn  = null;
@@ -100,10 +100,7 @@ public class BoardDao {
 		}
 		return dtos;
 	}
-//	-- 3. 글쓰기(원글쓰기) : INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, EMAIL, 
-//	                    PW, REF, RE_STEP, RE_INDENT, IP)
-//	  VALUES ((SELECT NVL(MAX(NUM),0)+1 FROM BOARD), '홍길동', '제목1', '본문\n방가', null,
-//	                    '111', (SELECT NVL(MAX(NUM),0)+1 FROM BOARD), 0, 0, '192.168.0.1' );
+//	-- 3. 원글쓰기 
 	public int insertBoard(BoardDto dto) {
 		int result = FAIL;
 		Connection conn = null;
@@ -112,6 +109,28 @@ public class BoardDao {
 				"	                    PW, REF, RE_STEP, RE_INDENT, IP)" + 
 				"	  VALUES ((SELECT NVL(MAX(NUM),0)+1 FROM BOARD), ?, ?, ?, ?," + 
 				"	                    ?, (SELECT NVL(MAX(NUM),0)+1 FROM BOARD), 0, 0, ?)";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getWriter());
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getPw());
+			pstmt.setString(6, dto.getIp());
+			result = pstmt.executeUpdate();
+			//System.out.println(result==SUCCESS? "원글쓰기 성공":"실패");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println("원글쓰다 예외 발생 : " + dto);
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		return result;
 	}
 //	-- 4. 글번호로 글상세보기 내용(DTO) 가져오기 : SELECT * FROM BOARD WHERE NUM=2;
