@@ -7,6 +7,9 @@ CREATE TABLE BOARD(
   EMAIL   VARCHAR2(30),            -- 작성자 이메일
   READCOUNT NUMBER(5) DEFAULT 0,   -- 글 HIT수 (조회수)
   PW      VARCHAR2(30) NOT NULL,   -- 글 삭제시 쓸 비밀번호
+  
+  
+  
   IP      VARCHAR2(30) NOT NULL,   -- 글 작성시 컴퓨터 IP 주소
   RDATE   DATE DEFAULT SYSDATE     -- 글쓴 시점(날짜+시간)
 );
