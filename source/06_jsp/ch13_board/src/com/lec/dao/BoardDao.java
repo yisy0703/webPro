@@ -133,16 +133,127 @@ public class BoardDao {
 		}
 		return result;
 	}
-//	-- 4. 글번호로 글상세보기 내용(DTO) 가져오기 : SELECT * FROM BOARD WHERE NUM=2;
-//
-//	-- 5. 조회수 올리기 : UPDATE BOARD SET READCOUNT = READCOUNT + 1 WHERE NUM=2;
-//
-//	-- 6. 글 수정 : UPDATE BOARD SET SUBJECT = '수정된제목1',
-//	                CONTENT = '수정된 본문\n방가',
-//	                EMAIL = 'hong@hong.com',
-//	                PW ='111',
-//	                IP='127.0.0.1'
-//	            WHERE NUM=1;
-//
-//	-- 7. 글삭제(비밀번호를 맞게 입력한 경우만 삭제): DELETE FROM BOARD WHERE NUM=1 AND PW='111';
+//	-- 4. 글번호로 글 내용(DTO) 가져오기
+	public BoardDto getBoardOneLine(int num) {
+		BoardDto dto = null;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM BOARD WHERE NUM=?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String writer   = rs.getString("writer");
+				String subject  = rs.getString("subject");
+				String content  = rs.getString("content");
+				String email    = rs.getString("email");
+				int    readcount= rs.getInt("readcount");
+				String pw       = rs.getString("pw");
+				int    ref      = rs.getInt("ref");
+				int    re_step  = rs.getInt("re_step");
+				int    re_indent= rs.getInt("re_indent");
+				String ip       = rs.getString("ip");
+				Timestamp rdate = rs.getTimestamp("rdate");
+				dto = new BoardDto(num, writer, subject, content, email, readcount, 
+						pw, ref, re_step, re_indent, ip, rdate);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return dto;
+	}
+//	-- 5. 조회수 올리기 
+	public void readCountUp(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE BOARD SET READCOUNT = READCOUNT + 1 WHERE NUM = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			//int result = pstmt.executeUpdate();
+			//System.out.println(result==SUCCESS? "조회수증가":"num 오류");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+//	-- 6. 글 수정
+	public int updateBoard(BoardDto dto) {
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE BOARD SET SUBJECT = ?," + 
+				"	                CONTENT = ?," + 
+				"	                EMAIL = ?," + 
+				"	                PW = ?," + 
+				"	                IP = ? " + 
+				"	            WHERE NUM = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getEmail());
+			pstmt.setString(4, dto.getPw());
+			pstmt.setString(5, dto.getIp());
+			pstmt.setInt(6, dto.getNum());
+			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS? "글 수정 성공":"글 수정 실패");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println("글수정 예외 발생 : " + dto);
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
+//	-- 7. 글삭제(비밀번호를 맞게 입력한 경우만 삭제) 
+	public int deleteBoard(int num, String pw) {
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM BOARD WHERE NUM = ? AND PW = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, pw);
+			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS? "글 삭제 완료":"글 삭제 실패(비번확인)");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
 }
