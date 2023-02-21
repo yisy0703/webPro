@@ -40,6 +40,11 @@
 		}else{
 			out.println("수정 실패. 오타찾아");
 		}
+		out.println("<h3>7. 6번글 삭제 </h3>");
+		result = bDao.deleteBoard(6, "1");
+		out.println(result == BoardDao.SUCCESS? "6번글 삭제성공<br>":"6번글 삭제 실패(비번)<br>");
+		result = bDao.deleteBoard(6, "111");
+		out.println(result == BoardDao.SUCCESS? "6번글 삭제성공<br>":"6번글 삭제 실패(비번)<br>");
 	%>
 </body>
 </html>
