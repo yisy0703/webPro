@@ -29,7 +29,7 @@
 				out.println("<tr>");
 				out.println(" <td>"+friend.getNo() + "</td>");
 				out.println(" <td>"+friend.getName() + "</td>");
-				out.println(" <td>"+(tel!=null ?  tel : "-" )+ "</td>");
+				out.println(" <td>"+(tel==null? "":tel)+ "</td>");
 				out.println("</tr>");
 			}
 			
@@ -43,3 +43,5 @@
 	</table>
 </body>
 </html>
+
+
