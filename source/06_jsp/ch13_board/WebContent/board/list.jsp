@@ -39,7 +39,8 @@
 														+ dto.getContent()+"</a>");					
 					out.println("</td>");
 					//메일
-					out.println("<td>" + dto.getEmail() + "</td>");
+					String email = dto.getEmail();
+					out.println("<td>" + (email==null? "-":email) + "</td>");
 					//조회수
 					out.println("<td>"+dto.getReadcount()+"</td></tr>");
 				}
