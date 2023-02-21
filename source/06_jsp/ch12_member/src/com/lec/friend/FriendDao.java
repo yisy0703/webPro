@@ -83,4 +83,45 @@ public class FriendDao {
 		}
 		return result;
 	}
+	// 친구 전부 가져오기
+	public ArrayList<FriendDto> getSchFriends(String schName, String schTel){
+		ArrayList<FriendDto> dtos = new ArrayList<FriendDto>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM FRIEND WHERE NAME LIKE '%'||?||'%' AND TEL LIKE '%'||?||'%'";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, schName);
+			pstmt.setString(2, schTel);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int no      = rs.getInt("no");
+				String name = rs.getString("name");
+				String tel  = rs.getString("tel");
+				dtos.add(new FriendDto(no, name, tel));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (Exception e) { }
+		}
+		return dtos;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
