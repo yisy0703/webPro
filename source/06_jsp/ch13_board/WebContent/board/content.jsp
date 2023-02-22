@@ -18,7 +18,7 @@
 		if(dto==null){
 			response.sendRedirect(conPath+"/board/list.jsp");
 		}else{
-			bDao.readCountUp(Integer.parseInt(num)); // hit수 올리기
+			bDao.readCountUp(num); // hit수 올리기
 	%>
 			<table>
 				<caption><%=num %>번 글 상세보기</caption>
@@ -28,16 +28,16 @@
 					<th>본문</th>
 					<td><pre><%=dto.getContent() %></pre></td>
 				</tr>
-				<tr><th>이메일</th><td><%=dto.getEmail()==null? "":dto.getEmail() %></td></tr>
-				<tr><th>조회수</th><td><%=dto.getReadcount() %></td></tr>
+				<tr><th>이메일</th><td><%=dto.getEmail()==null? "-":dto.getEmail() %></td></tr>
+				<tr><th>조회수</th><td><%=dto.getReadcount()+1 %></td></tr>
 				<tr><th>IP</th><td><%=dto.getIp() %></td></tr>
 				<tr><th>작성</th><td><%=dto.getRdate() %></td></tr>			
 				<tr>
 					<td colspan="2">
-						<button>수정</button>
-						<button>삭제</button>
+						<button onclick="location.href='<%=conPath%>/board/updateForm.jsp?num=<%=num%>'">수정</button>
+						<button onclick="location.href='<%=conPath %>/board/deleteForm.jsp?num=<%=num %>'">삭제</button>
 						<button>답변</button>
-						<button>목록</button>
+						<button onclick="location.href='<%=conPath%>/board/list.jsp'">목록</button>
 					</td>
 				</tr>
 			</table>
