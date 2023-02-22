@@ -39,6 +39,24 @@
 											required="required"><%=dto.getContent() %></textarea>
 				</td>
 			</tr>
+			<tr>
+				<th>이메일</th>
+				<td><input type="email" name="email" value="<%=dto.getEmail()%>"></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td>
+					<input type="password" name="pw" required="required" value="<%=dto.getPw()%>">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="수정" class="btn">
+					<input type="reset" value="취소" class="btn" onclick="history.go(-1)">
+					<input type="button" value="목록" class="btn"
+								onclick="location.href='<%=conPath%>/board/list.jsp'">
+				</td>
+			</tr>
 		</table>
 	</form>
 </body>
