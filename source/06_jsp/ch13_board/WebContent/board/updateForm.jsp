@@ -17,7 +17,7 @@
 		BoardDto dto = bDao.getBoardOneLine(num);
 	%>
 	<form action="<%=conPath%>/board/updatePro.jsp" method="post">
-		<input type="text" name="num" value="<%=num %>">
+		<input type="hidden" name="num" value="<%=num %>">
 		<table>
 			<caption><%=num %>번 글 수정</caption>
 			<tr>
