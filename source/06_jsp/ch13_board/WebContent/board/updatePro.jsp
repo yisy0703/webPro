@@ -25,7 +25,8 @@
 	 %>	
 	 		<script>
 	 			alert('글 수정 성공');
-	 			location.href = '<%=conPath%>/board/list.jsp';
+	 			// location.href = '<%=conPath%>/board/list.jsp';
+	 			location.href = '<%=conPath%>/board/content.jsp?num=<%=dto.getNum()%>';
 	 		</script>
 	 <%}else{%>
 	 		<script>
