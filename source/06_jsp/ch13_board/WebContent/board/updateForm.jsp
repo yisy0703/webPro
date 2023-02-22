@@ -41,7 +41,12 @@
 			</tr>
 			<tr>
 				<th>이메일</th>
-				<td><input type="email" name="email" value="<%=dto.getEmail()%>"></td>
+				<td>
+					<input type="email" name="email" value="<%
+																							String email = dto.getEmail();
+																							if(email!=null) out.print(email);
+					%>">
+				</td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
