@@ -17,8 +17,15 @@
 		BoardDto dto = bDao.getBoardOneLine(num);
 	%>
 	<form action="<%=conPath%>/board/updatePro.jsp" method="post">
+		<input type="hidden" name="num" value="<%=num %>">
 		<table>
-			<caption></caption>
+			<caption><%=num %>번 글 수정</caption>
+			<tr>
+				<th>작성</th>
+				<td>
+					<input type="text" name="writer" readonly="readonly" value="<%=dto.getWriter()%>">
+				</td>
+			</tr>
 		</table>
 	</form>
 </body>
