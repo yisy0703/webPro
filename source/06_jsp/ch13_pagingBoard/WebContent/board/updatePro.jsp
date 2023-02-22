@@ -21,12 +21,14 @@
 	 	// out.println(dto);
 	 	BoardDao bDao = BoardDao.getInstance();
 	 	int result = bDao.updateBoard(dto);
+	 	/* pageNum 추가 */
+	 	String pageNum = request.getParameter("pageNum");
 	 	if(result == BoardDao.SUCCESS){
 	 %>	
 	 		<script>
 	 			alert('글 수정 성공');
-	 			// location.href = '<%=conPath%>/board/list.jsp';
-	 			location.href = '<%=conPath%>/board/content.jsp?num=<%=dto.getNum()%>';
+	 			// location.href = '<%=conPath%>/board/list.jsp?pageNum=<%=pageNum%>';
+	 			location.href = '<%=conPath%>/board/content.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>';
 	 		</script>
 	 <%}else{%>
 	 		<script>

@@ -9,7 +9,11 @@
 	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<% String num = request.getParameter("num"); %>
+	<% 
+		String num = request.getParameter("num");
+		/* pageNum 추가 */
+		String pageNum = request.getParameter("pageNum");
+	%>
 	<table>
 		<caption><%=num %>번 글 삭제</caption>
 		<tr>
@@ -17,6 +21,7 @@
 				<fieldset>
 					<legend>삭제를 위한 암호</legend>
 					<form action="<%=conPath%>/board/deletePro.jsp" method="post">
+						<input type="hidden" name="pageNum" value="<%=pageNum%>">
 						<input type="hidden" name="num" value="<%=num%>">
 						<p>암호 <input type="password" name="pw" required="required" 
 										autofocus="autofocus" class="btn"></p>

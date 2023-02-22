@@ -20,6 +20,8 @@
 			dto.setContent("본문입니다 " + i);
 			if(i%5!=0){
 				dto.setEmail("hong"+i+"@lec.com");
+			}else{
+				dto.setEmail(null);
 			}
 			dto.setPw("111");
 			dto.setIp("192.168.0."+i);

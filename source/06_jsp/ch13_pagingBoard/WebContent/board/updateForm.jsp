@@ -15,8 +15,11 @@
 		String num = request.getParameter("num");
 		BoardDao bDao = BoardDao.getInstance();
 		BoardDto dto = bDao.getBoardOneLine(num);
+		/* pageNum 추가 */
+		String pageNum = request.getParameter("pageNum");
 	%>
 	<form action="<%=conPath%>/board/updatePro.jsp" method="post">
+		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		<input type="hidden" name="num" value="<%=num %>">
 		<table>
 			<caption><%=num %>번 글 수정</caption>
@@ -59,7 +62,7 @@
 					<input type="submit" value="수정" class="btn">
 					<input type="reset" value="취소" class="btn" onclick="history.go(-1)">
 					<input type="button" value="목록" class="btn"
-								onclick="location.href='<%=conPath%>/board/list.jsp'">
+								onclick="location.href='<%=conPath%>/board/list.jsp?pageNum=<%=pageNum%>'">
 				</td>
 			</tr>
 		</table>
