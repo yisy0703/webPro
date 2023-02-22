@@ -12,7 +12,7 @@ CREATE TABLE BOARD(
   RE_STEP NUMBER(3) NOT NULL,      -- 글그룹내 출력 순서(원글 0)
   RE_INDENT NUMBER(3) NOT NULL,    -- 글 LIST 출력시 글 제목 들여쓰기 정도(원글0)
   IP      VARCHAR2(30) NOT NULL,   -- 글 작성시 컴퓨터 IP 주소
-  RDATE   DATE DEFAULT SYSDATE     -- 글쓴 시점(날짜+시간)
+  RDATE   DATE DEFAULT SYSDATE NOT NULL    -- 글쓴 시점(날짜+시간)
 );
 -- 1. 글갯수
 SELECT COUNT(*) FROM BOARD;
@@ -30,7 +30,7 @@ INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, EMAIL,
 INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, EMAIL, 
                     PW, REF, RE_STEP, RE_INDENT, IP)
   VALUES ((SELECT NVL(MAX(NUM),0)+1 FROM BOARD), '지길동', '제목2', '본문\n방가', null,
-                    '111', (SELECT NVL(MAX(NUM),0)+1 FROM BOARD), 0, 0, '192.168.0.1' );
+                    '111', (SELECT NVL(MAX(NUM),0)+1 FROM BOARD), 0, 0, '192.168.0.1');
 
 -- 4. 글번호로 글상세보기 내용(DTO) 가져오기
 SELECT * FROM BOARD WHERE NUM=2;

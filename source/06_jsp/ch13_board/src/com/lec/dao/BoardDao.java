@@ -134,6 +134,47 @@ public class BoardDao {
 		return result;
 	}
 //	-- 4. 글번호로 글 내용(DTO) 가져오기
+	public BoardDto getBoardOneLine(String numStr) {
+		BoardDto dto = null;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM BOARD WHERE NUM = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, numStr);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				int num         = rs.getInt("num");
+				String writer   = rs.getString("writer");
+				String subject  = rs.getString("subject");
+				String content  = rs.getString("content");
+				String email    = rs.getString("email");
+				int    readcount= rs.getInt("readcount");
+				String pw       = rs.getString("pw");
+				int    ref      = rs.getInt("ref");
+				int    re_step  = rs.getInt("re_step");
+				int    re_indent= rs.getInt("re_indent");
+				String ip       = rs.getString("ip");
+				Timestamp rdate = rs.getTimestamp("rdate");
+				dto = new BoardDto(num, writer, subject, content, email, readcount, 
+						pw, ref, re_step, re_indent, ip, rdate);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return dto;
+	}
+//	-- 4. 글번호로 글 내용(DTO) 가져오기
 	public BoardDto getBoardOneLine(int num) {
 		BoardDto dto = null;
 		Connection        conn  = null;
@@ -182,6 +223,29 @@ public class BoardDao {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			//int result = pstmt.executeUpdate();
+			//System.out.println(result==SUCCESS? "조회수증가":"num 오류");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+//	-- 5. 조회수 올리기 
+	public void readCountUp(String num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE BOARD SET READCOUNT = READCOUNT + 1 WHERE NUM = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
 			pstmt.executeUpdate();
 			//int result = pstmt.executeUpdate();
 			//System.out.println(result==SUCCESS? "조회수증가":"num 오류");
