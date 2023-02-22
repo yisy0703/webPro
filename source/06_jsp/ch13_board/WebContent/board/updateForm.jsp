@@ -16,7 +16,11 @@
 		BoardDao bDao = BoardDao.getInstance();
 		BoardDto dto = bDao.getBoardOneLine(num);
 	%>
-	<form action="<%=conPath%>/board/updatePro.jsp"></form>
+	<form action="<%=conPath%>/board/updatePro.jsp" method="post">
+		<table>
+			<caption></caption>
+		</table>
+	</form>
 </body>
 </html>
 
