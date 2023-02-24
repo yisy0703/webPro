@@ -12,7 +12,7 @@
 <body>
 	<%
 		String path = request.getRealPath("bookImg");
-		// out.println(path);
+		out.println(path);
 		int maxSize = 1024*1024*3; // 최대 업로드 사이즈 : 3MB
 		String[] images = {"",""};
 		MultipartRequest mRequest = null;
