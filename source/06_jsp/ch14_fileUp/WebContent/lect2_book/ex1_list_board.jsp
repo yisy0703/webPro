@@ -30,8 +30,12 @@
 					out.println("<td>" + book.getBid() + "</td>");
 					out.println("<td><a href='detail.jsp?bid="+book.getBid()+"'>" 
 																								+ book.getBtitle() + "</a></td>");
-					out.println("<td><img src='" + conPath 
-														+ "/bookImg/" + book.getBimage1() + "' width='15'></td>");
+					out.println("<td>");
+					out.println("		<a href='detail.jsp?bid="+book.getBid()+"'>");
+					out.println("		<img src='" + conPath + "/bookImg/" + book.getBimage1() 
+														+ "' width='15'>");
+					out.println("		</a>");
+					out.println("</td>");
 					out.println("<td><del>"+price+"</del> <b>"+discountPrice + "원</b></td>");
 					out.println("<td>" + bdiscount +"%</td>");
 					out.println("</tr>");
