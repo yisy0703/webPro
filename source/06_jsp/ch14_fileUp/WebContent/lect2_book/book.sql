@@ -55,10 +55,3 @@ SELECT *
 SELECT COUNT(*) FROM BOOK;
 -- 상세보기 ( bID로 책정보 가져오기)
 SELECT * FROM BOOK WHERE BID = 3;
-
-
-
-
-
-
-
