@@ -20,7 +20,7 @@
 					int bprice = books.get(i).getBprice();
 					int bdiscount = books.get(i).getBdiscount();
 					int discountPrice = bprice * (100-bdiscount) / 100;
-					
+					if(i!=0 && i%3==0) out.println("</tr><tr>");
 			%>
 					<td>
 						<a href="detail.jsp?bid=<%=books.get(i).getBid()%>">
@@ -30,7 +30,7 @@
 						<del><%=bprice %></del><br>
 						<b><%=discountPrice %>원 (<%=bdiscount %> % 할인)</b>
 					</td>
-					<%if(i%3 == 2) out.println("</tr><tr>"); %>
+					<%--if(i%3 == 2) out.println("</tr><tr>"); --%>
 			<%}%>
 		</tr>
 	</table>
