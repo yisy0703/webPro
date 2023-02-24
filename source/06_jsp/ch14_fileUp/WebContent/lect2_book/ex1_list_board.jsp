@@ -33,7 +33,7 @@
 					out.println("<td><img src='" + conPath 
 														+ "/bookImg/" + book.getBimage1() + "' width='15'></td>");
 					out.println("<td><del>"+price+"</del> <b>"+discountPrice + "원</b></td>");
-					out.println("<td>" + bdiscount +"</td>");
+					out.println("<td>" + bdiscount +"%</td>");
 					out.println("</tr>");
 				}
 			}			
