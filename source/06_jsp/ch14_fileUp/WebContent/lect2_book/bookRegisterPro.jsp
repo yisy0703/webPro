@@ -1,3 +1,4 @@
+<%@page import="com.lec.book.*"%>
 <%@page import="java.io.FileOutputStream"%>
 <%@page import="java.io.FileInputStream"%>
 <%@page import="java.io.File"%>
@@ -66,7 +67,44 @@
 				}// try-catch-finally
 			}//if
 		}//for
+		// book 테이블에 저장
+		String btitle = mRequest.getParameter("btitle");
+		int    bprice = Integer.parseInt(mRequest.getParameter("bprice"));
+		String bimage1 = images[1]!=null? images[1]:"noImg.png";
+		String bimage2 = images[0]==null? "NOTHING.JPG":images[0];
+		String bcontent = mRequest.getParameter("bcontent");
+		int    bdiscount = Integer.parseInt(mRequest.getParameter("bdiscount"));
+		// String ip = request.getRemoteAddr(); ip가 필요한 경우는 request 이용
+		BookDto dto = new BookDto(0, btitle, bprice, bimage1, bimage2, bcontent, bdiscount,
+										null);
+		BookDao bDao = BookDao.getInstance();
+		int result = bDao.insertBook(dto);
+		if(result == BookDao.SUCCESS){
+			out.println("<h2>책 등록 성공</h2>");
+		}else{
+			out.println("<h2>책 등록 실패<h2>");
+		}
 	%>
+	<h3>책이름 <%=btitle %></h3>
+	<h3>
+		책가격 <del><%=bprice %></del> 
+		<b>
+			<%=bprice * (100-bdiscount) / 100 %>
+			(<%=bdiscount %> % 할인)
+		</b>
+	</h3>
+	<h3>대표 이미지 : <%=path %>/<%=bimage1 %></h3>
+	<img src="<%=conPath%>/bookImg/<%=bimage1%>" alt="대표이미지">
+	<h3>추가 이미지 : <%=path %>/<%=bimage2 %></h3>
+	<img src="<%=conPath%>/bookImg/<%=bimage2%>" alt="추가이미지">
+	<h3>책설명</h3>
+	<pre><%=bcontent %></pre>
+	
+	<hr>
+	<a href="ex1_list_board.jsp">책 전체 리스트(게시판 스타일)</a><br>
+	<a href="ex2_list.jsp?"> 1page 리스트(게시판 스타일)</a><br>
+	<a href="ex3_list_product.jsp">책 전체리스트(product list 스타일)</a><br>
+	<a href="ex4_list.jsp">1page 리스트(product list 스타일)</a>
 </body>
 </html>
 
