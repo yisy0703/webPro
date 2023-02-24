@@ -25,7 +25,7 @@
 		int maxSize = 1024*1024*5 ; // 최대 업로드 용량은 5MB
 		String[] filenames = {"", "", ""};
 		String[] oriFilenames = {"", "", ""};
-		String name = null;
+		String name = null;		
 		try{
 			MultipartRequest multiRequest = new MultipartRequest(request, path, maxSize, 
 													"utf-8", new DefaultFileRenamePolicy());
