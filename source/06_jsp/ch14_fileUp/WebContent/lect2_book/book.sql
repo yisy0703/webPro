@@ -54,4 +54,5 @@ SELECT *
 -- 등록된 책 갯수
 SELECT COUNT(*) FROM BOOK;
 -- 상세보기 ( bID로 책정보 가져오기)
-SELECT * FROM BOOK WHERE BID = 3;
+SELECT * FROM BOOK WHERE BID = 7;
+commit;
