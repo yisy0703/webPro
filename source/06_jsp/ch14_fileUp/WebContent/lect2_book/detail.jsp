@@ -38,7 +38,16 @@
 			</td>
 		</tr>
 		<tr>
-		
+			<td>
+				<button>구매하기</button>
+				<button onclick="location.href='ex4_list.jsp?pageNum=<%=pageNum%>'">책목록</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<img src="<%=conPath%>/bookImg/<%=book.getBimage2()%>"><br>
+				<pre><%=book.getBcontent() %></pre>
+			</td>
 		</tr>
 	</table>
 </body>
