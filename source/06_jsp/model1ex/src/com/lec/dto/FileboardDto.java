@@ -17,9 +17,8 @@ public class FileboardDto {
 	private String cemail;
 	public FileboardDto() {}
 	// 글쓰기 용
-	public FileboardDto(String cid, String fsubject, String fcontent, String ffilename, String fpw, int fref,
-			int fre_step, int fre_level, String fip) {
-		super();
+	public FileboardDto(String cid, String fsubject, String fcontent, String ffilename, 
+			String fpw, int fref, int fre_step, int fre_level, String fip) {
 		this.cid = cid;
 		this.fsubject = fsubject;
 		this.fcontent = fcontent;
@@ -31,8 +30,9 @@ public class FileboardDto {
 		this.fip = fip;
 	}
 	// 글목록이나 글상세보기용
-	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, String ffilename, String fpw, int fhit,
-			int fref, int fre_step, int fre_level, String fip, Date frdate, String cname, String cemail) {
+	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, 
+			String ffilename, String fpw, int fhit,	int fref, int fre_step, 
+			int fre_level, String fip, Date frdate, String cname, String cemail) {
 		this.fnum = fnum;
 		this.cid = cid;
 		this.fsubject = fsubject;
