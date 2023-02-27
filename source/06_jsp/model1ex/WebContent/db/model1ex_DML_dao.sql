@@ -77,10 +77,9 @@ DELETE FROM FILEBOARD WHERE fNUM=1 AND fPW='1';
 rollback;
 
 -- ★★ BookDao(top-N 리스트, 책갯수, 책등록, 상세보기)
--- 1. 책목록(전체list) -- 신간 도서 순으로 출력
-SELECT * FROM BOOK ORDER BY BRDATE DESC;
 
 -- 1. 책목록(top-N구문)
+SELECT * FROM BOOK ORDER BY BRDATE DESC;-- 신간 도서 순으로 전체 리스트 출력
 SELECT * 
     FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK ORDER BY BRDATE DESC) A)
     WHERE RN BETWEEN 2 AND 3;
