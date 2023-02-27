@@ -1,4 +1,4 @@
--- CustomerDao(아이디중복체크, 회원가입, 로그인, 상세보기, 정보수정, top-N 리스트, 회원수)
+-- ★★ CustomerDao(아이디중복체크, 회원가입, 로그인, 상세보기, 정보수정, top-N 리스트, 회원수)
 -- 1. 회원가입시 CID 중복체크
 SELECT * FROM CUSTOMER WHERE CID='aaa';
 -- 2. 회원가입
@@ -26,7 +26,7 @@ SELECT *
 SELECT COUNT(*) TOTCNT FROM CUSTOMER;
 
 
--- FileboardDao(top-N 리스트, 글갯수, 글쓰기(원글1, 답변글2개query), hit올리기, 상세보기, 글수정, 글삭제)
+-- ★★FileboardDao(top-N 리스트, 글갯수, 글쓰기(원글1, 답변글2개query), hit올리기, 상세보기, 글수정, 글삭제)
 -- 1. 글목록(top-N 리스트 : startRow부터 endRow까지)
     SELECT F.*, CNAME, CEMAIL
         FROM FILEBOARD F, CUSTOMER C  
@@ -76,23 +76,23 @@ commit;
 DELETE FROM FILEBOARD WHERE fNUM=1 AND fPW='1';
 rollback;
 
--- BookDao(top-N 리스트, 책갯수, 책등록, 상세보기)
--- 1. 책등록
-INSERT INTO BOOK (BID, BTITLE, BPRICE, BIMAGE1, BIMAGE2, BCONTENT, BDISCOUNT)
-    VALUES (BOOK_SEQ.NEXTVAL, '이것은 자바다', 30000, 'noImg.png','NOTHING.JPG','책설명',20);
-
--- 책목록(전체list) -- 신간 도서 순으로 출력
+-- ★★ BookDao(top-N 리스트, 책갯수, 책등록, 상세보기)
+-- 1. 책목록(전체list) -- 신간 도서 순으로 출력
 SELECT * FROM BOOK ORDER BY BRDATE DESC;
 
--- 책목록(top-N구문)
+-- 1. 책목록(top-N구문)
 SELECT * 
     FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK ORDER BY BRDATE DESC) A)
     WHERE RN BETWEEN 2 AND 3;
 
--- 등록된 책 갯수
+-- 2. 등록된 책 갯수
 SELECT COUNT(*) CNT FROM BOOK;
 
--- 책 상세보기(bID로 dto가져오기)
+-- 3. 책등록
+INSERT INTO BOOK (BID, BTITLE, BPRICE, BIMAGE1, BIMAGE2, BCONTENT, BDISCOUNT)
+    VALUES (BOOK_SEQ.NEXTVAL, '이것은 자바다', 30000, 'noImg.png','NOTHING.JPG','책설명',20);
+    
+-- 4. 책 상세보기(bID로 dto가져오기)
 SELECT * FROM BOOK WHERE BID=1;
 
 COMMIT;
