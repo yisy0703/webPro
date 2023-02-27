@@ -1,5 +1,17 @@
 -- 회원(CUSTOMER) 테이블 - 6개(aaa,bbb,ccc,ddd,eee,fff)
-
+INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
+  VALUES ('aaa','1','홍길동','010-9999-9123', 'aaa@naver.com', '서대문','m','1991-01-01');
+INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
+  VALUES ('bbb','1','김길동','010-9999-9999', 'bbb@naver.com', '마포','m','1992-01-01');
+INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
+  VALUES ('ccc','1','박길동','010-9999-8888', null, '인천','m','1993-01-01');
+INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
+  VALUES ('ddd','1','지길동','010-9999-7777', 'ddd@naver.com', '일산','m','1994-01-01');
+INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
+  VALUES ('eee','1','신길동','010-9999-6666', null, null, null, null);
+INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
+    VALUES ('fff','1','유길동', null, null, null, null, null);
+SELECT * FROM CUSTOMER;
 -- 파일첨부게시판(FILEBOARD) 테이블 - 3개(글1, 글2, 글2-1) - 하나는 첨부파일 1.docx이 있는 걸로
 
 -- 도서(BOOK)테이블 dummy data  - 15개
