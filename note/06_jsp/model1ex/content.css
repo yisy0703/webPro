@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+#content_form table {border: 2px solid #003300; width:95%; margin: 10px auto;}
+#content_form table tr { background-color: #FFE271; height:40px; }
+#content_form table tr:hover { background-color: orange;
+	cursor: pointer;
+}
+#content_form td, #content_form th {text-align: center; padding:5px; }
+#content_form caption {font-size: 18px; padding:10px;}
+#content_form h2, #content_form b{text-align: center; color:red;}
+#content_form a { text-decoration: none; color:black}
+#content_form .left{text-align: left;}
+#content_form .paging {text-align: center;}
+#content_form input:not(.btn), #content_form textarea {
+	width: 90%;
+}
+#content_form input {height: 20px; padding:3px; margin: 10px 0;}
+#content_form .btn {height: 30px; padding:3px; margin: 5px 0;}
+#content_form{
+	width:1000px; margin: 0px auto; height: 500px; 
+	text-align: center;
+	color: #003300;
+	padding-top:100px;
+}
+
