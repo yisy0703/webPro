@@ -15,7 +15,7 @@
 		</div>
 		<div class="office_address">
 			<ul>
-				<li>서울시 XX구 XX로 000 XXX빌딩 8F | TEL : 02-999-9999 | FAX : 02-999-9998</li>
+				<li>서울시 XX구 XX로 000 XXX빌딩 2F | TEL : 02-999-9999 | FAX : 02-999-9998</li>
 				<li>사업자등록번호 : 000-12-00000 | 통신판매업신로 : 종로 제0000호 | 대표이사 : 홍길동</li>
 				<li>좋은시스템 문의 메일 : webmaster@joeun.com</li>
 			</ul>
