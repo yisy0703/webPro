@@ -1,13 +1,17 @@
 -- ★★ CustomerDao(아이디중복체크, 회원가입, 로그인, 상세보기, 정보수정, top-N 리스트, 회원수)
 -- 1. 회원가입시 CID 중복체크
 SELECT * FROM CUSTOMER WHERE CID='aaa';
+
 -- 2. 회원가입
 INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH)
     VALUES ('ggg','1','홍길숙','010-1234-1234','h@h.com', '서초','f','1995-12-12');
+
 -- 3. 로그인(CID/CPW)
 SELECT * FROM CUSTOMER WHERE CID='ggg' AND CPW='1';
+
 -- 4. 상세보기 (CID로 DTO 가져오기, 로그인 성공시 session에 추가할 값)
 SELECT * FROM CUSTOMER WHERE CID='ggg';
+
 -- 5. 회원정보 수정
 UPDATE CUSTOMER SET CPW='111',
                     CNAME='홍길순',
@@ -17,11 +21,13 @@ UPDATE CUSTOMER SET CPW='111',
                     CGENDER = 'f',
                     CBIRTH = '1995-01-01'
             WHERE CID='ggg';
+
 -- 6. 회원 리스트 보기(첫화면 main.jsp에서 사용할 부분 - cid, cpw, cname, cemail, caddress)
 SELECT *
     FROM (SELECT ROWNUM RN, CID, CPW, CNAME, CEMAIL, CADDRESS
                 FROM (SELECT * FROM CUSTOMER ORDER BY CID))
     WHERE RN BETWEEN 4 AND 6;
+
 -- 7. 등록된 회원수
 SELECT COUNT(*) TOTCNT FROM CUSTOMER;
 
@@ -71,18 +77,18 @@ UPDATE FILEBOARD SET fSUBJECT = '수정된 제목',
                     fPW = '111',
                     fIP = '192.168.10.30'
                 WHERE fNUM=4;
-commit;                
+                
 -- 9. 글 삭제하기
+COMMIT;
 DELETE FROM FILEBOARD WHERE fNUM=1 AND fPW='1';
-rollback;
+ROLLBACK;
 
 -- ★★ BookDao(top-N 리스트, 책갯수, 책등록, 상세보기)
-
 -- 1. 책목록(top-N구문)
 SELECT * FROM BOOK ORDER BY BRDATE DESC;-- 신간 도서 순으로 전체 리스트 출력
 SELECT * 
     FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK ORDER BY BRDATE DESC) A)
-    WHERE RN BETWEEN 2 AND 3;
+    WHERE RN BETWEEN 2 AND 3; -- 완성된 top-N
 
 -- 2. 등록된 책 갯수
 SELECT COUNT(*) CNT FROM BOOK;
