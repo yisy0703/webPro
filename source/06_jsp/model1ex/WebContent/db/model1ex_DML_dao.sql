@@ -13,14 +13,14 @@ SELECT * FROM CUSTOMER WHERE CID='ggg' AND CPW='1';
 SELECT * FROM CUSTOMER WHERE CID='ggg';
 
 -- 5. 회원정보 수정
-UPDATE CUSTOMER SET CPW='111',
-                    CNAME='홍길순',
+UPDATE CUSTOMER SET CPW = '1',
+                    CNAME = '홍길순',
                     CTEL = '010-1111-1111',
                     CEMAIL = 'h@h.co.kr',
                     CADDRESS = '부산',
                     CGENDER = 'f',
                     CBIRTH = '1995-01-01'
-            WHERE CID='ggg';
+            WHERE CID = 'ggg';
 
 -- 6. 회원 리스트 보기(첫화면 main.jsp에서 사용할 부분 - cid, cpw, cname, cemail, caddress)
 SELECT *
@@ -44,7 +44,7 @@ SELECT *
                         FROM FILEBOARD F, CUSTOMER C  
                         WHERE F.CID = C.CID
                         ORDER BY FREF DESC, FRE_STEP) A )
-    WHERE RN BETWEEN 2 AND 3; -- 완성된 top-N
+    WHERE RN BETWEEN 3 AND 4; -- 완성된 top-N
     
 -- 2. 등록된 글 수
 SELECT COUNT(*) FROM FILEBOARD;
@@ -74,7 +74,7 @@ UPDATE FILEBOARD SET fHIT = fHIT+1 WHERE fNUM=4;
 UPDATE FILEBOARD SET fSUBJECT = '수정된 제목',
                     fCONTENT = '수정된 본문',
                     fFILENAME = NULL,
-                    fPW = '111',
+                    fPW = '1',
                     fIP = '192.168.10.30'
                 WHERE fNUM=4;
                 
