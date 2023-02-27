@@ -23,6 +23,7 @@ UPDATE CUSTOMER SET CPW = '1',
             WHERE CID = 'ggg';
 
 -- 6. 회원 리스트 보기(첫화면 main.jsp에서 사용할 부분 - cid, cpw, cname, cemail, caddress)
+SELECT * FROM CUSTOMER ORDER BY CID; -- 전체 (cid순으로 정렬)
 SELECT *
     FROM (SELECT ROWNUM RN, CID, CPW, CNAME, CEMAIL, CADDRESS
                 FROM (SELECT * FROM CUSTOMER ORDER BY CID))
