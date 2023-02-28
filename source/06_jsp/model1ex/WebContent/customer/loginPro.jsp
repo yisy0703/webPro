@@ -27,9 +27,16 @@
 			if(method.equals("null")){
 				response.sendRedirect(conPath+"/main/main.jsp");
 			}else{
-				response.sendRedirect(conPath+"/customer/"+method+".jsp");
+				response.sendRedirect(conPath+"/"+method+".jsp");
 			}
 		}
 	%>
 </body>
 </html>
+
+
+
+
+
+
+
