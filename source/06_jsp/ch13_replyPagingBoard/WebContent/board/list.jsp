@@ -55,7 +55,8 @@
 					}
 					out.println("<a href='"+conPath + "/board/content.jsp?num="
 														+ dto.getNum() +"&pageNum="+pageNum+"'>"
-														+ dto.getSubject()+"</a>");					
+														+ dto.getSubject()+"</a>");		
+					
 					out.println("</td>");
 					//메일
 					String email = dto.getEmail();

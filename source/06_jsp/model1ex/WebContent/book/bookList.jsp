@@ -51,7 +51,7 @@
 								<%=books.get(i).getBid() %>. <%=books.get(i).getBtitle() %> <br>
 							</a>
 							<b>
-								<%=bprice %><br>
+								<%=bprice %> 원<br>
 								<img src="<%=conPath%>/img/hot.gif"> 절찬판매중
 							</b>
 						<%} %>
