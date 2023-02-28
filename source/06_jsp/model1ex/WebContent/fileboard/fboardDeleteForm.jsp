@@ -20,10 +20,11 @@
 			<tr><td>
 				<fieldset>
 					<legend>삭제하기 위한 암호 입력</legend>
-					<form action="fboardDeletePro.jsp" method="post">
+					<form action="<%=conPath %>/fileboard/fboardDeletePro.jsp" method="post">
 						<input type="hidden" name="pageNum" value="<%=pageNum %>">
 						<input type="hidden" name="fnum" value="<%=fnum %>">
-						<p>암호 <input type="password" name="fpw"	 required="required" class="btn"></p>
+						<p>암호 <input type="password" name="pw" required="required" 
+										autofocus="autofocus" class="btn"></p>
 						<p>
 							<input type="submit" value="삭제" class="btn">
 							<input type="reset" value="삭제취소" onclick="history.back()" class="btn">
