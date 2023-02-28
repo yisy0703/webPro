@@ -10,6 +10,9 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="<%=conPath %>/css/content.css" rel="stylesheet" type="text/css">
+	<style>
+		#content_form{padding: 40px;}
+	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
