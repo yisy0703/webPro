@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.lec.book.BookDto"%>
-<%@page import="com.lec.book.BookDao"%>
+<%@page import="com.lec.dto.BookDto"%>
+<%@page import="com.lec.dao.BookDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String conPath = request.getContextPath(); %>
