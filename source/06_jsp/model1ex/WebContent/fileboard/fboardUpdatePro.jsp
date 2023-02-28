@@ -1,13 +1,12 @@
-<%@page import="com.lec.dto.FileboardDto"%>
 <%@page import="com.lec.dao.FileboardDao"%>
-<%@page import="com.lec.dto.CustomerDto"%>
+<%@page import="com.lec.dto.FileboardDto"%>
 <%@page import="java.io.FileOutputStream"%>
 <%@page import="java.io.FileInputStream"%>
 <%@page import="java.io.File"%>
 <%@page import="java.io.OutputStream"%>
 <%@page import="java.io.InputStream"%>
-<%@page import="java.util.Enumeration"%>
 <%@page import="java.io.IOException"%>
+<%@page import="java.util.Enumeration"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -21,6 +20,7 @@
 </head>
 <body>
 	<%
+		// 첨부한 파일을 서버에 저장하고 파일이름 가져오기
 		String path = request.getRealPath("fileboardUpload");
 		int maxSize = 1024*1024*5; // 최대 업로드 용량은 5M
 		String ffilename = null; // 첨부파일이 서버에 저장된 파일 이름
@@ -55,43 +55,39 @@
 				if(is!=null) is.close();
 			}
 		}
-		// 파라미터 정보(pageNum, fnum, fsubjec, fcontent, fpw, fref, fre_step, fre_level)가져오기
+		// ffilename외의 다른 파라미터들 받기(pageNum, dbfilename, fnum, fsubject, fcontent, fpw)
 		String pageNum = mRequest.getParameter("pageNum");
-		int fnum   = Integer.parseInt(mRequest.getParameter("fnum"));
-		String cid = ((CustomerDto)session.getAttribute("customer")).getCid();
+		String dbfilename = mRequest.getParameter("dbfilename");
+		int fnum = Integer.parseInt(mRequest.getParameter("fnum"));
 		String fsubject = mRequest.getParameter("fsubject");
 		String fcontent = mRequest.getParameter("fcontent");
-		String fpw   = mRequest.getParameter("fpw");
-		int fref     = Integer.parseInt(mRequest.getParameter("fref"));
-		int fre_step = Integer.parseInt(mRequest.getParameter("fre_step"));
-		int fre_level= Integer.parseInt(mRequest.getParameter("fre_level"));;
-		String fip = request.getRemoteAddr();
-		// dto생성후 
+		String fpw      = mRequest.getParameter("fpw");
+		String fip      = request.getRemoteAddr();
+		// (ffilename이 null이면 ffilname대신 dbfilename으로 )
+		ffilename = ffilename==null? dbfilename:ffilename;
+		// 파라미터를 이용하여 dto객체 생성
+		FileboardDto fDto = new FileboardDto(fnum, null, fsubject, fcontent, ffilename,
+							fpw, 0, 0, 0, fip);
+		// dao를 통해서 update
 		FileboardDao fDao = FileboardDao.getInstance();
-		FileboardDto fDto = new FileboardDto(fnum, cid, fsubject, fcontent, ffilename, 
-															fpw, fref, fre_step, fre_level, fip);
-		// fnum이 0이면 dao를 통해 원글쓰기
-		// fnum이 0이 아니면 dao를 통해 답변글 쓰기
-		int result;
-		if(fnum==0){ // 원글쓰기
-			result = fDao.insertBoard(fDto);
-		}else{ // 답변글 쓰기
-			result = fDao.reply(fDto);
-		}
+		int result = fDao.updateBoard(fDto);
 		if(result == FileboardDao.SUCCESS){
-	%>
+	%>		
 			<script>
-				alert('<%=fnum==0? "글쓰기 완료":"답글 쓰기 완료"%>');
-				location.href = '<%=conPath%>/fileboard/fboardList.jsp?pageNum=<%=pageNum%>';
+				alert('글 수정 완료');
+				location.href = 'fboardList.jsp?pageNum=<%=pageNum%>'; // 리스트로
+				//location.href = 'fboardContent.jsp?fnum=<%=fnum%>&pageNum=<%=pageNum%>'; // 상세보기
 			</script>
-	<%}else{%>
+	<%}else{ %>
 			<script>
-				alert('<%=fnum==0? "글쓰기 실패":"답글 쓰기 실패"%> (데이터 길이를 확인하세요)');
+				alert('글 수정 실패(데이터 길이를 확인하세요)');
 				history.back();
 			</script>
 	<%}%>
+	
 </body>
 </html>
+
 
 
 
