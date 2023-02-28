@@ -23,7 +23,7 @@
 					<form action="<%=conPath %>/fileboard/fboardDeletePro.jsp" method="post">
 						<input type="hidden" name="pageNum" value="<%=pageNum %>">
 						<input type="hidden" name="fnum" value="<%=fnum %>">
-						<p>암호 <input type="password" name="pw" required="required" 
+						<p>암호 <input type="password" name="fpw" required="required" 
 										autofocus="autofocus" class="btn"></p>
 						<p>
 							<input type="submit" value="삭제" class="btn">
