@@ -22,7 +22,7 @@
 		<form action="fboardUpdatePro.jsp" method="post" 
 					enctype="multipart/form-data">
 			<input type="hidden" name="pageNum" value="<%=pageNum %>">
-			<input type="text" name="dbfilename" 
+			<input type="hidden" name="dbfilename" 
 							value='<%=fDto.getFfilename()==null? "":fDto.getFfilename()%>'>
 			<table>
 				<caption><%=fnum %>번 글 수정</caption>
