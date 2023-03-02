@@ -15,9 +15,11 @@
 <body>
 	<form action="">
 		<p>
-			<input type="number" name="n1" value="<%=(int)(Math.random()*9)+1 %>" readonly="readonly">
+			<input type="number" name="n1" value="<%=(int)(Math.random()*9)+1 %>"
+												 readonly="readonly">
 			*
-			<input type="number" name="n2" value="<%=(int)(Math.random()*9)+1 %>" readonly="readonly">
+			<input type="number" name="n2" value="<%=(int)(Math.random()*9)+1 %>"
+												readonly="readonly">
 			=
 			<input type="number" name="result">
 		</p>
@@ -30,3 +32,4 @@
 	</p>
 </body>
 </html>
+
