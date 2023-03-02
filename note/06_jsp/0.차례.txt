@@ -13,8 +13,8 @@
      회원인증 프로그래밍 예제
 13.  게시판(답변, 페이징)예제
 14. 파일 업로드
-15. 포워딩(Forwarding)
-16. EL(Expresstion Language)
+15. EL(Expresstion Language)
+16. 포워딩(Forwarding)
 17. JSTL(JSP stanard Tag Library)
 18. FrontController 와 Command 구조(MVC이해를 위한 단계)
 19. MVC 패턴이용한 게시판 만들기

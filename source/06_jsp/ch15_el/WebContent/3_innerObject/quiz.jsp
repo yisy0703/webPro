@@ -27,9 +27,15 @@
 	</form>
 	<p>
 		${param.n1 } * ${param.n2 } = ${param.result }는
-		${param.n1*param.n2 eq param.result }
+		${param.n1*param.n2 eq param.result}
 		${not empty param.result ?(param.n1*param.n2 eq param.result ? "정답":"오답") : "" }
 	</p>
 </body>
 </html>
+
+
+
+
+
+
 
