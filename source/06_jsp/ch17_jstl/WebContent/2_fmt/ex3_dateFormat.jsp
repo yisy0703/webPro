@@ -34,6 +34,8 @@
 	full : <fmt:formatDate value="${nowDate }" type="time" timeStyle="full"/><br> 
 	<h4>날짜와 시간 모두 출력</h4>
 	<fmt:formatDate value="${nowDate }" type="both" dateStyle="medium" timeStyle="short"/><br>
+	<fmt:formatDate value="${nowDate }" pattern="yy년 MM월 dd일(E요일) hh:mm:ss:SSS(a)"/><br>
+	<fmt:formatDate value="${nowDate }" pattern="yy-MM-dd(E) HH:mm:ss:SS"/>
 </body>
 </html>
 
