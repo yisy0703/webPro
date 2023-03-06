@@ -1,3 +1,3 @@
 git add .
-git commit -m "jsp_el_forwarding"
+git commit -m "jsp_mvc"
 git push -u origin main
