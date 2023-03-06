@@ -9,14 +9,19 @@
 	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<!-- <form action="ex2_suPro.jsp"> -->
-	<!-- <form action="../ex2_suPro"> -->
-	<form action="<%=conPath %>/ex2_suPro">
-		누적을 원하는 수 <input type="number" min="1" name="su" required="required">
-		<input type="submit" value="누적">
-	</form>
+	<% 
+		// 프로세스는 자바에서
+		int su = Integer.parseInt(request.getParameter("su"));
+		int sum = 0; // 누적변수
+		for(int i=1 ; i<=su ; i++){
+			sum += i;
+		}
+	%>
+	<h2>1부터 <%=su %>까지 누적합은 <%=sum %>입니다</h2>
 </body>
 </html>
+
+
 
 
 
