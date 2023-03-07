@@ -19,7 +19,7 @@ public class FrontController extends HttpServlet {
 		actionDo(request, response);
 	}
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		response.setContentType("text/html; charset=UTF-8");
+		// response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("<h1>FrontController</h1>");
 		// 무슨 요청이 들어왔는지 판별(select.do? delete.do? insert.do? update.do?)
 		String uri = request.getRequestURI();      // uri : /ch18/select.do
@@ -34,7 +34,7 @@ public class FrontController extends HttpServlet {
 		if(command.equals("/insert.do")) {
 			System.out.println("INSERT 로직 수행 함");
 			request.setAttribute("insertResult", 1);
-			viewPage = "ex2/insert.jsp";
+			viewPage = "select.do";
 		}else if(command.equals("/select.do")) {
 			System.out.println("SELECT 로직 수행 함");
 			request.setAttribute("list", "list결과를 ArrayList로 받은 것");
@@ -42,11 +42,11 @@ public class FrontController extends HttpServlet {
 		}else if(command.equals("/update.do")) {
 			System.out.println("UPDATE 로직 수행 함");
 			request.setAttribute("updateResult", 1);
-			viewPage = "ex2/update.jsp";
+			viewPage = "select.do";
 		}else if(command.equals("/delete.do")) {
 			System.out.println("DELETE 로직 수행 함");
 			request.setAttribute("deleteResult", 1);
-			viewPage = "ex2/delete.jsp";
+			viewPage = "select.do";
 		}
 		// viewPage로 forward
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

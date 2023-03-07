@@ -10,6 +10,16 @@
 	<title>Insert title here</title>
 </head>
 <body>
+	<c:set var="SUCCESS" value="1"/>
+	<c:if test="${insertResult eq SUCCESS }">
+		<script>alert('입력 성공');</script>
+	</c:if>
+	<c:if test="${updateResult eq SUCCESS }">
+		<script>alert('수정 성공');</script>
+	</c:if>
+	<c:if test="${deleteResult eq SUCCESS }">
+		<script>alert('삭제 성공');</script>
+	</c:if>
 	<h1>select.jsp입니다</h1>
 	<h2>select 결과 : ${list }</h2>	
 </body>
