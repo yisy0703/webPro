@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.lec.service.*;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,21 +32,22 @@ public class FrontController extends HttpServlet {
 		System.out.println("들어온 요청 : " + command);
 		// 들어온 요청에 따라 다른 일을 하고 뷰로 forward
 		String viewPage = null; // 뷰페이지를 저장할 변수
+		Service service = null; // InsertService나 SelectService나 DeleteService, UpdateService 객체
 		if(command.equals("/insert.do")) {
-			System.out.println("INSERT 로직 수행 함");
-			request.setAttribute("insertResult", 1);
+			service = new InsertService();
+			service.execute(request, response);
 			viewPage = "select.do";
 		}else if(command.equals("/select.do")) {
-			System.out.println("SELECT 로직 수행 함");
-			request.setAttribute("list", "list결과를 ArrayList로 받은 것");
+			service = new SelectService();
+			service.execute(request, response);
 			viewPage = "ex2/select.jsp";
 		}else if(command.equals("/update.do")) {
-			System.out.println("UPDATE 로직 수행 함");
-			request.setAttribute("updateResult", 1);
+			service = new UpdateService();
+			service.execute(request, response);
 			viewPage = "select.do";
 		}else if(command.equals("/delete.do")) {
-			System.out.println("DELETE 로직 수행 함");
-			request.setAttribute("deleteResult", 1);
+			service = new DeleteService();
+			service.execute(request, response);
 			viewPage = "select.do";
 		}
 		// viewPage로 forward
