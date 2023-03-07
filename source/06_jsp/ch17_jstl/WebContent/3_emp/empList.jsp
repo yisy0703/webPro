@@ -28,10 +28,10 @@
 							<img src="${conPath }/img/hot.gif">
 						</c:if>
 						<c:if test="${emp.mgr eq 0}">
-							<b style="color:green;">${emp.name }</b>
+							<b style="color:navy;">${emp.ename }</b>
 						</c:if>
 						<c:if test="${emp.mgr != 0 }">
-							${emp.name }
+							${emp.ename }
 						</c:if>
 					</td>
 					<td>${emp.job }</td>
