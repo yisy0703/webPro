@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
 body { 
 	background-color: #FFF0B5; 
 	font-size: 9pt;
@@ -8,12 +8,12 @@ table tr { background-color: #FFE271; height: 40px;}
 table tr:hover { background-color: orange;
 	cursor: pointer;
 }
-td, th {text-align: center; padding:5px; }
-caption {font-size: 20px; padding:10px;}
+table td, table th {text-align: center; padding:5px; }
+table caption {font-size: 20px; padding:10px;}
 h2, b{text-align: center; color:red;}
 a { text-decoration: none; color:black}
 .left{text-align: left;}
 .paging {text-align: center;}
-input:not(.btn), textarea {
+table input:not(.btn), table textarea {
 	width: 90%;
 }
