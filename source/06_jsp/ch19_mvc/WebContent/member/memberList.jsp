@@ -11,6 +11,14 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<c:set var="SUCCESS" value="1"/>
+	<c:set var="FAIL" value="0"/>
+	<c:if test="${joinResult eq SUCCESS }">
+		<script>alert('회원가입 성공');</script>
+	</c:if>
+	<c:if test="${joinResult eq FAIL }">
+		<script>alert('회원가입 실패');</script>
+	</c:if>
 	<table>
 		<tr><th>번호</th><th>ID</th><th>PW</th><th>이름</th><th>생일</th><th>가입</th></tr>
 		<c:if test="${memberList.size() eq 0 }">
