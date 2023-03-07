@@ -32,12 +32,19 @@ public class MController extends HttpServlet {
 			service = new MemberListService();
 			service.execute(request, response); // memberList 로직
 			viewPage = "member/memberList.jsp";
+		}else if(command.equals("/memberJoinView.do")) {
+			viewPage = "member/memberJoin.jsp";
 		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
 
 }
+
+
+
+
 
 
 
