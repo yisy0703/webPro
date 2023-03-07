@@ -15,7 +15,7 @@
 	<form action="">
 		<p class="paging">
 			이름 <input type="text" name="schName" value="${param.schName.toUpperCase().trim() }">
-			직책 <input type="text" name="schJob" value="${fn:toUpperCase(fn:trim(param.schJob)}">
+			직책 <input type="text" name="schJob" value="${fn:toUpperCase(fn:trim(param.schJob))}">
 			<input type="submit" value="검색">
 		</p>
 	</form>
