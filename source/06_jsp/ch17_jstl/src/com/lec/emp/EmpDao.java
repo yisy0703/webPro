@@ -66,6 +66,44 @@ public class EmpDao {
 	}
 	
 	// 이름과 job으로 검색한 리스트 public ArrayList<EmpDto> getListEmp(String name, String job)
+	public ArrayList<EmpDto> getListEmp(String schName, String schJob){
+		ArrayList<EmpDto> emps = new ArrayList<EmpDto>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM EMP " + 
+				"  WHERE ENAME LIKE '%'||TRIM(UPPER(?))||'%'" + 
+				"    AND JOB LIKE '%'||UPPER(TRIM(?))||'%'";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, schName);
+			pstmt.setString(2, schJob);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int empno          = rs.getInt("empno");
+				String ename       = rs.getString("ename");
+				String job         = rs.getString("job");
+				int mgr            = rs.getInt("mgr"); // mgr이 null이면 0으로 가져옴.
+				Timestamp hiredate = rs.getTimestamp("hiredate");
+				int sal            = rs.getInt("sal");
+				int comm           = rs.getInt("comm");
+				int deptno         = rs.getInt("deptno");
+				emps.add(new EmpDto(empno, ename, job, mgr, hiredate, sal, comm, deptno));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs   != null) rs.close();
+				if(pstmt!= null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return emps;
+	}
 }
 
 
