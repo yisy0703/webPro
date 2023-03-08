@@ -30,6 +30,8 @@ public class BController extends HttpServlet {
 			service = new BListService();
 			service.execute(request, response);
 			viewPage = "board/list.jsp";
+		}else if(command.equals("/writeView.do")) { // 글쓰기 view
+			viewPage = "board/write_view.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
