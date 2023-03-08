@@ -11,6 +11,15 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<c:set var="SUCCESS" value="1"/>
+	<c:set var="FAIL" value="0"/>
+	<c:if test="${writeResult eq SUCCESS}">
+		<script>alert('글쓰기 성공');</script>
+	</c:if>
+	<c:if test="${writeResult eq FAIL}">
+		<script>alert('글쓰기 실패');</script>
+	</c:if>
+	
 	<table>
 		<caption>게시판</caption>
 		<tr><td><a href="${conPath }/writeView.do">글쓰기</a></td></tr>

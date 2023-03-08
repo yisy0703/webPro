@@ -32,6 +32,9 @@ public class BController extends HttpServlet {
 			viewPage = "board/list.jsp";
 		}else if(command.equals("/writeView.do")) { // 글쓰기 view
 			viewPage = "board/write_view.jsp";
+		}else if(command.equals("/write.do")) { // 글쓰기 DB에 저장
+			service = new BWriteService();
+			service.execute(request, response);
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

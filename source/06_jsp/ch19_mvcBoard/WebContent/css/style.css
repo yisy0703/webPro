@@ -15,3 +15,4 @@ a { text-decoration: none; color:black}
 .left{text-align: left;}
 .paging {text-align: center;}
 p {text-align:  center;}
+table input:not(.btn), textarea { width:90%; }
