@@ -8,6 +8,6 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<c:redirect url="list.do"/>
+	<%response.sendRedirect("list.do"); %>
 </body>
 </html>
