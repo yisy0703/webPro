@@ -289,15 +289,11 @@ public class BoardDao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, bname);
-			pstmt.setString(2, btitle);
-			pstmt.setString(3, bcontent);
-			pstmt.setString(4, bip);
-			pstmt.setInt(5, bid);
-			result = pstmt.executeUpdate();
-			System.out.println(result == SUCCESS ? "글수정 성공":"글번호(bid) 오류");
+			pstmt.setInt(1, bgroup);
+			pstmt.setInt(2, bstep);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage() + "글 수정 실패 ");
+			System.out.println(e.getMessage() + " preReplyStep에서 오류");
 		} finally {
 			try {
 				if(pstmt != null) pstmt.close();
