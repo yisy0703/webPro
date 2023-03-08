@@ -1,5 +1,7 @@
 package com.lec.ex.controller;
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +26,13 @@ public class BController extends HttpServlet {
 		// System.out.println("들어온 요청 : " + command);
 		String viewPage = null;
 		Service service = null;
-		if(command.equals("/list.do")) {
+		if(command.equals("/list.do")) { // 글목록
 			service = new BListService();
 			service.execute(request, response);
+			viewPage = "board/list.jsp";
 		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
 	}
 }
 
