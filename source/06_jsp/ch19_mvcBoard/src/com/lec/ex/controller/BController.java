@@ -12,6 +12,7 @@ import com.lec.ex.service.*;
 @WebServlet("*.do")
 public class BController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int writeView = 0;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
@@ -32,10 +33,18 @@ public class BController extends HttpServlet {
 			viewPage = "board/list.jsp";
 		}else if(command.equals("/writeView.do")) { // 글쓰기 view
 			viewPage = "board/write_view.jsp";
+			writeView = 1;
 		}else if(command.equals("/write.do")) { // 글쓰기 DB에 저장
-			service = new BWriteService();
-			service.execute(request, response); 
+			if(writeView == 1) {
+				service = new BWriteService();
+				service.execute(request, response);
+				writeView = 0;
+			}
 			viewPage = "list.do";
+		}else if(command.equals("/contentView.do")) {
+			service = new BContentService();
+			service.execute(request, response);
+			viewPage = "board/content_view.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
