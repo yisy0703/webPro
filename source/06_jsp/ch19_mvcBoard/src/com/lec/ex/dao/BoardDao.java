@@ -304,6 +304,43 @@ public class BoardDao {
 		}
 	}
 	// 10. 답변글 쓰기
+	//       답변글쓴이    : bname, btitle, bcontent
+	//       시스템적으로 : bip
+	//       원글             : bgroup, bstep, bindent
+	public int reply(String bname, String btitle, String bcontent, String bip,
+						int bgroup, int bstep, int bindent) {
+		int result = FAIL;
+		preReplyStep(bgroup, bstep);
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT,"
+				+ "							 BGROUP, BSTEP, BINDENT, BIP)" + 
+				"  VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bname);
+			pstmt.setString(2, btitle);
+			pstmt.setString(3, bcontent);
+			pstmt.setInt(4, bgroup);
+			pstmt.setInt(5, bstep + 1);
+			pstmt.setInt(6, bindent + 1);
+			pstmt.setString(7, bip);
+			pstmt.executeUpdate();
+			result = SUCCESS;
+			System.out.println("답변글쓰기 성공");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage() + " 답변글쓰기 실패 ");
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} 
+		}
+		return result;
+	}
 }
 
 
