@@ -58,6 +58,9 @@ public class BController extends HttpServlet {
 			service = new BDeleteService();
 			service.execute(request, response);
 			viewPage = "list.do";
+		}else if(command.equals("/replyView.do")) { // 답변글쓰기 위한 view
+			service = new BReplyViewService();
+			service.execute(request, response);
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
