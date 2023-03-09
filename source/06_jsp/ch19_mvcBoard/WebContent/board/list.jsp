@@ -20,6 +20,16 @@
 		<script>alert('글쓰기 실패');</script>
 	</c:if>
 	
+	<c:if test="${modifyResult eq SUCCESS }">
+		<script>alert('${param.bid}번 글 수정 성공');</script>
+	</c:if>
+	<c:if test="${modifyResult eq FAIL }">
+		<script>
+			alert('${param.bid}번 글 수정 실패');
+			history.back();
+		</script>
+	</c:if>
+	
 	<table>
 		<caption>게시판</caption>
 		<tr><td><a href="${conPath }/writeView.do">글쓰기</a></td></tr>

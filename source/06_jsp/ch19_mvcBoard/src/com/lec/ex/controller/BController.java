@@ -48,7 +48,12 @@ public class BController extends HttpServlet {
 		}else if(command.equals("/modifyView.do")) { // 글 수정을 위한 view
 			service = new BModifyViewService();
 			service.execute(request, response);
-			
+			viewPage = "board/modify_view.jsp"; //requestScope.modifyBoard/ param.bid, param.pageNum
+		}else if(command.equals("/modify.do")) { // DB에 글 수정
+			service = new BModifyService();
+			service.execute(request, response);
+			//viewPage = "list.do"; // requestScope.modifyResult, param.pageNum, param.bid, param.bname, ....
+			viewPage = "contentView.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
