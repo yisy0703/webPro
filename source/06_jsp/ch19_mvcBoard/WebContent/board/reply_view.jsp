@@ -14,6 +14,7 @@
 	<!-- reply_view.jsp : param.pageNum, param.bid, requestScope.replyBoard(원글정보)  -->
 	<form action="${conPath }/reply.do" method="post">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
+		<input type="hidden" name="bid" value="${param.bid }"> <!-- 원글 -->
 		<input type="hidden" name="bgroup" value="${replyBoard.bgroup }"><!-- 원글 -->
 		<input type="hidden" name="bstep" value="${replyBoard.bstep }"><!-- 원글 -->
 		<input type="hidden" name="bindent" value="${replyBoard.bindent }"><!-- 원글 -->

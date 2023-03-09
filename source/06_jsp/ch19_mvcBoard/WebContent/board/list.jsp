@@ -32,6 +32,15 @@
 	<c:if test="${not empty deleteResult }">
 		<script>alert('${deleteResult }');</script>
 	</c:if>
+	<c:if test="${replyResult eq SUCCESS }">
+		<script>alert('${param.bid}번 글에 대한 답글쓰기 성공');</script>
+	</c:if>
+	<c:if test="${replyResult eq FAIL }">
+		<script>
+			alert('${param.bid}번 글에 대한 답글쓰기 실패');
+			history.back();
+		</script>
+	</c:if>
 	
 	<table>
 		<caption>게시판</caption>
@@ -53,7 +62,7 @@
 					<td class="left">
 						<c:forEach var="i" begin="1" end="${dto.bindent }">
 							<c:if test="${i != dto.bindent }">
-								&nbsp; &nbsp; 
+								&nbsp; &nbsp; &nbsp;
 							</c:if>
 							<c:if test="${i eq dto.bindent }">
 								└─
