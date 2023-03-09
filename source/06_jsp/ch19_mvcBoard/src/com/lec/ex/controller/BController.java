@@ -61,6 +61,7 @@ public class BController extends HttpServlet {
 		}else if(command.equals("/replyView.do")) { // 답변글쓰기 위한 view
 			service = new BReplyViewService();
 			service.execute(request, response);
+			viewPage = "board/reply_view.jsp"; // param.pageNum, requestScope.replyBoard(원글정보)
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
