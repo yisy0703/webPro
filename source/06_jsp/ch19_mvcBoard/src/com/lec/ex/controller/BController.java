@@ -41,10 +41,14 @@ public class BController extends HttpServlet {
 				writeView = 0;
 			}
 			viewPage = "list.do";
-		}else if(command.equals("/contentView.do")) {
+		}else if(command.equals("/contentView.do")) { // 상세보기
 			service = new BContentService();
 			service.execute(request, response);
 			viewPage = "board/content_view.jsp";
+		}else if(command.equals("/modifyView.do")) { // 글 수정을 위한 view
+			service = new BModifyViewService();
+			service.execute(request, response);
+			
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
