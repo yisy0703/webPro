@@ -54,6 +54,10 @@ public class BController extends HttpServlet {
 			service.execute(request, response);
 			//viewPage = "list.do"; // requestScope.modifyResult, param.pageNum, param.bid, param.bname, ....
 			viewPage = "contentView.do";
+		}else if(command.equals("/delete.do")) { // DB에 글 삭제
+			service = new BDeleteService();
+			service.execute(request, response);
+			viewPage = "list.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

@@ -29,6 +29,9 @@
 			history.back();
 		</script>
 	</c:if>
+	<c:if test="${not empty deleteResult }">
+		<script>alert('${deleteResult }');</script>
+	</c:if>
 	
 	<table>
 		<caption>게시판</caption>
