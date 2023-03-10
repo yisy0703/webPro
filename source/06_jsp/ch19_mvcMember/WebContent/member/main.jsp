@@ -17,8 +17,8 @@
 	<c:if test="${not empty loginErrorMsg }">
 		<script>
 			alert('${loginErrorMsg}');
-			history.back();
-			//location.href = '${conPath }/loginView.do';
+			//history.back();
+			location.href = '${conPath }/loginView.do';
 		</script>
 	</c:if>
 	<c:if test="${empty member }"> <!-- 로그인 전 화면 -->
