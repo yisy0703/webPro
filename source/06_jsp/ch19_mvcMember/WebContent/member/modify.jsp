@@ -67,6 +67,20 @@
 				</td>
 			</tr>
 			<tr>
+				<th>주소</th>
+				<td colspan="2">
+					<input type="text" name="maddress" value="${member.maddress }">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<input type="submit" value="정보수정">
+					<input type="reset" value="초기화">
+					<input type="reset" value="이전" onclick="history.back()">
+					<input type="button" value="회원탈퇴"
+						onclick="location.href='${conPath}/withdrawal.do'">
+				</td>
+			</tr>
 		</table>
 	</form>
 </body>

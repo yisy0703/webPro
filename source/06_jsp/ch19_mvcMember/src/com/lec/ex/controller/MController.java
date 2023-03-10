@@ -46,6 +46,9 @@ public class MController extends HttpServlet {
 //			service = new MGetMemberService(); // 세션에 있는 mid로 수정할 dto 데이터를 가져오기
 //			service.execute(request, response);
 			viewPage = "member/modify.jsp";
+		}else if(command.equals("/modify.do")) { // db에 정보 수정
+			service = new MModifyService();
+			service.execute(request, response);
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
