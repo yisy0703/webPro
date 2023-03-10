@@ -34,36 +34,6 @@ public class MJoinService implements Service {
 				String param = params.nextElement();
 				mphoto = mRequest.getFilesystemName(param);
 			//}
-			// mRequest을 이용하여 파라미터 받아와서 DB 저장
-			String mid = mRequest.getParameter("mid");
-			String mpw = mRequest.getParameter("mpw");
-			String mname = mRequest.getParameter("mname");
-			String memail = mRequest.getParameter("memail");
-			mphoto = mphoto==null ? "NOIMG.JPG" : mphoto;
-			String mbirthStr = mRequest.getParameter("mbirth");
-			Date mbirth = null;
-			if(!mbirthStr.equals("")) {
-				mbirth = Date.valueOf(mbirthStr);
-			}
-			String maddress = mRequest.getParameter("maddress");
-			MemberDao mDao = MemberDao.getInstance();
-			// mid 중복 체크
-			result = mDao.midConfirm(mid);
-			if(result == MemberDao.NONEXISTENT) { // 가입 가능한 mID이까 회원가입
-				MemberDto member = new MemberDto(mid, mpw, mname, memail, 
-						mphoto, mbirth, maddress, null);
-				// 회원가입
-				result = mDao.joinMember(member);
-				if(result == MemberDao.SUCCESS) {
-					HttpSession session = request.getSession(); // 세션은 request로 부터
-					session.setAttribute("mid", mid);
-					request.setAttribute("joinResult", "회원가입이 완료되었습니다");
-				}else {
-					request.setAttribute("joinErrorMsg", "정보가 너무 길어서 회원가입 실패");
-				}
-			}else {
-				request.setAttribute("joinErrorMsg", "중복된 ID는 회원가입이 불가합니다");
-			}
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			request.setAttribute("joinErrorMsg", "첨부 파일의 용량이 너무 큽니다. 1M가 이내로 업로드 해 주세요");
@@ -93,6 +63,36 @@ public class MJoinService implements Service {
 					// TODO: handle exception
 				}
 			}
+		}
+		// mRequest을 이용하여 파라미터 받아와서 DB 저장
+		String mid = mRequest.getParameter("mid");
+		String mpw = mRequest.getParameter("mpw");
+		String mname = mRequest.getParameter("mname");
+		String memail = mRequest.getParameter("memail");
+		mphoto = mphoto==null ? "NOIMG.JPG" : mphoto;
+		String mbirthStr = mRequest.getParameter("mbirth");
+		Date mbirth = null;
+		if(!mbirthStr.equals("")) {
+			mbirth = Date.valueOf(mbirthStr);
+		}
+		String maddress = mRequest.getParameter("maddress");
+		MemberDao mDao = MemberDao.getInstance();
+		// mid 중복 체크
+		result = mDao.midConfirm(mid);
+		if(result == MemberDao.NONEXISTENT) { // 가입 가능한 mID이까 회원가입
+			MemberDto member = new MemberDto(mid, mpw, mname, memail, 
+					mphoto, mbirth, maddress, null);
+			// 회원가입
+			result = mDao.joinMember(member);
+			if(result == MemberDao.SUCCESS) {
+				HttpSession session = request.getSession(); // 세션은 request로 부터
+				session.setAttribute("mid", mid);
+				request.setAttribute("joinResult", "회원가입이 완료되었습니다");
+			}else {
+				request.setAttribute("joinErrorMsg", "정보가 너무 길어서 회원가입 실패");
+			}
+		}else {
+			request.setAttribute("joinErrorMsg", "중복된 ID는 회원가입이 불가합니다");
 		}
 	}
 
