@@ -25,7 +25,7 @@ public class MJoinService implements Service {
 		String mphoto = ""; // 첨부된 파일이 저장된 파일 이름
 		// mRequest 객체 생성 후 mPhoto 파일이름 얻어옴
 		MultipartRequest mRequest = null;
-		int result = 0;
+		int result = 0; // 회원가입 결과를 저장할 변수(가입성공시 1, 실패시 0저장)
 		try {
 			mRequest = new MultipartRequest(request, path, maxSize,
 								"utf-8", new DefaultFileRenamePolicy());
