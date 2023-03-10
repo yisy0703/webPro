@@ -40,6 +40,7 @@
 		<c:if test="${BLOCKSIZE >= startPage }">
 			&lt;
 		</c:if>
+		&nbsp; &nbsp; &nbsp;
 		<c:forEach var="i" begin="${startPage }" end="${endPage }">
 			<c:if test="${i eq pageNum }">
 				[ <b> ${i } </b> ]
@@ -48,7 +49,17 @@
 				[ <a href="${conPath }/allView.do?pageNum=${i }"> ${i } </a> ]
 			</c:if>
 		</c:forEach>
+		&nbsp; &nbsp; &nbsp;
+		<c:if test="${endPage < pageCnt }">
+			<a href="${conPath }/allView.do?pageNum=${endPage+1 }">&gt;</a>
+		</c:if>
+		<c:if test="${endPage == pageCnt }">
+			&gt;
+		</c:if>
+		&nbsp; &nbsp; &nbsp;
+		<a href="${conPath }/allView.do?pageNum=${pageCnt }">&gt;&gt;</a>
 	</p>
+	<p><button onclick="location='${conPath}/main.do'">MAIN</button></p>
 </body>
 </html>
 
