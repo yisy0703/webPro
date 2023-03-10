@@ -9,3 +9,11 @@ COMMIT;
 SELECT * FROM MVC_MEMBER WHERE mID='aaa' and mPW='1';
 -- (4) mid로 dto가져오기(로그인 성공시 session에 넣기 위함)
 SELECT * FROM MVC_MEMBER WHERE MID='aaa';
+
+
+
+
+
+
+
+

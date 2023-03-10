@@ -99,7 +99,7 @@ public class MemberDao {
 		return result;
 	}
 	// (3) 로그인 체크
-	public int loginCheck(String mId, String mPw) {
+	public int loginCheck(String mid, String mpw) {
 		int result = LOGIN_FAIL;
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
@@ -108,8 +108,8 @@ public class MemberDao {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mId);
-			pstmt.setString(2, mPw);
+			pstmt.setString(1, mid);
+			pstmt.setString(2, mpw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = LOGIN_SUCCESS;
