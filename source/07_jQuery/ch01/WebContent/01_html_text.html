@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="js/jquery-3.6.4.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			// jQuery문법
+			$('#p1').click(function(){
+				$(this).html('<b>태그 내용 바뀜</b>');
+			});
+		});
+		/* window.onload = function(){
+			var p = document.getElementById("p1");
+			p.onclick = function(){
+				p.innerHTML = '<b>태그 내용 바뀜</b>';
+			};
+		}; */
+	</script>
+</head>
+<body>
+	<p id="p1">p태그 하나</p>
+</body>
+</html>

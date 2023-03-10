@@ -1,3 +1,3 @@
 git add .
-git commit -m "mvc_board"
+git commit -m "jQuery"
 git push -u origin main
