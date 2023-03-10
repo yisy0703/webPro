@@ -47,7 +47,7 @@ public class MModifyService implements Service {
 			String mid      = mRequest.getParameter("mid");
 			String oldMpw   = mRequest.getParameter("oldMpw");
 			if(!oldMpw.equals(dbMpw)) {
-				request.setAttribute("modifyResult", "현비밀번호를 확인하세요");
+				request.setAttribute("modifyErrorMsg", "현비밀번호를 확인하세요");
 				return;
 			}
 			String mpw = mRequest.getParameter("mpw");

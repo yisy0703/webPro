@@ -49,6 +49,7 @@ public class MController extends HttpServlet {
 		}else if(command.equals("/modify.do")) { // db에 정보 수정
 			service = new MModifyService();
 			service.execute(request, response);
+			viewPage = "member/main.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
