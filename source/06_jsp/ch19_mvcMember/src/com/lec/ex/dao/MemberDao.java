@@ -164,4 +164,52 @@ public class MemberDao {
 		}
 		return member;
 	}
+	// (5) 회원정보 수정
+	public int modifyMember(MemberDto member) {
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE MVC_MEMBER" + 
+				"  SET MPW=?," + 
+				"      MNAME=?, " + 
+				"      MEMAIL=?, " + 
+				"      MPHOTO = ?, " + 
+				"      MBIRTH = ?, " + 
+				"      MADDRESS = ?" + 
+				"  WHERE MID=?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMid());
+			pstmt.setString(2, member.getMpw());
+			pstmt.setString(3, member.getMname());
+			pstmt.setString(4, member.getMemail());
+			pstmt.setString(5, member.getMphoto());
+			pstmt.setDate(6, member.getMbirth());
+			pstmt.setString(7, member.getMaddress());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
