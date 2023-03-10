@@ -252,21 +252,9 @@ public class MemberDao {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				String mid = rs.getString("mid");
-				String mpw = rs.getString("mpw");
-				String mname = rs.getString("mname");
-				String memail = rs.getString("memail");
-				String mphoto = rs.getString("mphoto");
-				Date   mbirth = rs.getDate("mbirth");
-				String maddress=rs.getString("maddress");
-				Timestamp mrdate = rs.getTimestamp("mrdate");
-				members.add(new MemberDto(mid, mpw, mname, memail, 
-						mphoto, mbirth, maddress, mrdate));
-			}
+			rs.next();
+			totCnt = rs.getInt("cnt");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}finally {
@@ -278,7 +266,30 @@ public class MemberDao {
 				System.out.println(e.getMessage());
 			}
 		}
-		return members;
+		return totCnt;
+	}
+	// (8) 회원탈퇴
+	public int withdrawalMember(String mid) {
+		int result = FAIL;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM MVC_MEMBER WHERE MID = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
 	}
 }
 
