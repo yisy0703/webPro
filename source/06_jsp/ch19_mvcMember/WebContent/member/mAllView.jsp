@@ -44,6 +44,9 @@
 			<c:if test="${i eq pageNum }">
 				[ <b> ${i } </b> ]
 			</c:if>
+			<c:if test="${i != pageNum }">
+				[ <a href="${conPath }/allView.do?pageNum=${i }"> ${i } </a> ]
+			</c:if>
 		</c:forEach>
 	</p>
 </body>
