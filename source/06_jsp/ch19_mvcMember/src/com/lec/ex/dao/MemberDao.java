@@ -201,7 +201,7 @@ public class MemberDao {
 		}
 		return result;
 	}
-	// (7) 전체 회원 리스트
+	// (6) 전체 회원 리스트
 	public ArrayList<MemberDto> getMemberlist(int startRow, int endRow) {
 		ArrayList<MemberDto> members = new ArrayList<MemberDto>();
 		Connection        conn  = null;

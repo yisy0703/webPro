@@ -50,6 +50,10 @@ public class MController extends HttpServlet {
 			service = new MModifyService();
 			service.execute(request, response);
 			viewPage = "member/main.jsp";
+		}else if(command.equals("/allView.do")) { // 회원목록 출력(페이징처리)
+			service = new MAllViewService();
+			service.execute(request, response);
+			viewPage = "member/mAllView.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
