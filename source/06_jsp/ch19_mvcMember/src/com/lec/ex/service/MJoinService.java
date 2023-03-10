@@ -94,7 +94,6 @@ public class MJoinService implements Service {
 					// TODO: handle exception
 				}
 			}
-		}
+		}// if - 파일 복사 
 	}
-
 }
