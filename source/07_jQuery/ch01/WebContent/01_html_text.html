@@ -3,12 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<script src="js/jquery-3.6.4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function() {
 			// jQuery문법
 			$('#p1').click(function(){
-				$(this).html('<b>태그 내용 바뀜</b>');
+				//$(this).html('<b>태그 내용 바뀜</b>');
+				$(this).text('<b>태그 내용 바뀜</b>');
+				$(this).css('background-color','red').css('color','yellow').css('font-weight','bold');
 			});
 		});
 		/* window.onload = function(){
