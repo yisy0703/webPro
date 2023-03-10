@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -180,13 +181,13 @@ public class MemberDao {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member.getMid());
-			pstmt.setString(2, member.getMpw());
-			pstmt.setString(3, member.getMname());
-			pstmt.setString(4, member.getMemail());
-			pstmt.setString(5, member.getMphoto());
-			pstmt.setDate(6, member.getMbirth());
-			pstmt.setString(7, member.getMaddress());
+			pstmt.setString(1, member.getMpw());
+			pstmt.setString(2, member.getMname());
+			pstmt.setString(3, member.getMemail());
+			pstmt.setString(4, member.getMphoto());
+			pstmt.setDate(5, member.getMbirth());
+			pstmt.setString(6, member.getMaddress());
+			pstmt.setString(7, member.getMid());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -199,6 +200,85 @@ public class MemberDao {
 			}
 		}
 		return result;
+	}
+	// (7) 전체 회원 리스트
+	public ArrayList<MemberDto> getMemberlist(int startRow, int endRow) {
+		ArrayList<MemberDto> members = new ArrayList<MemberDto>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT *" + 
+				"  FROM (SELECT ROWNUM RN, A.* " +
+				"			FROM (SELECT * FROM MVC_MEMBER ORDER BY MRDATE DESC) A)" + 
+				"  WHERE RN BETWEEN ? AND ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String mid = rs.getString("mid");
+				String mpw = rs.getString("mpw");
+				String mname = rs.getString("mname");
+				String memail = rs.getString("memail");
+				String mphoto = rs.getString("mphoto");
+				Date   mbirth = rs.getDate("mbirth");
+				String maddress=rs.getString("maddress");
+				Timestamp mrdate = rs.getTimestamp("mrdate");
+				members.add(new MemberDto(mid, mpw, mname, memail, 
+						mphoto, mbirth, maddress, mrdate));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return members;
+	}
+	// (7) 전체 회원가입한 회원수
+	public int getMemberTotCnt() {
+		int totCnt = 0;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT COUNT(*) CNT FROM MVC_MEMBER";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String mid = rs.getString("mid");
+				String mpw = rs.getString("mpw");
+				String mname = rs.getString("mname");
+				String memail = rs.getString("memail");
+				String mphoto = rs.getString("mphoto");
+				Date   mbirth = rs.getDate("mbirth");
+				String maddress=rs.getString("maddress");
+				Timestamp mrdate = rs.getTimestamp("mrdate");
+				members.add(new MemberDto(mid, mpw, mname, memail, 
+						mphoto, mbirth, maddress, mrdate));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return members;
 	}
 }
 
