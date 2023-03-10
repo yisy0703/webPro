@@ -31,7 +31,7 @@ public class MController extends HttpServlet {
 		}else if(command.equals("/join.do")) { // 회원가입 DB 처리
 			service = new MJoinService(); // execute메소드 : mId중복체크 후 회원가입
 			service.execute(request, response);
-			viewPage = "loginView.do";
+			viewPage = "member/login.jsp";
 		}else if(command.equals("/loginView.do")) { // 로그인 화면
 			viewPage = "member/login.jsp";
 		}else if(command.equals("/login.do")) { // 로그인 DB 및 세션 처리
