@@ -170,13 +170,13 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE MVC_MEMBER" + 
-				"  SET MPW=?," + 
-				"      MNAME=?, " + 
-				"      MEMAIL=?, " + 
-				"      MPHOTO = ?, " + 
-				"      MBIRTH = ?, " + 
-				"      MADDRESS = ?" + 
-				"  WHERE MID=?";
+						"  SET MPW=?," + 
+						"      MNAME=?, " + 
+						"      MEMAIL=?, " + 
+						"      MPHOTO = ?, " + 
+						"      MBIRTH = ?, " + 
+						"      MADDRESS = ?" + 
+						"  WHERE MID=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
