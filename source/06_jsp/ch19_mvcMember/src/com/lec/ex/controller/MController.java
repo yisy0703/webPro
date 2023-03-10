@@ -54,6 +54,10 @@ public class MController extends HttpServlet {
 			service = new MAllViewService();
 			service.execute(request, response);
 			viewPage = "member/mAllView.jsp";
+		}else if(command.equals("/withdrawal.do")) { // 회원탈퇴
+			service = new MWithdrawalService();
+			service.execute(request, response);
+			viewPage = "member/main.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

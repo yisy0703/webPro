@@ -31,7 +31,9 @@
 			history.back();
 		</script>
 	</c:if>
-	
+	<c:if test="${not empty withdrawalResult }">
+		<script>alert('${withdrawalResult }');</script>
+	</c:if>
 	<c:if test="${empty member }"> <!-- 로그인 전 화면 -->
 		<h1>로그인 상태가 아닙니다</h1>
 		<hr>
