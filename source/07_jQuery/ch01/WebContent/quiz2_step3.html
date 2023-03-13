@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		p, h1 {text-align: center;}
+		button{padding:10px; margin: 10px 30px;}
+		b{color:red;}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			/* 1단계 : [ x ] + [ x ] = [ 답 ]
+			   2단계 : [ x ] @ [ x ] = [ 답 ] 연산자가 [+,-,*,/] 중에서 random
+			   3단계 : 
+				   1. [ x ] @ [ x ] = [ 답 ]
+			     2. [ x ] @ [ x ] = [ 답 ]
+			     3. [ x ] @ [ x ] = [ 답 ]
+			     4. [ x ] @ [ x ] = [ 답 ]
+			     5. [ x ] / [ 0 ] = [ Infinity ]
+			   5 문제를 count 처리 / 채점해봐를 클릭하면  점수와 문제를 푼 시간을 출력
+			      ex. 80점 / 24초
+			*/
+			// 시간 뿌리기
+			var sec = 0;
+			var timerId = setInterval(()=>{
+				sec++;
+				if(sec>20){
+					$('.result').html('<b>'+sec +'초</b>가 넘었어요. 서두르세요');
+				}else{
+					$('.result').html(sec+'초 경과');
+				}
+			}, 1000);
+			// n1 다섯개, n2 다섯개, 사칙연산을 위한 opIdx 5개를 셋팅하고 출력
+			var n1 = Array(5);
+			var n2 = Array(5);
+			var opIdx = Array(5);
+			var answer = Array(5);
+			$('.n1').each(function(idx, item){
+				n1[idx] = parseInt(Math.random()*10);
+				// $(this).val(n1[idx]);
+				item.value = n1[idx];
+			});
+			$('.n2').each(function(idx, item){
+				n2[idx] = parseInt(Math.random()*10);
+				// $(this).val(n2[idx]);
+				item.value = n2[idx];
+			});
+			var opArray = ['+','-','*','/'];
+			$('span.operation').each(function(idx, item){
+				opIdx[idx] = parseInt(Math.random()*4);
+				$(this).html('<b>'+opArray[opIdx[idx]] +'</b>');
+				var tempAnswer = [n1[idx] + n2[idx],
+													n1[idx] - n2[idx],
+													n1[idx] * n2[idx],
+													n1[idx] / n2[idx],]
+				answer[idx] = tempAnswer[opIdx[idx]];
+			});
+			$('.hint').text('정답힌트 : ' + answer);
+			
+			//  채점해봐 click event
+			$('button#cal').click(function(){
+				// 타이머 정지하고 채점
+				
+			}); // 채점해봐 click
+			
+			// 다시해봐 click event
+			$('button#reset').click(function(){
+				// 타이머 정지하고 다시 시작
+				$('.result').html('0초 경과');
+				clearInterval(timerId);
+				sec = 0;
+				timerId = setInterval(()=>{
+					sec++;
+					if(sec>20){
+						$('.result').html('<b>'+sec +'초</b>가 넘었어요. 서두르세요');
+					}else{
+						$('.result').html(sec+'초 경과');
+					}
+				}, 1000);
+				$('.n1').each(function(idx, item){
+					n1[idx] = parseInt(Math.random()*10);
+					$(this).val(n1[idx]);
+					// item.value = n1[idx];
+				});
+				$('.n2').each(function(idx, item){
+					n2[idx] = parseInt(Math.random()*10);
+					$(this).val(n2[idx]);
+					//item.value = n2[idx];
+				});
+				$('span.operation').each(function(idx, item){
+					opIdx[idx] = parseInt(Math.random()*4);
+					$(this).html('<b>'+opArray[opIdx[idx]] +'</b>');
+					var tempAnswer = [n1[idx] + n2[idx],
+														n1[idx] - n2[idx],
+														n1[idx] * n2[idx],
+														n1[idx] / n2[idx],]
+					answer[idx] = tempAnswer[opIdx[idx]];
+				});
+				$('.answer').css('color','black');
+				$('.answer').val('');
+				$('.hint').text('정답힌트 : ' + answer);
+			});//다시해봐 click
+			
+		}); // $(document).ready()		
+	</script>
+</head>
+<body>
+	<p> 1. 
+		<input type="text" class="n1" size="5" readonly="readonly"> 
+		<span class="operation"></span>
+		<input type="text" class="n2" size="5" readonly="readonly">
+		=
+		<input type="text" placeholder="답" class="answer" size="15">
+	</p>
+	<p> 2. 
+		<input type="text" class="n1" size="5" readonly="readonly"> 
+		<span class="operation"></span>
+		<input type="text" class="n2" size="5" readonly="readonly">
+		=
+		<input type="text" placeholder="답" class="answer" size="15">
+	</p>
+	<p> 3. 
+		<input type="text" class="n1" size="5" readonly="readonly"> 
+		<span class="operation"></span>
+		<input type="text" class="n2" size="5" readonly="readonly">
+		=
+		<input type="text" placeholder="답" class="answer" size="15">
+	</p>
+	<p> 4. 
+		<input type="text" class="n1" size="5" readonly="readonly"> 
+		<span class="operation"></span>
+		<input type="text" class="n2" size="5" readonly="readonly">
+		=
+		<input type="text" placeholder="답" class="answer" size="15">
+	</p>
+	<p> 5. 
+		<input type="text" class="n1" size="5" readonly="readonly"> 
+		<span class="operation"></span>
+		<input type="text" class="n2" size="5" readonly="readonly">
+		=
+		<input type="text" placeholder="답" class="answer" size="15">
+	</p>
+	<p>
+		<button id="reset">다시해봐</button>
+		<button id="cal">채점해봐</button>
+	</p>
+	<hr>
+	<h1 class="result">0초 경과</h1>
+	<h6 class="hint"></h6>
+</body>
+</html>

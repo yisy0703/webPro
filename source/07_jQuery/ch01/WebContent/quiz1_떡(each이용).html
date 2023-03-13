@@ -16,19 +16,20 @@
 		$(document).ready(function(){
 			// jQuery : $('선택자').action()
 			var ddukIdx = parseInt(Math.random() * 9); // 떡이 있는 곳
-			
-			$('td').click(function () {
-				
-      });
+			$('td').each(function(idx, item){
+				$(this).click(function(){
+					
+				});
+			});
 		});
 	</script>
 </head>
 <body>
-	<h1>연습문제1. 떡이 있는 곳을 맞춰봐(attr함수이용)</h1>
+	<h1>연습문제1. 떡이 있는 곳을 맞춰봐(each함수이용)</h1>
   <table>
-    <tr><td id="0"></td><td id="1"></td><td id="2"></td></tr>
-    <tr><td id="3"></td><td id="4"></td><td id="5"></td></tr>
-    <tr><td id="6"></td><td id="7"></td><td id="8"></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr>
   </table>
   <div id="msg">선택한 곳이 맞는지 답 뿌리는 곳</div>
   <div><input type="text" name="msg" value="선택한 곳이 맞는지 답 뿌리는 곳"></div>

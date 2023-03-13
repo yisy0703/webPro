@@ -22,7 +22,10 @@
 			      ex. 80점 / 24초
 			*/
 			$('input[name="n1"]').val(Math.trunc(Math.random()*10)); // 0 ~ 9
-			$('input[name="n2"]').val(Math.trunc(Math.random()*10));
+			$('input[name="n2"]').val(0);
+			var opArray = ['+','-','*','/'];
+			var opIdx = parseInt(Math.random()*opArray.length); // 0~3
+			$('.operation').html('<b>'+opArray[opIdx]+'</b>');
 			// 채점해봐 click event
 			$('button#cal').click(function(){
 				
@@ -35,9 +38,9 @@
 	</script>
 </head>
 <body>
-	<p> 1단계 : 
+	<p> 2단계 : 
 		<input type="text" name="n1" size="5" readonly="readonly"> 
-		+
+		<span class="operation"></span>
 		<input type="text" name="n2" size="5" readonly="readonly">
 		=
 		<input type="text" placeholder="답" name="answer" size="5">
@@ -50,3 +53,12 @@
 	<h1 class="result"></h1>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
