@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<style>
+	
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// jQuery : $('선택자').action()
+			$('tr').click(function(){
+				var no = $(this).children().eq(0).text().trim(); // string
+				// alert('글번호 : ' + no);
+				if(isNaN(Number(no))){
+					// alert('타이틀을 클릭했네');
+				}else{
+					location.href = '05_selector.html?no='+no;
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<table>
+		<tr><th>글번호</th><th>글제목</th><th>글쓴이</th><th>조회수</th></tr>
+		<tr><td> 4</td><td>제목임다</td><td>신길동</td>	<td>7</td></tr>
+		<tr><td> 3</td><td>제목이네요</td><td>마길동</td><td>27</td></tr>
+		<tr><td> 2</td><td>제목인겨</td><td>홍길동</td><td>71</td></tr>
+		<tr><td> 1</td><td>제목이라구</td><td>김길동</td><td>17</td></tr>
+	</table>
+</body>
+</html>
+
+
+
+
