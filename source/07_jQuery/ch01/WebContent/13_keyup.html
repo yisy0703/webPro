@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<style>
+	
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// jQuery : $('선택자').action()
+			$('input[name="pw"], input[name="pwChk"]').keyup(function(){
+				var pw = $('input[name="pw"]').val();
+				var pwChk = $('input[name="pwChk"]').val();
+				if(pw == pwChk){
+					$('.result').text('두 비밀번호가 일치합니다');
+				}else{
+					$('.result').html('<b>비밀번호가 일치하지 않습니다</b>');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<p> ID <input type="text" name="id"></p>
+	<p> PW <input type="password" name="pw" class="pw"></p>
+	<p> PW <input type="password" name="pwChk"></p>
+	<p class="result"></p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

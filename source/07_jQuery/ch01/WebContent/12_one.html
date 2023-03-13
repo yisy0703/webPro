@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<style>
+	
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// jQuery : $('선택자').action()
+			/* $('h2').click(function(){
+				$(this).append('♥').prepend('♡');
+				$(this).off();
+			}); */
+			$('h2').one('click', function(){ // 이벤트 한번 수행 후 제거
+				$(this).append('♥').prepend('♡');
+			})
+		});
+	</script>
+</head>
+<body>
+	<h2>방탄 좋아요(클릭은 한번만)</h2>
+	<h2>유진스 좋아요(클릭은 한번만)</h2>
+</body>
+</html>
+
+
+
+

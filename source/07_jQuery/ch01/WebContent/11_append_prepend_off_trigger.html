@@ -5,7 +5,7 @@
 	<title>Insert title here</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<style>
-		.red {color:red;};
+		.red {color:red;}
 		.blue {color:blue;}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
@@ -23,6 +23,13 @@
 					// $('#h1').off();
 				}
 			});
+			$('#h2').click(function(){
+				$('#h2').append('<span class="red">♥</span>');
+				$(this).prepend('<span class="blue">♡</span>');
+			});
+			setInterval(()=>{ // 2초마다 강제 이벤트 발생
+				$('h1').first().trigger('click');
+			}, 2000);
 		});
 	</script>
 </head>

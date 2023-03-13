@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		p {text-align: center;}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// jQuery : $('선택자').action()
+			$('input[name="n1"]').val(Math.trunc(Math.random()*10)); // 0 ~ 9
+			$('input[name="n2"]').val(Math.trunc(Math.random()*10));
+		});
+	</script>
+</head>
+<body>
+	<p>
+		<input type="text" name="n1" size="5" readonly="readonly"> 
+		+
+		<input type="text" name="n2" size="5" readonly="readonly">
+		=
+		<input type="text" placeholder="답" name="answer" size="5">
+	</p>
+	<p>
+		<button id="reset">다시해봐</button>
+		<button id="cal">채점해봐</button>
+	</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
