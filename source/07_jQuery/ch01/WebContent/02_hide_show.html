@@ -13,11 +13,14 @@
 			$('p').click(function(){
 				$(this).hide('fast');
 			});
-			$('#showPtag').click(function(){
+			$('button#showPtag').click(function(){
 				$('p').show('fast');
 			});
-			$('#hideP1').click(function(){
-				
+			$('button#hideP1').click(function(){
+				$('p#p1').hide();
+			});
+			$('button#hidePtag').click(function(){
+				$('p').hide();
 			});
 		});
 	</script>

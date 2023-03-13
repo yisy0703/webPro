@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		div#toggle {
+			width: 100px; height: 100px; line-height: 100px;
+			text-align: center;
+			background-color: red;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.goShow').click(function(){
+				$('div#toggle').show();
+			});
+			$('.goHide').click(function(){
+				$('div#toggle').hide();
+			});
+			//var toggle = 1;
+			$('button').click(function(){
+				// div#toggle이 show->hide / hide->show
+				/* if(toggle == 1){
+					$('div#toggle').hide();
+					toggle = 0;
+				}else{
+					$('div#toggle').show();
+					toggle = 1;
+				} */
+				$('div#toggle').toggle();
+			});
+		});
+	</script>
+</head>
+<body>
+	<button>토글링</button>
+	<h1 class="goShow">보이게</h1>
+	<h1 class="goHide h1">사라져</h1>
+	<div id="toggle"><b>토글</b></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
