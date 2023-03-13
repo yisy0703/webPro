@@ -16,7 +16,8 @@
 			$('input[name="msg"]').val('Hello, JSP');
 			//$('.msg').val('Hello, JSP');
 			$('button').click(function(){
-				var pMsg = $('p#msg').html(); // <b>Hello, jQuery</b>
+				//var pMsg = $('p#msg').html(); // <b>Hello, jQuery</b>
+				var pMsg = $('p#msg').text(); // Hello, jQuery
 				var inputMsg = $('input[name=msg]').val().trim();
 				alert(pMsg + "\n" + inputMsg);
 			});
