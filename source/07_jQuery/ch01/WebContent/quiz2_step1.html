@@ -9,14 +9,24 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function(){
-			// jQuery : $('선택자').action()
+			/* 1단계 : [ x ] + [ x ] = [ 답 ]
+			   2단계 : [ x ] @ [ x ] = [ 답 ] 연산자가 [+,-,*,/] 중에서 random
+			   3단계 : 
+				   1. [ x ] @ [ x ] = [ 답 ]
+			     2. [ x ] @ [ x ] = [ 답 ]
+			     3. [ x ] @ [ x ] = [ 답 ]
+			     4. [ x ] @ [ x ] = [ 답 ]
+			     5. [ x ] / [ 0 ] = [ Infinity ]
+			   5 문제를 count 처리 / 채점해봐를 클릭하면  점수와 문제를 푼 시간을 출력
+			      ex. 80점 / 24초
+			*/
 			$('input[name="n1"]').val(Math.trunc(Math.random()*10)); // 0 ~ 9
 			$('input[name="n2"]').val(Math.trunc(Math.random()*10));
 		});
 	</script>
 </head>
 <body>
-	<p>
+	<p> 1단계 : 
 		<input type="text" name="n1" size="5" readonly="readonly"> 
 		+
 		<input type="text" name="n2" size="5" readonly="readonly">
@@ -27,6 +37,7 @@
 		<button id="reset">다시해봐</button>
 		<button id="cal">채점해봐</button>
 	</p>
+	<h1 class="result"></h1>
 </body>
 </html>
 
