@@ -33,7 +33,12 @@
 			});
 			// 다시해봐 click event
 			$('button#reset').click(function(){
-				
+				$('input[name="n1"]').val(Math.trunc(Math.random()*10)); // 0 ~ 9
+				$('input[name="n2"]').val(Math.trunc(Math.random()*10));
+				opIdx = parseInt(Math.random()*opArray.length); // 0~3
+				$('.operation').html('<b>'+opArray[opIdx]+'</b>');
+				$('input[name="answer"]').val('');
+				$('.result').html('');
 			});
 		});
 	</script>
