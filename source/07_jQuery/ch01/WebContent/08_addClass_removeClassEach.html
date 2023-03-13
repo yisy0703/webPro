@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		table td {
+			width:100px; height: 100px; background-color: #AAFFAA; 
+			text-align: center;
+		}
+		.tdRed {background-color: red;}	
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// jQuery : $('선택자').action()
+			$('td').each(function(idx, item){
+				$(this).click(function(){
+					$('td').removeClass('tdRed'); 
+					$(this).addClass('tdRed');
+					alert(idx + '번째를 선택하셨군요');
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<table>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+

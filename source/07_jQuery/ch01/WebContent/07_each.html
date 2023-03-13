@@ -26,6 +26,10 @@
 						idx+'.'+	item.name +'</a></h2>');
 			});
 			$('body').html($('body').html() + '<hr>');
+			$.each(array, function(idx, item){
+				$('body').html($('body').html() + '<h2><a href="' + item.link +'">' +
+						idx+'.'+	item.name +'</a></h2>');
+			});
 		});
 	</script>
 </head>

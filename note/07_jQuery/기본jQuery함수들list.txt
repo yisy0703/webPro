@@ -9,6 +9,8 @@ $('선택자').함수();
   6) css('속성','값') : css 적용
   7) val() : input의 value를 수정, 가져오기
   8) each() : 배열 처리
+  9) addClass() : 클래스명 추가
+  10) removeClass() : 클래스명 제거
 
   14)이벤트 관련 함수들
      click(콜백함수)
