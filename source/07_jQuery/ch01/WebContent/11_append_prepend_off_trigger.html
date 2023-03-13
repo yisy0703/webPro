@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<style>
+		.red {color:red;};
+		.blue {color:blue;}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// jQuery : $('선택자').action()
+			var h1Cnt = 0;
+			$('#h1').click(function(){
+				h1Cnt ++;
+				if(h1Cnt <6){
+					$(this).append('<span class="red">♥</span>');
+				}else{
+					// 클릭한 횟수가 6회가 되면 click 이벤트 제거
+					$(this).off();
+					// $('#h1').off();
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1 id="h1">start1(5회 제안) :</h1>
+	<h1 id="h2">: start2 :</h1>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<style>
+	
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		/* $(document).ready(function(){
+			$('img').mouseover(function(){
+				var idx = $(this).attr('src').substring(4, 5); // 0 || 1 || 2 || 3
+				$(this).attr('src', 'img/'+idx+'over.jpg');
+			})
+			$('img').mouseout(function(){
+				var idx = $(this).attr('src').substring(4,5); // 0 || 1 || 2 || 3
+				$(this).attr('src','img/'+idx+'out.jpg');
+			}); 
+		});*/
+		const overImg = ['img/0over.jpg','img/1over.jpg',
+			 'img/2over.jpg','img/3over.jpg',];
+		const outImg = ['img/0out.jpg','img/1out.jpg',
+			'img/2out.jpg','img/3out.jpg',];
+		const menu = ['tutorial', 'example', 'special', 'link'];
+		$(function(){
+			// jQuery 
+			$('img').each(function(idx, item){
+				$(this).mouseover(function(){
+					$(this).attr('src', overImg[idx]);
+					$(this).attr('alt', menu[idx]+' 선택');
+				});
+				$(this).mouseout(function(){
+					$(this).attr('src', outImg[idx]);
+					$(this).attr('alt', menu[idx] + ' 선택해제');
+				}); // mouseout 이벤트
+			}); // each
+		}); // $()
+	</script>
+</head>
+<body>
+	<img src="img/0out.jpg" alt="tutorial 선택해제"><!-- img/0over.jpg -->
+	<img src="img/1out.jpg" alt="example 선택해제"><!-- img/1over.jpg -->
+	<img src="img/2out.jpg" alt="special 선택해제"><!-- img/2over.jpg -->
+	<img src="img/3out.jpg" alt="link 선택해제"><!-- img/3over.jpg -->
+</body>
+</html>
+
+
+
+
+

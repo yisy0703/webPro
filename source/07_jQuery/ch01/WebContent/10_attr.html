@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<style>
+	
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// jQuery : $('선택자').action()
+			$('img').mousedown(function(){
+				$(this).attr('src','img/but2.gif');
+				$(this).attr('alt', '마우스 눌렀을 때');
+			});
+			$('img').mouseup(function(){
+				$(this).attr('src','img/but1.gif');
+				$(this).attr('alt', '마우스 올라갈 때');
+			});
+		});
+	</script>
+</head>
+<body>
+	<img src="img/but1.gif" alt="클릭전">
+	<img src="img/but1.gif" alt="클릭전">
+	<img src="img/but1.gif" alt="클릭전">
+	<img src="img/but1.gif" alt="클릭전">
+	<img src="img/but1.gif" alt="클릭전">
+</body>
+</html>
+
+
+
+
+
+
