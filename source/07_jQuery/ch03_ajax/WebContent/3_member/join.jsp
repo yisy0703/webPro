@@ -18,9 +18,41 @@
   			if(mid.length<2){
   				$('#idConfirmResult').text('아이디는 2글자 이상');
   			}else{
-  				$.ajax({});
+  				$.ajax({
+  					url : '${conPath}/1_get_post_ajax/midConfirm.jsp',
+  					type : 'get',
+  					data : 'mid='+mid,
+  					dataType : 'html',
+  					success : function(data){
+  						$('#idConfirmResult').html(data);
+  					},
+  				});// ajax함수
   			}//if
   		});// keyup event
+  		
+  		$('#pw, #pwChk').keyup(function(){
+  			var pw = $('#pw').val();
+  			var pwChk = $('#pwChk').val();
+  			if(pw == pwChk){
+  				$('#pwChkResult').text('비밀번호 일치');
+  			}else{
+  				$('#pwChkResult').text('비밀번호 불일치');
+  			}
+  		});// keyup event(비밀번호 일치 확인용)
+  		
+  		$('form').submit(function(){
+  		// "사용 가능한 ID입니다"(#idConfirmResult), "비밀번호 일치(#pwChkResult)"가 출력되었을 경우만 submit 가능
+				var idConfirmResult = $('#idConfirmResult').text().trim();
+  			var pwChkResult = $('#pwChkResult').text().trim();
+  			if(idConfirmResult != '사용 가능한 ID입니다'){
+  				alert('사용 가능한 ID인지 확인 요망');
+  				return false; // submit 제한
+  			}else if(pwChkResult != '비밀번호 일치'){
+  				alert('비밀번호를 확인하세요');
+  				$('#pw').focus();
+  				return false;
+  			}
+  		});
   	});
   </script>
   <script>
