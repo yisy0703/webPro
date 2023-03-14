@@ -19,7 +19,21 @@
 			var ddukIdx = parseInt(Math.random() * 9); // 떡이 있는 곳
 			
 			$('td').click(function () {
-				
+				$('td').removeClass('tdRed');
+				$(this).addClass('tdRed');
+        var idx = Number($(this).text()); // 클릭한 곳의 위치
+        if (idx == ddukIdx) {
+          $('#msg').html('축하축하 맞췄어요');
+          $('input[name="msg"]').val('축하축하 맞췄어요');
+          $(this).css('background-image', 'url("img/dduk.jpg")');
+          $(this).css('background-size', '100%');
+          $('td').text('');
+          $('td').off() // 한번 맞추면  'td'에 대한 모든 이벤트 제거
+        } else {
+          $('#msg').html(idx+'가 아니고 ' + ddukIdx +'(비밀)');
+          $('input[name="msg"]').val(idx+'가 아니고 ' + ddukIdx +'(비밀)');
+          $(this).addClass('tdClick');
+        }
       });
 		});
 	</script>

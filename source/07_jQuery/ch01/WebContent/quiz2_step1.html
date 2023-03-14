@@ -25,11 +25,22 @@
 			$('input[name="n2"]').val(Math.trunc(Math.random()*10));
 			// 채점해봐 click event
 			$('button#cal').click(function(){
-				
+				var n1 = Number($('input[name="n1"]').val());
+				var n2 = Number($('input[name="n2"]').val());
+				var answer = n1 + n2;
+				if ($('input[name="answer"]').val() == answer) {
+					$('.result').html('맞았습니다').css('color','blue');
+				}else{
+					$('.result').html('틀렸습니다').css('color','red');
+				}
 			});
 			// 다시해봐 click event
 			$('button#reset').click(function(){
-				
+				$('input[name="n1"]').val(Math.trunc(Math.random()*10)); // 0 ~ 9
+				$('input[name="n2"]').val(Math.trunc(Math.random()*10));
+				$('input[name="answer"]').val('');
+				$('.result').html('');
+				//location.reload();
 			});
 		});
 	</script>

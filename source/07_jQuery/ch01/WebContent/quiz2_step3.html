@@ -62,7 +62,21 @@
 			//  채점해봐 click event
 			$('button#cal').click(function(){
 				// 타이머 정지하고 채점
-				
+				clearInterval(timerId);
+				let score = 0;
+				$('.answer').each(function(idx, item){
+					if(!isFinite(answer[idx])){
+						$(this).val('by zero : 20점');
+						score += 0;
+					}else if($(this).val().trim() == answer[idx]){
+						score += 20;
+						$(this).css('color','blue');
+					}else{
+						$(this).val($(this).val() + ' / 틀림 정답:' + answer[idx]);
+						$(this).css('color','red');
+					}
+				});
+				$('.result').text('점수 : ' + score + '점 / 경과시간 : ' + sec);
 			}); // 채점해봐 click
 			
 			// 다시해봐 click event
@@ -101,6 +115,7 @@
 				$('.answer').css('color','black');
 				$('.answer').val('');
 				$('.hint').text('정답힌트 : ' + answer);
+				//location.reload();
 			});//다시해봐 click
 			
 		}); // $(document).ready()		

@@ -22,14 +22,23 @@
 			      ex. 80점 / 24초
 			*/
 			$('input[name="n1"]').val(Math.trunc(Math.random()*10)); // 0 ~ 9
-			$('input[name="n2"]').val(0);
+			$('input[name="n2"]').val(Math.trunc(Math.random()*10));
 			var opArray = ['+','-','*','/'];
 			var opIdx = parseInt(Math.random()*opArray.length); // 0~3
 			$('.operation').html('<b>'+opArray[opIdx]+'</b>');
-			
 			// 채점해봐 click event
 			$('button#cal').click(function(){
-				
+				var n1 = Number($('input[name="n1"]').val());
+				var n2 = Number($('input[name="n2"]').val());
+				var answerTemp = [n1+n2, n1-n2, n1*n2, n1/n2 ];
+				var answer = answerTemp[opIdx];
+				if(!isFinite(answer)){
+					$('.result').html('0으로 나눠서 죄송 정답 : ' + answer).css('color','blue');
+				}else if ($('input[name="answer"]').val() == answer) {
+					$('.result').html('맞았습니다').css('color','blue');
+				}else{
+					$('.result').html('틀렸습니다. 정답 : ' + answer).css('color','red');
+				}
 			});
 			// 다시해봐 click event
 			$('button#reset').click(function(){
@@ -39,6 +48,7 @@
 				$('.operation').html('<b>'+opArray[opIdx]+'</b>');
 				$('input[name="answer"]').val('');
 				$('.result').html('');
+				//location.reload();
 			});
 		});
 	</script>
