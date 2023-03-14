@@ -8,6 +8,38 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/join.css" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  	$(function(){
+  		$('input[name="mid"]').keyup(function(){
+  			var mid = $(this).val();
+  			if(mid.length<2){
+  				$('#idConfirmResult').text('아이디는 2글자 이상');
+  			}else{
+  				$.ajax({});
+  			}//if
+  		});// keyup event
+  	});
+  </script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+    	dateFormat: "yy-mm-dd",
+    	monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    	dayNamesMin: [ "일", "월", "화", "수", "목", "금", "토" ],
+    	changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+    	changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+    	showMonthAfterYear: true,
+    	yearSuffix: '년',
+    	showOtherMonths: true, // 현재 달이 아닌 달의 날짜도 회색으로 표시
+    	//minDate: '-100y',	 // 현재날짜로부터 100년이전까지 년을 표시한다.
+    	minDate: new Date(1950, 1 - 1, 1), // 1950년 1월1일을 최소 날짜로 세팅
+    	yearRange: 'c-100:c+10', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 
+    });
+  } );
+  </script>
 </head>
 <body>
 	<div id="joinForm_wrap">
