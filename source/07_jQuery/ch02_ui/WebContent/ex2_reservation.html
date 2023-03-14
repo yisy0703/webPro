@@ -56,9 +56,9 @@
 						$('#'+i).attr('disabled', true);
 						$('#'+i).css('color', '#cccccc');
 					}// 오늘이면 0시~지금시간까지 버튼은 disable
-				}
-    	},
-    });
+				} // if
+    	}, // onSelect
+    }); // datepicker
   } );
   </script>
 </head>
@@ -84,12 +84,12 @@
 						<input type="button" id="9" class="9" value="9시">
 						<input type="button" id="10" class="10" value="10시">
 						<input type="button" id="11" class="11" value="11시">
-						<input type="button" id="12" class="12" value="12시">
 					</td>
 				</tr>
 				<tr>
 					<td id="pm">
 						<span style="display:block;">오후</span>
+						<input type="button" id="12" class="12" value="12시">
 						<input type="button" id="13" class="1" value="1시">
 						<input type="button" id="14" class="2" value="2시">
 						<input type="button" id="15" class="3" value="3시">
