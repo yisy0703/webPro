@@ -49,7 +49,7 @@
 			});
 			var opArray = ['+','-','*','/'];
 			$('span.operation').each(function(idx, item){
-				opIdx[idx] = parseInt(Math.random()*4);
+				opIdx[idx] = parseInt(Math.random()*4); // 0~3
 				$(this).html('<b>'+opArray[opIdx[idx]] +'</b>');
 				var tempAnswer = [n1[idx] + n2[idx],
 													n1[idx] - n2[idx],
@@ -67,7 +67,7 @@
 				$('.answer').each(function(idx, item){
 					if(!isFinite(answer[idx])){
 						$(this).val('by zero : 20점');
-						score += 0;
+						score += 20;
 					}else if($(this).val().trim() == answer[idx]){
 						score += 20;
 						$(this).css('color','blue');
