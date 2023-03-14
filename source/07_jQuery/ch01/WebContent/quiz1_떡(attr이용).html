@@ -19,7 +19,6 @@
 			
 			$('td').click(function () {
 				$('td').removeClass('tdRed');
-				$(this).addClass('tdRed');
         var idx = Number($(this).attr('id')); // 클릭한 곳의 위치
         if (idx == ddukIdx) {
           $('#msg').html('축하축하 맞췄어요');
@@ -47,3 +46,8 @@
   <div><input type="text" name="msg" value="선택한 곳이 맞는지 답 뿌리는 곳"></div>
 </body>
 </html>
+
+
+
+
+

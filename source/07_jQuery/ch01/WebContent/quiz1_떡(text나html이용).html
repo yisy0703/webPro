@@ -20,7 +20,6 @@
 			
 			$('td').click(function () {
 				$('td').removeClass('tdRed');
-				$(this).addClass('tdRed');
         var idx = Number($(this).text()); // 클릭한 곳의 위치
         if (idx == ddukIdx) {
           $('#msg').html('축하축하 맞췄어요');
