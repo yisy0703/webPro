@@ -26,11 +26,13 @@
 			var opArray = ['+','-','*','/'];
 			var opIdx = parseInt(Math.random()*opArray.length); // 0~3
 			$('.operation').html('<b>'+opArray[opIdx]+'</b>');
+			
 			// 채점해봐 click event
 			$('button#cal').click(function(){
 				var n1 = Number($('input[name="n1"]').val());
 				var n2 = Number($('input[name="n2"]').val());
 				var answerTemp = [n1+n2, n1-n2, n1*n2, n1/n2 ];
+				
 				var answer = answerTemp[opIdx];
 				if(!isFinite(answer)){
 					$('.result').html('0으로 나눠서 죄송 정답 : ' + answer).css('color','blue');
