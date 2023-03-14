@@ -33,6 +33,7 @@
     	onSelect : function(dateText, inst){
     		$('.reservedDate').val(dateText); // 2023-04-01
     		$('span.result').html(dateText + "일 / 시간 : ");
+    		$('.reservedTime').val(''); // 선택한 시간들 초기화
     		for(var i=0 ; i<=23 ; i++){
     			$('#'+i).attr('disabled', false);
     			$('#'+i).css('color','#000000'); 
@@ -60,6 +61,17 @@
     	}, // onSelect
     }); // datepicker
   } );
+  </script>
+  <script>
+  	$(document).ready(function(){
+  		$('#am input').click(function(){
+  			$('.reservedTime').val($('.reservedTime').val() +
+  																								'am ' + $(this).attr('class') +'시. ');
+  			$('span.result').append('am ' + $(this).attr('class') + '시. ');
+  			$(this).attr('disabled', 'disabled');
+  			$(this).css('color','red');
+  		});
+  	});
   </script>
 </head>
 <body>
