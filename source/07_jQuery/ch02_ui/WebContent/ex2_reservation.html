@@ -68,7 +68,15 @@
   			$('.reservedTime').val($('.reservedTime').val() +
   																								'am ' + $(this).attr('class') +'시. ');
   			$('span.result').append('am ' + $(this).attr('class') + '시. ');
-  			$(this).attr('disabled', 'disabled');
+  			$(this).attr('disabled',  true);
+  			$(this).css('color','red');
+  		});
+  		
+  		$('#pm input').click(function(){
+  			$('.reservedTime').val($('.reservedTime').val() +
+  																								'pm ' + $(this).attr('class') +'시. ');
+  			$('span.result').append('pm ' + $(this).attr('class') + '시. ');
+  			$(this).attr('disabled',  true);
   			$(this).css('color','red');
   		});
   	});
