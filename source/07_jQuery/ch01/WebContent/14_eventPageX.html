@@ -13,7 +13,23 @@
 		$(document).ready(function(){
 			// jQuery : $('선택자').action()
 			$('canvas').mousedown(function(){
-				
+				// 현재 img 좌표를 가져와 전좌표에 출력
+				var img = $('img').offset(); // img태그의 top과 left(img.top, img.left)
+				/*for(var key in img){
+					alert(key + " : " + img[key]);
+				}*/
+				$('input[name="preXPosition"]').val(Math.round(img.left));
+				$('input[name="preYPosition"]').val(Math.round(img.top));
+				// 마우스 클릭한 좌표를 가져와 (현좌표 출력+img 옮기기)
+				//event.pageX : body 기본으로 마우스의 x좌표
+				//event.offsetX : 이벤트 대상 객체에서 상대적 마우스 x좌표
+				//evetn.screenX : 모니터 화면 기준의 마우스 x좌표
+				var x = event.pageX;
+				var y = event.pageY;
+				$('input[name="xPosition"]').val(x);
+				$('input[name="yPosition"]').val(y);
+				$('img').css('top', y);
+				$('img').css('left', x);
 			});
 		});
 	</script>
