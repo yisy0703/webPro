@@ -1,0 +1,13 @@
+외부 데이터
+*.json
+*.xml
+<product>
+	<id>1</id>
+	<name>레몬</name>
+	<price>3000</price>
+	<description>레몬에어쩌구</description>
+</product>
+*.csv
+id,name,price,description
+1,레몬,3000,레몬어쩌구
+2,키위,...

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+	
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// ex.json내용을 table안에 출력
+			$.ajax({
+				url : 'ex.json',
+				dataType : 'json',
+				success : function(data){ // data는 객체(id, name, price, description)배열
+					var out = '<tr><th>ID</th><th>name</th><th>price</th><th>description</th></tr>';
+					$.each(data, function(idx, item){
+						out += '<tr>';
+						out += '<td>' + item.id + '</td>';
+						out += '<td>' + item.name + '</td>';
+						out += '<td>' + item.price + '</td>';
+						out += '<td>' + item.description + '</td>';
+						out += '</tr>';
+					}); // each()함수
+					$('table#dataShow').html(out);
+				},
+			});
+		});
+	</script>
+</head>
+<body>
+	<table id="dataShow"></table>
+</body>
+</html>
+
+
+
+
+
+
