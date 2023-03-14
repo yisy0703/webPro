@@ -52,6 +52,10 @@
 				if(dateText == todayStr){
 					alert('오늘 ' + dateText +'은 ' + today.getHours() +'시 이후만 예약 가능합니다');
 					// 지금 시간 이전 버튼은 클릭 불가
+					for(var i=0 ; i<= today.getHours() ; i++){
+						$('#'+i).attr('disabled', true);
+						$('#'+i).css('color', '#cccccc');
+					}// 오늘이면 0시~지금시간까지 버튼은 disable
 				}
     	},
     });
@@ -86,7 +90,6 @@
 				<tr>
 					<td id="pm">
 						<span style="display:block;">오후</span>
-						<input type="button" id="12" class="12" value="12시">
 						<input type="button" id="13" class="1" value="1시">
 						<input type="button" id="14" class="2" value="2시">
 						<input type="button" id="15" class="3" value="3시">
