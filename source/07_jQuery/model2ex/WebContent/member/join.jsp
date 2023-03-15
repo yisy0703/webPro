@@ -33,24 +33,49 @@
   		
   		$('input[name="mpw"], input[name="mpwChk"]').keyup(function(){
   			var pw = $('input[name="mpw"]').val();
-  			var pwChk = $('input[name="pwChk"]').val();
+  			var pwChk = $('input[name="mpwChk"]').val();
   			if(pw == pwChk){
   				$('#mpwChkResult').text('비밀번호 일치');
   			}else{
   				$('#mpwChkResult').text('비밀번호 불일치');
   			}
   		});// keyup event(비밀번호 일치 확인용)
+  		 
+  		// macth함수 사용
+  		var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
+  		$('input[name="memail"]').keyup(function(){
+  			let memail = $(this).val();
+  			if(!memail.match(patternMemail)){
+  				$('#memailConfirmResult').html('<b>메일 형식을 지켜 주세요</b>');
+  			}else{
+  				$.ajax({
+  					url : '${conPath}/memailConfirm.do',
+  					type : 'get',
+  					data : 'memail='+memail,
+  					dataType : 'html',
+  					success : function(data){
+  						$('#memailConfirmResult').html(data);
+  					},
+  				});
+  			}
+  		});
   		
   		$('form').submit(function(){
   		// "사용 가능한 ID입니다"(#idConfirmResult), "비밀번호 일치(#pwChkResult)"가 출력되었을 경우만 submit 가능
 				var midConfirmResult = $('#midConfirmResult').text().trim();
   			var mpwChkResult = $('#mpwChkResult').text().trim();
+  			var memailConfirmResult = $('#memailConfirmResult').text().trim();
   			if(midConfirmResult != '사용 가능한 ID'){
   				alert('사용 가능한 ID인지 확인 요망');
+  				$('input[name="mid"]').focus();
   				return false; // submit 제한
   			}else if(mpwChkResult != '비밀번호 일치'){
   				alert('비밀번호를 확인하세요');
   				$('input[name="mpw"]').focus();
+  				return false;
+  			}else if(memailConfirmResult != '사용 가능한 메일'){
+  				alert('메일을 확인하세요');
+  				$('input[name="memail"]').focus();
   				return false;
   			}
   		});
@@ -84,7 +109,7 @@
 				<tr>
 					<th>아이디</th>
 					<td>
-						<input type="text" name="mid" required="required">
+						<input type="text" name="mid" required="required" autofocus="autofocus">
 						<div id="midConfirmResult"> &nbsp; </div>
 					</td>
 				</tr>
@@ -106,8 +131,8 @@
 				<tr>
 					<th>메일</th>
 					<td>
-						<input type="email" name="memail">
-						<div id="emailConfirmResult"> &nbsp; </div>
+						<input type="text" name="memail">
+						<div id="memailConfirmResult"> &nbsp; </div>
 					</td>
 				</tr>
 				<tr>

@@ -8,9 +8,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
-		h1, p{text-align: center;}
-		p{margin-top: 30px;}
+		#content_form {
+			height:370px;
+			margin: 130px auto 0px;
+		}
 	</style>
 </head>
 <body>
@@ -25,23 +28,30 @@
 			history.back();
 		</script>
 	</c:if>
-	<form action="${conPath }/login.do" method="post">
-		<table>
-			<tr>
-				<th>ID</th><td><input type="text" name="mid" value="${mid }" required="required"></td>
-			</tr>
-			<tr>
-				<th>PW</th><td><input type="password" name="mpw" required="required"></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<p>
-						<input type="submit" value="로그인">
-						<input type="button" value="회원가입" onclick="location='${conPath}/joinView.do'">
-					</p>
-				</td>
-			</tr>
-		</table>
-	</form>
+	<jsp:include page="../main/header.jsp"/>
+	<div id="content_form">
+		<form action="${conPath }/login.do" method="post">
+			<input type="hidden" name="next" value="${param.next }">
+			<table>
+				<caption>사용자님 로그인</caption>
+				<tr>
+					<th>ID</th><td><input type="text" name="mid" value="${mid }" required="required"></td>
+				</tr>
+				<tr>
+					<th>PW</th><td><input type="password" name="mpw" required="required"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<p>
+							<input type="submit" value="로그인" class="btn">
+							<input type="button" value="회원가입" class="btn"
+									onclick="location='${conPath}/joinView.do'">
+						</p>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

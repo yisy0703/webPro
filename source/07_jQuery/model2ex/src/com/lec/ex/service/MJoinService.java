@@ -77,7 +77,7 @@ public class MJoinService implements Service {
 			OutputStream os = null;
 			try {
 				is = new FileInputStream(serverFile);
-				os = new FileOutputStream("D:/webPro/source/06_jsp/ch19_mvcMember/WebContent/memberPhotoUp/"+mphoto);
+				os = new FileOutputStream("D:/webPro/source/07_jQuery/model2ex/WebContent/memberPhotoUp/"+mphoto);
 				byte[] bs = new byte[(int) serverFile.length()];
 				while(true) {
 					int readByteCnt = is.read(bs);

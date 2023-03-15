@@ -83,8 +83,3 @@ COMMIT;
 SELECT * FROM ADMIN WHERE AID='admin' AND APW='1';
 -- (2) 로그인 후 세션에 넣을 용도 : admin aid로 dto 가져오기
 SELECT * FROM ADMIN WHERE AID='admin';
-
-
-
-
-

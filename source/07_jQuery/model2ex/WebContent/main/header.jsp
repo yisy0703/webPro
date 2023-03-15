@@ -107,7 +107,7 @@
 				<li><a href="${conPath }/boardList.do">고객센터</a></li>
 				<li><a href="${conPath }/logout.do">로그아웃</a></li>
 				<li><a href="${conPath }/modifyView.do">정보수정</a></li>
-				<li><a>${member.mName }님 &nbsp; ▶</a></li>	
+				<li><a>${member.mname }님 &nbsp; ▶</a></li>	
 			</ul>
 		</div>
 		<div class="logo" onclick="location.href='${conPath}/list.do'">
@@ -147,7 +147,7 @@
 			<ul>
 				<li><a href="${conPath }/boardList.do">고객센터</a></li>
 				<li><a href="${conPath }/logout.do">관리자모드나가기</a></li>
-				<li><a>${admin.aName }님 &nbsp; ▶</a></li>	
+				<li><a>${admin.aname }님 &nbsp; ▶</a></li>	
 			</ul>
 		</div>
 		<div class="logo" onclick="location.href='${conPath}/allView.do'">

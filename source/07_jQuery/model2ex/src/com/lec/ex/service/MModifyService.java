@@ -45,11 +45,12 @@ public class MModifyService implements Service {
 //				sessionMphoto = sesionMember.getMphoto();
 //			}
 			String mid      = mRequest.getParameter("mid");
-			String oldMpw   = mRequest.getParameter("oldMpw");
-			if(!oldMpw.equals(dbMpw)) {
-				request.setAttribute("modifyErrorMsg", "현비밀번호를 확인하세요");
-				return;
-			}
+			// oldMpw는 modify.jsp에서 함
+//			String oldMpw   = mRequest.getParameter("oldMpw");
+//			if(!oldMpw.equals(dbMpw)) {
+//				request.setAttribute("modifyErrorMsg", "현비밀번호를 확인하세요");
+//				return;
+//			}
 			String mpw = mRequest.getParameter("mpw");
 			if(mpw.equals("")) { // 정보 수정시 새비밀번호를 입력하지 않을 경우, 현비밀번호(dbMpw)로 
 				mpw = dbMpw;
@@ -85,9 +86,7 @@ public class MModifyService implements Service {
 			OutputStream os = null;
 			try {
 				is = new FileInputStream(serverFile);
-				os = 
-				new FileOutputStream("D:/webPro/source/06_jsp/ch19_mvcMember/WebContent/memberPhotoUp/"
-											+ mphoto);
+				os = new FileOutputStream("D:/webPro/source/07_jQuery/model2ex/WebContent/memberPhotoUp/"+mphoto);
 				byte[] bs = new byte[(int)serverFile.length()];
 				while(true) {
 					int readByteCnt = is.read(bs);
