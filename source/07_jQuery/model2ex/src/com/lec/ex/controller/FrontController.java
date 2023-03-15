@@ -1,5 +1,7 @@
 package com.lec.ex.controller;
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +26,7 @@ public class FrontController extends HttpServlet {
 		String viewPage = null;
 		Service service = null;
 		if(command.equals("/main.do")) { // 첫화면
-		
+			viewPage = "main/main.jsp";
 		/* * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * * * * * * * * * * member 관련 요청  * * * * * * * * * *
 		  * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -33,11 +35,12 @@ public class FrontController extends HttpServlet {
 		/* * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * * * * * * * * * * admin 관련 요청  * * * * * * * * * *
 		 * * * * * * * * * * * * * * * * * * * * * * * * * * */
-		}
-		
 		/* * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * * * * * * * * 파일첨부 게시판 관련 요청  * * * * * * * * * *
 		 * * * * * * * * * * * * * * * * * * * * * * * * * * */
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);		
 	}
 }
 
