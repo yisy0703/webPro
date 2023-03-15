@@ -36,21 +36,53 @@ COMMIT;
 -----------------  BoardDao에 들어갈 query --------------------
 --------------------------------------------------------------
 -- (1) 글목록(startRow~endRow)
+SELECT F.*, MNAME FROM FILEBOARD F, MVC_MEMBER M
+  WHERE F.MID=M.MID 
+  ORDER BY FGROUP DESC, FSTEP; -- 출력 기준
+SELECT * FROM
+  (SELECT ROWNUM RN, A.* FROM (SELECT F.*, MNAME FROM FILEBOARD F, MVC_MEMBER M
+                              WHERE F.MID=M.MID 
+                              ORDER BY FGROUP DESC, FSTEP) A)
+  WHERE RN BETWEEN 2 AND 4; -- dao에 쓸 query
 -- (2) 글갯수
+SELECT COUNT(*) FROM FILEBOARD;
 -- (3) 글쓰기(원글쓰기)
+INSERT INTO FILEBOARD (FID, MID, FTITLE, FCONTENT, FFILENAME, FGROUP, FSTEP, FINDENT, FIP)
+  VALUES (FILEBOARD_SEQ.NEXTVAL, 'son','토트넘','난 공격수', 'a.docx', 
+    FILEBOARD_SEQ.CURRVAL, 0,0, '192.168.0.31');
 -- (4) hit 1회 올리기
+UPDATE FILEBOARD SET FHIT = FHIT + 1 WHERE FID=1;
 -- (5) 글번호(fid)로 글전체 내용(BoardDto) 가져오기
+SELECT F.*, MNAME
+  FROM FILEBOARD F, MVC_MEMBER M WHERE F.MID=M.MID AND FID=1;
 -- (6) 글 수정하기(fid, ftitle, fcontent, ffilename, frdate(SYSDATE), fip 수정)
+UPDATE FILEBOARD SET FTITLE = '바뀐제목',
+                    FCONTENT = '바뀐본문',
+                    fFILENAME = NULL,
+                    FIP = '192.168.151.10',
+                    FRDATE = SYSDATE
+            WHERE FID = 1;
 -- (7) 글 삭제하기(fid로)
+COMMIT;
+DELETE FROM FILEBOARD WHERE FID=1;
+ROLLBACK;
 -- (8) 답변글 쓰기 전 단계(원글의 fgroup과 같고, 원글의 fstep보다 크면 fstep을 하나 증가하기)
+UPDATE FILEBOARD SET FSTEP = FSTEP + 1 WHERE FGROUP=5 AND FSTEP>0;
 -- (9) 답변글 쓰기
+INSERT INTO FILEBOARD (FID, MID, FTITLE, FCONTENT, FFILENAME, FGROUP, FSTEP, FINDENT, FIP)
+  VALUES (FILEBOARD_SEQ.NEXTVAL, 'park','박지성 아님', '잘한다', null, 
+    5, 1, 1, '194.161.13.11');
 -- (10) 회원탈퇴시 탈퇴하는 회원(mid)이 쓴 글 모두 삭제하기
+DELETE FROM FILEBOARD WHERE MID='song';
 COMMIT;
 
 --------------------------------------------------------------
 -----------------  AdminDao에 들어갈 query --------------------
 --------------------------------------------------------------
--- (1) admin loginCheck
+-- (1) admin 로그인
+SELECT * FROM ADMIN WHERE AID='admin' AND APW='1';
+-- (2) 로그인 후 세션에 넣을 용도 : admin aid로 dto 가져오기
+SELECT * FROM ADMIN WHERE AID='admin';
 
 
 
