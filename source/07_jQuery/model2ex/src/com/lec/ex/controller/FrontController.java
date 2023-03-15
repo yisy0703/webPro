@@ -74,7 +74,11 @@ public class FrontController extends HttpServlet {
 		 * * * * * * * * * * admin 관련 요청  * * * * * * * * * *
 		 * * * * * * * * * * * * * * * * * * * * * * * * * * */
 		else if(command.equals("/adminLoginView.do")) {
-			viewPage = "member/main.jsp";
+			viewPage = "admin/adminLogin.jsp";
+		}else if(command.equals("/adminLogin.do")) {
+			service = new ALoginService();
+			service.execute(request, response);
+			viewPage = "allView.do";
 		}
 		/* * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * * * * * * * * 파일첨부 게시판 관련 요청  * * * * * * * * * *
