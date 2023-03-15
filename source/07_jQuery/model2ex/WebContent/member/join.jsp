@@ -45,7 +45,9 @@
   		var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
   		$('input[name="memail"]').keyup(function(){
   			let memail = $(this).val();
-  			if(!memail.match(patternMemail)){
+  			if(!memail){
+  				$('#memailConfirmResult').html(' &nbsp; ');
+  			}else if(!memail.match(patternMemail)){
   				$('#memailConfirmResult').html('<b>메일 형식을 지켜 주세요</b>');
   			}else{
   				$.ajax({
