@@ -75,7 +75,7 @@
   				alert('비밀번호를 확인하세요');
   				$('input[name="mpw"]').focus();
   				return false;
-  			}else if(memailConfirmResult != '사용 가능한 메일'){
+  			}else if(memailConfirmResult != '사용 가능한 메일' && memailConfirmResult!= ''){
   				alert('메일을 확인하세요');
   				$('input[name="memail"]').focus();
   				return false;
