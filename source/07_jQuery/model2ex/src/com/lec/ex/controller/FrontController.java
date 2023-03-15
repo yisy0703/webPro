@@ -1,6 +1,5 @@
 package com.lec.ex.controller;
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lec.ex.service.Service;
+import com.lec.ex.service.*;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,15 +29,53 @@ public class FrontController extends HttpServlet {
 		/* * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * * * * * * * * * * member 관련 요청  * * * * * * * * * *
 		  * * * * * * * * * * * * * * * * * * * * * * * * * * */
-		}else if(command.equals("/joinView.do")) {
-		
+		}else if(command.equals("/joinView.do")) { // 회원가입 화면
+			viewPage = "member/join.jsp";
+		}else if(command.equals("/idConfirm.do")) {
+			service = new MidConfirmService();
+			service.execute(request, response);
+			viewPage = "member/idConfirm.jsp";
+		}else if(command.equals("/emailConfirm.do")) {
+			service = new MemailConfirmService();
+			service.execute(request, response);
+			viewPage = "member/emailConfirm.jsp";
+		}else if(command.equals("/join.do")) { // 회원가입 DB 처리
+			service = new MJoinService(); // execute메소드 : mId중복체크 후 회원가입
+			service.execute(request, response);
+			viewPage = "member/login.jsp";
+		}else if(command.equals("/loginView.do")) { // 로그인 화면
+			viewPage = "member/login.jsp";
+		}else if(command.equals("/login.do")) { // 로그인 DB 및 세션 처리
+			service = new MLoginService();
+			service.execute(request, response);
+			viewPage = "member/main.jsp";
+		}else if(command.equals("/logout.do")) {//로그아웃 - 세션 날리기
+			service = new MLogoutService();
+			service.execute(request, response);
+			viewPage = "member/main.jsp";
+		}else if(command.equals("/modifyView.do")) { // 정보 수정하기 위한 view
+//			service = new MGetMemberService(); // 세션에 있는 mid로 수정할 dto 데이터를 가져오기
+//			service.execute(request, response);
+			viewPage = "member/modify.jsp";
+		}else if(command.equals("/modify.do")) { // db에 정보 수정
+			service = new MModifyService();
+			service.execute(request, response);
+			viewPage = "member/main.jsp";
+		}else if(command.equals("/allView.do")) { // 회원목록 출력(페이징처리)
+			service = new MAllViewService();
+			service.execute(request, response);
+			viewPage = "member/mAllView.jsp";
+		}else if(command.equals("/withdrawal.do")) { // 회원탈퇴
+			service = new MWithdrawalService();
+			service.execute(request, response);
+			viewPage = "member/main.jsp";
+		}
 		/* * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * * * * * * * * * * admin 관련 요청  * * * * * * * * * *
 		 * * * * * * * * * * * * * * * * * * * * * * * * * * */
 		/* * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * * * * * * * * 파일첨부 게시판 관련 요청  * * * * * * * * * *
 		 * * * * * * * * * * * * * * * * * * * * * * * * * * */
-		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		
 	}
