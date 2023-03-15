@@ -17,7 +17,7 @@
   		$('input[name="mid"]').keyup(function(){
   			var mid = $(this).val();
   			if(mid.length<2){
-  				$('#idConfirmResult').text('아이디는 2글자 이상');
+  				$('#midConfirmResult').text('아이디는 2글자 이상');
   			}else{
   				$.ajax({
   					url : '${conPath}/midConfirm.do',

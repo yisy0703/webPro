@@ -3,7 +3,7 @@
 			width: 800px; height:480px; 
 			margin: 20px auto 0px;
 	}
-#idConfirmResult, #pwChkResult, #emailConfirmResult{text-align: left; padding-left: 30px;}
+#midConfirmResult, #mpwChkResult, #memailConfirmResult{text-align: left; padding-left: 30px;}
 
 #content_form table {border: 2px solid pink; width:90%; margin: 0px auto;}
 #content_form table tr { background-color: #FFE271; height:40px; }
