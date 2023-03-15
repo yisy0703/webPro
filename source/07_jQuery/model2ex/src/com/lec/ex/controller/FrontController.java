@@ -31,14 +31,14 @@ public class FrontController extends HttpServlet {
 		  * * * * * * * * * * * * * * * * * * * * * * * * * * */
 		}else if(command.equals("/joinView.do")) { // 회원가입 화면
 			viewPage = "member/join.jsp";
-		}else if(command.equals("/idConfirm.do")) {
+		}else if(command.equals("/midConfirm.do")) {
 			service = new MidConfirmService();
 			service.execute(request, response);
-			viewPage = "member/idConfirm.jsp";
-		}else if(command.equals("/emailConfirm.do")) {
+			viewPage = "member/midConfirm.jsp";
+		}else if(command.equals("/memailConfirm.do")) {
 			service = new MemailConfirmService();
 			service.execute(request, response);
-			viewPage = "member/emailConfirm.jsp";
+			viewPage = "member/memailConfirm.jsp";
 		}else if(command.equals("/join.do")) { // 회원가입 DB 처리
 			service = new MJoinService(); // execute메소드 : mId중복체크 후 회원가입
 			service.execute(request, response);
