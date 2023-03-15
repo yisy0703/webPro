@@ -69,7 +69,37 @@ public class MemberDao {
 		return result;
 	}
 	// (2) 이메일 중복 체크
-	
+	public int memailConfirm(String memail) {
+		int result = EXISTENT;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT COUNT(*) CNT FROM MVC_MEMBER WHERE MEMAIL=?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memail);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int cnt = rs.getInt("cnt");
+			if(cnt == 1) {
+				result = EXISTENT;
+			}else if(cnt == 0) {
+				result = NONEXISTENT;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
 	// (3) 회원가입 
 	public int joinMember(MemberDto member) {
 		int result = FAIL;
