@@ -20,12 +20,12 @@
   				$('#idConfirmResult').text('아이디는 2글자 이상');
   			}else{
   				$.ajax({
-  					url : '${conPath}/idConfirm.do',
+  					url : '${conPath}/midConfirm.do',
   					type : 'get',
   					data : 'mid='+mid,
   					dataType : 'html',
   					success : function(data){
-  						$('#idConfirmResult').html(data);
+  						$('#midConfirmResult').html(data);
   					},
   				});// ajax함수
   			}//if
@@ -43,14 +43,14 @@
   		
   		$('form').submit(function(){
   		// "사용 가능한 ID입니다"(#idConfirmResult), "비밀번호 일치(#pwChkResult)"가 출력되었을 경우만 submit 가능
-				var idConfirmResult = $('#idConfirmResult').text().trim();
-  			var pwChkResult = $('#pwChkResult').text().trim();
-  			if(idConfirmResult != '사용 가능한 ID입니다'){
+				var midConfirmResult = $('#midConfirmResult').text().trim();
+  			var mpwChkResult = $('#mpwChkResult').text().trim();
+  			if(midConfirmResult != '사용 가능한 ID'){
   				alert('사용 가능한 ID인지 확인 요망');
   				return false; // submit 제한
-  			}else if(pwChkResult != '비밀번호 일치'){
+  			}else if(mpwChkResult != '비밀번호 일치'){
   				alert('비밀번호를 확인하세요');
-  				$('#pw').focus();
+  				$('input[name="mpw"]').focus();
   				return false;
   			}
   		});
@@ -69,6 +69,7 @@
     	showOtherMonths: true, // 현재 달이 아닌 달의 날짜도 회색으로 표시
     	//minDate: '-100y',	 // 현재날짜로부터 100년이전까지 년을 표시한다.
     	minDate: new Date(1950, 1 - 1, 1), // 1950년 1월1일을 최소 날짜로 세팅
+    	maxDate : 'y', // 현재 날짜 이전만 선택 가능
     	yearRange: 'c-100:c+10', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 
     });
   } );
@@ -114,7 +115,7 @@
 					<td><input type="file" name="mphoto"></td>
 				</tr>
 				<tr>
-					<th>생년월일</th><td><input type="date" name="mbirth" id="datepicker"></td>
+					<th>생년월일</th><td><input type="text" name="mbirth" id="datepicker"></td>
 				</tr>
 				<tr>
 					<th>주소</th><td><input type="text" name="maddress"></td>

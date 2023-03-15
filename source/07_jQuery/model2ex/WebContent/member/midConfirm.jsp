@@ -6,6 +6,6 @@
 <meta charset="UTF-8">
 </head>
 <body>
-${idConfirmResult }
+${midConfirmResult }
 </body>
 </html>

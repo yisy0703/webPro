@@ -10,9 +10,9 @@ public class MemailConfirmService implements Service {
 		MemberDao mDao = MemberDao.getInstance();
 		int result = mDao.memailConfirm(memail);
 		if(result == MemberDao.EXISTENT){
-			request.setAttribute("emailConfirmResult","<b>사용 불가한 중복된 메일</b>");
+			request.setAttribute("memailConfirmResult","<b>사용 불가한 중복된 메일</b>");
 		}else{
-			request.setAttribute("emailConfirmResult","사용 가능한 메일");
+			request.setAttribute("memailConfirmResult","사용 가능한 메일");
 		}
 	}
 }

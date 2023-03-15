@@ -10,9 +10,9 @@ public class MidConfirmService implements Service {
 		MemberDao mDao = MemberDao.getInstance();
 		int result = mDao.midConfirm(mid);
 		if(result == MemberDao.EXISTENT){
-			request.setAttribute("idConfirmResult","<b>중복된 ID</b>");
+			request.setAttribute("midConfirmResult","<b>중복된 ID</b>");
 		}else{
-			request.setAttribute("idConfirmResult","사용 가능한 ID");
+			request.setAttribute("midConfirmResult","사용 가능한 ID");
 		}
 	}
 }
