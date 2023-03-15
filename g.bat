@@ -1,3 +1,3 @@
 git add .
-git commit -m "jQuery"
+git commit -m "model2ex"
 git push -u origin main
