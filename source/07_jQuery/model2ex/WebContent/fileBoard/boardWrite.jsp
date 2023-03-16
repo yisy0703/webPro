@@ -25,7 +25,9 @@
 </head>
 <body>
 	<c:if test="${empty member }">
-		<script>location.href='${conPath}/loginView.do?next=boardWriteView.do';</script>
+		<script>
+			location.href='${conPath}/loginView.do?next=boardWriteView.do';
+		</script>
 	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="content_form">

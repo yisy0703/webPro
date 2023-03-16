@@ -39,7 +39,8 @@ public class BoardModifyService implements Service {
 			String fcontent = mRequest.getParameter("fcontent");
 			String fip = request.getRemoteAddr();
 			BoardDao boardDao = BoardDao.getInstance();
-			BoardDto boardDto = new BoardDto(fid, null, null, ftitle, fcontent, fFileName, null, 0, 0, 0, 0, fip);
+			BoardDto boardDto = new BoardDto(fid, null, null, ftitle, fcontent, 
+											fFileName, null, 0, 0, 0, 0, fip);
 			int result = boardDao.modifyBoard(boardDto);
 			if(result == BoardDao.SUCCESS) { 
 				request.setAttribute("boaredResult", "글수정 성공");
@@ -78,5 +79,4 @@ public class BoardModifyService implements Service {
 			} // try
 		}// 파일 복사 if
 	}
-
 }

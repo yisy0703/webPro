@@ -9,10 +9,10 @@ public class BoardListService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null) {
-			if(request.getAttribute("pageNum")==null) { // 글 수정이나 답변글처리시 mRequest를 사용하여서 request에 set함
-				pageNum = "1";
-			}else {
+			if(request.getAttribute("pageNum")!=null) { // 글 수정이나 답변글처리시 mRequest를 사용하여서 request에 set함
 				pageNum = (String)request.getAttribute("pageNum");
+			}else {
+				pageNum = "1";
 			}
 		}
 		int currentPage = Integer.parseInt(pageNum);
