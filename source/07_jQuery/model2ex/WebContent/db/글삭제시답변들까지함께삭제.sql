@@ -1,5 +1,8 @@
 -- source/06_jsp/model2ex 프로젝트는 글삭제시 해당글만 삭제
 -- source/07_jQuery/model2ex 프로젝트는 글삭제시 답변글들까지 삭제
+
+-- 글삭제시 답변들까지 함께 삭제한 후 step 재조정 (step 재조정은 생략 가능)
+
 DROP TABLE MEMO;
 CREATE TABLE MEMO (
   ID NUMBER(4) PRIMARY KEY,
