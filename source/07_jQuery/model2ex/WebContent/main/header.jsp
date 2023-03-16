@@ -110,7 +110,7 @@
 				<li><a>${member.mname }님 &nbsp; ▶</a></li>	
 			</ul>
 		</div>
-		<div class="logo" onclick="location.href='${conPath}/list.do'">
+		<div class="logo" onclick="location.href='${conPath}/boardList.do'">
 			LOGO
 		</div>
 		<div class="lnb">
