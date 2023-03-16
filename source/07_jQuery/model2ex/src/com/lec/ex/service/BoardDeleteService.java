@@ -23,11 +23,11 @@ public class BoardDeleteService implements Service {
 		int fstep = Integer.parseInt(request.getParameter("fstep"));
 		int findent = Integer.parseInt(request.getParameter("findent"));
 		BoardDao boardDao = BoardDao.getInstance();
-		int result = boardDao.deleteBoard(fgroup, fstep, findent);
-		if(result == BoardDao.SUCCESS) {
-			request.setAttribute("boaredResult", "글(답변글도 모두) 삭제 성공");
+		int deleteCnt = boardDao.deleteBoard(fgroup, fstep, findent);
+		if(deleteCnt >= BoardDao.SUCCESS) {
+			request.setAttribute("boaredResult", "글(답변글 포함 "+deleteCnt+"개 글) 삭제 성공");
 		}else {
-			request.setAttribute("boaredResult", "글(답변글도 모두) 삭제 실패");
+			request.setAttribute("boaredResult", "글(답변글도 모두) 삭제 안 됨");
 		}
 	}
 
