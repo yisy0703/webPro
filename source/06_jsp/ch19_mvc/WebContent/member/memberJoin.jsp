@@ -32,10 +32,10 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="button" value="회원가입" onclick="infoConfirm()">
-					<input type="reset" value="취소" onclick="history.back()">
+					<input type="button" value="회원가입" onclick="infoConfirm()" class="btn">
+					<input type="reset" value="취소" onclick="history.back()" class="btn">
 					<input type="button" value="회원목록" 
-								onclick="location.href='${conPath}/memberList.do'">
+								onclick="location.href='${conPath}/memberList.do'" class="btn">
 				</td>
 			</tr>
 		</table>

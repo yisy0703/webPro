@@ -43,7 +43,9 @@
 			</c:forEach>
 		</c:if>
 	</table>
+	<p>
 	<button onclick="location.href='${conPath}/memberJoinView.do'">회원가입</button>
+	</p>
 </body>
 </html>
 

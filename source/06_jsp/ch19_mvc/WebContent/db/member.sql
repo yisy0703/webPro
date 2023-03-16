@@ -11,6 +11,10 @@ CREATE TABLE MEMBER(
 -- dummy data
 INSERT INTO MEMBER (ID, PW, NAME, BIRTH)
   VALUES ('aaa', '1', '홍길동', TO_DATE('1999-12-07', 'YYYY-MM-DD'));
+INSERT INTO MEMBER (ID, PW, NAME, BIRTH)
+  VALUES ('bbb', '1', '홍길동', TO_DATE('1995-12-07', 'YYYY-MM-DD'));
+INSERT INTO MEMBER (ID, PW, NAME, BIRTH)
+  VALUES ('ccc', '1', '홍길동', TO_DATE('1996-12-07', 'YYYY-MM-DD'));
 -- dao에 필요한 query
 -- 1. 회원 리스트
 SELECT * FROM MEMBER;
