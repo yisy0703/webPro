@@ -109,6 +109,14 @@ public class FrontController extends HttpServlet {
 			service = new BoardDeleteService();
 			service.execute(request, response);
 			viewPage = "boardList.do";
+		}else if(command.equals("/boardReplyView.do")) {
+			service = new BoardReplyViewService();
+			service.execute(request, response);
+			viewPage = "fileBoard/boardReply.jsp";
+		}else if(command.equals("/boardReply.do")) {
+			service = new BoardReplyService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		

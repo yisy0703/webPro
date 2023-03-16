@@ -24,7 +24,7 @@
 	</script>
 </head>
 <body>
-	<c:if test="${empty member }">
+	<c:if test="${empty member }"> <!-- 로그인 후에만 글쓰기 가능 -->
 		<script>
 			location.href='${conPath}/loginView.do?next=boardWriteView.do';
 		</script>
