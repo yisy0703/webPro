@@ -300,7 +300,7 @@ public class BoardDao {
 	private void preReplyBoardStep(int bgroup, int bstep) {
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE FILEBOARD SET FSTEP = FSTEP + ? WHERE FGROUP=5 AND FSTEP>?";
+		String sql = "UPDATE FILEBOARD SET FSTEP = FSTEP + 1 WHERE FGROUP=? AND FSTEP>?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
