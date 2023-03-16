@@ -83,6 +83,11 @@ public class FrontController extends HttpServlet {
 		/* * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * * * * * * * * 파일첨부 게시판 관련 요청  * * * * * * * * * *
 		 * * * * * * * * * * * * * * * * * * * * * * * * * * */
+		else if(command.equals("/boardList.do")) {
+			service = new BoardListService();
+			service.execute(request, response);
+			viewPage = "fileBoard/boardList.jsp";
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		
 	}
