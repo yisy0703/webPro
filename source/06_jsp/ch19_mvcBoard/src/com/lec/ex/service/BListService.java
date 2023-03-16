@@ -8,7 +8,9 @@ public class BListService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// list.do나 list.do?pageNum=2
 		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null) pageNum = "1";
+		if(pageNum == null) {
+			pageNum = "1";
+		}
 		int currentPage = Integer.parseInt(pageNum);
 		final int PAGESIZE = 10, BLOCKSIZE=10;
 		int startRow = (currentPage-1)*PAGESIZE + 1;
