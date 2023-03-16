@@ -1,19 +1,15 @@
 package com.lec.ex.dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-
 import com.lec.ex.dto.BoardDto;
-
 public class BoardDao {
 	public static final int FAIL = 0;
 	public static final int SUCCESS = 1;
@@ -312,7 +308,7 @@ public class BoardDao {
 			pstmt.setInt(4, fstep);
 			pstmt.setInt(5, findent);
 			deleteCnt = pstmt.executeUpdate();
-			System.out.println(deleteCnt>=SUCCESS? "글삭제성공":"글삭제실패");
+			System.out.println(deleteCnt>=SUCCESS? deleteCnt+"개 글삭제성공":"글삭제실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}finally {
