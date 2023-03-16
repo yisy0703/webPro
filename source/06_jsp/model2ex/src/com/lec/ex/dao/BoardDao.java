@@ -296,33 +296,6 @@ public class BoardDao {
 		}
 		return result;
 	}
-	// (8) 글 삭제하기(삭제하고자 하는 글의 답변글들도 모두 삭제)
-	public int deleteBoard(int fgroup, int fstep, int findent) {
-		int result = FAIL;
-		Connection        conn  = null;
-		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM FILEBOARD WHERE FGROUP = ? AND (FSTEP>=? AND  " + 
-				"    FSTEP<(select NVL(MIN(FSTEP),9999) FROM FILEBOARD WHERE FGROUP=? AND FSTEP>? AND FINDENT<=?))";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, fgroup);
-			pstmt.setInt(2, fstep);
-			pstmt.setInt(3, fgroup);
-			pstmt.setInt(4, fstep);
-			pstmt.setInt(5, findent);
-			result = pstmt.executeUpdate();
-			System.out.println(result>=SUCCESS? "글삭제성공":"글삭제실패");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}finally {
-			try {
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
-			} catch (SQLException e) {System.out.println(e.getMessage());}
-		}
-		return result;
-	}
 	// (9) 답변글 쓰기 전 단계(원글의 fgroup과 같고, 원글의 fstep보다 크면 fstep을 하나 증가하기)
 	private void preReplyBoardStep(int bgroup, int bstep) {
 		Connection        conn  = null;
