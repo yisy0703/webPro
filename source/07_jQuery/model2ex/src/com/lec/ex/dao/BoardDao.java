@@ -309,6 +309,7 @@ public class BoardDao {
 			pstmt.setInt(5, findent);
 			deleteCnt = pstmt.executeUpdate();
 			System.out.println(deleteCnt>=SUCCESS? deleteCnt+"개 글삭제성공":"글삭제실패");
+			postDelete(deleteCnt, fgroup, fstep); // 글삭제시 fstep 재조정
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}finally {
@@ -318,6 +319,30 @@ public class BoardDao {
 			} catch (SQLException e) {System.out.println(e.getMessage());}
 		}
 		return deleteCnt;
+	}
+	// 위의 DELTE 수행한 후 FSTEP 연속적으로 재배열하기(생략가능)
+	private void postDelete(int deleteCnt, int fgroup, int fstep) {
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE FILEBOARD SET fSTEP = fSTEP-? WHERE fGROUP=? AND fSTEP>?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, deleteCnt);
+			pstmt.setInt(2, fgroup);
+			pstmt.setInt(3, fstep);
+			int cnt = pstmt.executeUpdate();
+			System.out.println(cnt+"행 fstep 재조정");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage() + "글 수정 실패 ");
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} 
+		}
 	}
 	// (9) 답변글 쓰기 전 단계(원글의 fgroup과 같고, 원글의 fstep보다 크면 fstep을 하나 증가하기)
 	private void preReplyBoardStep(int bgroup, int bstep) {
