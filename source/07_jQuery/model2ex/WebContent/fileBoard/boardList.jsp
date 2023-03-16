@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="conPath/css/style.css" rel="stylesheet">
+	<link href="${conPath}/css/style.css" rel="stylesheet">
 	<style>
 		#content_form {
 			height:470px;

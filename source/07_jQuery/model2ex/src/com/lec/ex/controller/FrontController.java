@@ -87,6 +87,12 @@ public class FrontController extends HttpServlet {
 			service = new BoardListService();
 			service.execute(request, response);
 			viewPage = "fileBoard/boardList.jsp";
+		}else if(command.equals("/boardWriteView.do")) {
+			viewPage = "fileBoard/boardWrite.jsp";
+		}else if(command.equals("/boardWrite.do")) {
+			service = new BoardWriteService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		
