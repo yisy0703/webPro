@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ch03_summerNoteEdit">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="ch03_summerNoteEdit"/>
+        <property name="java-output-path" value="/ch03_summerNoteEdit/build/classes"/>
+    </wb-module>
+</project-modules>

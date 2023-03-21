@@ -1,0 +1,18 @@
+@charset "UTF-8";
+body {
+	background-color: #fff0B5;
+	font-size: 12px;
+}
+table {border: 2px solid pink; width:70%; margin: 10px auto;}
+table tr { background-color: #FFE271; }
+table tr:hover { background-color: orange;
+	cursor: pointer;
+}
+td, th {text-align: center; padding:5px;}
+input[type='text'], textarea {width:90%; padding: 3px;}
+caption {font-size: 25px; padding:10px;}
+h2{text-align: center; }
+a { text-decoration: none;}
+.left{text-align: left;}
+.paging {text-align: center;}
+b {color:red;}

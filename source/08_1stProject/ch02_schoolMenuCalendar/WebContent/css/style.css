@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size:12px;
+	margin: 10px auto;
+}
+a { text-decoration:none; color:#333; }
+table th{background-color: pink; }
+table td{
+	border:1px solid pink;
+}
+td, th{ padding:5px; }
+h2, b{text-align: center;}
+h3{margin: 0;}
+p{text-align: center;}
