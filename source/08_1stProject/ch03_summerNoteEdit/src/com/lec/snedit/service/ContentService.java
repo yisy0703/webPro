@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.snedit.dao.BDao;
-import com.lec.snedit.dao.ReplyDao;
+import com.lec.snedit.dao.CommentsDao;
 import com.lec.snedit.dto.BDto;
 
 public class ContentService implements Service {
@@ -15,8 +15,8 @@ public class ContentService implements Service {
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		BDto dto = bdao.getDto(bno);
 		request.setAttribute("dto", dto);
-		ReplyDao rdao = new ReplyDao();
-		request.setAttribute("replys", rdao.replyList(bno));
+		CommentsDao cdao = new CommentsDao();
+		request.setAttribute("comments", cdao.commentsList(bno));
 	}
 
 }

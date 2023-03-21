@@ -12,12 +12,12 @@
 			$('.btn').click(function(){
 				var rno = $(this).attr('id');
 				$.ajax({
-					url : '${conPath}/replyModifyView.do',
+					url : '${conPath}/commentsModifyView.do',
 					type : 'post',
 					data : 'rno='+rno,
 					dataType : 'html',
 					success : function(data){
-						$('#rcontent'+rno).html(data);
+						$('#ccontent'+rno).html(data);
 					}
 				});
 			});
@@ -74,14 +74,14 @@
 			</td>
 		</tr>
 	</table>
-	<h2>댓글</h2>
-	<form action="${conPath }/reply.do">
+	<h2>댓글 : ${dto.cnt }개</h2>
+	<form action="${conPath }/comments.do">
 		<input type="hidden" name="bno" value="${dto.bno }">
 		<textarea name="rcontent" rows="2" cols="20"></textarea>
 		<input type="submit" value="댓글">
 	</form>
-	<c:forEach var="reply" items="${replys }">
-		<p id="rcontent${reply.rno }">${reply.rcontent }   <button id="${reply.rno }" class="btn">수정</button><p>
+	<c:forEach var="comment" items="${comments }">
+		<p id="ccontent${comment.cno }">${comment.ccontent }   <button id="${comment.cno }" class="btn">수정</button><p>
 	</c:forEach>
 </body>
 </html>

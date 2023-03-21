@@ -23,7 +23,8 @@ public class BDao {
 		Connection      conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM B";
+		String sql = "SELECT BNO, BTITLE, BCONTENT, BFILE, (SELECT COUNT(*) FROM COMMENTS WHERE BNO=B.BNO) CNT" + 
+				"  FROM B order by brdate";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -33,7 +34,8 @@ public class BDao {
 				String btitle = rs.getString("btitle");
 				String bcontent = rs.getString("bcontent");
 				String bfile = rs.getString("bfile");
-				dtos.add(new BDto(bno, btitle, bcontent, bfile));
+				int cnt = rs.getInt("cnt");
+				dtos.add(new BDto(bno, btitle, bcontent, bfile, cnt));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -74,7 +76,8 @@ public class BDao {
 		Connection      conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM B WHERE BNO=?";
+		String sql = "SELECT BNO, BTITLE, BCONTENT, BFILE, (SELECT COUNT(*) FROM COMMENTS WHERE BNO=B.BNO) CNT " + 
+				"  FROM B where bno=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -84,7 +87,8 @@ public class BDao {
 				String btitle = rs.getString("btitle");
 				String bcontent = rs.getString("bcontent");
 				String bfile = rs.getString("bfile");
-				dto = new BDto(bno, btitle, bcontent, bfile);
+				int cnt = rs.getInt("cnt");
+				dto = new BDto(bno, btitle, bcontent, bfile, cnt);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

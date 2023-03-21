@@ -16,6 +16,5 @@ public class ListService implements Service {
 		ArrayList<BDto> list = bdao.list();
 		request.setAttribute("list", list);
 	}
-
 	
 }

@@ -35,7 +35,7 @@ public class WriteService implements Service {
 			}
 			String btitle = mRequest.getParameter("btitle");
 			String bcontent = mRequest.getParameter("bcontent");
-			BDto dto = new BDto(0, btitle, bcontent, bfile);
+			BDto dto = new BDto(0, btitle, bcontent, bfile, 0);
 			BDao dao = new BDao();
 			int result = dao.write(dto);
 			if(result==1) {

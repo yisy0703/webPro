@@ -5,12 +5,14 @@ public class BDto {
 	private String btitle;
 	private String bcontent;
 	private String bfile;
+	private int cnt;
 	public BDto() { }
-	public BDto(int bno, String btitle, String bcontent, String bfile) {
+	public BDto(int bno, String btitle, String bcontent, String bfile, int cnt) {
 		this.bno = bno;
 		this.btitle = btitle;
 		this.bcontent = bcontent;
 		this.bfile = bfile;
+		this.cnt = cnt;
 	}
 	public int getBno() {
 		return bno;
@@ -35,6 +37,9 @@ public class BDto {
 	}
 	public void setBfile(String bfile) {
 		this.bfile = bfile;
+	}
+	public int getCnt() {
+		return cnt;
 	}
 	@Override
 	public String toString() {

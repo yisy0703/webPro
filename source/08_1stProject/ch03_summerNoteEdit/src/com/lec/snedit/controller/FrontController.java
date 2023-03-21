@@ -61,16 +61,16 @@ public class FrontController extends HttpServlet {
 			service = new ModifyService();
 			service.execute(request, response);
 			viewPage = "smEdit/modify.jsp";
-		}else if(com.equals("/reply.do")) {
-			service = new ReplyWriteService();
+		}else if(com.equals("/comments.do")) {
+			service = new CommentsWriteService();
 			service.execute(request, response);
 			viewPage = "/smEditcontent.do";
-		}else if(com.equals("/replyModifyView.do")) {
-			service = new ReplyModifyViewService();
+		}else if(com.equals("/commentsModifyView.do")) {
+			service = new CommentsModifyViewService();
 			service.execute(request, response);
 			viewPage = "smEdit/replyModify.jsp";
 		}else if(com.equals("/replyModify.do")) {
-			service = new ReplyModifyService();
+			service = new CommentsModifyService();
 			service.execute(request, response);
 			viewPage = "smEditcontent.do";
 		}

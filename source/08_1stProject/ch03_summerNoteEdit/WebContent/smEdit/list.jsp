@@ -31,7 +31,7 @@
 		<tr><th>글번호</th><th>글제목</th><th>파일</th></tr>
 		<c:forEach var="dto" items="${list }">
 			<tr><td>${dto.bno }</td>
-				<td>${dto.btitle }</td>
+				<td>${dto.btitle } [${dto.cnt }]</td>
 				<td>
 					<c:if test="${empty dto.bfile }">첨부파일없음</c:if>
 					<c:if test="${not empty dto.bfile }">${dto.bfile }</c:if>
