@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+body {
+		 width:1000px;	 
+         margin:0 auto;
+	}
+	
+	.slide ul, li, button{
+	margin: 0;
+	padding: 0;
+	}
+	.slide img{
+		display: block;
+		border: 0;
+		
+	}
+	.slide button {
+	border: 0;
+	background: none;
+	}
+	.slide{
+	width: 640px;
+	height: 420px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	}
+	.slide ul{
+		width: 3300px;
+		list-style: none;
+		font-size: 0;
+	}
+	.slide ul li{
+		display: inline-block;
+	}
+	.slide button.prev {
+		position: absolute;
+		left: 0;
+		top:150px;
+	}
+	.slide button.next{
+		position: absolute;
+		right: 0;
+		top:150px;
+	}
+	
+	button {
+		border: 0;
+		background: none;
+	}

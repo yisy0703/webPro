@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('input[type="number"]').change(function(){
+				var sum = 1000;
+				$('input[type="number"]').each(function(idx, data){
+					sum += ($(this).val()*100*(idx+1));
+				});
+				$('input[name="sum"]').val(comma1(sum));
+				$('span').html("₩"+comma2(sum));
+			});
+		});
+		function comma1(x) {
+			x = x+'';
+			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		function comma2(x) {
+			x = x+'';
+			var tempStr = '';
+		  var len = x.length;
+		  for(var i=0 ; i<len ; i++){
+			  tempStr += x[i];
+			  if(((len-i-1)%3 == 0) && (i!=(len-1))){
+				  tempStr += ",";
+			  }
+		  }
+		  return tempStr;
+		}
+	</script>
+</head>
+<body>
+	<form action="">
+		<p>기본요금 : ₩1,000</p>
+		<p>100원짜리 : <input type="number" name="n1" min="0" value="1"></p>
+		<p>200원짜리 : <input type="number" name="n2" min="0" value="1"></p>
+		<p>합계 : <input type="text" name="sum" value=""></p>
+		<p>함계 :	<span></span></p>
+		<p><input type="submit">
+	</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		@keyframes slidy {
+			0% { left: 0%; }
+			20% { left: 0%; }
+			25% { left: -100%; }
+			45% { left: -100%; }
+			50% { left: -200%; }
+			70% { left: -200%; }
+			75% { left: -300%; }
+			85% { left: -300%; }
+			100% { left: -400%; }
+		}
+		div.slide_banner { 
+			overflow: hidden;
+			width: 700px; height: 400px;
+		}
+		div.slide_banner figure img { width: 20%; float: left; }
+		div.slide_banner figure { 
+		  position: relative;
+		  width: 500%;
+		  height:300px;
+		  margin: 0;
+		  top:0;
+		  left: 0;
+		  text-align: left;
+		  font-size: 0;
+		  -webkit-animation: 10s slidy ease-in-out infinite;
+		  animation: 10s slidy ease-in-out infinite; 
+		}
+	</style>
+</head>
+<body>
+	<div class="slide_banner">
+		<figure>
+			<img src="../img/img1.jpg">
+			<img src="../img/img2.jpg">
+			<img src="../img/img3.jpg">
+			<img src="../img/img4.jpg">
+			<img src="../img/img5.jpg">
+		</figure>
+	</div>
+</body>
+</html>
