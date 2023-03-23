@@ -24,7 +24,7 @@ public class BDao {
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
 		String sql = "SELECT BNO, BTITLE, BCONTENT, BFILE, (SELECT COUNT(*) FROM COMMENTS WHERE BNO=B.BNO) CNT" + 
-				"  FROM B order by brdate";
+				"  FROM B";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
