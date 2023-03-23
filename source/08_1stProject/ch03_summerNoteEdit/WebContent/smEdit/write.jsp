@@ -39,14 +39,9 @@
 		table tr:hover { background-color: orange;
 			cursor: pointer;
 		}
-		td, th {padding:10px;}
-		input[type='text'], textarea {width:100%; padding: 3px;}
+		td, th {padding:5px;}
+		input[type='text']{width:100%; padding: 3px;}
 		caption {font-size: 25px; padding:10px;}
-		h2{text-align: center; }
-		a { text-decoration: none;}
-		.left{text-align: left;}
-		.paging {text-align: center;}
-		b {color:red;}
 	</style>
 </head>
 <body>
