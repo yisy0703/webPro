@@ -13,8 +13,10 @@ public class CampReservation implements Service {
 		String mid =  request.getParameter("mid");
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		ReservationDao reservationDao = ReservationDao.getInstance();
-		int reservationResult = reservationDao.reservationCamp(mid, cno, reservationDate);
-		request.setAttribute("reservationResult", reservationResult);
+		int reserved = reservationDao.getReservation(cno, reservationDate);
+		if(reserved==0) {
+			int reservationResult = reservationDao.reservationCamp(mid, cno, reservationDate);
+			request.setAttribute("reservationResult", reservationResult);
+		}
 	}
-
 }

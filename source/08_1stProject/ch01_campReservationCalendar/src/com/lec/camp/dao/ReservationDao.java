@@ -30,7 +30,36 @@ public class ReservationDao {
 			System.out.println(e.getMessage());
 		}
 	}
-	//  3 . 캠핑장 예약하기
+	//  3. 해당 년월에 예약되었는지 파악
+	public int getReservation(int cno, String reservationDate){
+		int reserved = 0;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM RESERVATION WHERE CNO=? AND ReservationDATE=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cno);
+			pstmt.setString(2, reservationDate);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				reserved = 1;
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} 
+		}
+		return reserved;
+	}
+	//  4 . 캠핑장 예약하기
 	public int reservationCamp(String mid, int cno, String reservationDate){
 		int result = 0;
 		Connection        conn  = null;
@@ -59,7 +88,7 @@ public class ReservationDao {
 		}
 		return result;
 	}
-	//  -- 4. 해당 년월에 예약된 내용들 보기
+	//  -- 5. 해당 년월에 예약된 내용들 보기
 	public ArrayList<ReservationDto> getReservation(String yearStr, String monthStr){
 		ArrayList<ReservationDto> dtos = new ArrayList<ReservationDto>();
 		Connection        conn  = null;

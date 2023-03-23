@@ -40,12 +40,14 @@ SELECT * FROM RESERVATION ORDER BY RegistrationDate;
 SELECT * FROM CAMPGROUND ORDER BY CNO;
 -- 2. 특정 캠핑장
 SELECT * FROM CAMPGROUND WHERE CNO=1;
--- 3 . 캠핑장 예약하기
+-- 3. 해당 년월에 예약되었는지 파악
+SELECT * FROM RESERVATION WHERE CNO=1 AND ReservationDATE='2023-03-22';
+-- 4 . 캠핑장 예약하기
 INSERT INTO RESERVATION (RNO, MID, CNO, ReservationDATE, DAY)
   VALUES (RESERVATION_SEQ.NEXTVAL, 'bbb', 1, 
         to_date('2023-04-05', 'yyyy-mm-dd'), to_char(to_date('2023-04-05', 'yyyy-mm-dd'),'dd'));
--- 4. 해당 년월에 예약된 내용들 보기
+-- 5. 해당 년월에 예약된 내용들 보기
 SELECT DAY FROM RESERVATION
-  WHERE CNO=1 AND TO_CHAR(ReservationDATE, 'YYYY-MM') = '2023'|| '-' || '03'
+  WHERE CNO=1 AND TO_CHAR(ReservationDATE, 'YYYY-MM') = '2023'|| '-' || '10'
   ORDER BY DAY;
 commit;
