@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		var i = 1;
+		$('button.append').click(function(){
+			i ++;
+			var out = '<p>';
+			out += i + '. 테스트함 <button class="delete">x</button>';
+			out += '</p>';
+			$('div#wrap').append(out);
+		});
+		$(document).on('click', 'button.delete', function(){
+			var p = $(this).parents('p');
+			var no = p.text().substring(0,1);
+			if (no == i){
+				i = no - 1;
+				alert('마지막 삭제하네');
+			}else{
+				alert('마지막 아닌거 삭제하는구먼');
+			}
+			p.remove();
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<p>1. 테스트 함 <button class="delete">x</button></p>
+	</div>
+	<button class="append">추가</button>
+</body>
+</html>
