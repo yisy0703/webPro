@@ -1,12 +1,12 @@
 package com.lec.dto;
 
-public class Dto {
+public class FriendDto {
 	private int no;
 	private String name;
 	private String tel;
 	private String addr;
-	public Dto() {}
-	public Dto(int no, String name, String tel, String addr) {
+	public FriendDto() {}
+	public FriendDto(int no, String name, String tel, String addr) {
 		this.no = no;
 		this.name = name;
 		this.tel = tel;
