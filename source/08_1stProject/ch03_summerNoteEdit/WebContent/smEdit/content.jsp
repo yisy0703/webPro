@@ -10,14 +10,14 @@
 	<script>
 		$(document).ready(function(){
 			$('.btn').click(function(){
-				var rno = $(this).attr('id');
+				var cno = $(this).attr('id');
 				$.ajax({
 					url : '${conPath}/commentsModifyView.do',
 					type : 'post',
-					data : 'rno='+rno,
+					data : 'cno='+cno,
 					dataType : 'html',
 					success : function(data){
-						$('#ccontent'+rno).html(data);
+						$('#ccontent'+cno).html(data);
 					}
 				});
 			});

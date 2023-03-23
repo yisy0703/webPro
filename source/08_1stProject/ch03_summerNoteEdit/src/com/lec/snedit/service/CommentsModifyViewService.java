@@ -9,10 +9,9 @@ public class CommentsModifyViewService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		int rno = Integer.parseInt(request.getParameter("rno"));
+		int cno = Integer.parseInt(request.getParameter("cno"));
 		CommentsDao dao = new CommentsDao();
-		request.setAttribute("dto", dao.getDto(rno));
+		request.setAttribute("dto", dao.getDto(cno));
 
 	}
-
 }

@@ -77,7 +77,7 @@ public class CommentsDao {
 		Connection      conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM REPLY WHERE RNO=?";
+		String sql = "SELECT * FROM COMMENTS WHERE cNO=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);

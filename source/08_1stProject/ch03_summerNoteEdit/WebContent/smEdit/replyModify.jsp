@@ -10,8 +10,8 @@
 <body>
 	<form action="${conPath }/replyModify.do">
 		<input type="hidden" name="bno" value="${dto.bno }">
-		<input type="hidden" name="rno" value="${dto.rno }">
-		<textarea rows="2" cols="20" name="rcontent">${dto.rcontent}</textarea>
+		<input type="hidden" name="cno" value="${dto.cno }">
+		<textarea rows="2" cols="20" name="ccontent">${dto.ccontent}</textarea>
 		<input type="submit" value="수정">
 	</form>
 </body>
