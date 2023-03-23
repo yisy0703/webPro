@@ -24,7 +24,8 @@
 	<%
 		MemberDto member = new MemberDto("aaa", "홍길동");
 		session.setAttribute("member", member); // 강제로 로그인
-		response.sendRedirect("main.do");
+		//response.sendRedirect("main.do");
 	%>
+	<jsp:forward page="main.do"/>
 </body>
 </html>

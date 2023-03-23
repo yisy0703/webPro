@@ -12,7 +12,7 @@
 	      d. window -> preferences -> web -> jsp files
     	6.2 Test Web browser
 	       window -> webBrowser-> Chrome 
-      6번 작업을 생략하고 싶으면 eclipse.ini 맨 밑에 "-Dfile.encoding=utf-8" 추가
+       ★ 6번 작업을 생략하고 싶으면 eclipse.ini 맨 밑에 "-Dfile.encoding=utf-8" 추가 ★ 
    7) 하단servers 탭에서 new를 클릭하여 tomcat설정
       apache에 있는 tomcat을 선택하고 tomcat9.0을 연결하고 8090포트 등 정보 세가지 수정
 

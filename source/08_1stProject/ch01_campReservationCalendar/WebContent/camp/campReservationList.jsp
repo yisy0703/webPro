@@ -29,12 +29,14 @@
 					day = '0'+day;
 				}
 				reservationDate = '${year}-' + month + '-' + day;
-				location.href = '${conPath}/reservation.do?mid=${param.mid}&cno=${param.cno}&reservationDate='+reservationDate;
+				alert(reservationDate+'에 예약한다');
+				location.href = '${conPath}/reservation.do?year=${year}&month=${month}&mid=${param.mid}&cno=${param.cno}&reservationDate='+reservationDate;
 			});
 		});
 	</script>
 </head>
 <body>
+${member.mname }(${member.mid})님 로그인 함
 <c:if test="${reservationResult == 1}">
 	<script>alert('예약 성공');</script>
 </c:if>
@@ -48,7 +50,7 @@
 				<input type="hidden" name="cno" value="${param.cno }">
 				<input type="hidden" name="mid" value="${param.mid }">
 				<select name="year">
-					<c:forEach var="i" begin="${year-10 }" end="${year+10 }">
+					<c:forEach var="i" begin="${year }" end="${year+10 }">
 						<c:if test="${i eq year }">
 							<option selected="selected">${i }</option>
 						</c:if>
