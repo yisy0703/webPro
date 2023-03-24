@@ -77,7 +77,7 @@
 	<h2>댓글 : ${dto.cnt }개</h2>
 	<form action="${conPath }/comments.do">
 		<input type="hidden" name="bno" value="${dto.bno }">
-		<textarea name="rcontent" rows="2" cols="20"></textarea>
+		<textarea name="ccontent" rows="2" cols="20"></textarea>
 		<input type="submit" value="댓글">
 	</form>
 	<c:forEach var="comment" items="${comments }">

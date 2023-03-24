@@ -11,10 +11,10 @@ public class CommentsWriteService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int bno = Integer.parseInt(request.getParameter("bno"));
-		String rcontent = request.getParameter("rcontent");
-		String rip = request.getRemoteAddr();
+		String ccontent = request.getParameter("ccontent");
+		String cip = request.getRemoteAddr();
 		CommentsDao dao = new CommentsDao();
-		CommentsDto dto = new CommentsDto(0, bno, rcontent, rip, null);
+		CommentsDto dto = new CommentsDto(0, bno, ccontent, cip, null);
 		request.setAttribute("replyWriteResult", dao.write(dto));
 	}
 
