@@ -16,7 +16,7 @@ public class ModifyService implements Service {
 		String addr = request.getParameter("addr");
 		FriendDto modifyFriend = new FriendDto(no, name, tel, addr);
 		FriendDao dao = new FriendDao();
-		dao.modify(modifyFriend);
+		dao.modifyFriend(modifyFriend);
 
 	}
 
