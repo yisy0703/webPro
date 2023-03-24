@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lec.service.FriendAppendService;
 import com.lec.service.FriendListService;
+import com.lec.service.ModifyService;
+import com.lec.service.ModifyViewService;
 import com.lec.service.Service;
 @WebServlet("*.do")
 public class FriendController extends HttpServlet {
@@ -36,6 +38,14 @@ public class FriendController extends HttpServlet {
 			service = new FriendAppendService();
 			service.execute(request, response);
 			viewPage = "friendAppend.jsp";
+		}else if(command.equals("/modifyView.do")) {
+			service = new ModifyViewService();
+			service.execute(request, response);
+			viewPage = "modify.jsp";
+		}else if(command.equals("/modify.do")) {
+			service = new ModifyService();
+			service.execute(request, response);
+			viewPage = "dummy.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

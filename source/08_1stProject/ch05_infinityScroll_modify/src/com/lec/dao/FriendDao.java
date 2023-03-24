@@ -105,5 +105,62 @@ public class FriendDao {
 		}
 		return result;
 	}
+	// 여기선 필요 없음
+	public FriendDto getFriend(String no) {
+		FriendDto friend = null;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM FRIEND WHERE NO=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String name = rs.getString("name");
+				String tel  = rs.getString("tel");
+				String addr = rs.getString("addr");
+				friend = new FriendDto(Integer.parseInt(no), name, tel, addr);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(rs   !=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {System.out.println(e.getMessage());}
+		}
+		return friend;
+	}
+	// 친구 수정
+	public int modifyFriend(FriendDto dto) {
+		int result = FAIL;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "Update friend set name=?," + 
+				"            tel = ?," + 
+				"            addr = ?" + 
+				"        where no=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getTel());
+			pstmt.setString(3, dto.getAddr());
+			pstmt.setInt(4, dto.getNo());
+			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS? "수정완료":"수정실패");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {System.out.println(e.getMessage());}
+		}
+		return result;
+	}
 }
 
