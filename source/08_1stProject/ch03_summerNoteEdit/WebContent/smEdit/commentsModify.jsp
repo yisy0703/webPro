@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<form action="${conPath }/replyModify.do">
+	<form action="${conPath }/commentsModify.do">
 		<input type="hidden" name="bno" value="${dto.bno }">
 		<input type="hidden" name="cno" value="${dto.cno }">
 		<textarea rows="2" cols="20" name="ccontent">${dto.ccontent}</textarea>
