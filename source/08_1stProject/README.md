@@ -25,6 +25,8 @@ LAS
 [9. 실행화면](https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%8B%A4%ED%96%89%ED%99%94%EB%A9%B4)<br><br>
 [10. 차후 개발내용](https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%B0%A8%ED%9B%84-%EA%B0%9C%EB%B0%9C%EB%82%B4%EC%9A%A9)<br><br>
 
+<hr>
+
 ## 작업분할 구조도
 ![2 WBS1](https://user-images.githubusercontent.com/79974632/227863171-c4a2dad8-f546-4387-ad16-da22f261a30d.JPG)
 ![3 WBS2](https://user-images.githubusercontent.com/79974632/227863186-1061dda9-05df-4822-b5a4-6783e9e1dbab.JPG)
