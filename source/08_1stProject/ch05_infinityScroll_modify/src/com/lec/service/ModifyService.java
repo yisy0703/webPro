@@ -19,5 +19,4 @@ public class ModifyService implements Service {
 		dao.modifyFriend(modifyFriend);
 
 	}
-
 }
