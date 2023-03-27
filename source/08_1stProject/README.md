@@ -14,26 +14,16 @@ LAS
 ![1 LAS_MAIN](https://user-images.githubusercontent.com/79974632/227863118-d525b43b-3e82-4cda-b5ab-5f64953f8832.JPG)
 
 ## 목차
-[1. 작업분할 구조도]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%9E%91%EC%97%85%EB%B6%84%ED%95%A0-%EA%B5%AC%EC%A1%B0%EB%8F%84)<br><br>
-[2. Gantt chart]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#gantt-chart)<br><br>
-[3. 이용자 권한]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%9D%B4%EC%9A%A9%EC%9E%90-%EA%B6%8C%ED%95%9C)<br><br>
-[4. Usecase Diagram]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#usecase-diagram)<br><br>
-[5. Sequence Diagram]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#sequence-diagram)<br><br>
-[6. 기능정의서]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EA%B8%B0%EB%8A%A5%EC%A0%95%EC%9D%98%EC%84%9C)<br><br>
-[7. E-R Diagram]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#e-r-diagram)<br><br>
-[8. Project Source Explorer]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#project-source-explorer)<br><br>
-[9. 실행화면]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%8B%A4%ED%96%89%ED%99%94%EB%A9%B4)<br><br>
-[10. 차후 개발내용]
-(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%B0%A8%ED%9B%84-%EA%B0%9C%EB%B0%9C%EB%82%B4%EC%9A%A9)<br><br>
+[1. 작업분할 구조도](https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%9E%91%EC%97%85%EB%B6%84%ED%95%A0-%EA%B5%AC%EC%A1%B0%EB%8F%84)<br><br>
+[2. Gantt chart]https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#gantt-chart)<br><br>
+[3. 이용자 권한](https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%9D%B4%EC%9A%A9%EC%9E%90-%EA%B6%8C%ED%95%9C)<br><br>
+[4. Usecase Diagram]https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#usecase-diagram)<br><br>
+[5. Sequence Diagram]https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#sequence-diagram)<br><br>
+[6. 기능정의서]https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EA%B8%B0%EB%8A%A5%EC%A0%95%EC%9D%98%EC%84%9C)<br><br>
+[7. E-R Diagram](https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#e-r-diagram)<br><br>
+[8. Project Source Explorer]https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#project-source-explorer)<br><br>
+[9. 실행화면](https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%8B%A4%ED%96%89%ED%99%94%EB%A9%B4)<br><br>
+[10. 차후 개발내용](https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%B0%A8%ED%9B%84-%EA%B0%9C%EB%B0%9C%EB%82%B4%EC%9A%A9)<br><br>
 
 ## 작업분할 구조도
 ![2 WBS1](https://user-images.githubusercontent.com/79974632/227863171-c4a2dad8-f546-4387-ad16-da22f261a30d.JPG)
