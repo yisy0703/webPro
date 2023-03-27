@@ -12,6 +12,8 @@ LAS
 - 프로젝트 소개 : 도서관 웹 페이지와 도서관 관리 시스템을 통합하여 하나의 프로그램으로 이용 및 관리할 수 있는 통합형 도서관 관리 시스템이다 <br>
 
 ![1 LAS_MAIN](https://user-images.githubusercontent.com/79974632/227863118-d525b43b-3e82-4cda-b5ab-5f64953f8832.JPG)
+![1 LAS1](https://user-images.githubusercontent.com/79974632/227871198-ea3ff1eb-cdad-40dc-ba83-fffd405b6e28.JPG)
+![1 LAS2](https://user-images.githubusercontent.com/79974632/227871204-0723f874-c037-48ed-98aa-b9370bb4792f.jpg)
 
 ## 목차
 [1. 작업분할 구조도](https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%9E%91%EC%97%85%EB%B6%84%ED%95%A0-%EA%B5%AC%EC%A1%B0%EB%8F%84)<br><br>
