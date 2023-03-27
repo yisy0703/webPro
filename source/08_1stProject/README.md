@@ -15,6 +15,7 @@ LAS
 
 ## 목차
 [1. 작업분할 구조도]
+(https://github.com/yisy0703/webPro/tree/main/source/08_1stProject#%EC%9E%91%EC%97%85%EB%B6%84%ED%95%A0-%EA%B5%AC%EC%A1%B0%EB%8F%84)<br>
 [2. Gantt chart]
 [3. 이용자 권한]
 [4. Usecase Diagram]
