@@ -70,10 +70,10 @@
 			<caption>회원가입</caption>
 			<tr>
 				<th>아이디</th>
-				<td><input type="text" name="id" required="required"></td>
+				<td><input type="text" name="id" required="required" style="ime-mode:disabled;"></td> <!-- 디폴트 영문 -->
 			</tr>
 			<tr><th>비밀번호</th><td><input type="password" name="pw" required="required"></td></tr>
-			<tr><th>이름</th>	<td><input type="text" name="name" required="required"></td></tr>
+			<tr><th>이름</th>	<td><input type="text" name="name" required="required"  style="ime-mode:active;"></td></tr><!-- 디폴트 한글 -->
 			<tr>
 				<th>주소</th>
 				<td>

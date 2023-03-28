@@ -19,6 +19,7 @@ import com.lec.map.service.Service;
 @WebServlet("*.do")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private boolean join = false;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
@@ -33,10 +34,14 @@ public class Controller extends HttpServlet {
 		String viewPage = null;
 		Service service = null;
 		if(com.equals("/joinView.do")) {
+			join = true;
 			viewPage = "member/join.jsp";
 		}else if(com.equals("/join.do")) {
-			service = new JoinService();
-			service.execute(request, response);
+			if(join) {
+				service = new JoinService();
+				service.execute(request, response);
+				join = false;
+			}
 			viewPage = "main.do";
 		}else if(com.equals("/main.do")) {
 			service = new ListService();
