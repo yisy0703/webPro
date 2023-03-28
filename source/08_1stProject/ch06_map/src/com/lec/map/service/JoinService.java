@@ -16,7 +16,7 @@ public class JoinService implements Service {
 		String postcode = request.getParameter("postcode");
 		String address = request.getParameter("address");
 		String detailAddress = request.getParameter("detailAddress");
-		MemberDto newMember = new MemberDto(id, pw, name, postcode, address, detailAddress);
+		MemberDto newMember = new MemberDto(id, pw, name, postcode, address, detailAddress, null);
 		MemberDao memberDao = new MemberDao();
 		int result = memberDao.join(newMember);
 		request.setAttribute("joinResult", result);

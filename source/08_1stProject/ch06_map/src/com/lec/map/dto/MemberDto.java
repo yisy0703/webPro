@@ -1,5 +1,7 @@
 package com.lec.map.dto;
 
+import java.sql.Timestamp;
+
 public class MemberDto {
 	private String id;
 	private String pw;
@@ -7,14 +9,16 @@ public class MemberDto {
 	private String postcode;
 	private String address;
 	private String detailAddress;
+	private Timestamp rdate;
 	public MemberDto() { }
-	public MemberDto(String id, String pw, String name, String postcode, String address, String detailAddress) {
+	public MemberDto(String id, String pw, String name, String postcode, String address, String detailAddress, Timestamp rdate) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.postcode = postcode;
 		this.address = address;
 		this.detailAddress = detailAddress;
+		this.rdate = rdate;
 	}
 	public String getId() {
 		return id;
@@ -51,6 +55,12 @@ public class MemberDto {
 	}
 	public void setDetailAddress(String detailAddress) {
 		this.detailAddress = detailAddress;
+	}
+	public Timestamp getRdate() {
+		return rdate;
+	}
+	public void setRdate(Timestamp rdate) {
+		this.rdate = rdate;
 	}
 	@Override
 	public String toString() {

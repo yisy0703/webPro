@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -31,7 +32,7 @@ public class MemberDao {
 		int result = FAIL;
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO MEMBER " + 
+		String sql = "INSERT INTO MEMBER (ID, PW, NAME, POSTCODE, ADDRESS, DETAILADDRESS)" + 
 				"    VALUES (?, ?, ?, ?, ?, ?)";
 		try {
 			conn = getConnection();
@@ -53,12 +54,12 @@ public class MemberDao {
 		}
 		return result;
 	}
-	public ArrayList<MemberDto> list(){
+	public ArrayList<MemberDto> memberList(){
 		ArrayList<MemberDto> members = new ArrayList<MemberDto>();
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM MEMBER";
+		String sql = "SELECT * FROM MEMBER ORDER BY RDATE DESC";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -70,7 +71,8 @@ public class MemberDao {
 				String postcode = rs.getString("postcode");
 				String address = rs.getString("address");
 				String detailAddress = rs.getString("detailAddress");
-				members.add(new MemberDto(id, pw, name, postcode, address, detailAddress));
+				Timestamp rdate = rs.getTimestamp("rdate");
+				members.add(new MemberDto(id, pw, name, postcode, address, detailAddress, rdate));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

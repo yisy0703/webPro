@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.map.service.JoinService;
+import com.lec.map.service.ListService;
 import com.lec.map.service.Service;
 
 /**
@@ -38,7 +39,8 @@ public class Controller extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "main.do";
 		}else if(com.equals("/main.do")) {
-			
+			service = new ListService();
+			service.execute(request, response);
 			viewPage = "member/main.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
