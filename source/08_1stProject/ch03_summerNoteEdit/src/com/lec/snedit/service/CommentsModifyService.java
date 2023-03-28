@@ -15,7 +15,7 @@ public class CommentsModifyService implements Service {
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		CommentsDao dao = new CommentsDao();
 		CommentsDto dto = new CommentsDto(cno, 0, ccontent, cip, null);
-		request.setAttribute("replyModifyResult", dao.replyModify(dto));
+		request.setAttribute("commentModifyResult", dao.replyModify(dto));
 	}
 
 }

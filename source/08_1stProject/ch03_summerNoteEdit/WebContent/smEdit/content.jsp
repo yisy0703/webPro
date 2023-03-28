@@ -25,31 +25,30 @@
 	</script>
 </head>
 <body>
-<!-- 
+
 	<c:set var="SUCCESS" value="1"/>
 	<c:set var="FAIL" value="0"/>
-	<c:if test="${replyModifyResult eq SUCCESS}">
+	<c:if test="${commentModifyResult eq SUCCESS}">
 		<script>
 			alert('댓글 수정 성공');
 		</script>
 	</c:if>
-	<c:if test="${replyModifyResult eq FAIL}">
+	<c:if test="${commentModifyResult eq FAIL}">
 		<script>
 			alert('댓글 수정 실패');
 		</script>
 	</c:if>
 	
-	<c:if test="${replyWriteResult eq SUCCESS}">
+	<c:if test="${commentWriteResult eq SUCCESS}">
 		<script>
 			alert('댓글 쓰기 성공');
 		</script>
 	</c:if>
-	<c:if test="${replyWriteResult eq FAIL}">
+	<c:if test="${commentWriteResult eq FAIL}">
 		<script>
 			alert('댓글 쓰기 실패');
 		</script>
 	</c:if>
-	 -->
 	<table>
 		<caption>${dto.bno } 글 자세히 보기</caption>
 		<tr><th>글 제목</th>
@@ -74,14 +73,16 @@
 			</td>
 		</tr>
 	</table>
-	<h2>댓글 : ${dto.cnt }개</h2>
-	<form action="${conPath }/comments.do">
-		<input type="hidden" name="bno" value="${dto.bno }">
-		<textarea name="ccontent" rows="2" cols="20"></textarea>
-		<input type="submit" value="댓글">
-	</form>
-	<c:forEach var="comment" items="${comments }">
-		<p id="ccontent${comment.cno }">${comment.ccontent }   <button id="${comment.cno }" class="btn">수정</button><p>
-	</c:forEach>
+	<div id="comments">
+		<h4>댓글 : ${dto.cnt }개</h4>
+		<form action="${conPath }/comments.do">
+			<input type="hidden" name="bno" value="${dto.bno }">
+			<textarea name="ccontent" rows="2"></textarea>
+			<input type="submit" value="댓글">
+		</form>
+		<c:forEach var="comment" items="${comments }">
+			<p id="ccontent${comment.cno }">${comment.ccontent }   <button id="${comment.cno }" class="btn">수정</button><p>
+		</c:forEach>
+	</div>
 </body>
 </html>

@@ -14,8 +14,8 @@ public class CommentsWriteService implements Service {
 		String ccontent = request.getParameter("ccontent");
 		String cip = request.getRemoteAddr();
 		CommentsDao dao = new CommentsDao();
-		CommentsDto dto = new CommentsDto(0, bno, ccontent, cip, null);
-		request.setAttribute("replyWriteResult", dao.write(dto));
+		CommentsDto comment = new CommentsDto(0, bno, ccontent, cip, null);
+		request.setAttribute("commentWriteResult", dao.write(comment));
 	}
 
 }

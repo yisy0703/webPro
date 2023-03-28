@@ -101,4 +101,31 @@ public class BDao {
 		}
 		return dto;
 	}
+	public int modify(BDto dto) {
+		int result = 0;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE B " + 
+				"  SET BTITLE = ?" + 
+				"      BCONTENT = ?" + 
+				"      BFILE = ?" + 
+				"  WHERE BNO=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getBtitle());
+			pstmt.setString(2, dto.getBcontent());
+			pstmt.setString(3, dto.getBfile());
+			pstmt.setInt(4, dto.getBno());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {System.out.println(e.getMessage());}
+		}
+		return result;
+	}
 }
