@@ -13,6 +13,27 @@
 		input[type="button"], input[type="submit"]{width:42%;}
 		td{width:320px;}
 	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script>
+  	$(function(){
+  		$('input[name="id"]').keyup(function(){
+  			var id = $(this).val();
+  			if(id.length<2){
+  				$('#idConfirmResult').text('아이디는 2글자 이상');
+  			}else{
+  				$.ajax({
+  					url : '${conPath}/idConfirm.do',
+  					type : 'get',
+  					data : 'id='+id,
+  					dataType : 'html',
+  					success : function(data){
+  						$('#midConfirmResult').html(data);
+  					},
+  				});// ajax함수
+  			}//if
+  		});// keyup event
+  	});
+  </script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	    function sample6_execDaumPostcode() {
@@ -70,7 +91,10 @@
 			<caption>회원가입</caption>
 			<tr>
 				<th>아이디</th>
-				<td><input type="text" name="id" required="required" style="ime-mode:disabled;"></td> <!-- 디폴트 영문 -->
+				<td>
+					<input type="text" name="id" required="required" autofocus="autofocus" style="ime-mode:disabled;"><!-- 영문 -->
+					<div id="idConfirmResult"> &nbsp; </div>
+				</td> 
 			</tr>
 			<tr><th>비밀번호</th><td><input type="password" name="pw" required="required"></td></tr>
 			<tr><th>이름</th>	<td><input type="text" name="name" required="required"  style="ime-mode:active;"></td></tr><!-- 디폴트 한글 -->

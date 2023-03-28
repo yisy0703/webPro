@@ -33,7 +33,11 @@ public class Controller extends HttpServlet {
 		String com     = uri.substring(conPath.length()); //들어온 요청
 		String viewPage = null;
 		Service service = null;
-		if(com.equals("/joinView.do")) {
+		if(com.equals("/idConfirm.do")) {
+			service = new JoinService();
+			service.execute(request, response);
+			viewPage = "member/idConfirm.jsp";
+		}else if(com.equals("/joinView.do")) {
 			join = true;
 			viewPage = "member/join.jsp";
 		}else if(com.equals("/join.do")) {

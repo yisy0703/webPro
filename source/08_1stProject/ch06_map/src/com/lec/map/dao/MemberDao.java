@@ -17,6 +17,8 @@ import com.lec.map.dto.MemberDto;
 public class MemberDao {
 	public static final int FAIL = 0;
 	public static final int SUCCESS = 1;
+	public static final int EXISTENT = 0;
+	public static final int NONEXISTENT = 1;
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
 		try {
@@ -27,6 +29,30 @@ public class MemberDao {
 			System.out.println(e.getMessage());
 		}
 		return conn;
+	}
+	public int idConfirm(String id) {
+		int cnt = NONEXISTENT;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM MEMBER WHERE ID=?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cnt = EXISTENT;
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {System.out.println(e.getMessage());}
+		}
+		return cnt;
 	}
 	public int join(MemberDto dto) {
 		int result = FAIL;
