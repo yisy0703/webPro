@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lec.map.service.IdConfirmService;
 import com.lec.map.service.JoinService;
 import com.lec.map.service.ListService;
 import com.lec.map.service.Service;
@@ -34,7 +35,7 @@ public class Controller extends HttpServlet {
 		String viewPage = null;
 		Service service = null;
 		if(com.equals("/idConfirm.do")) {
-			service = new JoinService();
+			service = new IdConfirmService();
 			service.execute(request, response);
 			viewPage = "member/idConfirm.jsp";
 		}else if(com.equals("/joinView.do")) {

@@ -24,10 +24,11 @@
   				$.ajax({
   					url : '${conPath}/idConfirm.do',
   					type : 'get',
+  					//data : {'id':id},
   					data : 'id='+id,
   					dataType : 'html',
   					success : function(data){
-  						$('#midConfirmResult').html(data);
+  						$('#idConfirmResult').html(data);
   					},
   				});// ajax함수
   			}//if
