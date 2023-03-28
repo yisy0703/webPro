@@ -7,7 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('input[type="button"]').click(function(){

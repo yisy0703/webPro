@@ -5,12 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script>
+<script>
 	window.onload = function(){
 		close();
 	};
-	</script>
+</script>
 </head>
 <body>
 </body>

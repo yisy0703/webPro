@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.lec.service.FriendAppendService;
 import com.lec.service.FriendListService;
 import com.lec.service.ModifyService;
-import com.lec.service.ModifyViewService;
 import com.lec.service.Service;
 @WebServlet("*.do")
 public class FriendController extends HttpServlet {
@@ -31,7 +30,7 @@ public class FriendController extends HttpServlet {
 		String viewPage = null;
 		Service service = null;
 		// 친구 수정시 새창 띄우기
-		if(command.equals("/friendLidt.do")) {
+		if(command.equals("/friendList.do")) {
 			service = new FriendListService();
 			service.execute(request, response);
 			viewPage = "friendList.jsp";
@@ -40,27 +39,27 @@ public class FriendController extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "friendAppend.jsp";
 		}else if(command.equals("/friendModifyView.do")) {
-			viewPage = "friendModify.jsp";
+			viewPage = "friendModifyView.jsp";
 		}else if(command.equals("/friendModify.do")) {
 			service = new ModifyService();
 			service.execute(request, response);
 			viewPage = "dummy.jsp";
 		}
 		// 친구 수정할 때 ajax로 처리하기
-		if(command.equals("/friendLidtAjax.do")) {
+		else if(command.equals("/friendListAjax.do")) {
 			service = new FriendListService();
 			service.execute(request, response);
-			viewPage = "friendList.jsp";
+			viewPage = "ajaxModify/friendListAjax.jsp";
 		}else if(command.equals("/friendAppendAjax.do")) {
 			service = new FriendAppendService();
 			service.execute(request, response);
-			viewPage = "friendAppend.jsp";
+			viewPage = "ajaxModify/friendAppendAjax.jsp";
 		}else if(command.equals("/friendModifyViewAjax.do")) {
-			viewPage = "friendModify.jsp";
+			viewPage = "ajaxModify/friendModifyViewAjax.jsp";
 		}else if(command.equals("/friendModifyAjax.do")) {
 			service = new ModifyService();
 			service.execute(request, response);
-			viewPage = "dummy.jsp";
+			viewPage = "ajaxModify/friendModify.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

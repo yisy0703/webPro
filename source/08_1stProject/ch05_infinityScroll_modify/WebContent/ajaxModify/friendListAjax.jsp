@@ -7,6 +7,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<style>
+		tr td:nth-child(1), tr th:nth-child(1) {width:40px;}
+		tr td:nth-child(2), tr th:nth-child(2)  {width:50px;}
+		tr td:nth-child(3), tr th:nth-child(3)  {width:150px;}
+		tr td:nth-child(4), tr th:nth-child(4)  {width:150px;}
+	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -53,7 +59,7 @@
 					// 30은 현재 스크롤 위치 값이 약간의 보정치를 추가한 부분.
 					// 이를 사용하여 사용자가 반드시 최하단이 아니라 하단보다 조금 위에 위치했더라도 미리 새로운 콘텐츠가 추가될 수 있다.
 					$.ajax({
-						url : '${conPath}/friendAppend.do',
+						url : '${conPath}/friendAppendAjax.do',
 						type : 'get',
 						dataType : 'html',
 						data : {'pageNum': (pageNum+1)},
@@ -68,29 +74,42 @@
 					}); // ajax 함수
 				} // if
 			}); // 스크롤 이벤트
-			$('button.modify').click(function(){
+			$(document).on('click', 'button.modify', function(){
 				var no = $(this).attr('id');
 				var name = $('#name'+no).text();
 				var tel = $('#tel'+no).text();
 				var addr = $('#addr'+no).text();
-				open('${conPath}/friendModifyView.do?no='+no+'&name='+name+'&tel='+tel+'&addr='+addr, '','width=800,height=50,left=500, top=200');
-			});
+				//open('${conPath}/friendModifyView.do?no='+no+'&name='+name+'&tel='+tel+'&addr='+addr, '','width=800,height=50,left=500, top=200');
+				$.ajax({
+					url : '${conPath}/friendModifyViewAjax.do',
+					type : 'get',
+					dataType : 'html',
+					data : {'no':no, 'name':name, 'tel':tel, 'addr':addr},
+					success : function(data){
+						$('.tr'+no).html(data);
+					}
+				});
+			});// 수정버튼
 		});
 	</script>
 </head>
 <body>
 	<table>
 		<tr><th>번호</th><th>이름</th><th>전화</th><th>주소</th></tr>
-		<c:forEach var="dto" items="${friendList }">
-			<tr>
-				<td style="width:30px;">${dto.no }</td>
-				<td id="name${dto.no }">${dto.name }</td>
-				<td id="tel${dto.no }">${dto.tel }</td>
-				<td id="addr${dto.no }">${dto.addr }</td>
-				<td><button class="modify" id="${dto.no }" id="${dto.no }">수정</button></td>
-			</tr>
-		</c:forEach>
 	</table>
+	<c:forEach var="dto" items="${friendList }">
+		<div class="tr${dto.no }">
+			<table>
+				<tr>
+					<td>${dto.no }</td>
+					<td id="name${dto.no }">${dto.name }</td>
+					<td id="tel${dto.no }">${dto.tel }</td>
+					<td id="addr${dto.no }">${dto.addr }</td>
+					<td><button class="modify" id="${dto.no }" id="${dto.no }">수정</button></td>
+				</tr>
+			</table>
+		</div>
+	</c:forEach>
 	<div id="appendDiv"></div>
 	<button class="append">더보기 <img src="${conPath }/img/down_arrow.png"></button>
 </body>

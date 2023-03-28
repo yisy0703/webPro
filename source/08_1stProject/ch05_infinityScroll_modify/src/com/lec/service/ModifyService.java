@@ -15,8 +15,10 @@ public class ModifyService implements Service {
 		String tel = request.getParameter("tel");
 		String addr = request.getParameter("addr");
 		FriendDto modifyFriend = new FriendDto(no, name, tel, addr);
+		System.out.println(modifyFriend + "수정함");
 		FriendDao dao = new FriendDao();
 		dao.modifyFriend(modifyFriend);
-
+		// ajaxModify에서 필요한 부분
+		request.setAttribute("modifyFriend", modifyFriend);
 	}
 }

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="friendLidt.do"/>
+	<%-- <jsp:forward page="friendList.do"/> --%>
+	<jsp:forward page="friendList.do"/>
 </body>
 </html>

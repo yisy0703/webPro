@@ -28,7 +28,7 @@
 			<table>
 				<c:forEach items="${friendList }" var="dto">
 					<tr>
-						<td style="width:30px;">${dto.no }</td>
+						<td>${dto.no }</td>
 						<td id="name${dto.no }">${dto.name }</td>
 						<td id="tel${dto.no }">${dto.tel }</td>
 						<td id="addr${dto.no }">${dto.addr }</td>

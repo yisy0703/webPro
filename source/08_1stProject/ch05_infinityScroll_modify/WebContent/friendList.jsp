@@ -7,6 +7,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<style>
+		tr td:nth-child(1), tr th:nth-child(1) {width:40px;}
+		tr td:nth-child(2), tr th:nth-child(2)  {width:50px;}
+		tr td:nth-child(3), tr th:nth-child(3)  {width:150px;}
+		tr td:nth-child(4), tr th:nth-child(4)  {width:150px;}
+	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -68,6 +74,7 @@
 					}); // ajax 함수
 				} // if
 			}); // 스크롤 이벤트
+			
 			$('button.modify').click(function(){
 				var no = $(this).attr('id');
 				var name = $('#name'+no).text();
