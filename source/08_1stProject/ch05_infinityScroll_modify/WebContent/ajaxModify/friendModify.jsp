@@ -19,6 +19,14 @@
 	</script>
 </head>
 <body>
-	
+	<table>
+		<tr>
+			<td>${modifyFriend.no }</td>
+			<td id="name${modifyFriend.no }">${modifyFriend.name }</td>
+			<td id="tel${modifyFriend.no }">${modifyFriend.tel }</td>
+			<td id="addr${modifyFriend.no }">${modifyFriend.addr }</td>
+			<td><button class="modify" id="${modifyFriend.no }" id="${modifyFriend.no }">수정</button></td>
+		</tr>
+	</table>
 </body>
 </html>

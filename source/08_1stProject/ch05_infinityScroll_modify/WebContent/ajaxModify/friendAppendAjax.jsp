@@ -15,7 +15,7 @@
 	</c:if>
 	<c:if test="${empty error }">
 		<c:forEach var="dto" items="${friendList }">
-			<div class="tr${dto.no }">
+			<div class="m${dto.no }">
 				<table>
 					<tr>
 						<td>${dto.no }</td>

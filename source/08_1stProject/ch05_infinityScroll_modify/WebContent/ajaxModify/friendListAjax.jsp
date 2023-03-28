@@ -28,7 +28,7 @@
 					pageNum = 1;
 				}
 				$.ajax({
-					url : '${conPath}/friendAppend.do',
+					url : '${conPath}/friendAppendAjax.do',
 					type : 'get',
 					dataType : 'html',
 					data : {'pageNum': (pageNum+1)},
@@ -86,7 +86,7 @@
 					dataType : 'html',
 					data : {'no':no, 'name':name, 'tel':tel, 'addr':addr},
 					success : function(data){
-						$('.tr'+no).html(data);
+						$('.m'+no).html(data);
 					}
 				});
 			});// 수정버튼
@@ -94,11 +94,12 @@
 	</script>
 </head>
 <body>
+	<h1>aJax로 수정</h1>
 	<table>
 		<tr><th>번호</th><th>이름</th><th>전화</th><th>주소</th></tr>
 	</table>
 	<c:forEach var="dto" items="${friendList }">
-		<div class="tr${dto.no }">
+		<div class="m${dto.no }">
 			<table>
 				<tr>
 					<td>${dto.no }</td>

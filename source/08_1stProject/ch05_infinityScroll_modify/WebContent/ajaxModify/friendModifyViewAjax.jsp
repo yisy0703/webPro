@@ -21,16 +21,26 @@
 	<script>
 		$(document).ready(function(){
 			$('input[type="button"]').click(function(){
-				opener.document.getElementById('name${param.no}').innerHTML = $('input[name="name"]').val();
-				opener.document.getElementById('tel${param.no}').innerHTML = $('input[name="tel"]').val();
-				opener.document.getElementById('addr${param.no}').innerHTML = $('input[name="addr"]').val();
-				$('form').submit();
+				var no = $('input[name="no"]').val();
+				var name = $('input[name="name"]').val();
+				var tel = $('input[name="tel"]').val();
+				var addr = $('input[name="addr"]').val();
+				
+				$.ajax({
+					url : '${conPath }/friendModifyAjax.do',
+					type : 'get',
+					dataType : 'html',
+					data : {'no':no, 'name':name, 'tel':tel, 'addr':addr},
+					success : function(data){
+						$('.m'+no).html(data);
+					},
+				});
 			});
 		});
 	</script>
 </head>
 <body>
-	<form action="${conPath }/friendModifyAjax.do">
+	<div class="m${param.no }">
 		<table>
 			<tr>
 				<td><input type="text" name="no" value="${param.no }" readonly="readonly"></td>
@@ -40,6 +50,6 @@
 				<td><input type="button" value="수정"></td>
 			</tr>
 		</table>
-	</form>
+	</div>
 </body>
 </html>

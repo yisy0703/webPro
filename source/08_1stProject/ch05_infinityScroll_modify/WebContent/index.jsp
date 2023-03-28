@@ -8,6 +8,6 @@
 </head>
 <body>
 	<%-- <jsp:forward page="friendList.do"/> --%>
-	<jsp:forward page="friendList.do"/>
+	<jsp:forward page="friendListAjax.do"/>
 </body>
 </html>
