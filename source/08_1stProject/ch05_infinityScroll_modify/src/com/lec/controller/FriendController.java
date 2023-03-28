@@ -30,6 +30,7 @@ public class FriendController extends HttpServlet {
 		String command = uri.substring(conPath.length()); //들어온 요청
 		String viewPage = null;
 		Service service = null;
+		// 친구 수정시 새창 띄우기
 		if(command.equals("/friendLidt.do")) {
 			service = new FriendListService();
 			service.execute(request, response);
@@ -38,11 +39,25 @@ public class FriendController extends HttpServlet {
 			service = new FriendAppendService();
 			service.execute(request, response);
 			viewPage = "friendAppend.jsp";
-		}else if(command.equals("/modifyView.do")) {
-			service = new ModifyViewService();
+		}else if(command.equals("/friendModifyView.do")) {
+			viewPage = "friendModify.jsp";
+		}else if(command.equals("/friendModify.do")) {
+			service = new ModifyService();
 			service.execute(request, response);
-			viewPage = "modify.jsp";
-		}else if(command.equals("/modify.do")) {
+			viewPage = "dummy.jsp";
+		}
+		// 친구 수정할 때 ajax로 처리하기
+		if(command.equals("/friendLidtAjax.do")) {
+			service = new FriendListService();
+			service.execute(request, response);
+			viewPage = "friendList.jsp";
+		}else if(command.equals("/friendAppendAjax.do")) {
+			service = new FriendAppendService();
+			service.execute(request, response);
+			viewPage = "friendAppend.jsp";
+		}else if(command.equals("/friendModifyViewAjax.do")) {
+			viewPage = "friendModify.jsp";
+		}else if(command.equals("/friendModifyAjax.do")) {
 			service = new ModifyService();
 			service.execute(request, response);
 			viewPage = "dummy.jsp";
