@@ -1,4 +1,4 @@
-package com.lec.snedit.dao;
+package com.lec.nsedit.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.naming.*;
 import javax.sql.DataSource;
 
-import com.lec.snedit.dto.BDto;
+import com.lec.nsedit.dto.BDto;
 
 public class BDao {
 	private DataSource ds;

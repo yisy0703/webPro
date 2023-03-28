@@ -1,4 +1,4 @@
-package com.lec.snedit.service;
+package com.lec.nsedit.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,4 +1,4 @@
-package com.lec.snedit.dao;
+package com.lec.nsedit.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import javax.naming.*;
 import javax.sql.DataSource;
 
-import com.lec.snedit.dto.BDto;
-import com.lec.snedit.dto.CommentsDto;
+import com.lec.nsedit.dto.BDto;
+import com.lec.nsedit.dto.CommentsDto;
 
 public class CommentsDao {
 	private DataSource ds;

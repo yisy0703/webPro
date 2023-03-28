@@ -1,4 +1,4 @@
-package com.lec.snedit.dto;
+package com.lec.nsedit.dto;
 import java.sql.Timestamp;
 
 public class CommentsDto {

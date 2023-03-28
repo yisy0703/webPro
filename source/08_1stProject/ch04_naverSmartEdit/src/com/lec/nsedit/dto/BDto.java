@@ -1,4 +1,4 @@
-package com.lec.snedit.dto;
+package com.lec.nsedit.dto;
 
 public class BDto {
 	private int bno;

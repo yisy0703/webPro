@@ -1,4 +1,4 @@
-package com.lec.snedit.Controller;
+package com.lec.nsedit.Controller;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lec.snedit.service.*;
+import com.lec.nsedit.service.*;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -29,7 +29,7 @@ public class FrontController extends HttpServlet {
 		Service service = null;
 		
 		if(com.equals("/naverSmartEditList.do")) {
-			//service = new ListService();
+			service = new ListService();
 			service.execute(request, response);
 			viewPage = "naverSmartEdit/list.jsp";
 		}else if(com.equals("/naverSmartEditcontent.do")) {
