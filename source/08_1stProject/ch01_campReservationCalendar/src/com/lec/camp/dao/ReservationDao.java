@@ -89,24 +89,24 @@ public class ReservationDao {
 		return result;
 	}
 	//  -- 5. 해당 년월에 예약된 내용들 보기
-	public ArrayList<ReservationDto> getReservation(String yearStr, String monthStr){
+	public ArrayList<ReservationDto> getReservation(int cno, String yearStr, String monthStr){
 		ArrayList<ReservationDto> dtos = new ArrayList<ReservationDto>();
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
 		String sql = "SELECT * FROM RESERVATION" + 
-				"  WHERE CNO=1 AND TO_CHAR(ReservationDATE, 'YYYY-MM') = ?|| '-' || ?" + 
+				"  WHERE CNO=? AND TO_CHAR(ReservationDATE, 'YYYY-MM') = ?|| '-' || ?" + 
 				"  ORDER BY DAY";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, yearStr);
-			pstmt.setString(2, monthStr);
+			pstmt.setInt(1, cno);
+			pstmt.setString(2, yearStr);
+			pstmt.setString(3, monthStr);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int rno = rs.getInt("rno");
 				String mid = rs.getString("mid");
-				int cno = rs.getInt("cno");
 				Date reservationDate = rs.getDate("reservationDate"); // 예약 날짜
 				Date registrationDate = rs.getDate("registrationDate"); // 예약 등록일
 				int day = rs.getInt("day");

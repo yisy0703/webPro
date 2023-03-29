@@ -16,6 +16,7 @@ public class CampReservationList implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		int cno = Integer.parseInt(request.getParameter("cno"));
 		String yearParam = request.getParameter("year");
 		String monthParam = request.getParameter("month");
 		int year,  month;
@@ -32,9 +33,8 @@ public class CampReservationList implements Service {
 		}
 		CalendarPrinter calPrint = new CalendarPrinter(year, month);
 		ReservationDao reservationDao = ReservationDao.getInstance();
-		ArrayList<ReservationDto> reservations = reservationDao.getReservation(yearParam, monthParam);
+		ArrayList<ReservationDto> reservations = reservationDao.getReservation(cno, yearParam, monthParam);
 		System.out.println(yearParam+"년 " + monthParam + "월 예약들\n" +reservations);
-		int cno = Integer.parseInt(request.getParameter("cno"));
 		CampGroundDao campGroundDao = CampGroundDao.getInstance();
 		CampGroundDto camp = campGroundDao.getCamp(cno);
 		request.setAttribute("reservations", reservations);
