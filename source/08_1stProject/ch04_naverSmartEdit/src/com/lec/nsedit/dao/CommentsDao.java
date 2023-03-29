@@ -26,7 +26,7 @@ public class CommentsDao {
 		Connection      conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM COMMENTS WHERE BNO=? ORDER BY CDATE DESC";
+		String sql = "SELECT * FROM COMMENTS WHERE BNO=? ORDER BY CRDATE DESC";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -36,8 +36,8 @@ public class CommentsDao {
 				int cno = rs.getInt("cno");
 				String ccontent = rs.getString("ccontent");
 				String cip = rs.getString("cip");
-				Timestamp cdate = rs.getTimestamp("cdate");
-				dtos.add(new CommentsDto(cno, bno, ccontent, cip, cdate));
+				Timestamp crdate = rs.getTimestamp("crdate");
+				dtos.add(new CommentsDto(cno, bno, ccontent, cip, crdate));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -63,7 +63,6 @@ public class CommentsDao {
 			pstmt.setString(2, dto.getCcontent());
 			pstmt.setString(3, dto.getCip());
 			result = pstmt.executeUpdate();
-			System.out.println(result==1? "댓글쓰기성공":dto+"댓글쓰기실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage()+"댓글쓰기실패 : " +dto);
 		}finally {
@@ -89,8 +88,8 @@ public class CommentsDao {
 				int bno = rs.getInt("bno");
 				String ccontent = rs.getString("ccontent");
 				String cip = rs.getString("cip");
-				Timestamp cdate = rs.getTimestamp("cdate");
-				dto = new CommentsDto(cno, bno, ccontent, cip, cdate);
+				Timestamp crdate = rs.getTimestamp("crdate");
+				dto = new CommentsDto(cno, bno, ccontent, cip, crdate);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -115,7 +114,6 @@ public class CommentsDao {
 			pstmt.setString(2, dto.getCip());
 			pstmt.setInt(3, dto.getCno());
 			result = pstmt.executeUpdate();
-			System.out.println(result==1? "댓글수정성공":dto+"댓글 수정 실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage()+"댓글 수정 실패 : " +dto);
 		}finally {

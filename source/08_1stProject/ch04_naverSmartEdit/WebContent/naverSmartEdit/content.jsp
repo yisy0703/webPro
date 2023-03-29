@@ -70,7 +70,7 @@
 		</form>
 		<c:forEach var="comment" items="${comments }">
 			<p id="ccontent${comment.cno }">
-				${comment.ccontent }
+				${comment.ccontent } - ${comment.cip } - ${comment.crdate } 
 				<button id="${comment.cno }" class="commentModifyBtn">댓글수정</button>
 				<button onclick="location='${conPath}/commentDelete.do?cno=${comment.cno }&bno=${param.bno }'">댓글삭제</button>
 			</p>

@@ -30,11 +30,9 @@ public class WriteService implements Service {
 			while (params.hasMoreElements()) {
 				String param = (String) params.nextElement();
 				bfile = mRequest.getFilesystemName(param);
-				System.out.println("첨부파일 넘어온 파라미터 이름"+param+" / 첨부파일이름 : "+bfile);
 			}
 			String btitle = mRequest.getParameter("btitle");
 			String bcontent = mRequest.getParameter("bcontent");
-			System.out.println("mRequest의 content : "+bcontent);
 			BDto dto = new BDto(0, btitle, bcontent, bfile, 0);
 			BDao dao = new BDao();
 			int result = dao.write(dto);

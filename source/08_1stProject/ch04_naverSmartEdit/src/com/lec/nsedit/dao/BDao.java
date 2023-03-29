@@ -24,7 +24,7 @@ public class BDao {
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
 		String sql = "SELECT BNO, BTITLE, BCONTENT, BFILE, (SELECT COUNT(*) FROM COMMENTS WHERE BNO=B.BNO) CNT" + 
-				"  FROM B";
+				"  FROM B ORDER BY BRDATE DESC";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -52,7 +52,7 @@ public class BDao {
 		int result = 0;
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO B VALUES (B_SEQ.NEXTVAL, ?, ?, ?)";
+		String sql = "INSERT INTO B (BNO, BTITLE, BCONTENT, BFILE) VALUES (B_SEQ.NEXTVAL, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -60,7 +60,6 @@ public class BDao {
 			pstmt.setString(2, dto.getBcontent());
 			pstmt.setString(3, dto.getBfile());
 			result = pstmt.executeUpdate();
-			System.out.println(result==1? "글쓰기성공":"글쓰기실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}finally {
@@ -106,8 +105,8 @@ public class BDao {
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE B " + 
-				"  SET BTITLE = ?" + 
-				"      BCONTENT = ?" + 
+				"  SET BTITLE = ?," + 
+				"      BCONTENT = ?," + 
 				"      BFILE = ?" + 
 				"  WHERE BNO=?";
 		try {

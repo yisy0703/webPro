@@ -10,6 +10,7 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
 	</style>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
 		$(function(){
@@ -24,7 +25,7 @@
 </head>
 <body>
 	<c:if test="${not empty result }">
-		<script>swal('','${result }','success');</script>
+		<script>swal('게시판','${result }','success');</script>
 	</c:if>
 	<table><tr><td><a href="naverSmartEditwriteView.do">글쓰기</a></td></tr></table>
 	<table>

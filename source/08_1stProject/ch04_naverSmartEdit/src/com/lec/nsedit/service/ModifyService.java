@@ -23,24 +23,24 @@ public class ModifyService implements Service {
 		String path = request.getRealPath("naverSmartEditUp");
 		int maxSize = 1024*1024*5;
 		MultipartRequest mRequest = null;
-		String bfile = "";
+		String bfileUp = "", bfile="";
 		try {
 			mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			Enumeration<String> params = mRequest.getFileNames();
 			while (params.hasMoreElements()) {
 				String param = (String) params.nextElement();
-				bfile = mRequest.getFilesystemName(param);
-				System.out.println("첨부파일 넘어온 파라미터 이름"+param+" / 첨부파일이름 : "+bfile);
+				bfileUp = mRequest.getFilesystemName(param);
 			}
 			int bno = Integer.parseInt(mRequest.getParameter("bno"));
 			String btitle = mRequest.getParameter("btitle");
 			String bcontent = mRequest.getParameter("bcontent");
 			String dbBfile =  mRequest.getParameter("dbBfile");
-			if(bfile==null) {
-				System.out.println("첨부 안 했으면 예전 그대로");
+			if(bfileUp==null) {
 				bfile = dbBfile;
+			}else {
+				bfile = bfileUp;
 			}
-			BDto dto = new BDto(0, btitle, bcontent, bfile, 0);
+			BDto dto = new BDto(bno, btitle, bcontent, bfile, 0);
 			BDao dao = new BDao();
 			int result = dao.modify(dto);
 			if(result==1) {
@@ -53,7 +53,7 @@ public class ModifyService implements Service {
 			request.setAttribute("result", "글수정 실패");
 		}
 		File serverFile = new File(path+"/"+bfile);
-		if(serverFile.exists()) {
+		if(bfileUp!=null && serverFile.exists()) {
 			InputStream  is = null;
 			OutputStream os = null;
 			try {
@@ -75,6 +75,8 @@ public class ModifyService implements Service {
 					System.out.println(e.getMessage());
 				}
 			}
+		}else {
+			System.out.println("첨부를 안 했거나 없는 파일이면 copy 안 함");
 		}
 	}
 }

@@ -4,7 +4,7 @@ body {
 }
 table {border-collapse: collapse; width:850px; margin: 10px auto;}
 td, th, #comments textarea#commentWrite {border: 1px solid pink; text-align: center; padding:10px;}
-textarea{width:90%;}
+textarea{width:90%; text-align: left;}
 input[type='text'], textarea:not(#commentWrite)   {width:97%; padding: 3px;}
 caption {font-size: 25px; padding:10px;}
 h2{text-align: center; }
