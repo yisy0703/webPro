@@ -14,7 +14,6 @@ import com.lec.camp.service.*;
 @WebServlet("*.do")
 public class CampController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private boolean reservationOk = true;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
