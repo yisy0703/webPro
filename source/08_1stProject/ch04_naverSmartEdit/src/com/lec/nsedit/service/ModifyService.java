@@ -35,8 +35,11 @@ public class ModifyService implements Service {
 			int bno = Integer.parseInt(mRequest.getParameter("bno"));
 			String btitle = mRequest.getParameter("btitle");
 			String bcontent = mRequest.getParameter("bcontent");
-			String dbBfile =  mRequest.getParameter("bcontent");
-			
+			String dbBfile =  mRequest.getParameter("dbBfile");
+			if(bfile==null) {
+				System.out.println("첨부 안 했으면 예전 그대로");
+				bfile = dbBfile;
+			}
 			BDto dto = new BDto(0, btitle, bcontent, bfile, 0);
 			BDao dao = new BDao();
 			int result = dao.modify(dto);
