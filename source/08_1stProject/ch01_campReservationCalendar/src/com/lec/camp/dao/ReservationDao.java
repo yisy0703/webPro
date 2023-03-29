@@ -75,7 +75,7 @@ public class ReservationDao {
 			pstmt.setString(3, reservationDate);
 			pstmt.setString(4, reservationDate);
 			result = pstmt.executeUpdate();
-			System.out.println(result==1? reservationDate + "메뉴 입력 성공": reservationDate + "메뉴 입력 실패");
+			System.out.println(result==1? reservationDate + "예약 입력 성공": reservationDate + "예약 입력 실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {

@@ -34,7 +34,6 @@ public class CampReservationList implements Service {
 		CalendarPrinter calPrint = new CalendarPrinter(year, month);
 		ReservationDao reservationDao = ReservationDao.getInstance();
 		ArrayList<ReservationDto> reservations = reservationDao.getReservation(cno, yearParam, monthParam);
-		System.out.println(yearParam+"년 " + monthParam + "월 예약들\n" +reservations);
 		CampGroundDao campGroundDao = CampGroundDao.getInstance();
 		CampGroundDto camp = campGroundDao.getCamp(cno);
 		request.setAttribute("reservations", reservations);
