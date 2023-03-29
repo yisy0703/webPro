@@ -20,6 +20,13 @@
 			});
 			
 			$('td.reservationTd').click(function(){
+				// 오늘 날짜
+				var now = new Date();
+				var nowYear = now.getFullYear();
+				var nowMonth = now.getMonth()+1;
+				var nowDay = now.getDate();
+				var today = nowYear + '-' + (nowMonth<10 ? "0"+nowMonth : nowMonth) + '-' + (nowDay<10 ? "0"+nowDay : nowDay);
+				// 파라미터로 넘길 날짜
 				var day = $(this).attr('id');
 				month = '${month}';
 				if(month<10){
@@ -29,8 +36,12 @@
 					day = '0'+day;
 				}
 				reservationDate = '${year}-' + month + '-' + day;
-				alert(reservationDate+'에 예약한다');
-				location.href = '${conPath}/reservation.do?year=${year}&month=${month}&mid=${param.mid}&cno=${param.cno}&reservationDate='+reservationDate;
+				if(today < reservationDate){
+					alert(reservationDate+'에 예약한다');
+					location.href = '${conPath}/reservation.do?year=${year}&month=${month}&mid=${param.mid}&cno=${param.cno}&reservationDate='+reservationDate;
+				}else{
+					alert('내일부터 예약 가능');
+				}
 			});
 		});
 	</script>
