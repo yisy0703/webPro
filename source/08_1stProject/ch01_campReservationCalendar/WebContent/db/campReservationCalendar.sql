@@ -48,6 +48,6 @@ INSERT INTO RESERVATION (RNO, MID, CNO, ReservationDATE, DAY)
         to_date('2023-04-05', 'yyyy-mm-dd'), to_char(to_date('2023-04-05', 'yyyy-mm-dd'),'dd'));
 -- 5. 해당 년월에 예약된 내용들 보기
 SELECT DAY FROM RESERVATION
-  WHERE CNO=1 AND TO_CHAR(ReservationDATE, 'YYYY-MM') = '2023'|| '-' || '10'
+  WHERE CNO=2 AND TO_CHAR(ReservationDATE, 'YYYY-MM') = '2023'|| '-' || '03'
   ORDER BY DAY;
 commit;
