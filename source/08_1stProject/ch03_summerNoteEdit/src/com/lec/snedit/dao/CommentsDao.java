@@ -24,7 +24,7 @@ public class CommentsDao {
 		Connection      conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM COMMENTS WHERE BNO=? ORDER BY CDATE DESC";
+		String sql = "SELECT * FROM COMMENTS WHERE BNO=? ORDER BY CRDATE DESC";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -34,8 +34,8 @@ public class CommentsDao {
 				int cno = rs.getInt("cno");
 				String ccontent = rs.getString("ccontent");
 				String cip = rs.getString("cip");
-				Timestamp cdate = rs.getTimestamp("cdate");
-				dtos.add(new CommentsDto(cno, bno, ccontent, cip, cdate));
+				Timestamp crdate = rs.getTimestamp("crdate");
+				dtos.add(new CommentsDto(cno, bno, ccontent, cip, crdate));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -48,7 +48,7 @@ public class CommentsDao {
 		}
 		return dtos;
 	}
-	public int write(CommentsDto dto) {
+	public int commentWrite(CommentsDto dto) {
 		int result = 0;
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
@@ -61,7 +61,6 @@ public class CommentsDao {
 			pstmt.setString(2, dto.getCcontent());
 			pstmt.setString(3, dto.getCip());
 			result = pstmt.executeUpdate();
-			System.out.println(result==1? "댓글쓰기성공":dto+"댓글쓰기실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage()+"댓글쓰기실패 : " +dto);
 		}finally {
@@ -72,7 +71,7 @@ public class CommentsDao {
 		}
 		return result;
 	}
-	public CommentsDto getDto(int cno) {
+	public CommentsDto getComment(int cno) {
 		CommentsDto dto = null;
 		Connection      conn  = null;
 		PreparedStatement pstmt = null;
@@ -87,8 +86,8 @@ public class CommentsDao {
 				int bno = rs.getInt("bno");
 				String ccontent = rs.getString("ccontent");
 				String cip = rs.getString("cip");
-				Timestamp cdate = rs.getTimestamp("cdate");
-				dto = new CommentsDto(cno, bno, ccontent, cip, cdate);
+				Timestamp crdate = rs.getTimestamp("crdate");
+				dto = new CommentsDto(cno, bno, ccontent, cip, crdate);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -101,7 +100,7 @@ public class CommentsDao {
 		}
 		return dto;
 	}
-	public int replyModify(CommentsDto dto) {
+	public int commentModify(CommentsDto dto) {
 		int result = 0;
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
@@ -113,9 +112,28 @@ public class CommentsDao {
 			pstmt.setString(2, dto.getCip());
 			pstmt.setInt(3, dto.getCno());
 			result = pstmt.executeUpdate();
-			System.out.println(result==1? "댓글수정성공":dto+"댓글 수정 실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage()+"댓글 수정 실패 : " +dto);
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {System.out.println(e.getMessage());}
+		}
+		return result;
+	}
+	public int commentDelete(int cno) {
+		int result = 0;
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM COMMENTS WHERE CNO=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage()+"댓글 삭제 실패 : " +cno);
 		}finally {
 			try {
 				if(pstmt!=null) pstmt.close();

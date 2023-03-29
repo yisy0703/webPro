@@ -30,9 +30,11 @@
 	</script>
 </head>
 <body>
-<form action="${conPath }/smEditwrite.do" method="post" enctype="multipart/form-data">
+<form action="${conPath }/smEditModify.do" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="bno" value="${dto.bno }">
+	<input type="hidden" name="dbBfile" value="${dto.bfile }">
 	<table>
-		<caption>글쓰기</caption>
+		<caption>${param.bno }번 글 수정</caption>
 		<tr><th>글제목</th>
 				<td><input type="text" name="btitle" required="required" value="${dto.btitle }"></td>
 		</tr>
@@ -46,7 +48,7 @@
 		 </tr>
 		<tr><th>첨부파일</th>
 				<td><input type="file" name="bfile"></td>
-		<tr><td colspan="2"><input type="submit" value="글쓰기">	
+		<tr><td colspan="2"><input type="submit" value="글수정">	
 				<input type="button" value="목록" onclick="location.href='${conPath }/smEditlist.do'">
 				</td>
 		</tr>

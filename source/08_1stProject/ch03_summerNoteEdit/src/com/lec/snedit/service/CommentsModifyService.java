@@ -13,9 +13,9 @@ public class CommentsModifyService implements Service {
 		String ccontent = request.getParameter("ccontent");
 		String cip = request.getRemoteAddr();
 		int cno = Integer.parseInt(request.getParameter("cno"));
-		CommentsDao dao = new CommentsDao();
-		CommentsDto dto = new CommentsDto(cno, 0, ccontent, cip, null);
-		request.setAttribute("commentModifyResult", dao.replyModify(dto));
+		CommentsDao cDao = new CommentsDao();
+		CommentsDto comment = new CommentsDto(cno, 0, ccontent, cip, null);
+		request.setAttribute("commentModifyResult", cDao.commentModify(comment));
 	}
 
 }
