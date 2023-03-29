@@ -9,7 +9,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			$('.btn').click(function(){
+			$('.modifyCommentBtn').click(function(){
 				var cno = $(this).attr('id');
 				$.ajax({
 					url : '${conPath}/commentsModifyView.do',
@@ -68,7 +68,7 @@
 		<tr>
 			<td colspan="2">
 				<button onclick="history.back()">이전</button>
-				<button onclick="location.href='${conPath }/smEditModifyView.do?bno=${dto.bno }'">수정</button>
+				<button onclick="location.href='${conPath }/smEditModifyView.do?bno=${dto.bno }'">글수정</button>
 				<button onclick="location='${conPath }/smEditList.do'">목록</button>
 			</td>
 		</tr>
@@ -81,7 +81,7 @@
 			<input type="submit" value="댓글">
 		</form>
 		<c:forEach var="comment" items="${comments }">
-			<p id="ccontent${comment.cno }">${comment.ccontent }   <button id="${comment.cno }" class="btn">수정</button><p>
+			<p id="ccontent${comment.cno }">${comment.ccontent }   <button id="${comment.cno }" class="btn modifyCommentBtn">댓글수정</button><p>
 		</c:forEach>
 	</div>
 </body>

@@ -26,7 +26,7 @@
 	</script>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-	<table><tr><td><a href="smEditwriteView.do">글쓰기</a></td></tr></table>
+	<table><tr><th><a href="smEditwriteView.do">글쓰기</a></th></tr></table>
 	<table>
 		<tr><th>글번호</th><th>글제목</th><th>파일</th></tr>
 		<c:forEach var="dto" items="${list }">

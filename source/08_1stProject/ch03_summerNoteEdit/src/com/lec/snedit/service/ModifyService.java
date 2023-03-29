@@ -33,6 +33,7 @@ public class ModifyService implements Service {
 				System.out.println("첨부파일 넘어온 파라미터 이름"+param+" / 첨부파일이름 : "+bfileUp);
 			}
 			int bno = Integer.parseInt(mRequest.getParameter("bno"));
+			request.setAttribute("bno", bno);
 			String btitle = mRequest.getParameter("btitle");
 			String bcontent = mRequest.getParameter("bcontent");
 			String dbBfile = mRequest.getParameter("dbBfile");
@@ -43,7 +44,7 @@ public class ModifyService implements Service {
 			}
 			BDto dto = new BDto(bno, btitle, bcontent, bfile, 0);
 			BDao dao = new BDao();
-			int result = dao.write(dto);
+			int result = dao.modify(dto);
 			if(result==1) {
 				request.setAttribute("result", "글쓰기 수정");
 			}else {

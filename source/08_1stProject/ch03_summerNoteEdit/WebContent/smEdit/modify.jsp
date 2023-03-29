@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
@@ -28,6 +27,7 @@
 					    });
 				 });
 	</script>
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
 <form action="${conPath }/smEditModify.do" method="post" enctype="multipart/form-data">
@@ -46,11 +46,14 @@
 		 <textarea id="summernote" name="bcontent" >${dto.bcontent }</textarea>
 		 </th>
 		 </tr>
-		<tr><th>첨부파일</th>
-				<td><input type="file" name="bfile"></td>
-		<tr><td colspan="2"><input type="submit" value="글수정">	
-				<input type="button" value="목록" onclick="location.href='${conPath }/smEditlist.do'">
-				</td>
+		<tr>
+			<th>첨부파일</th>
+			<td><input type="file" name="bfile"></td>
+		</tr>
+		<tr>
+			<th colspan="2"><input type="submit" value="글수정">	
+				<input type="button" value="목록" onclick="location.href='${conPath }/smEditList.do'">
+			</th>
 		</tr>
 	</table>
 </form>

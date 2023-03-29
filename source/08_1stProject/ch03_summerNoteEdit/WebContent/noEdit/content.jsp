@@ -31,10 +31,10 @@
 				</td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<th colspan="2">
 				<button onclick="history.back()">이전</button>
 				<button onclick="location='${conPath }/noEditList.do'">목록</button>
-			</td>
+			</th>
 		</tr>
 	</table>
 </body>
