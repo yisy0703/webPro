@@ -47,7 +47,9 @@
 	</script>
 </head>
 <body>
-${member.mname }(${member.mid})님 로그인 함
+<button class="reservation" onclick="location.href='${conPath}/main.do'">메인페이지</button>
+<br><br><br>
+${member.mname }(${member.mid})님 로그인 함 
 <c:if test="${reservationResult == 1}">
 	<script>alert('예약 성공');</script>
 </c:if>
