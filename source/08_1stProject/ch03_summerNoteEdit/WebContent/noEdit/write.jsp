@@ -21,7 +21,7 @@
 				<td><input type="text" name="btitle" required="required"></td>
 		</tr>
 		<tr><th>글본문</th>
-				<td><textarea rows="5" cols="32" name="bcontent"></textarea>
+				<td><textarea rows="5" cols="32" name="bcontent" ></textarea>
 		</tr>
 		<tr><th>첨부파일</th>
 				<td><input type="file" name="bfile"></td>

@@ -36,7 +36,8 @@ public class FrontController extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "noEdit/content.jsp";
 		}else if(com.equals("/noEditwriteView.do")) {
-			viewPage = "noEditList.do";
+			
+			viewPage = "noEdit/write.jsp";
 		}else if(com.equals("/noEditwrite.do")) {
 			service = new WriteService();
 			service.execute(request, response);

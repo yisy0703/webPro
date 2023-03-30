@@ -56,7 +56,7 @@
 		<tr>
 			<td colspan="2">
 				<button onclick="history.back()">이전</button>
-				<button onclick="location='${conPath }/naverSmartEditModifyView.do?bno=${dto.bno }'">수정</button>
+				<button onclick="location='${conPath }/naverSmartEditModifyView.do?bno=${dto.bno }'">글수정</button>
 				<button onclick="location='${conPath }/naverSmartEditList.do'">목록</button>
 			</td>
 		</tr>

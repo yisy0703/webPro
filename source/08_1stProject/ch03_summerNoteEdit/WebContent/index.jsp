@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- <jsp:forward page="noEditList.do"/> --%>
-	<jsp:forward page="smEditList.do"/>
+	<jsp:forward page="noEditList.do"/>
+	<%-- <jsp:forward page="smEditList.do"/> --%>
 </body>
 </html>
