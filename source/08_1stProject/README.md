@@ -8,7 +8,7 @@ LAS
 - DBMS : Oracle 11g Express Edition <br>
 - 언어 : Java SE 8 Platform, HTML5, CSS, CSS3, JavaScript<br>
 - 디자인 패턴 : MVC 
-- 오픈 Library : jQuery v3.4.1, kakao login API, Naver login API, Daum postcode API, SweetAlert API <br>
+- 오픈 Library : jQuery v3.4.1, Daum postcode API, SweetAlert API, summerNoteEdit <br>
 - 프로젝트 소개 : 도서관 웹 페이지와 도서관 관리 시스템을 통합하여 하나의 프로그램으로 이용 및 관리할 수 있는 통합형 도서관 관리 시스템이다 <br>
 
 ![1 LAS_MAIN](https://user-images.githubusercontent.com/79974632/227863118-d525b43b-3e82-4cda-b5ab-5f64953f8832.JPG)
