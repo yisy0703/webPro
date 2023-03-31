@@ -1,0 +1,7 @@
+1. 프로젝트 완성 - 어제까지 반드시
+2. ppt완성
+   2-1 pdf변경해서  git upload
+   2-2 jpg나 png로 변경
+3. git의 README.md를 완성
+   (https://github.com/yisy0703/las참고)
+4. 입사지원서(이력서,포트폴리오,자소서)
