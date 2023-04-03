@@ -1,3 +1,3 @@
 git add .
-git commit -m "1stProject"
+git commit -m "spring DI"
 git push -u origin main
