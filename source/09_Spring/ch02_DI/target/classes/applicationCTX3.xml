@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+	<!--Student student1 = new Student("홍길동", 25, "3학년","computer반"); -->
 	<bean id="student1" class="com.lec.ch02.ex3_student.Student">
 		<constructor-arg>
 			<value>홍길동</value>
@@ -28,6 +28,8 @@
 	<bean id="studentPrint" class="com.lec.ch02.ex3_student.StudentPrint">
 		<constructor-arg ref="student1"/>
 	</bean>
+	<!-- Student student1 = new Student("홍길동", 25, "3학년","computer반");
+	StudentPrint studentPrint = new StudentPrint(student1); -->
 </beans>
 
 

@@ -11,6 +11,7 @@
 		<config>src/main/resources/applicationCTX2_m.xml</config>
 		<config>src/main/resources/applicationCTX2_f.xml</config>
 		<config>src/main/resources/applicationCTX3.xml</config>
+		<config>src/main/resources/applicationCTX4.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
