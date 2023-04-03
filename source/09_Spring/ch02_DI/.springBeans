@@ -8,6 +8,7 @@
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
 		<config>src/main/resources/applicationCTX1.xml</config>
+		<config>src/main/resources/applicationCTX2_m.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

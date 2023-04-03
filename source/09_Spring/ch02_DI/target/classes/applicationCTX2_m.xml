@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bmiCalculationMan" class="com.lec.ch02.ex2_bmi.BMICalculator">
+		<property name="lowWeight" value="18.5"/> <!-- 기초데이터, String -->
+		<property name="normal" value="23"/>
+		<property name="overWeight" value="25"/>
+		<property name="obesity" value="30"/>
+	</bean>
+	<bean name="man" class="com.lec.ch02.ex2_bmi.MyInfo">
+		<property name="name" value="홍길동"/>
+		<property name="weight" value="60.1"/>
+		<property name="height" value="175.1"/>
+		<property name="hobby">
+			<list> <!-- LIST 타입의 객체 setting -->
+				<value>수영</value><value>개발</value><value>수면</value>
+			</list>
+		</property>
+		<property name="bmiCalculator" ref="bmiCalculationMan"/>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
