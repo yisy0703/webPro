@@ -18,5 +18,25 @@
 		</constructor-arg>
 	</bean>
 	
+	<bean id="student2" class="com.lec.ch02.ex3_student.Student">
+		<constructor-arg value="홍길순"/>
+		<constructor-arg value="30"/>
+		<constructor-arg value="6학년"/>
+		<constructor-arg value="9반"/>
+	</bean>
 	
+	<bean id="studentPrint" class="com.lec.ch02.ex3_student.StudentPrint">
+		<constructor-arg ref="student1"/>
+	</bean>
 </beans>
+
+
+
+
+
+
+
+
+
+
+
