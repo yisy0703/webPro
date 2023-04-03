@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="bmiCalculationMan" class="com.lec.ch02.ex2_bmi.BMICalculator">
+		<property name="obesity" value="30"/>
 		<property name="lowWeight" value="18.5"/> <!-- 기초데이터, String -->
 		<property name="normal" value="23"/>
 		<property name="overWeight" value="25"/>
-		<property name="obesity" value="30"/>
 	</bean>
 	<bean name="man" class="com.lec.ch02.ex2_bmi.MyInfo">
 		<property name="name" value="홍길동"/>
