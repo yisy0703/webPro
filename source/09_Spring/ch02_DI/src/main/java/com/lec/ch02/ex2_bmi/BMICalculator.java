@@ -10,6 +10,7 @@ public class BMICalculator {
 		// 60, 175.1 => 60/(1.751*1.75)
 		double h = height*0.01;
 		double result = weight / (h * h);
+		System.out.println("BMI지수는 " + result);
 		if(result <= lowWeight) {
 			System.out.println("저체중입니다");
 		}else if(result < normal) {
