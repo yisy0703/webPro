@@ -5,5 +5,9 @@
 
 	<!-- <bean id="vh" class="com.lec.ch02.ex4_vehicle.Bicycle"/> -->
 	<!-- <bean id="vh" class="com.lec.ch02.ex4_vehicle.Car"/> -->
-	<bean id="vh" class="com.lec.ch02.ex4_vehicle.Airplane"/>
+	<!-- <bean id="vh" class="com.lec.ch02.ex4_vehicle.Airplane"/> -->
+	<bean id="vh" class="com.lec.ch02.ex4_vehicle.VehicleImpl">
+		<property name="vehicle" value="제트기"/>
+		<property name="speed" value="1000"/>
+	</bean>
 </beans>
