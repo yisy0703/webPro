@@ -3,5 +3,24 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	
+	<bean id="friend" class="com.lec.ch04.ex3.Friend"><!-- scope="singleton" 기본-->
+		<property name="name" value="김길순"/>
+		<property name="friendNo" value="1"/>
+		<property name="tel" value="010-1111-1111"/>
+	</bean>
+	<bean id="friendPrototype" class="com.lec.ch04.ex3.Friend" scope="prototype">
+		<property name="name" value="홍길동"/>
+		<property name="friendNo" value="9"/>
+		<property name="tel" value="010-9999-9999"/>
+	</bean>
 </beans>
+
+
+
+
+
+
+
+
+
+
