@@ -12,7 +12,7 @@
 	</bean>
 	<!-- <bean name="examPrint" class="com.lec.ch02.ex5_exam.ExamPrintImpl">
 		<constructor-arg ref="exam"/>
-	</bean> -->	
+	</bean>	 -->
 	<!-- ExamImpl exam = new ExamImpl();
 	exam.setName("홍길동"); ....
 	ExamPrintImpl examPrint = new ExamPrintImpl(exam); -->
