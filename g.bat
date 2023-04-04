@@ -1,3 +1,3 @@
 git add .
-git commit -m "spring properties&AOP"
+git commit -m "curriculum"
 git push -u origin main
