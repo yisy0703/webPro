@@ -22,7 +22,6 @@ public class Person implements EnvironmentAware, InitializingBean, DisposableBea
 	@Override
 	public void destroy() throws Exception {
 		System.out.println("Person형 빈 객체 소멸되기 전 실행 : destroy()");
-		
 	}
 }
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:annotation-config/> <!-- 자바안의 어노테이션을 해석하면서 파싱 -->
+	
+	<bean id="person" class="com.lec.ch04.ex2.Person">
+		<constructor-arg value="홍길동"/>
+		<constructor-arg value="010-9999-9999"/>
+	</bean>	
+	<bean id="otherPerson" class="com.lec.ch04.ex2.OtherPerson">
+		<property name="name" value="신길동"/>
+		<property name="age" value="20"/>
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
