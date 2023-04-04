@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="exam" class="com.lec.ch02.ex5_exam.ExamImpl">
+		<property name="name" value="홍길동"/>
+		<property name="kor" value="87"/>
+		<property name="eng" value="90"/>
+		<property name="mat" value="95"/>
+		<property name="com" value="100"/>
+	</bean>
+	<bean name="examPrint" class="com.lec.ch02.ex5_exam.ExamPrintImpl">
+		<constructor-arg ref="exam"/>
+	</bean>
+	<!-- ExamImpl exam = new ExamImpl();
+	exam.setName("홍길동"); ....
+	ExamPrintImpl examPrint = new ExamPrintImpl(exam); -->
+</beans>
+
+
+
+
+
+
+
+
+
+
