@@ -9,6 +9,8 @@
 	<configs>
 		<config>src/main/resources/META-INF/method1_applicationCTX1.xml</config>
 		<config>src/main/resources/META-INF/method1_applicationCTX2.xml</config>
+		<config>src/main/resources/META-INF/method3_applicationCTX.xml</config>
+		<config>src/main/resources/META-INF/method4_applicationCTX.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

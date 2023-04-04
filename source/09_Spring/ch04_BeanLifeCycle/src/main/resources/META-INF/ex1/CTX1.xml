@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<context:annotation-config/><!-- 자바안의 어노테이션 해석 -->
+	
+	<bean id="student" class="com.lec.ch04.ex1.Student">
+		<property name="name" value="홍길동"/>
+		<property name="age" value="10"/>
+		<property name="height" value="150"/>
+		<property name="weight" value="40"/>
+	</bean>
+	<bean id="studentInfo" class="com.lec.ch04.ex1.StudentInfo"/>
+<!-- 		<property name="student" ref="student"/>
+	</bean> -->
+</beans>
