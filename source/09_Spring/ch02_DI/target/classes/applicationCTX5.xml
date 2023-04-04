@@ -10,12 +10,23 @@
 		<property name="mat" value="95"/>
 		<property name="com" value="100"/>
 	</bean>
-	<bean name="examPrint" class="com.lec.ch02.ex5_exam.ExamPrintImpl">
+	<!-- <bean name="examPrint" class="com.lec.ch02.ex5_exam.ExamPrintImpl">
 		<constructor-arg ref="exam"/>
-	</bean>
+	</bean> -->	
 	<!-- ExamImpl exam = new ExamImpl();
 	exam.setName("홍길동"); ....
 	ExamPrintImpl examPrint = new ExamPrintImpl(exam); -->
+	
+	<bean id="exam2" class="com.lec.ch02.ex5_exam.ExamImpl2">
+		<property name="name" value="홍길동"/>
+		<property name="kor" value="87"/>
+		<property name="eng" value="90"/>
+		<property name="mat" value="95"/>
+	</bean>
+	<bean name="examPrint" class="com.lec.ch02.ex5_exam.ExamPrintImpl2">
+		<constructor-arg ref="exam2"/>
+	</bean>
+	
 </beans>
 
 
