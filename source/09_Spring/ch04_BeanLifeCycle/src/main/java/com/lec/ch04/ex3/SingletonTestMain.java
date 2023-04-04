@@ -11,6 +11,15 @@ public class SingletonTestMain {
 		friend1.setTel("0");
 		System.out.println("friend1 : " + friend1);
 		System.out.println("friend2 : " + friend2);
+		System.out.println("--------------------------------");
+		Friend friendProto1 = ctx.getBean("friendPrototype", Friend.class);
+		Friend friendProto2 = ctx.getBean("friendPrototype", Friend.class);
+		friendProto1.setFriendNo(1);
+		friendProto1.setName("존");
+		friendProto1.setTel("001");
+		System.out.println("friendProto1 : " + friendProto1);
+		System.out.println("friendProto2 : " + friendProto2);
+		ctx.close();
 	}
 }
 
