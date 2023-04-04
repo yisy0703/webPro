@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="student3" class="com.lec.ch03.Student">
+		<constructor-arg value="성춘향"/>
+		<constructor-arg value="20"/>
+		<constructor-arg>
+			<list>
+				<value>그네타기</value><value>윷놀이</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="158"/>
+		<property name="weight" value="50"/>
+	</bean>
+	<bean id="family" class="com.lec.ch03.Family" 
+			  p:sisterName="홍딸램" >
+		<constructor-arg value="홍아빠"/>
+		<constructor-arg value="박엄마"/>
+		<property name="brotherName" value="홍아들"/>
+	</bean>
+
+</beans>
+
+
+
+
+
+
+

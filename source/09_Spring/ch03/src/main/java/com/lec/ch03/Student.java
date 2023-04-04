@@ -8,4 +8,9 @@ public class Student {
 	private ArrayList<String> hobbies;
 	private double height;
 	private double weight;
+	public Student(String name, int age, ArrayList<String> hobbies) {
+		this.name = name;
+		this.age = age;
+		this.hobbies = hobbies;
+	}
 }
