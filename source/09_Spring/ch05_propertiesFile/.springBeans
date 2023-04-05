@@ -9,6 +9,8 @@
 	<configs>
 		<config>src/main/resources/META-INF/ex1/CTX.xml</config>
 		<config>src/main/resources/META-INF/ex2/applicationCTX.xml</config>
+		<config>src/main/resources/META-INF/ex3/CTX_dev.xml</config>
+		<config>src/main/resources/META-INF/ex3/CTX_run.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
