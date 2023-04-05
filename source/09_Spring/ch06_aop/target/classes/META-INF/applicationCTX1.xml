@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<bean id="proxyClass" class="com.lec.ch06.ex1.ProxyClass"/>
+	
+	<!-- 핵심기능과 공통기능 연결 : aop:config태그 이용 -->
+	<aop:config>
+		<aop:aspect id="aroundAspect" ref="proxyClass">
+			<aop:pointcut expression="within(com.lec.ch06.ex1.*)" id="aroundM"/>
+			<aop:around method="aroundAdvice" pointcut-ref="aroundM"/>
+		</aop:aspect>
+	</aop:config>
 
 	<bean name="student" class="com.lec.ch06.ex1.Student">
 		<property name="name" value="홍길동"/>

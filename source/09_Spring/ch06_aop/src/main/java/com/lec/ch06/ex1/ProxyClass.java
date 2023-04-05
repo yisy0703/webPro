@@ -13,7 +13,8 @@ public class ProxyClass {
 			Object object = joinPoint.proceed(); // 핵심 기능 실행
 			return object;
 		} finally {
-			
+			long endTime = System.currentTimeMillis(); // 핵심기능 수행 후 시점
+			System.out.println(signatureName + "가 수행되는 경과 시간 : " + (endTime-startTime));
 		}
 	}
 	
