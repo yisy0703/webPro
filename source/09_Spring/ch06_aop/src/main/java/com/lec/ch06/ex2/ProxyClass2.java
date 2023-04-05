@@ -29,7 +29,7 @@ public class ProxyClass2 {
 	}	
 	
 	// before advice : 핵심기능 수행 전 공통기능수행
-	@Before("execution(* com.lec.ch06.ex2.Student2.*()")
+	@Before("execution(* com.lec.ch06.ex2.Student2.*())")
 	public void beforeAdvice() {
 		System.out.println("핵심기능 수행하기 전 beforeAdvice() 자동 수행");
 	}
