@@ -21,6 +21,15 @@ public class AdminTestMain {
 		}
 		System.out.println("adminId:" + env.getProperty("admin.id"));
 		System.out.println("adminPw:" + env.getProperty("admin.pw"));
+		// 빈 생성 (admin)을 위해 xml 파싱하고 객체생성
+		ctx.load("classpath:META-INF/ex1/CTX.xml");
+		ctx.refresh();
+		// admin 빈 사용
+		Admin admin = ctx.getBean("admin", Admin.class);
+		System.out.println("adminId : " + admin.getAdminId());
+		System.out.println("adminPw : " + admin.getAdminPw());
+		System.out.println("env : " + admin.getEnv());
+		ctx.close();
 	}
 }
 

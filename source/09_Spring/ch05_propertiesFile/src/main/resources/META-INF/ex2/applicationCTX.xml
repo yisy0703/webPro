@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- properties 외부 파일을 가져올 수 있는 키워드 -->
+	<context:property-placeholder
+	  location="classpath:META-INF/ex2/admin.properties,
+	            classpath:META-INF/ex2/sub_admin.properties"/>
+	<bean id="adminInfo" class="com.lec.ch05.ex2.AdminInfo">
+		<property name="adminId" value="${admin.id}"/>
+		<property name="adminPw" value="${admin.pw}"/>
+		<property name="subAdminId" value="${sub_admin.id}"/>
+		<property name="subAdminPw" value="${sub_admin.pw}"/>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
