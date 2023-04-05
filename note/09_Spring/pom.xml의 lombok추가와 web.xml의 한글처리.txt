@@ -8,7 +8,7 @@ pom.xml
 </dependency>
 
 web.xml
-	<!-- 한글처리 -->
+	<!-- 한글처리 filter 추가 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
