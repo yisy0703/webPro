@@ -1,3 +1,3 @@
 git add .
-git commit -m "properties&AOP"
+git commit -m "AOP"
 git push -u origin main
