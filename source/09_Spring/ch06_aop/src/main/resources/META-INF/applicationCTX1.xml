@@ -7,7 +7,7 @@
 		<property name="name" value="홍길동"/>
 		<property name="age" value="25"/>
 		<property name="gradeNum" value="5"/>
-		<property name="classNum" value="피부과"/>
+		<property name="classNum" value="4"/>
 	</bean>
 	<bean id="worker" class="com.lec.ch06.ex1.Worker">
 		<property name="name" value="홍일꾼"/>
