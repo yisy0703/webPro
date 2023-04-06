@@ -33,6 +33,7 @@
 	<a href="${conPath }/studentId/aaa">studentId에 aaa로 전송</a><br>
 	<a href="${conPath }/studentId/bbb">studentId에 bbb로 전송</a><br>
 	<a href="${conPath }/studentId/홍길도">studentId에 홍길도로 전송</a><br>
+	<a href="${conPath }/input.do">QUIZ(평가문제)</a>
 </body>
 </html>
 

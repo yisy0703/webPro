@@ -1,2 +1,9 @@
 @charset "UTF-8";
-body {background-color: #FFFFAA;}
+body {
+	background-color: #FFFFAA;
+	padding: 10px 20px;
+}
+.cnt {
+	text-align: right;
+	color: red;
+}
