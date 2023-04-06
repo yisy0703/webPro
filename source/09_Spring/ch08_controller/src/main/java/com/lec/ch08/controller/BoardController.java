@@ -38,6 +38,13 @@ public class BoardController {
 		mav.setViewName("board/list"); // 뷰
 		return mav;
 	}
+	@RequestMapping(value="reply", method=RequestMethod.GET)
+	public ModelAndView reply(ModelAndView mav) {
+		Member member = new Member("ccc", "111");
+		mav.addObject("member", member);
+		mav.setViewName("board/reply");
+		return mav;
+	}
 }
 
 
