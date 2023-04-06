@@ -8,12 +8,11 @@
 8. 컨트롤러
 9. 폼데이터
 10. RequestMapping
-11. 폼데이터 값 검증(서버측)
-12. MVC게시판
-13. JDBC 맛보기
-14. fileupload
-15. Mybatis 프레임워크로 DB 연동
-16. MyBatis를 이용한 총괄 예제
+11. MVC게시판
+12. JDBC 맛보기
+13. fileupload
+14. Mybatis 프레임워크로 DB 연동
+15. MyBatis를 이용한 총괄 예제
      회원가입(가입시축하메일),로그인,로그아웃,회원정보수정,책등록,책상세보기,책정보수정,책리스트(페이징)
 
 
