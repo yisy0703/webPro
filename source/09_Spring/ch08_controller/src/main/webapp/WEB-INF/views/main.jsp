@@ -17,10 +17,10 @@
 	<h4><a href="${conPath }/board/reply">board의 reply로 가기</a></h4>
 	<hr>
 	<h3>Member 관련 요청 경로(MemberController)</h3>
-	<p><button onclick="location.href='${conPath}/member?method=join'">회원가입</button></p>
+	<p><button onclick="location.href='${conPath}/member?method=join&id=aaa'">회원가입</button></p>
 	<p><button onclick="location.href='${conPath}/member?method=login'">로그인</button></p>
 	<p><button onclick="location.href='${conPath}/member?method=logout'">로그아웃</button></p>
-	<p><button onclick="location.href='${conPath}/member?method=infoMondify'">회원정보수정</button></p>
+	<p><button onclick="location.href='${conPath}/member?method=infoModify'">회원정보수정</button></p>
 </body>
 </html>
 
