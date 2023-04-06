@@ -26,7 +26,7 @@ public class MemberController {
 		return list;
 	}
 	@RequestMapping(value="join1", method=RequestMethod.GET)
-	public String join1(HttpServletRequest request, Model model) {
+	public String join1(HttpServletRequest request, Model model) { 
 		String name = request.getParameter("name");
 		String id   = request.getParameter("id");
 		String pw   = request.getParameter("pw");
@@ -58,7 +58,7 @@ public class MemberController {
 	}
 	@RequestMapping(value="join3", method=RequestMethod.GET)
 	public String join3(String name, String id, String pw, int age, 
-			String email, String address, Model model) {
+			String email, String address, Model model) { 
 		model.addAttribute("name", name);
 		model.addAttribute("id", id);
 		model.addAttribute("pw", pw);
@@ -86,19 +86,12 @@ public class MemberController {
 		model.addAttribute("member", memberDto);
 		return "member/result4";
 	}
+	@RequestMapping(value="join5")
+	public String join5(MemberDto memberDto) { 
+		return "member/result5";
+	}
+	@RequestMapping(value="join6")
+	public String join6(@ModelAttribute("member") MemberDto memberDto) {
+		return "member/result4";
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

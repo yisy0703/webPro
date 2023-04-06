@@ -13,13 +13,13 @@
 	<h2>모든 요청에서 cnt, list 출력 가능</h2>
 	<h3>cnt : ${cnt }</h3>
 	<h3>list : ${list }</h3>
-	<h2>result4.jsp페이지 개인 정보 (member/join6 결과)</h2>
-	<h3>이름 : ${member.name }</h3>
-	<h3>아이디 : ${member.id }</h3>
-	<h3>비밀번호 : ${member.pw }</h3>
-	<h3>나이 : ${member.age }</h3>
-	<h3>이메일 : ${member.email }</h3>
-	<h3>주소 : ${member.address }</h3>
+	<h2>result4.jsp페이지 개인 정보 (member/join5 결과)</h2>
+	<h3>이름 : ${memberDto.name }</h3>
+	<h3>아이디 : ${memberDto.id }</h3>
+	<h3>비밀번호 : ${memberDto.pw }</h3>
+	<h3>나이 : ${memberDto.age }</h3>
+	<h3>이메일 : ${memberDto.email }</h3>
+	<h3>주소 : ${memberDto.address }</h3>
 </body>
 </html>
 
