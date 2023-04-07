@@ -29,7 +29,7 @@
 			studentNg.do
 		</button>
 	</h1>
-	<form action="${conPath }/idConfirm.do" method="get">
+	<form action="${conPath }/idConfirm.do" method="post">
 		ID <input type="text" name="id">
 		<input type="submit" value="id confirm">
 	</form>
