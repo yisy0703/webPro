@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lec.ch11.dto.BoardDto;
 import com.lec.ch11.service.BContentService;
+import com.lec.ch11.service.BDeleteService;
 import com.lec.ch11.service.BListService;
 import com.lec.ch11.service.BModifyReplyViewService;
 import com.lec.ch11.service.BModifyService;
@@ -78,6 +79,13 @@ public class MvcBoardController {
 		bservice = new BModifyService();
 		bservice.execute(model);
 		return "forward:content.do";
+	}
+	@RequestMapping(value="delete", method=RequestMethod.GET)
+	public String delete(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BDeleteService();
+		bservice.execute(model);
+		return "forward:list.do";
 	}
 }
 
