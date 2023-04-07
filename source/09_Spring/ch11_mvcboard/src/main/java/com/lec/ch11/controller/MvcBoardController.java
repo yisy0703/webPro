@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.lec.ch11.dto.BoardDto;
 import com.lec.ch11.service.BContentService;
 import com.lec.ch11.service.BListService;
+import com.lec.ch11.service.BModifyReplyViewService;
+import com.lec.ch11.service.BModifyService;
 import com.lec.ch11.service.BWriteService;
 import com.lec.ch11.service.Service;
 @Controller
@@ -54,6 +56,28 @@ public class MvcBoardController {
 		bservice = new BContentService();
 		bservice.execute(model);
 		return "mvcBoard/content";
+	}
+	@RequestMapping(value="content", method=RequestMethod.POST)
+	public String content_post(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BContentService();
+		bservice.execute(model);
+		return "mvcBoard/content";
+	}
+	@RequestMapping(value="modify", method=RequestMethod.GET)
+	public String modify(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BModifyReplyViewService();
+		bservice.execute(model);
+		return "mvcBoard/modify";
+	}
+	@RequestMapping(value="modify", method=RequestMethod.POST)
+	public String modify(BoardDto boardDto, Model model, 
+									HttpServletRequest request) {
+		model.addAttribute("request", request);
+		bservice = new BModifyService();
+		bservice.execute(model);
+		return "forward:content.do";
 	}
 }
 

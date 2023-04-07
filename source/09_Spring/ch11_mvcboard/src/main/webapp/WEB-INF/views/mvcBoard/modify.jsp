@@ -11,8 +11,8 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<!-- requestScope.modifyBoard, param.bid, param.pageNum가 있음 -->
-	<form action="${conPath }/modify.do" method="post">
+	<!-- model의modifyBoard, param.bid, param.pageNum가 있음 -->
+	<form action="${conPath }/mvcBoard/modify.do" method="post">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
 		<input type="hidden" name="bid" value="${modifyBoard.bid }">
 		<table>
@@ -40,7 +40,7 @@
 					<input type="submit" value="저장" class="btn">
 					<input type="reset" value="취소" class="btn" onclick="history.go(-1)">
 					<input type="button" value="목록" class="btn"
-						onclick="location.href='${conPath}/list.do?pageNum=${param.pageNum }'">
+						onclick="location.href='${conPath}/mvcBoard/list.do?pageNum=${param.pageNum }'">
 				</td>
 			</tr>
 		</table>
