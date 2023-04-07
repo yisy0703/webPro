@@ -1,3 +1,3 @@
 git add .
-git commit -m "controller"
+git commit -m "requestMapping"
 git push -u origin main
