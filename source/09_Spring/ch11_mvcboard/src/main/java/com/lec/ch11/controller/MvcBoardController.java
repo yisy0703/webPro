@@ -13,6 +13,7 @@ import com.lec.ch11.service.BDeleteService;
 import com.lec.ch11.service.BListService;
 import com.lec.ch11.service.BModifyReplyViewService;
 import com.lec.ch11.service.BModifyService;
+import com.lec.ch11.service.BReplyService;
 import com.lec.ch11.service.BWriteService;
 import com.lec.ch11.service.Service;
 @Controller
@@ -84,6 +85,20 @@ public class MvcBoardController {
 	public String delete(int bid, Model model) {
 		model.addAttribute("bid", bid);
 		bservice = new BDeleteService();
+		bservice.execute(model);
+		return "forward:list.do";
+	}
+	@RequestMapping(value="reply", method=RequestMethod.GET)
+	public String reply(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BModifyReplyViewService();//bid로 dto를 model에 add(board)
+		bservice.execute(model);
+		return "mvcBoard/reply";
+	}
+	@RequestMapping(value="reply", method=RequestMethod.POST)
+	public String reply(BoardDto boardDto, HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bservice = new BReplyService();
 		bservice.execute(model);
 		return "forward:list.do";
 	}
