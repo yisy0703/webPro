@@ -22,15 +22,9 @@ public class BoardDao {
 	private final int SUCCESS = 1;
 	private final int FAIL    = 0;
 	private JdbcTemplate template;
-	private DataSource ds;
+
 	public BoardDao() {
 		template = Constant.template;
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle11g");
-		} catch (NamingException e) {
-			System.out.println(e.getMessage());
-		}
 	}
 	// 1. 글목록(startRow ~ endRow까지)
 	public ArrayList<BoardDto> list(){
