@@ -14,15 +14,15 @@
 		<result property="deptno" column="deptno"/>
 	</resultMap>
 	<select id="empList" parameterType="Emp" resultMap="EmpResult">
-		SELECT * FROM EMP where 1=1
+		SELECT * FROM EMP WHERE 1=1
 		<if test="ename!=null and ename!=''">
-			AND ENAME LIKE '%'||#{ename}||'%'
+			AND ENAME LIKE '%'||#{ename, jdbcType=VARCHAR}||'%'
 		</if>
 		<if test="job!=null and job!=''">
 			AND JOB LIKE '%'||#{job}||'%'
 		</if>
 		<if test="deptno!=0">
-			and deptno = #{deptno}
+			AND DEPTNO = #{deptno}
 		</if>
 	</select>
 

@@ -13,6 +13,6 @@
 	<c:forEach var="dept" items="${deptList }">
 		${dept }
 	</c:forEach> <br><br>
-	
+	${empList }
 </body>
 </html>
