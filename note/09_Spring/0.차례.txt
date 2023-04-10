@@ -12,7 +12,7 @@
 12. JDBC 맛보기
 13. fileupload
 14. Mybatis 프레임워크로 DB 연동 ex1
-15. Mybatis 프레임워크로 DB 연동 ex2
+15. Mybatis 프레임워크로 DB 연동 ex2 (paging util 이용)
 16. DAO class를 interface로 대체하는 Mybatis 프레임워크로 DB 연동 ex1+ex2
 17. 11장을 Mybatis로 (jsp는 그대로 활용)
 18. mail 자동 발송 api
