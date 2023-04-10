@@ -1,0 +1,11 @@
+@charset "UTF-8";
+#wrap { width:700px; margin: 0 auto; background-color: white; text-align: center;}
+form { width:700px; margin:10px auto;}
+table {width:100%;}
+table th { background-color: #43BDE6; color:white; padding: 10px; text-align: center;}
+table td { padding: 10px 2px; text-align: center; }
+table tr{background-color: #BFF0FF;}
+table tr:HOVER {background-color: #AFE0F0;}
+table caption{padding: 5px 5px 10px; font-size: 2em; font-weight: bold;}
+input[type=text]:FOCUS { background-color: lightyellow;}
+input[type=text] { margin: 0 10px;}
