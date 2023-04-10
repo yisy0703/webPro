@@ -18,14 +18,14 @@
 		</c:if>
 		<c:if test="${empty fileNames[0] }">
 			첫번째 첨부파일 첨부 안 함.
-		</c:if>
+		</c:if><br>
 		file2 : upload/${fileNames[1] }<br>
 		<c:if test="${not empty fileNames[1] }">
 			<img src="${conPath }/upload/${fileNames[1]}">
 		</c:if>
 		<c:if test="${empty fileNames[1] }">
 			두번째 첨부파일 첨부 안 함.
-		</c:if>
+		</c:if><br>
 		file3 : upload/${fileNames[2] }<br>
 		<c:if test="${not empty fileNames[2] }">
 			<img src="${conPath }/upload/${fileNames[2]}">
