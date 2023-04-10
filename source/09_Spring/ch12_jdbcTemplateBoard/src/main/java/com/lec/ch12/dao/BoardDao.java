@@ -90,7 +90,7 @@ public class BoardDao {
 				pstmt.setString(4, bip);
 				return pstmt;
 			}
-		})
+		});
 	}
 	// 3. 원글 쓰기 (bname, btitle, bcontent, bip)
 	public int write(BoardDto bDto) {
