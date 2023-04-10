@@ -12,6 +12,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 
 import com.lec.ch12.dto.BoardDto;
@@ -29,6 +30,49 @@ public class BoardDao {
 		} catch (NamingException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	// 1. 글목록(startRow ~ endRow까지)
+	public ArrayList<BoardDto> list(int startRow, int endRow){
+		ArrayList<BoardDto> dtos = new ArrayList<BoardDto>();
+		Connection        conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rs    = null;
+		String sql = "SELECT * " + 
+				"  FROM (SELECT ROWNUM RN, A.* " + 
+				"        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)" + 
+				"  WHERE RN BETWEEN ? AND ?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int    bid      = rs.getInt("bid");
+				String bname    = rs.getString("bname");
+				String btitle   = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
+				Timestamp bdate = rs.getTimestamp("bdate");
+				int    bhit     = rs.getInt("bhit");
+				int    bgroup   = rs.getInt("bgroup");
+				int    bstep    = rs.getInt("bstep");
+				int    bindent  = rs.getInt("bindent");
+				String bip      = rs.getString("bip");
+				dtos.add(new BoardDto(bid, bname, btitle, bcontent, bdate, bhit, 
+						bgroup, bstep, bindent, bip));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} 
+		}
+		return dtos;
 	}
 	// 1. 글목록(startRow ~ endRow까지)
 	public ArrayList<BoardDto> list(int startRow, int endRow){
@@ -328,13 +372,25 @@ public class BoardDao {
 	}
 	// 8. 글 삭제
 	public int delete(final int bid) {
+		//방법1
 //		String sql = "DELETE FROM MVC_BOARD WHERE bID = "+bid;
 //		return template.update(sql);
-		String sql = "DELETE FROM MVC_BOARD WHERE bID = ?";
-		return template.update(sql, new PreparedStatementSetter() {
+		// 방법2
+//		String sql = "DELETE FROM MVC_BOARD WHERE bID = ?";
+//		return template.update(sql, new PreparedStatementSetter() {
+//			@Override
+//			public void setValues(PreparedStatement pstmt) throws SQLException {
+//				pstmt.setInt(1, bid);
+//			}
+//		});
+		// 방법3
+		return template.update(new PreparedStatementCreator() {
+			String sql = "DELETE FROM MVC_BOARD WHERE bID = ?";
 			@Override
-			public void setValues(PreparedStatement pstmt) throws SQLException {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, bid);
+				return pstmt;
 			}
 		});
 	}
