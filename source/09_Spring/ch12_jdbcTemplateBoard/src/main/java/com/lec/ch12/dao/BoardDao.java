@@ -127,71 +127,43 @@ public class BoardDao {
 				new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
 	}
 	// 7. 글 수정 (특정 bid의 작성자, 글제목, 글본문, bip만 수정)
-	public int modify(int bid, String bname, String btitle, String bcontent, 
-																	String bip) {
-		int result = FAIL;
-		Connection        conn  = null;
-		PreparedStatement pstmt = null;
+	public int modify(final int bid, final String bname, final String btitle, 
+						final String bcontent,  final String bip) {
 		String sql = "UPDATE MVC_BOARD " + 
 				"  SET BNAME = ?," + 
 				"      BTITLE = ?, " + 
 				"      BCONTENT = ?, " + 
 				"      BIP = ?" + 
 				"  WHERE BID = ?";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, bname);
-			pstmt.setString(2, btitle);
-			pstmt.setString(3, bcontent);
-			pstmt.setString(4, bip);
-			pstmt.setInt(5, bid);
-			result = pstmt.executeUpdate();
-			System.out.println(result == SUCCESS ? "글수정 성공":"글번호(bid) 오류");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage() + "글 수정 실패 ");
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn  != null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			} 
-		}
-		return result;
+		return template.update(sql, new PreparedStatementSetter() {
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, bname);
+				pstmt.setString(2, btitle);
+				pstmt.setString(3, bcontent);
+				pstmt.setString(4, bip);
+				pstmt.setInt(5, bid);
+			}
+		});
 	}
 	// 7. 글 수정 (특정 bid의 작성자, 글제목, 글본문, bip만 수정)
-	public int modify(BoardDto bDto) {
-		int result = FAIL;
-		Connection        conn  = null;
-		PreparedStatement pstmt = null;
+	public int modify(final BoardDto bDto) {
 		String sql = "UPDATE MVC_BOARD " + 
 				"  SET BNAME = ?," + 
 				"      BTITLE = ?, " + 
 				"      BCONTENT = ?, " + 
 				"      BIP = ?" + 
 				"  WHERE BID = ?";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, bDto.getBname());
-			pstmt.setString(2, bDto.getBtitle());
-			pstmt.setString(3, bDto.getBcontent());
-			pstmt.setString(4, bDto.getBip());
-			pstmt.setInt(5, bDto.getBid());
-			result = pstmt.executeUpdate();
-			System.out.println(result == SUCCESS ? "글수정 성공":"글번호(bid) 오류");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage() + "글 수정 실패 ");
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn  != null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			} 
-		}
-		return result;
+		return template.update(sql, new PreparedStatementSetter() {
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, bDto.getBname());
+				pstmt.setString(2, bDto.getBtitle());
+				pstmt.setString(3, bDto.getBcontent());
+				pstmt.setString(4, bDto.getBip());
+				pstmt.setInt(5, bDto.getBid());
+			}
+		});
 	}
 	// 8. 글 삭제
 	public int delete(final int bid) {
