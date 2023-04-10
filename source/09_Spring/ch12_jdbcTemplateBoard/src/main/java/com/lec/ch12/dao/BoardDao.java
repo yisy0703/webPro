@@ -41,47 +41,20 @@ public class BoardDao {
 						new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
 	}
 	// 1. 글목록(startRow ~ endRow까지)
-	public ArrayList<BoardDto> list(int startRow, int endRow){
-		ArrayList<BoardDto> dtos = new ArrayList<BoardDto>();
-		Connection        conn  = null;
-		PreparedStatement pstmt = null;
-		ResultSet         rs    = null;
+	public ArrayList<BoardDto> list(final int startRow, final int endRow){
 		String sql = "SELECT * " + 
 				"  FROM (SELECT ROWNUM RN, A.* " + 
 				"        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)" + 
 				"  WHERE RN BETWEEN ? AND ?";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				int    bid      = rs.getInt("bid");
-				String bname    = rs.getString("bname");
-				String btitle   = rs.getString("btitle");
-				String bcontent = rs.getString("bcontent");
-				Timestamp bdate = rs.getTimestamp("bdate");
-				int    bhit     = rs.getInt("bhit");
-				int    bgroup   = rs.getInt("bgroup");
-				int    bstep    = rs.getInt("bstep");
-				int    bindent  = rs.getInt("bindent");
-				String bip      = rs.getString("bip");
-				dtos.add(new BoardDto(bid, bname, btitle, bcontent, bdate, bhit, 
-						bgroup, bstep, bindent, bip));
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				if(rs    != null) rs.close();
-				if(pstmt != null) pstmt.close();
-				if(conn  != null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			} 
-		}
-		return dtos;
+		return (ArrayList<BoardDto>) template.query(sql, 
+				new PreparedStatementSetter() {
+					@Override
+					public void setValues(PreparedStatement pstmt) throws SQLException {
+						pstmt.setInt(1, startRow);
+						pstmt.setInt(2, endRow);
+					}
+				},
+				new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
 	}
 	// 2. 전체 글 갯수
 	public int getBoardTotCnt() {
