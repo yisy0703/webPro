@@ -51,6 +51,7 @@ public class FileUpService {
 			}// if
 			i++;
 		} //while
+		mav.addObject("fileNames", fileNames);
 		return isUpload;
 	}
 
