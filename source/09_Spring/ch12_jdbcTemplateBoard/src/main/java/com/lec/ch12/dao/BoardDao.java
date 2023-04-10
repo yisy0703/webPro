@@ -190,27 +190,16 @@ public class BoardDao {
 		});
 	}
 	// 9. 답변글 저장전 작업(STEP ⓐ)
-	private void preReplyStep(int bgroup, int bstep) {
-		Connection        conn  = null;
-		PreparedStatement pstmt = null;
+	private void preReplyStep(final int bgroup, final int bstep) {
 		String sql = "UPDATE MVC_BOARD SET BSTEP = BSTEP + 1 " + 
 				"  WHERE BGROUP = ? AND BSTEP > ?";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, bgroup);
-			pstmt.setInt(2, bstep);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage() + " preReplyStep에서 오류");
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn  != null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			} 
-		}
+		template.update(sql, new PreparedStatementSetter() {
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setInt(1, bgroup);
+				pstmt.setInt(2, bstep);
+			}
+		});
 	}
 	// 10. 답변글 쓰기
 	//       답변글쓴이    : bname, btitle, bcontent
