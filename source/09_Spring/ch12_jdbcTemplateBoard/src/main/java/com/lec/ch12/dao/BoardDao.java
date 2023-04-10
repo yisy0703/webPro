@@ -93,35 +93,20 @@ public class BoardDao {
 		});
 	}
 	// 3. 원글 쓰기 (bname, btitle, bcontent, bip)
-	public int write(BoardDto bDto) {
-		int result = FAIL;
-		Connection        conn  = null;
-		PreparedStatement pstmt = null;
+	public int write(final BoardDto bDto) {
 		String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
 				+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
 				" VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, "
 				+ "							MVC_BOARD_SEQ.CURRVAL, 0, 0, ?)";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, bDto.getBname());
-			pstmt.setString(2, bDto.getBtitle());
-			pstmt.setString(3, bDto.getBcontent());
-			pstmt.setString(4, bDto.getBip());
-			pstmt.executeUpdate();
-			result = SUCCESS;
-			System.out.println("원글쓰기 성공");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage() + " 원글쓰기 실패 :");
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn  != null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			} 
-		}
-		return result;
+		return template.update(sql, new PreparedStatementSetter() {
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, bDto.getBname());
+				pstmt.setString(2, bDto.getBtitle());
+				pstmt.setString(3, bDto.getBcontent());
+				pstmt.setString(4, bDto.getBip());
+			}
+		});
 	}
 	// 4. bID로 조회수 1 올리기
 	private void hitUp(int bid) {
