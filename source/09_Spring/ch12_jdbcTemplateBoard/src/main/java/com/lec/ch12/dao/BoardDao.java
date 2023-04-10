@@ -22,17 +22,16 @@ public class BoardDao {
 	private final int SUCCESS = 1;
 	private final int FAIL    = 0;
 	private JdbcTemplate template;
-
+	private DataSource ds;
 	public BoardDao() {
 		template = Constant.template;
 	}
-	// 1. 글목록(startRow ~ endRow까지)
+	// 전체 글 목록
 	public ArrayList<BoardDto> list(){
 		String sql = "SELECT * " + 
 				"  FROM (SELECT ROWNUM RN, A.* " + 
 				"        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)";
-		return (ArrayList<BoardDto>) template.query(sql, 
-						new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
+		return (ArrayList<BoardDto>) template.query(sql, new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
 	}
 	// 1. 글목록(startRow ~ endRow까지)
 	public ArrayList<BoardDto> list(final int startRow, final int endRow){
@@ -40,15 +39,15 @@ public class BoardDao {
 				"  FROM (SELECT ROWNUM RN, A.* " + 
 				"        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)" + 
 				"  WHERE RN BETWEEN ? AND ?";
-		return (ArrayList<BoardDto>) template.query(sql, 
-				new PreparedStatementSetter() {
-					@Override
-					public void setValues(PreparedStatement pstmt) throws SQLException {
-						pstmt.setInt(1, startRow);
-						pstmt.setInt(2, endRow);
-					}
-				},
-				new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
+		return (ArrayList<BoardDto>) template.query(sql, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setInt(1, startRow);
+				ps.setInt(2, endRow);
+				
+			}
+		}, new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
 	}
 	// 2. 전체 글 갯수
 	public int getBoardTotCnt() {
@@ -57,19 +56,38 @@ public class BoardDao {
 	}
 	// 3. 원글 쓰기 (bname, btitle, bcontent, bip)
 	public int write(final String bname, final String btitle, final String bcontent, final String bip) {
-//		String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
-//				+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
-//				" VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, "
-//				+ "							MVC_BOARD_SEQ.CURRVAL, 0, 0, ?)";
-//		return template.update(sql, new PreparedStatementSetter() {
-//			@Override
-//			public void setValues(PreparedStatement pstmt) throws SQLException {
-//				pstmt.setString(1, bname);
-//				pstmt.setString(2, btitle);
-//				pstmt.setString(3, bcontent);
-//				pstmt.setString(4, bip);
-//			}
-//		});
+		String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
+				+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
+				" VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, "
+				+ "							MVC_BOARD_SEQ.CURRVAL, 0, 0, ?)";
+		return template.update(sql, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, bname);
+				pstmt.setString(2, btitle);
+				pstmt.setString(3, bcontent);
+				pstmt.setString(4, bip);
+				
+			}
+		});
+	}
+	// 3. 원글 쓰기 (bname, btitle, bcontent, bip)
+	public int write(final BoardDto bDto) {
+		/*String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
+				+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
+				" VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, "
+				+ "							MVC_BOARD_SEQ.CURRVAL, 0, 0, ?)";
+		return template.update(sql, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, bDto.getBname());
+				pstmt.setString(2, bDto.getBtitle());
+				pstmt.setString(3, bDto.getBcontent());
+				pstmt.setString(4, bDto.getBip());
+			}
+		});*/
 		return template.update(new PreparedStatementCreator() {
 			String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
 					+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
@@ -78,51 +96,74 @@ public class BoardDao {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, bname);
-				pstmt.setString(2, btitle);
-				pstmt.setString(3, bcontent);
-				pstmt.setString(4, bip);
-				return pstmt;
-			}
-		});
-	}
-	// 3. 원글 쓰기 (bname, btitle, bcontent, bip)
-	public int write(final BoardDto bDto) {
-		String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
-				+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
-				" VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, "
-				+ "							MVC_BOARD_SEQ.CURRVAL, 0, 0, ?)";
-		return template.update(sql, new PreparedStatementSetter() {
-			@Override
-			public void setValues(PreparedStatement pstmt) throws SQLException {
 				pstmt.setString(1, bDto.getBname());
 				pstmt.setString(2, bDto.getBtitle());
 				pstmt.setString(3, bDto.getBcontent());
 				pstmt.setString(4, bDto.getBip());
+				return pstmt;
 			}
 		});
 	}
 	// 4. bID로 조회수 1 올리기
-	private void hitUp(int bid) {
-		String sql = "UPDATE MVC_BOARD SET bHIT = bHIT + 1 WHERE bID = " + bid;
+	private void hitUp(final int bid) {
+//		String sql = "UPDATE MVC_BOARD SET bHIT = bHIT + 1 WHERE bID = ?";
+//		template.update(sql, new PreparedStatementSetter() {
+//			@Override
+//			public void setValues(PreparedStatement ps) throws SQLException {
+//				ps.setInt(1, bid);
+//			}
+//		});
+		String sql = "UPDATE MVC_BOARD SET BHIT = BHIT+1 WHERE BID="+bid;
 		template.update(sql);
 	}
 	// 5. bID로 DTO가져오기 (글상세보기) -- 조회수 올리고 dto가져오기
-	public BoardDto content(int bid) {
-		hitUp(bid);
-		String sql = "SELECT * FROM MVC_BOARD WHERE bID = " + bid;
-		return template.queryForObject(sql, 
-				new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
+	public BoardDto content(final int bid) {
+		hitUp(bid); // 글 상세보기 시 조회수 1 올리기
+//		String sql = "SELECT * FROM MVC_BOARD WHERE bID = ?";
+//		return template.query(sql, new PreparedStatementSetter() {
+//			@Override
+//			public void setValues(PreparedStatement pstmt) throws SQLException {
+//				pstmt.setInt(1, bid);
+//			}
+//		}, new BeanPropertyRowMapper<BoardDto>(BoardDto.class)).get(0);
+		String sql = "SELECT * FROM MVC_BOARD WHERE bID = "+bid;
+		return template.queryForObject(sql, new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
 	}
 	// 6. bID로 DTO가져오기 (글수정VIEW, 답변글VIEW) -- dto 가져오기
-	public BoardDto modifyView_replyView(int bid) {
-		String sql = "SELECT * FROM MVC_BOARD WHERE bID = " + bid;
-		return template.queryForObject(sql, 
-				new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
+	public BoardDto modifyView_replyView(final int bid) {
+		//String sql = "SELECT * FROM MVC_BOARD WHERE bID = "+bid;
+		//return template.queryForObject(sql, new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
+		String sql = "SELECT * FROM MVC_BOARD WHERE bID = ?";
+		return template.query(sql, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setInt(1, bid);
+				
+			}
+		}, new BeanPropertyRowMapper<BoardDto>(BoardDto.class)).get(0);
 	}
 	// 7. 글 수정 (특정 bid의 작성자, 글제목, 글본문, bip만 수정)
-	public int modify(final int bid, final String bname, final String btitle, 
-						final String bcontent,  final String bip) {
+	public int modify(final int bid, final String bname, final String btitle, final String bcontent, 
+																	final String bip) {
+//		return template.update(new PreparedStatementCreator() {
+//			String sql = "UPDATE MVC_BOARD " + 
+//					"  SET BNAME = ?," + 
+//					"      BTITLE = ?, " + 
+//					"      BCONTENT = ?, " + 
+//					"      BIP = ?" + 
+//					"  WHERE BID = ?";
+//			@Override
+//			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+//				PreparedStatement pstmt = con.prepareStatement(sql);
+//				pstmt.setString(1, bname);
+//				pstmt.setString(2, btitle);
+//				pstmt.setString(3, bcontent);
+//				pstmt.setString(4, bip);
+//				pstmt.setInt(5, bid);
+//				return pstmt;
+//			}
+//		});
 		String sql = "UPDATE MVC_BOARD " + 
 				"  SET BNAME = ?," + 
 				"      BTITLE = ?, " + 
@@ -142,22 +183,40 @@ public class BoardDao {
 	}
 	// 7. 글 수정 (특정 bid의 작성자, 글제목, 글본문, bip만 수정)
 	public int modify(final BoardDto bDto) {
-		String sql = "UPDATE MVC_BOARD " + 
-				"  SET BNAME = ?," + 
-				"      BTITLE = ?, " + 
-				"      BCONTENT = ?, " + 
-				"      BIP = ?" + 
-				"  WHERE BID = ?";
-		return template.update(sql, new PreparedStatementSetter() {
-			@Override
-			public void setValues(PreparedStatement pstmt) throws SQLException {
-				pstmt.setString(1, bDto.getBname());
-				pstmt.setString(2, bDto.getBtitle());
-				pstmt.setString(3, bDto.getBcontent());
-				pstmt.setString(4, bDto.getBip());
-				pstmt.setInt(5, bDto.getBid());
-			}
-		});
+//		return template.update(new PreparedStatementCreator() {
+//		String sql = "UPDATE MVC_BOARD " + 
+//				"  SET BNAME = ?," + 
+//				"      BTITLE = ?, " + 
+//				"      BCONTENT = ?, " + 
+//				"      BIP = ?" + 
+//				"  WHERE BID = ?";
+//		@Override
+//		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+//			PreparedStatement pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, bDto.getBname());
+//			pstmt.setString(2, bDto.getBtitle());
+//			pstmt.setString(3, bDto.getBcontent());
+//			pstmt.setString(4, bDto.getBip());
+//			pstmt.setInt(5, bDto.getBid());
+//			return pstmt;
+//		}
+//	});
+	String sql = "UPDATE MVC_BOARD " + 
+			"  SET BNAME = ?," + 
+			"      BTITLE = ?, " + 
+			"      BCONTENT = ?, " + 
+			"      BIP = ?" + 
+			"  WHERE BID = ?";
+	return template.update(sql, new PreparedStatementSetter() {
+		@Override
+		public void setValues(PreparedStatement pstmt) throws SQLException {
+			pstmt.setString(1, bDto.getBname());
+			pstmt.setString(2, bDto.getBtitle());
+			pstmt.setString(3, bDto.getBcontent());
+			pstmt.setString(4, bDto.getBip());
+			pstmt.setInt(5, bDto.getBid());
+		}
+	});
 	}
 	// 8. 글 삭제
 	public int delete(final int bid) {
@@ -185,15 +244,29 @@ public class BoardDao {
 	}
 	// 9. 답변글 저장전 작업(STEP ⓐ)
 	private void preReplyStep(final int bgroup, final int bstep) {
-		String sql = "UPDATE MVC_BOARD SET BSTEP = BSTEP + 1 " + 
+//		String sql = "UPDATE MVC_BOARD SET BSTEP = BSTEP + 1 " + 
+//				"  WHERE BGROUP = ? AND BSTEP > ?";
+//		template.update(sql, new PreparedStatementSetter() {
+//			
+//			@Override
+//			public void setValues(PreparedStatement pstmt) throws SQLException {
+//				pstmt.setInt(1, bgroup);
+//				pstmt.setInt(2, bstep);
+//				
+//			}
+//		});
+		template.update(new PreparedStatementCreator() {
+			String sql = "UPDATE MVC_BOARD SET BSTEP = BSTEP + 1 " + 
 				"  WHERE BGROUP = ? AND BSTEP > ?";
-		template.update(sql, new PreparedStatementSetter() {
 			@Override
-			public void setValues(PreparedStatement pstmt) throws SQLException {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, bgroup);
 				pstmt.setInt(2, bstep);
+				return pstmt;
 			}
 		});
+		
 	}
 	// 10. 답변글 쓰기
 	//       답변글쓴이    : bname, btitle, bcontent
@@ -222,13 +295,13 @@ public class BoardDao {
 	//       시스템적으로 : bip
 	//       원글             : bgroup, bstep, bindent
 	public int reply(final BoardDto bDto) {
-		preReplyStep(bDto.getBgroup(), bDto.getBstep());
-		String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT,"
-				+ "							 BGROUP, BSTEP, BINDENT, BIP)" + 
-				"  VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
-		return template.update(sql, new PreparedStatementSetter() {
+		return template.update(new PreparedStatementCreator() {
+			String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT,"
+					+ "							 BGROUP, BSTEP, BINDENT, BIP)" + 
+					"  VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 			@Override
-			public void setValues(PreparedStatement pstmt) throws SQLException {
+			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, bDto.getBname());
 				pstmt.setString(2, bDto.getBtitle());
 				pstmt.setString(3, bDto.getBcontent());
@@ -236,6 +309,7 @@ public class BoardDao {
 				pstmt.setInt(5, bDto.getBstep() + 1);
 				pstmt.setInt(6, bDto.getBindent() + 1);
 				pstmt.setString(7, bDto.getBip());
+				return pstmt;
 			}
 		});
 	}
