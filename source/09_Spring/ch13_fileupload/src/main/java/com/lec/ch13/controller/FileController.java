@@ -19,8 +19,12 @@ public class FileController {
 	public ModelAndView fileup(MultipartHttpServletRequest mRequest, 
 			ModelAndView mav) {
 		if(fService.fileUp(mRequest, mav)) {
-			
+			mav.addObject("fileUpResult", "파일 업로드 성공");
+		}else {
+			mav.addObject("fileUpResult", "파일 업로드 안 됨");
 		}
+		mav.setViewName("fileResult");
+		return mav;
 	}
 }
 
