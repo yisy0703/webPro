@@ -24,5 +24,4 @@
 	<context:component-scan base-package="com.lec.ch14" />
 	
 	
-	
 </beans:beans>
