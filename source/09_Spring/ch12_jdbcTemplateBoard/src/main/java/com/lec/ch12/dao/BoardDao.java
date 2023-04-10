@@ -63,19 +63,34 @@ public class BoardDao {
 	}
 	// 3. 원글 쓰기 (bname, btitle, bcontent, bip)
 	public int write(final String bname, final String btitle, final String bcontent, final String bip) {
-		String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
-				+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
-				" VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, "
-				+ "							MVC_BOARD_SEQ.CURRVAL, 0, 0, ?)";
-		return template.update(sql, new PreparedStatementSetter() {
+//		String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
+//				+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
+//				" VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, "
+//				+ "							MVC_BOARD_SEQ.CURRVAL, 0, 0, ?)";
+//		return template.update(sql, new PreparedStatementSetter() {
+//			@Override
+//			public void setValues(PreparedStatement pstmt) throws SQLException {
+//				pstmt.setString(1, bname);
+//				pstmt.setString(2, btitle);
+//				pstmt.setString(3, bcontent);
+//				pstmt.setString(4, bip);
+//			}
+//		});
+		return template.update(new PreparedStatementCreator() {
+			String sql = "INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, "
+					+ "							BGROUP, BSTEP, BINDENT, BIP)" + 
+					" VALUES (MVC_BOARD_SEQ.NEXTVAL, ?, ?, ?, "
+					+ "							MVC_BOARD_SEQ.CURRVAL, 0, 0, ?)";
 			@Override
-			public void setValues(PreparedStatement pstmt) throws SQLException {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, bname);
 				pstmt.setString(2, btitle);
 				pstmt.setString(3, bcontent);
 				pstmt.setString(4, bip);
+				return pstmt;
 			}
-		});
+		})
 	}
 	// 3. 원글 쓰기 (bname, btitle, bcontent, bip)
 	public int write(BoardDto bDto) {
