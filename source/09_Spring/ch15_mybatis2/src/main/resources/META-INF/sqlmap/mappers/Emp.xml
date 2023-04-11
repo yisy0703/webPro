@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Emp">
+	<resultMap type="Emp" id="EmpResult">
+		<result property="empno" column="empno"/>
+		<result property="ename" column="ename"/>
+		<result property="job" column="job"/>
+		<result property="mgr" column="mgr"/>
+		<result property="hiredate" column="hiredate"/>
+		<result property="sal" column="sal"/>
+		<result property="comm" column="comm"/>
+		<result property="deptno" column="deptno"/>
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc"/>
+	</resultMap>
+	<select id="empList" parameterType="Emp" resultMap="EmpResult">
+		SELECT * FROM
+    	(SELECT ROWNUM RN, A.* FROM (SELECT * FROM EMP ORDER BY EMPNO) A)
+  	WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="empDeptList" parameterType="Emp" resultMap="EmpResult">
+		SELECT * FROM
+	    (SELECT ROWNUM RN, A.* 
+	      FROM (SELECT E.*, DNAME, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO)A)
+	  	WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="totCnt" resultType="int">
+		SELECT COUNT(*) FROM EMP
+	</select>
+	<select id="detail" parameterType="int" resultType="Emp">
+		SELECT * FROM EMP WHERE EMPNO=#{empno, jdbcType=VARCHAR}
+	</select>
+	<select id="managerList" resultMap="EmpResult">
+		SELECT * FROM EMP WHERE EMPNO IN (SELECT MGR FROM EMP)
+	</select>
+	<insert id="insert" parameterType="Emp">
+		INSERT INTO EMP 
+			VALUES (#{empno}, #{ename}, ${job}, ${mgr}, 
+							${hiredate}, ${sal}, ${comm}, ${deptno})
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
