@@ -62,22 +62,26 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public void dummyDataInsert50() {
 		Emp emp = new Emp();
-		for(int i=3000 ; i<3030 ; i++) {
+		for(int i=3000 ; i<3010 ; i++) {
 			emp.setEmpno(i);
 			if(i%3==0) {
-				emp.setEname("ㅎㅎㅎ");
+				emp.setEname("유관순");
+				emp.setJob("MANAGER");
+				emp.setDeptno(50);
 			}else if(i%3==1) {
-				emp.setEname("ㅊㅊㅊ");
+				emp.setEname("이봉창");
+				emp.setJob("SALESMAN");
+				emp.setDeptno(20);
 			}else {
-				emp.setEname("ㅌㅌㅌ");
+				emp.setEname("손병희");
+				emp.setJob("CLERK");
+				emp.setDeptno(30);
 			}
-			emp.setJob("MANAGER");
 			emp.setMgr(7968);
 			emp.setHiredate(Date.valueOf("2023-04-01"));
 			//emp.setHiredate(Timestamp.valueOf("2023-04-01 15:43:01"));
 			emp.setSal(i);
 			emp.setComm(i/10);
-			emp.setDeptno(40);
 			int result = empDao.insert(emp);
 			System.out.println(result==1? i+"번째 사원등록":i+"번째 사원등록 실패");
 		}
