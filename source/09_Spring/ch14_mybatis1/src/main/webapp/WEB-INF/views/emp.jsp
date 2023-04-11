@@ -10,6 +10,16 @@
 	<title>Insert title here</title>
 	<link href="${conPath }/css/emp.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('input[type="text"]').keyup(function(){
+				$('form').submit();
+			});
+			$('select').change(function(){
+				$('form').submit();
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="wrap">
@@ -29,7 +39,7 @@
 					</option>
 				</c:forEach>
 			</select>
-			<input type="submit" value="검색">
+			<!-- <input type="submit" value="검색"> -->
 		</form>
 		<table>
 			<tr>
