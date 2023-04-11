@@ -25,6 +25,10 @@
 			 value="classpath:META-INF/sqlmap/config/mybatis-config.xml"/>
 	</bean>
 	<!-- sqlSessionTemplate빈 -->
+	<bean id="sessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
 </beans>
 
 

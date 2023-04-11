@@ -40,6 +40,19 @@
 			VALUES (#{empno}, #{ename}, ${job}, ${mgr}, 
 							${hiredate}, ${sal}, ${comm}, ${deptno})
 	</insert>
+	<update id="update" parameterType="Emp">
+		UPDATE EMP SET ENAME=#{ename},
+          JOB=#{job},
+          MGR=#{mgr},
+          HIREDATE=#{hiredate},
+          SAL=#{sal},
+          COMM=#{comm},
+          DEPTNO=#{deptno}
+      WHERE EMPNO=#{empno}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM EMP WHERE EMPNO=#{empno}
+	</delete>
 </mapper>
 
 
