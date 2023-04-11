@@ -30,5 +30,3 @@ DELETE FROM EMP WHERE EMPNO=9000;
 -- Dept.xml id=deptList
 SELECT * FROM DEPT;
 COMMIT;
-
-
