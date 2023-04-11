@@ -1,4 +1,6 @@
 package com.lec.ch15.service;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,7 +61,40 @@ public class EmpServiceImpl implements EmpService {
 	}
 	@Override
 	public void dummyDataInsert50() {
-		// TODO Auto-generated method stub
+		Emp emp = new Emp();
+		for(int i=5000 ; i<5050 ; i++) {
+			emp.setEmpno(i);
+			if(i%3==0) {
+				emp.setEname("홍길동");
+			}else if(i%3==1) {
+				emp.setEname("장보고");
+			}else {
+				emp.setEname("윤동주");
+			}
+			emp.setJob("MANAGER");
+			emp.setMgr(7968);
+			emp.setHiredate(Date.valueOf("2023-04-01"));
+			//emp.setHiredate(Timestamp.valueOf("2023-04-01 15:43:01"));
+			emp.setSal(i);
+			emp.setComm(i/10);
+			emp.setDeptno(40);
+			int result = empDao.insert(emp);
+			System.out.println(result==1? i+"번째 사원등록":i+"번째 사원등록 실패");
+		}
 
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
