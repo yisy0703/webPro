@@ -37,8 +37,8 @@
 	</select>
 	<insert id="insert" parameterType="Emp">
 		INSERT INTO EMP 
-			VALUES (#{empno}, #{ename}, ${job}, ${mgr}, 
-							${hiredate}, ${sal}, ${comm}, ${deptno})
+			VALUES (#{empno}, #{ename}, #{job}, #{mgr}, 
+							#{hiredate}, #{sal}, #{comm}, #{deptno})
 	</insert>
 	<update id="update" parameterType="Emp">
 		UPDATE EMP SET ENAME=#{ename},

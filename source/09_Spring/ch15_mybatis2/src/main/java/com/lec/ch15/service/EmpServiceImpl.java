@@ -62,14 +62,14 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public void dummyDataInsert50() {
 		Emp emp = new Emp();
-		for(int i=5000 ; i<5050 ; i++) {
+		for(int i=3000 ; i<3030 ; i++) {
 			emp.setEmpno(i);
 			if(i%3==0) {
-				emp.setEname("홍길동");
+				emp.setEname("ㅎㅎㅎ");
 			}else if(i%3==1) {
-				emp.setEname("장보고");
+				emp.setEname("ㅊㅊㅊ");
 			}else {
-				emp.setEname("윤동주");
+				emp.setEname("ㅌㅌㅌ");
 			}
 			emp.setJob("MANAGER");
 			emp.setMgr(7968);
