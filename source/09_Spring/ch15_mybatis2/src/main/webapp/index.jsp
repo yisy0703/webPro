@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-	<jsp:forward page="home.do"/>
+	<%-- <jsp:forward page="home.do"/> --%>
+	<jsp:forward page="empList.do"/>
 </body>
 </html>

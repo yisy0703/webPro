@@ -81,7 +81,6 @@ public class EmpServiceImpl implements EmpService {
 			int result = empDao.insert(emp);
 			System.out.println(result==1? i+"번째 사원등록":i+"번째 사원등록 실패");
 		}
-
 	}
 }
 
