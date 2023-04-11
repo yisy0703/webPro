@@ -23,7 +23,13 @@ public class EmpController {
 		empService.dummyDataInsert50();
 		return "redirect:empList.do";
 	}
-	
+	@RequestMapping(value="empDeptList", method=RequestMethod.GET)
+	public String empDeptList(String pageNum, Model model) {
+		// empList.do 또는 empList.do?pageNum=2
+		model.addAttribute("empList", empService.empDeptList(pageNum));
+		model.addAttribute("paging", new Paging(empService.totCnt(), pageNum, 10, 5));
+		return "empDeptList";
+	}
 }
 
 
