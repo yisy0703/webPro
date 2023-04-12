@@ -27,6 +27,14 @@
 	</script>
 </head>
 <body>
+	<c:set var="success" value="1"/>
+	<c:if test="${modifyResult eq success }">
+		<script>alert('${param.empno}번 사원 정보 수정 성공');</script>
+	</c:if>
+	<c:if test="${deleteResult eq success }">
+		<script>alert('${param.empno}번 사원 정보 삭제');</script>
+	</c:if>
+	
 	<table>
 		<caption>직원목록</caption>
 		<tr>

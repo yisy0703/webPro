@@ -16,6 +16,12 @@
 	</script>
 </head>
 <body>
+	<c:if test="${not empty modifyResult }">
+		<script>
+			alert('${modifyResult}');
+			history.back();
+		</script>
+	</c:if>
 	<form action="${conPath }/update.do" method="POST">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
 		<input type="hidden" name="empno" value="${param.empno }">

@@ -24,7 +24,7 @@ public class EmpController {
 		empService.dummyDataInsert50();
 		return "redirect:empList.do";
 	}
-	@RequestMapping(value="empDeptList", method=RequestMethod.GET)
+	@RequestMapping(value="empDeptList", method= {RequestMethod.GET, RequestMethod.POST})
 	public String empDeptList(String pageNum, Model model) {
 		// empList.do 또는 empList.do?pageNum=2
 		model.addAttribute("empList", empService.empDeptList(pageNum));
@@ -36,7 +36,7 @@ public class EmpController {
 		model.addAttribute("empDto", empService.detail(empno));
 		return "detail";
 	}
-	@RequestMapping(value="updateView", method=RequestMethod.GET)
+	@RequestMapping(value="updateView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String updateView(int empno, Model model) {
 		model.addAttribute("empDto", empService.detail(empno));
 		model.addAttribute("deptList", empService.deptList());
@@ -46,8 +46,20 @@ public class EmpController {
 	public String update(Emp emp, Model model) {
 //		empService.update(emp);
 //		return "redirect:detail.do";
-		model.addAttribute("modifyResult", empService.update(emp));
-		return "forward:detail.do";
+		try {
+			model.addAttribute("modifyResult", empService.update(emp));
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			model.addAttribute("modifyResult", "필드 값이 너무 길어요. 확인 요망");
+			return "forward:updateView.do";
+		}
+		// return "forward:detail.do";
+		return "forward:empDeptList.do";
+	}
+	@RequestMapping(value="delete", method=RequestMethod.GET)
+	public String delete(int empno, Model model) {
+		model.addAttribute("deleteResult", empService.delete(empno));
+		return "forward:empDeptList.do";
 	}
 }
 
