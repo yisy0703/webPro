@@ -27,29 +27,29 @@ SELECT * FROM MVC_BOARD;
 INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
  VALUES (MVC_BOARD_SEQ.NEXTVAL, '이','답','답', 2, 1, 1, '127.0.0.1');
 
--- DAO에 들어갈 QUERY
--- 1. 글목록(startRow ~ endRow까지)
+-- board.xml에 들어갈 QUERY
+-- 1. 글목록(startRow ~ endRow까지) id=boardList
 SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP;
 SELECT * 
   FROM (SELECT ROWNUM RN, A.* 
         FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)
   WHERE RN BETWEEN 2 AND 3;
 
--- 2. 전체 글 갯수
+-- 2. 전체 글 갯수 id=boardTotCnt
 SELECT COUNT(*) FROM MVC_BOARD;
 
--- 3. 원글 쓰기
+-- 3. 원글 쓰기 id=boardWrite
 INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
  VALUES (MVC_BOARD_SEQ.NEXTVAL, '홍','TITLE', NULL, MVC_BOARD_SEQ.CURRVAL, 0,0,'192.1.1.1');
 
--- 4. bID로 조회수 1 올리기
+-- 4. bID로 조회수 1 올리기 boardHitUp
 UPDATE MVC_BOARD SET bHIT = bHIT + 1 WHERE bID=1;
 SELECT * FROM MVC_BOARD;
 
--- 5. bID로 DTO가져오기 (글상세보기, 글수정VIEW, 답변글VIEW)
+-- 5. bID로 DTO가져오기 (글상세보기, 글수정VIEW, 답변글VIEW) id=boardDetail
 SELECT * FROM MVC_BOARD WHERE bID=1;
 
--- 6. 글 수정
+-- 6. 글 수정 id=boardModify
 UPDATE MVC_BOARD 
   SET BNAME = '홍수정',
       BTITLE = '제목바꿈',
@@ -57,15 +57,15 @@ UPDATE MVC_BOARD
       BIP = '163.1.1.1'
   WHERE BID=1;
 
--- 7. 글 삭제
+-- 7. 글 삭제 id=boardDelete
 DELETE FROM MVC_BOARD WHERE bID=1;
 SELECT * FROM MVC_BOARD;
 
--- 8. 답변글 저장전 작업(STEP ⓐ : 예시에서는 2번글의 답변)
+-- 8. 답변글 저장전 작업(STEP ⓐ : 예시에서는 2번글의 답변) id=boardReplyPreStep
 UPDATE MVC_BOARD SET BSTEP = BSTEP + 1
   WHERE BGROUP = 2 AND BSTEP > 0;
 
--- 9. 답변글 쓰기 (예시는 2번의 답변)
+-- 9. 답변글 쓰기 (예시는 2번의 답변) id=boardReply
 SELECT * FROM MVC_BOARD WHERE bID=2;
 INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
   VALUES (MVC_BOARD_SEQ.NEXTVAL, '진','T', NULL, 2, 1, 1, '126.1.1.1');
