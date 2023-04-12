@@ -76,6 +76,16 @@ public class EmpController {
 		}
 		return "forward:writeView.do";
 	}
+	@RequestMapping(value="write", method=RequestMethod.POST)
+	public String write(Emp emp, Model model) {
+		try {
+			model.addAttribute("writeResult", empService.insert(emp));
+		}catch (Exception e) {
+			model.addAttribute("writeResult", "필드값이 너무 길어 등록 불가");
+			return "forward:writeView.do";
+		}
+		return "forward:empDeptList.do";
+	}
 }
 
 
