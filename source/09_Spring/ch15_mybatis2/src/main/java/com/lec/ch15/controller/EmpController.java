@@ -30,7 +30,16 @@ public class EmpController {
 		model.addAttribute("paging", new Paging(empService.totCnt(), pageNum, 10, 5));
 		return "empDeptList";
 	}
+	@RequestMapping(value="detail", method=RequestMethod.GET)
+	public String detail(int empno, Model model) {
+		model.addAttribute("empDto", empService.detail(empno));
+		return "detail";
+	}
 }
+
+
+
+
 
 
 

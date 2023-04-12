@@ -23,8 +23,9 @@
 	<select id="empDeptList" parameterType="Emp" resultMap="EmpResult">
 		SELECT * FROM
 	    (SELECT ROWNUM RN, A.* 
-	      FROM (SELECT E.*, DNAME, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO)A)
-	  	WHERE RN BETWEEN #{startRow} AND #{endRow}
+	      FROM (SELECT E.*, DNAME, LOC FROM EMP E, DEPT D 
+	            WHERE E.DEPTNO=D.DEPTNO ORDER BY EMPNO)A)
+  	WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<select id="totCnt" resultType="int">
 		SELECT COUNT(*) FROM EMP

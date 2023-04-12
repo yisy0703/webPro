@@ -11,8 +11,19 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			
+			$('tr').click(function(){
+				let empno =  Number($(this).children().eq(0).text().trim());
+				if(! isNaN(empno)){
+					location.href = '${conPath}/detail.do?empno=' + empno
+													+ '&pageNum=${paging.currentPage}';
+				}
+			});
 		});
+		const trClicked = empno=>{
+			// 해당 사원번호의 상세보기 페이지로
+			location.href = '${conPath}/detail.do?empno=' + empno 
+											+ '&pageNum=${paging.currentPage}';
+		};
 	</script>
 </head>
 <body>
@@ -25,7 +36,7 @@
 		</tr>
 		<tr><th>사번</th><th>이름</th><th>업무</th><th>부서명</th><th>근무지</th></tr>
 		<c:forEach items="${empList }" var="emp">
-			<tr>
+			<tr <%-- onclick="trClicked(${emp.empno })" --%>>
 				<td>${emp.empno }</td>
 				<td>${emp.ename }</td>
 				<td>${emp.job }</td>
