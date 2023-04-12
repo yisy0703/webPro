@@ -34,7 +34,9 @@
 	<c:if test="${deleteResult eq success }">
 		<script>alert('${param.empno}번 사원 정보 삭제');</script>
 	</c:if>
-	
+	<c:if test="${writeResult eq success }">
+		<script>alert('${param.empno}번 사원 등록 완료');</script>
+	</c:if>
 	<table>
 		<caption>직원목록</caption>
 		<tr>
