@@ -35,7 +35,7 @@ public class EmpController {
 		model.addAttribute("empDto", empService.detail(empno));
 		return "detail";
 	}
-	@RequestMapping(value="updateView", method=RequestMethod.GET)
+	@RequestMapping(value="update", method=RequestMethod.GET)
 	public String updateView(int empno, Model model) {
 		model.addAttribute("empDto", empService.detail(empno));
 		model.addAttribute("deptList", empService.deptList());

@@ -45,6 +45,30 @@
 				<th>상여</th>
 				<td><input type="number" name="comm" value="${empDto.comm }"></td>
 			</tr>
+			<tr>
+				<th>부서번호</th>
+				<td>
+					<%-- <input type="number" name="deptno" value="${empDto.deptno }"> --%>
+					<select name="deptno">
+						<c:forEach items="${deptList }" var="dept">
+							<option value="${dept.deptno }" 
+								<c:if test="${dept.deptno eq empDto.deptno }">
+									selected="selected"
+								</c:if>
+							>
+								${dept.deptno } - ${dept.dname } - ${dept.loc }
+							</option>
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="수정">
+					<input type="button" value="목록"
+					onclick="location.href='${conPath}/empDeptList.do?pageNum=${param.pageNum }'">
+				</td>
+			</tr>
 		</table>
 	</form>
 </body>
