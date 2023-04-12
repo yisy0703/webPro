@@ -35,11 +35,11 @@
 			</tr>
 			<tr>
 				<th>입사일</th>
-				<td><input type="date" name="hiredate" value="${empDto.hiredate }"></td>
+				<td><input type="date" name="hiredate" value="${empDto.hiredate }" required="required"></td>
 			</tr>
 			<tr>
 				<th>급여</th>
-				<td><input type="number" name="sal" value="${empDto.sal }"></td>
+				<td><input type="number" name="sal" value="${empDto.sal }" required="required"></td>
 			</tr>
 			<tr>
 				<th>상여</th>

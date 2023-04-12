@@ -77,11 +77,12 @@ public class EmpServiceImpl implements EmpService {
 				emp.setJob("CLERK");
 				emp.setDeptno(30);
 			}
-			emp.setMgr(7968);
+			emp.setMgr("7968");
 			emp.setHiredate(Date.valueOf("2023-04-01"));
 			//emp.setHiredate(Timestamp.valueOf("2023-04-01 15:43:01"));
 			emp.setSal(i);
-			emp.setComm(i/10);
+			//emp.setComm(""+i/10);
+			emp.setComm(String.valueOf(i/10));
 			int result = empDao.insert(emp);
 			System.out.println(result==1? i+"번째 사원등록":i+"번째 사원등록 실패");
 		}

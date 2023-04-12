@@ -17,6 +17,10 @@
 	</script>
 </head>
 <body>
+	<c:set var="success" value="1"/>
+	<c:if test="${modifyResult eq success }">
+		<script>alert('수정 성공');</script>
+	</c:if>
 	<table>
 		<caption>직원정보</caption>
 		<tr><th>사번</th><td>${empDto.empno }</td></tr>
@@ -29,8 +33,18 @@
 				<fmt:formatDate value="${empDto.hiredate }" pattern="yy년MM월dd일(E)"/>
 			</td>
 		</tr>
-		<tr><th>급여</th><td>${empDto.sal }</td></tr>
-		<tr><th>상여</th><td>${empDto.comm }</td></tr>
+		<tr>
+			<th>급여</th>
+			<td>
+				<fmt:formatNumber value="${empDto.sal }" groupingUsed="true"/>
+			</td>
+		</tr>
+		<tr>
+			<th>상여</th>
+			<td>
+				<fmt:formatNumber value="${empDto.comm }" groupingUsed="true"/>
+			</td>
+		</tr>
 		<tr><th>부서번호</th><td>${empDto.deptno }</td></tr>
 		<tr>
 			<td colspan="2">

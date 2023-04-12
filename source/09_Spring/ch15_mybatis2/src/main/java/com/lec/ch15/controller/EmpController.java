@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.lec.ch15.model.Emp;
 import com.lec.ch15.service.EmpService;
 import com.lec.ch15.util.Paging;
 @Controller
@@ -30,16 +31,23 @@ public class EmpController {
 		model.addAttribute("paging", new Paging(empService.totCnt(), pageNum, 10, 5));
 		return "empDeptList";
 	}
-	@RequestMapping(value="detail", method=RequestMethod.GET)
+	@RequestMapping(value="detail", method={RequestMethod.GET, RequestMethod.POST})
 	public String detail(int empno, Model model) {
 		model.addAttribute("empDto", empService.detail(empno));
 		return "detail";
 	}
-	@RequestMapping(value="update", method=RequestMethod.GET)
+	@RequestMapping(value="updateView", method=RequestMethod.GET)
 	public String updateView(int empno, Model model) {
 		model.addAttribute("empDto", empService.detail(empno));
 		model.addAttribute("deptList", empService.deptList());
 		return "update";
+	}
+	@RequestMapping(value="update", method=RequestMethod.POST)
+	public String update(Emp emp, Model model) {
+//		empService.update(emp);
+//		return "redirect:detail.do";
+		model.addAttribute("modifyResult", empService.update(emp));
+		return "forward:detail.do";
 	}
 }
 
