@@ -53,13 +53,19 @@ public class EmpController {
 			model.addAttribute("modifyResult", "필드 값이 너무 길어요. 확인 요망");
 			return "forward:updateView.do";
 		}
-		// return "forward:detail.do";
+		//return "forward:detail.do";
 		return "forward:empDeptList.do";
 	}
 	@RequestMapping(value="delete", method=RequestMethod.GET)
 	public String delete(int empno, Model model) {
 		model.addAttribute("deleteResult", empService.delete(empno));
 		return "forward:empDeptList.do";
+	}
+	@RequestMapping(value="writeView", method= {RequestMethod.GET, RequestMethod.POST})
+	public String writeView(Model model) {
+		model.addAttribute("managerList", empService.managerList());
+		model.addAttribute("deptList", empService.deptList());
+		return "write";
 	}
 }
 

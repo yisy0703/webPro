@@ -39,7 +39,7 @@
 		<caption>직원목록</caption>
 		<tr>
 			<td colspan="5">
-				<a href="${conPath }/writeForm.do">직원등록</a>
+				<a href="${conPath }/writeView.do">직원등록</a>
 			</td>
 		</tr>
 		<tr><th>사번</th><th>이름</th><th>업무</th><th>부서명</th><th>근무지</th></tr>
