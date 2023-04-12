@@ -67,6 +67,15 @@ public class EmpController {
 		model.addAttribute("deptList", empService.deptList());
 		return "write";
 	}
+	@RequestMapping(value="confirmNo", method=RequestMethod.GET)
+	public String confirmNo(int empno, Model model) {
+		if(empService.detail(empno)==null) {
+			model.addAttribute("confirmMsg", "사용가능한 사번입니다");
+		}else {
+			model.addAttribute("confirmMsg", "중복된 사번은 사용불가합니다");
+		}
+		return "forward:writeView.do";
+	}
 }
 
 

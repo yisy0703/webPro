@@ -11,8 +11,27 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			
+			$('form').submit(function(){
+				var confirmMsg = $('span').text().trim();
+				if(!confirmMsg){
+					alert('사번 중복확인 후 등록하세요');
+					return false; // submit 이벤트 제한
+				}else if(confirmMsg != '사용가능한 사번입니다'){
+					alert('사용가능한 사번으로 등록하세요');
+					frm.empno.focus();
+					return false;
+				}
+			});
 		});
+		function idConfirmChk(){
+			var empno = frm.empno.value;
+			if(!empno){
+				alert('사번 입력 후 중복확인하세요');
+				frm.empno.focus();
+			}else{
+				location.href = 'confirmNo.do?empno='+empno;
+			}
+		}
 	</script>
 </head>
 <body>
@@ -23,12 +42,12 @@
 				<td>
 					<input type="number" name="empno" required="required">
 					<input type="button" value="중복확인" onclick="idConfirmChk()"><br>
-					<span> ${idConfirmMsg } </span>
+					<span class="confirmMsg"> ${confirmMsg } </span>
 				</td>
 			</tr>
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" name="ename"></td>
 			</tr>
 			<tr>
 				<th>직책</th>
