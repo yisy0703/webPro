@@ -50,6 +50,11 @@
 	</script>
 </head>
 <body>
+	<c:if test="${not empty writeResult }">
+		<script>
+			alert('${writeResult}');
+		</script>
+	</c:if>
 	<form action="${conPath }/write.do" method="post" name="frm">
 		<table>
 			<tr>
