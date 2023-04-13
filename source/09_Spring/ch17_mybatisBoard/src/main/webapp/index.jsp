@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="home.do"/>
-	<%-- <jsp:forward page="mvcboard/list.do"/> --%>
+	<%-- <jsp:forward page="home.do"/> --%>
+	<%-- <jsp:forward page="mvcBoard/list.do"/> --%>
+	<jsp:forward page="mvcBoard/insert60.do"/>
 </body>
 </html>

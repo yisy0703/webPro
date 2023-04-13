@@ -26,7 +26,7 @@
 	</select>
 	<insert id="boardWrite" parameterType="Board">
 		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
-		 VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, MVC_BOARD_SEQ.CURRVAL, 0,0, #{bip});
+		 VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, MVC_BOARD_SEQ.CURRVAL, 0,0, #{bip})
 	</insert>
 	<update id="boardHitUp" parameterType="int">
 		UPDATE MVC_BOARD SET bHIT = bHIT + 1 WHERE bID=#{bid}
