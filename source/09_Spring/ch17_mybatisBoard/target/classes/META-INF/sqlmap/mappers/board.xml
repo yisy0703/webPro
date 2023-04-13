@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.ch17.dao.BoardDao">
+	<resultMap type="Board" id="BoardResult">
+		<result property="bid" column="bid"/>
+		<result property="bname" column="bname"/>
+		<result property="btitle" column="btitle"/>
+		<result property="bcontent" column="bcontent"/>
+		<result property="bdate" column="bdate"/>
+		<result property="bhit" column="bhit"/>
+		<result property="bgroup" column="bgroup"/>
+		<result property="bstep" column="bstep"/>
+		<result property="bindent" column="bindent"/>
+		<result property="bip" column="bip"/>
+	</resultMap>
+	<select id="boardList" parameterType="Board" resultMap="BoardResult">
+		SELECT * 
+		  FROM (SELECT ROWNUM RN, A.* 
+		        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)
+		  WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="boardTotCnt" resultType="int">
+		SELECT COUNT(*) FROM MVC_BOARD
+	</select>
+	<insert id="boardWrite" parameterType="Board">
+		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
+		 VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, MVC_BOARD_SEQ.CURRVAL, 0,0, #{bip});
+	</insert>
+	<update id="boardHitUp" parameterType="int">
+		UPDATE MVC_BOARD SET bHIT = bHIT + 1 WHERE bID=#{bid}
+	</update>
+	<select id="getBoardDto" parameterType="int" resultType="Board">
+		SELECT * FROM MVC_BOARD WHERE bID=#{bid}
+	</select>
+	<update id="boardUpdate" parameterType="Board">
+		UPDATE MVC_BOARD 
+		  SET BNAME = #{bname},
+		      BTITLE = #{btitle},
+		      BCONTENT = #{bcontent},
+		      BIP = #{bip}
+		  WHERE BID=#{bid}
+	</update>
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM MVC_BOARD WHERE bID=#{bid}
+	</delete>
+	<update id="boardReplyPreStep" parameterType="Board">
+		UPDATE MVC_BOARD SET BSTEP = BSTEP + 1
+  		WHERE BGROUP = #{bgroup} AND BSTEP > #{bstep}
+	</update>
+	<insert id="boardReply" parameterType="Board">
+		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
+  		VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, 
+  					#{bgroup}, #{bstep}+1, #{bintent}+1, #{bip})
+	</insert>
+</mapper>
