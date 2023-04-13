@@ -31,7 +31,7 @@
 				<th>글제목</th>
 				<td>
 					<input type="text" name="btitle" required="required"
-											value="[답]${board.btitle.substring(0,1) }"	>
+											value="[답]${board.btitle }"	>
 				</td>
 			</tr>
 			<tr>
