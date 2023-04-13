@@ -24,7 +24,7 @@ public class BoardController {
 	@RequestMapping(value="insert60", method = RequestMethod.GET)
 	public String insert60() {
 		boardService.insert60();
-		return "redirect:mvcBoard/list.do";
+		return "redirect:list.do";
 	}
 	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String write() {
@@ -58,6 +58,11 @@ public class BoardController {
 	@RequestMapping(value="reply", method = RequestMethod.GET)
 	public String replyView(int bid, Model model) {
 		model.addAttribute("board",boardService.boardModifyReplyView(bid));
-		return "mvcboard/reply";
+		return "mvcBoard/reply";
+	}
+	@RequestMapping(value="reply", method = RequestMethod.POST)
+	public String reply(Board board, HttpServletRequest request, Model model) {
+		model.addAttribute("replyResult", boardService.boardReply(board, request));
+		return "forward:list.do";
 	}
 }

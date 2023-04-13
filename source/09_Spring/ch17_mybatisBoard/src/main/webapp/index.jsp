@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%-- <jsp:forward page="home.do"/> --%>
-	<%-- <jsp:forward page="mvcBoard/list.do"/> --%>
-	<jsp:forward page="mvcBoard/insert60.do"/>
+	<jsp:forward page="mvcBoard/list.do"/>
+	<%-- <%response.sendRedirect("mvcBoard/insert60.do"); %> --%> <!-- insert60.do를 forward하면 controller의 forward가 바뀜 -->
 </body>
 </html>

@@ -52,6 +52,6 @@
 	<insert id="boardReply" parameterType="Board">
 		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
   		VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, 
-  					#{bgroup}, #{bstep}+1, #{bintent}+1, #{bip})
+  					#{bgroup}, #{bstep}+1, #{bindent}+1, #{bip})
 	</insert>
 </mapper>
