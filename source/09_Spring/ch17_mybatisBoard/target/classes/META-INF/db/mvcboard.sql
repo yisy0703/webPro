@@ -72,3 +72,14 @@ INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP
   VALUES (MVC_BOARD_SEQ.NEXTVAL, '진','T', NULL, 2, 1, 1, '126.1.1.1');
 COMMIT;
 SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP;
+
+-- myBatis를 사용할 때 insert 65이상을 인위적으로 넣기 위한 setting(참조:https://jun7222.tistory.com/310)
+-- cmd 창을 관리자권한으로 열고
+-- sqlplus /nolog
+-- SQL>conn /as sysdba;
+-- SQL>alter system set processes=200 scope=spfile;
+                          --값은 적당하게
+-- SQL>shutdown immediate;
+-- SQL>startup;
+-- allocation, limit 값이 늘어난 걸 확인
+select * from v$resource_limit where resource_name='processes';
