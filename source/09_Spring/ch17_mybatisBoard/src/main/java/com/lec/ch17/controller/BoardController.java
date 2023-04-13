@@ -57,7 +57,7 @@ public class BoardController {
 	}
 	@RequestMapping(value="reply", method = RequestMethod.GET)
 	public String replyView(int bid, Model model) {
-		model.addAttribute("bDto",boardService.boardModifyReplyView(bid));
+		model.addAttribute("board",boardService.boardModifyReplyView(bid));
 		return "mvcboard/reply";
 	}
 }
