@@ -9,6 +9,6 @@
 	Hello world!  
 </h1>
 
-<P>  ${msg } </P>
+<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
