@@ -32,4 +32,21 @@ public class BookController {
 		model.addAttribute("paging", new Paging(bookService.totCntBook(), pageNum, 3, 3));
 		return "book/list";		
 	}
+	@RequestMapping(params="method=detail", method = RequestMethod.GET)
+	public String detail(int bnum, Model model) {
+		model.addAttribute("bookDto", bookService.getDetailBook(bnum));
+		return "book/detail";
+	}
+	@RequestMapping(params="method=modify", method = RequestMethod.GET)
+	public String modifyForm(int bnum, Model model) {
+		model.addAttribute("bookDto", bookService.getDetailBook(bnum));
+		return "book/modify";
+	}
+	@RequestMapping(params="method=modify", method = RequestMethod.POST)
+	public String modify(MultipartHttpServletRequest mRequest, @ModelAttribute("bDto") Book book, Model model, String pageNum) {
+		int modifyResult = bookService.modifyBook(mRequest, book);
+		model.addAttribute("modifyResult", modifyResult);
+		System.out.println("수정완료");
+		return "redirect:book.do?method=list&pageNum="+pageNum+"&modifyResult="+modifyResult;
+	}
 }

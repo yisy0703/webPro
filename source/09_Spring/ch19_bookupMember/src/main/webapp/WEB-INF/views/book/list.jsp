@@ -18,7 +18,11 @@
 </head>
 <body>
 	<c:set var="SUCCESS" value="1"></c:set>
-	
+	<c:if test="${param.modifyResult == SUCCESS }">
+		<script>
+			alert('책수정 완료');
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<table>

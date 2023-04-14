@@ -20,7 +20,18 @@
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
-		
+		<table>
+			<caption>${bookDto.bnum }번 도서 상세보기</caption>
+			<tr><th>책이름</th><td colspan="2">${bookDto.btitle }</td></tr>
+			<tr><th>저자</th><td colspan="2">${bookDto.bwriter }</td></tr>
+			<tr><th>출판일</th><td colspan="2">${bookDto.brdate }</td></tr>
+			<tr><th>책이미지</th><td><img src="${conPath }/bookImgFileUpload/${bookDto.bimg1 }"></td>
+								<td><img src="${conPath }/bookImgFileUpload/${bookDto.bimg2 }"></td></tr>
+			<tr><th>책소개</th><td colspan="2">${bookDto.binfo }</td></tr>
+			<tr><td colspan="3">
+				<button onclick="location='book.do?method=modify&bnum=${bookDto.bnum}&pageNum=${param.pageNum}'">수정</button>
+				<button onclick="location='book.do?method=list&pageNum=${param.pageNum}'">목록</button>
+		</table>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>
 </body>
