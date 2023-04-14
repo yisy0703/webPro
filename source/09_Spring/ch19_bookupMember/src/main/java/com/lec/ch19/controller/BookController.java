@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.lec.ch19.service.BookService;
+import com.lec.ch19.util.Paging;
 import com.lec.ch19.vo.Book;
 @Controller
 @RequestMapping(value = "book")
@@ -22,6 +23,13 @@ public class BookController {
 	public String register(MultipartHttpServletRequest mRequest, 
 			@ModelAttribute("bDto") Book book, Model model) {
 		model.addAttribute("registerResult", bookService.registerBook(mRequest, book));
-		return "redirect:book.do?method=register";
+		return "book/register";
+	}
+	@RequestMapping(params="method=list", method= {RequestMethod.GET, RequestMethod.POST})
+	public String list(String pageNum, Model model) {
+		System.out.println("list 출력전");
+		model.addAttribute("bookList", bookService.bookList(pageNum));
+		model.addAttribute("paging", new Paging(bookService.totCntBook(), pageNum, 3, 3));
+		return "book/list";		
 	}
 }
