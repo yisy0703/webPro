@@ -4,11 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.lec.ch19.vo.Member" alias="Member"/>
 		<typeAlias type="com.lec.ch19.vo.Book" alias="Book"/>
+		<typeAlias type="com.lec.ch19.vo.Member" alias="Member"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/book.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
 	</mappers>
 </configuration>
