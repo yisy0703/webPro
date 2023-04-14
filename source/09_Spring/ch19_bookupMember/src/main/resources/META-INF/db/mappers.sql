@@ -26,6 +26,8 @@ UPDATE BOOK SET
     BIMG2 = 'noImg.png',
     BINFO = '마이바티스가 아니고 마이하비'
   WHERE BNUM=6;
+SELECT * FROM BOOK ORDER BY BRDATE;
+
 -- ★ ★ ★ ★ ★ member.xml ★ ★ ★ ★ ★ 
 -- id = idConfirm (mid가 id인 데이터 갯수) : public int idConfirm(String mid);
 SELECT COUNT(*) FROM MEMBER WHERE MID='aaa';
@@ -40,10 +42,3 @@ UPDATE MEMBER SET MPW='1',
                 MADDR='서울시 용산구',
                 MPOST = '01234'
     WHERE MID='bbb';
-
-
-
-
-
-
-

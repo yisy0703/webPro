@@ -25,9 +25,11 @@
 	<select id="totCntBook" resultType="int">
 		SELECT COUNT(*) FROM BOOK
 	</select>
+	<!-- 책번호로 dto가져오기 -->
 	<select id="getDetailBook" parameterType="int" resultType="Book">
 		SELECT * FROM BOOK WHERE BNUM=#{bnum}
 	</select>
+	<!-- 책등록  -->
 	<insert id="registerBook" parameterType="Book">
 		<if test="bimg1!='' and bimg2 != ''">
 			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bIMG2, bINFO)
@@ -41,9 +43,20 @@
 			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
   			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg2},#{binfo})
 		</if>
-		<if test="bimg1!='' and bimg2 != ''">
-			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bIMG2, bINFO)
-  			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg1},#{bimg2},#{binfo})
+		<if test="bimg1=='' and bimg2 == ''">
+			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bINFO)
+  			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{binfo})
 		</if>
 	</insert>
+	<!-- 책수정 -->
+	<update id="modifyBook" parameterType="Book">
+		UPDATE BOOK SET
+		    BTITLE = #{btitle},
+		    BWRITER = #{bwriter},
+		    BRDATE = #{brdate},
+		    BIMG1 = #{bimg1},
+		    BIMG2 = #{bimg2},
+		    BINFO = #{binfo}
+		  WHERE BNUM=#{bnum}
+	</update>
 </mapper>
