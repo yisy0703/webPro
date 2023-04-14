@@ -1,3 +1,3 @@
 git add .
-git commit -m "mybatis"
+git commit -m "mailSender"
 git push -u origin main
