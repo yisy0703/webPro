@@ -27,7 +27,6 @@ public class BookController {
 	}
 	@RequestMapping(params="method=list", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(String pageNum, Model model) {
-		System.out.println("list 출력전");
 		model.addAttribute("bookList", bookService.bookList(pageNum));
 		model.addAttribute("paging", new Paging(bookService.totCntBook(), pageNum, 3, 3));
 		return "book/list";		
@@ -43,10 +42,22 @@ public class BookController {
 		return "book/modify";
 	}
 	@RequestMapping(params="method=modify", method = RequestMethod.POST)
-	public String modify(MultipartHttpServletRequest mRequest, @ModelAttribute("bDto") Book book, Model model, String pageNum) {
+	public String modify(MultipartHttpServletRequest mRequest, 
+			@ModelAttribute("bDto") Book book, Model model, String pageNum) {
+//		model.addAttribute("modifyResult", bookService.modifyBook(mRequest, book));
+//		return "redirect:book.do?method=list";		
 		int modifyResult = bookService.modifyBook(mRequest, book);
-		model.addAttribute("modifyResult", modifyResult);
-		System.out.println("수정완료");
 		return "redirect:book.do?method=list&pageNum="+pageNum+"&modifyResult="+modifyResult;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
