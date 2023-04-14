@@ -24,11 +24,11 @@ CREATE TABLE BOOK(
 INSERT INTO MEMBER VALUES ('aaa','1','홍길동','hong@naver.com','12345','서울');
 
 INSERT INTO BOOK 
-  VALUES (BOOK_SQ.NEXTVAL, 'SPRING','김작가',SYSDATE, 'noImg.png','noImg.png','스프링개념서');
+  VALUES (BOOK_SQ.NEXTVAL, 'SPRING','김작가',SYSDATE-1, 'noImg.png','noImg.png','스프링개념서');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'JSP','박제이',SYSDATE, 'noImg.png','jsp 개념서');
+    VALUES (BOOK_SQ.NEXTVAL, 'JSP','박제이',SYSDATE-2, 'noImg.png','jsp 개념서');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'ORACLE','홍작가',SYSDATE, 'noImg.png','스프링개념서2');
+    VALUES (BOOK_SQ.NEXTVAL, 'ORACLE','홍작가',SYSDATE-3, 'noImg.png','스프링개념서2');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'JAVA','이자바',SYSDATE, '스프링개념서3');
+    VALUES (BOOK_SQ.NEXTVAL, 'JAVA','이자바',SYSDATE-4, '스프링개념서3');
 COMMIT;

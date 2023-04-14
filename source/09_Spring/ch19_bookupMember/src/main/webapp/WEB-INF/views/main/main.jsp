@@ -27,7 +27,7 @@
 			<caption>신규 도서 BEST 5</caption>
 			<tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
 			<tr>
-			<c:forEach var="book" items="${main }" begin="0" end="4">
+			<c:forEach var="book" items="${mainList }" begin="0" end="4">
 				<td>
 				   ${book.btitle }<br>
 				   <a href="${conPath }/book.do?method=detail&bnum=${book.bnum}&pageNum=1">

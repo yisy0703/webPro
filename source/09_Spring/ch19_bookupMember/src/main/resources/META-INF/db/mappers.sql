@@ -10,13 +10,13 @@ SELECT COUNT(*) FROM BOOK;
 SELECT * FROM BOOK WHERE BNUM=1;
 -- id = registerBook (책등록)
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bIMG2, bINFO)
-  VALUES (BOOK_SQ.NEXTVAL, 'PYTHON','김파이',SYSDATE, 'noImg.png','noImg.png','파이썬');
+  VALUES (BOOK_SQ.NEXTVAL, 'PYTHON','김파이',SYSDATE-1, 'noImg.png','noImg.png','파이썬');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'JPA','박제이',SYSDATE, 'noImg.png','JPA 개념서');
+    VALUES (BOOK_SQ.NEXTVAL, 'JPA','박제이',SYSDATE-2, 'noImg.png','JPA 개념서');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'MYBATIS','마이바',SYSDATE, 'noImg.png','마이바티스 개념서');
+    VALUES (BOOK_SQ.NEXTVAL, 'MYBATIS','마이바',SYSDATE-3, 'noImg.png','마이바티스 개념서');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, '사장학개론','김승호',SYSDATE, '『돈의 속성』의 저자 김승호 회장의 신간이다.');
+    VALUES (BOOK_SQ.NEXTVAL, '사장학개론','김승호',SYSDATE-10, '『돈의 속성』의 저자 김승호 회장의 신간이다.');
 -- id = modifyBook (책수정)
 UPDATE BOOK SET
     BTITLE = 'MYHOBBY',
@@ -42,3 +42,4 @@ UPDATE MEMBER SET MPW='1',
                 MADDR='서울시 용산구',
                 MPOST = '01234'
     WHERE MID='bbb';
+COMMIT;
