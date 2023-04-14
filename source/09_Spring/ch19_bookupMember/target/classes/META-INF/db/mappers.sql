@@ -9,25 +9,30 @@ SELECT COUNT(*) FROM BOOK;
 -- id = getDetailBook (책번호로 dto가져오기)
 SELECT * FROM BOOK WHERE BNUM=1;
 -- id = registerBook (책등록)
-INSERT INTO BOOK 
-  VALUES (BOOK_SQ.NEXTVAL, 'SPRING','김작가',SYSDATE, 'noImg.png','noImg.png','스프링개념서');
+INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bIMG2, bINFO)
+  VALUES (BOOK_SQ.NEXTVAL, 'PYTHON','김파이',SYSDATE, 'noImg.png','noImg.png','파이썬');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'JSP','박제이',SYSDATE, 'noImg.png','jsp 개념서');
+    VALUES (BOOK_SQ.NEXTVAL, 'JPA','박제이',SYSDATE, 'noImg.png','JPA 개념서');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'ORACLE','홍작가',SYSDATE, 'noImg.png','스프링개념서2');
+    VALUES (BOOK_SQ.NEXTVAL, 'MYBATIS','마이바',SYSDATE, 'noImg.png','마이바티스 개념서');
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, 'JAVA','이자바',SYSDATE, '스프링개념서3')
+    VALUES (BOOK_SQ.NEXTVAL, '사장학개론','김승호',SYSDATE, '『돈의 속성』의 저자 김승호 회장의 신간이다.');
 -- id = modifyBook (책수정)
 
 -- ★ ★ ★ ★ ★ member.xml ★ ★ ★ ★ ★ 
 -- id = idConfirm (mid가 id인 데이터 갯수) : public int idConfirm(String mid);
 SELECT COUNT(*) FROM MEMBER WHERE MID='aaa';
 --	id = joinMember(회원가입)
-
+INSERT INTO MEMBER VALUES ('bbb','1','김길석','kim@naver.com','04312','안양');
 --	id = getDetailMember(mid로 Member dto가져오기)
-
+SELECT * FROM MEMBER WHERE MID = 'bbb';
 --	id = modifyMember(회원정보 수정);
-
+UPDATE MEMBER SET MPW='1',
+                MNAME='김길순',
+                MMAIL = 'shin@gmail.com',
+                MADDR='서울시 용산구',
+                MPOST = '01234'
+    WHERE MID='bbb';
 
 
 
