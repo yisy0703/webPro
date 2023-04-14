@@ -60,3 +60,8 @@
 			WHERE BNUM=#{bnum}
 	</update>
 </mapper>
+
+
+
+
+
