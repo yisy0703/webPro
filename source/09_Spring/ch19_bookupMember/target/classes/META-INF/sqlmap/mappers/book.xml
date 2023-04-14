@@ -2,3 +2,22 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.ch19.dao.BookDao">
+	<resultMap type="Book" id="BookResult">
+		<result property="bnum" column="bnum"/>
+		<result property="btitle" column="btitle"/>
+		<result property="bwriter" column="bwriter"/>
+		<result property="brdate" column="brdate"/>
+		<result property="bimg1" column="bimg1"/>
+		<result property="bimg2" column="bimg2"/>
+		<result property="binfo" column="binfo"/>
+	</resultMap>
+	<!-- 책들 모든 리스트(신간 순) -->
+	<select id="mainList" resultMap="BookResult">
+		SELECT * FROM BOOK ORDER BY BRDATE DESC
+	</select>
+	<select id="bookList" parameterType="Book" resultMap="BookResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK ORDER BY BTITLE) A)
+  		WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+</mapper>
