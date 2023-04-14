@@ -16,8 +16,34 @@
 	<select id="mainList" resultMap="BookResult">
 		SELECT * FROM BOOK ORDER BY BRDATE DESC
 	</select>
+	<!-- 책이름 가나다순으로 startRow~endRow번째 까지 -->
 	<select id="bookList" parameterType="Book" resultMap="BookResult">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK ORDER BY BTITLE) A)
   		WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
+	<!-- 페이징 때 쓰려고 등록된 책 갯수-->
+	<select id="totCntBook" resultType="int">
+		SELECT COUNT(*) FROM BOOK
+	</select>
+	<select id="getDetailBook" parameterType="int" resultType="Book">
+		SELECT * FROM BOOK WHERE BNUM=#{bnum}
+	</select>
+	<insert id="registerBook" parameterType="Book">
+		<if test="bimg1!='' and bimg2 != ''">
+			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bIMG2, bINFO)
+  			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg1},#{bimg2},#{binfo})
+		</if>
+		<if test="bimg1!='' and bimg2 == ''">
+			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bINFO)
+  			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg1},#{binfo})
+		</if>
+		<if test="bimg1=='' and bimg2 != ''">
+			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
+  			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg2},#{binfo})
+		</if>
+		<if test="bimg1!='' and bimg2 != ''">
+			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bIMG2, bINFO)
+  			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg1},#{bimg2},#{binfo})
+		</if>
+	</insert>
 </mapper>

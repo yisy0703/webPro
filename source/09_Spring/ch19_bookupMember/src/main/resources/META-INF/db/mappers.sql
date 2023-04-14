@@ -18,7 +18,14 @@ INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bINFO)
     VALUES (BOOK_SQ.NEXTVAL, '사장학개론','김승호',SYSDATE, '『돈의 속성』의 저자 김승호 회장의 신간이다.');
 -- id = modifyBook (책수정)
-
+UPDATE BOOK SET
+    BTITLE = 'MYHOBBY',
+    BWRITER = '최마이',
+    BRDATE = '23/01/01',
+    BIMG1 = 'noImg.png',
+    BIMG2 = 'noImg.png',
+    BINFO = '마이바티스가 아니고 마이하비'
+  WHERE BNUM=6;
 -- ★ ★ ★ ★ ★ member.xml ★ ★ ★ ★ ★ 
 -- id = idConfirm (mid가 id인 데이터 갯수) : public int idConfirm(String mid);
 SELECT COUNT(*) FROM MEMBER WHERE MID='aaa';
