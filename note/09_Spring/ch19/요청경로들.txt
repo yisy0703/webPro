@@ -1,0 +1,25 @@
+요청경로들 :
+main.do (메인페이지에서)
+
+book/register.do   (도서등록폼으로 가기)
+book/register.do   (도서등록 = 파일첨부)
+book/list.do	(도서 리스트보기)
+book/detail.do      (한 도서 상세보기)
+book/modify.do    (도서수정폼)
+book/modify.do	(도서수정 = 파일첨부)
+
+book.do?method=register (도서등록폼으로 가기)
+book.do?method=register (도서등록 = 파일첨부)
+book.do?method=list       (도서 리스트보기)
+book.do?method=detail    (한 도서 상세보기)
+book.do?method=modify  (도서수정폼)
+book.do?method=modify  (도서수정 = 파일첨부)
+
+member.do?method=join        (회원가입폼)
+member.do?method=idConfirm (id중복체크)
+member.do?method=join	    (회원가입)
+member.do?method=login    (로그인폼)
+member.do?method=login	 (로그인)
+member.do?method=modify  (정보수정폼)
+member.do?method=modify	  (정보수정)
+member.do?method=logout   (로그아웃)
