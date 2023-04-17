@@ -64,6 +64,12 @@ public class MemberController {
 	public String modify1() { // 로그인 후 정보 수정으로 갈 때
 		return "member/modify";
 	}
+	@RequestMapping(params = "method=modify", method = RequestMethod.POST)
+	public String modify(@ModelAttribute("mDto") Member member, HttpSession httpSession,
+							Model model) {
+		model.addAttribute("modifyResult", memberService.modifyMember(member, httpSession));
+		return "forward:main.do";
+	}
 }
 
 
