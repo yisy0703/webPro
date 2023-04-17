@@ -25,10 +25,11 @@ public class BookController {
 		model.addAttribute("registerResult", bookService.registerBook(mRequest, book));
 		return "book/register";
 	}
+	// book.do?method=list&pageNum=1&schItem=all&schWord=J
 	@RequestMapping(params="method=list", method= {RequestMethod.GET, RequestMethod.POST})
-	public String list(String pageNum, Model model) {
-		model.addAttribute("bookList", bookService.bookList(pageNum));
-		model.addAttribute("paging", new Paging(bookService.totCntBook(), pageNum, 3, 3));
+	public String list(String pageNum, Book book,  Model model) {
+		model.addAttribute("bookList", bookService.bookList(pageNum, book));
+		model.addAttribute("paging", new Paging(bookService.totCntBook(book), pageNum, 3, 3));
 		return "book/list";		
 	}
 	@RequestMapping(params="method=detail", method = RequestMethod.GET)

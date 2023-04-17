@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.lec.ch19.vo.Book;
 public interface BookService {
 	public List<Book> mainList();
-	public List<Book> bookList(String pageNum);
+	public List<Book> bookList(String pageNum, Book book);
 	public int totCntBook(Book book);
 	public Book getDetailBook(int bnum);
 	public int registerBook(MultipartHttpServletRequest mRequest, Book book);
