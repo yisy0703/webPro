@@ -21,7 +21,15 @@ SELECT * FROM (SELECT ROWNUM RN, A.*
         WHERE BWRITER LIKE '%'||'J'||'%'  ORDER BY BTITLE) A)
   WHERE RN BETWEEN 1 AND 4;
 -- id = totCntBook (등록된 책 갯수)
+  -- (1) schItem이 null이거나 ''일 때
 SELECT COUNT(*) FROM BOOK;
+  -- (2) schItem이 'all'일 때
+SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||'J'||'%' OR BWRITER LIKE '%'||'J'||'%';
+  -- (3) schItem이 'btitle'일 때
+SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||'J'||'%';
+  -- (4) schItem이 'bwriter'일 때
+SELECT COUNT(*) FROM BOOK WHERE BWRITER LIKE '%'||'J'||'%';
+  
 -- id = getDetailBook (책번호로 dto가져오기)
 SELECT * FROM BOOK WHERE BNUM=1;
 -- id = registerBook (책등록)
