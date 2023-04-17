@@ -32,7 +32,7 @@
 	<div id="content">
 	<form action="${conPath }/member.do" method="post">
 		<input type="hidden" name="method" value="login">
-		<input type="hidden" name="after" value="${empty param.after ?  'main.do':param.after}">
+		<input type="text" name="after" value="${empty param.after ?  'main.do':param.after}">
 		<table>
 			<caption>로그인 화면</caption>
 			<tr><th>아이디</th><td><input type="text" name="mid" required="required" value="${mid }"></td></tr>
