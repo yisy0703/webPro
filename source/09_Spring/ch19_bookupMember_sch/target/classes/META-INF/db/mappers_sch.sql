@@ -1,7 +1,7 @@
 -- ★ ★ ★ ★ ★ book.xml ★ ★ ★ ★ ★ 
 -- id = mainList (신간도서순 bookList)
 SELECT * FROM BOOK ORDER BY BRDATE DESC;
--- id = bookList (startRow~endRow까지 bookList) 출력순서:bTITLE 기준
+-- id = bookList (startRow~endRow까지 schItem에 따라 schWord로 검색한 bookList) 출력순서:bTITLE 기준
   -- (1) schItem이 null이거나 ''일 때
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK ORDER BY BTITLE) A)
   WHERE RN BETWEEN 2 AND 4;
@@ -9,14 +9,27 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK ORDER BY BTITLE) A
 SELECT * FROM (SELECT ROWNUM RN, A.* 
     FROM (SELECT * FROM BOOK 
         WHERE BTITLE LIKE '%'||'J'||'%' OR BWRITER LIKE '%'||'J'||'%' ORDER BY BTITLE) A)
-  WHERE RN BETWEEN 2 AND 4;
+  WHERE RN BETWEEN 1 AND 8;
   -- (3) schItem이 'btitle'일 때
 SELECT * FROM (SELECT ROWNUM RN, A.* 
     FROM (SELECT * FROM BOOK 
         WHERE BTITLE LIKE '%'||'J'||'%'  ORDER BY BTITLE) A)
-  WHERE RN BETWEEN 2 AND 4;
+  WHERE RN BETWEEN 1 AND 4;
+  -- (4) schItem이 'bwriter'일 때
+SELECT * FROM (SELECT ROWNUM RN, A.* 
+    FROM (SELECT * FROM BOOK 
+        WHERE BWRITER LIKE '%'||'J'||'%'  ORDER BY BTITLE) A)
+  WHERE RN BETWEEN 1 AND 4;
 -- id = totCntBook (등록된 책 갯수)
+  -- (1) schItem이 null이거나 ''일 때
 SELECT COUNT(*) FROM BOOK;
+  -- (2) schItem이 'all'일 때
+SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||'J'||'%' OR BWRITER LIKE '%'||'J'||'%';
+  -- (3) schItem이 'btitle'일 때
+SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||'J'||'%';
+  -- (4) schItem이 'bwriter'일 때
+SELECT COUNT(*) FROM BOOK WHERE BWRITER LIKE '%'||'J'||'%';
+  
 -- id = getDetailBook (책번호로 dto가져오기)
 SELECT * FROM BOOK WHERE BNUM=1;
 -- id = registerBook (책등록)
