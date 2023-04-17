@@ -71,19 +71,3 @@ public class MemberController {
 		return "forward:main.do";
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
