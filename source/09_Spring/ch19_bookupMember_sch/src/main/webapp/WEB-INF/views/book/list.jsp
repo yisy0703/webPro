@@ -52,7 +52,7 @@
 				<c:forEach var="book" items="${bookList }">
 					<td>
 						${book.btitle }<br>
-						<a href="${conPath }/book.do?method=detail&bnum=${book.bnum}&pageNum=${paging.currentPage}">
+						<a href="${conPath }/book.do?method=detail&bnum=${book.bnum}&pageNum=${paging.currentPage}&schItem=${param.schItem }&schWord=${param.schWord}">
 						<img src="${conPath }/bookImgFileUpload/${book.bimg1}"></a><br>
 						${book.bwriter } 著 <br>
 						출판일 : ${book.brdate }

@@ -48,7 +48,7 @@ public class BookController {
 //		model.addAttribute("modifyResult", bookService.modifyBook(mRequest, book));
 //		return "redirect:book.do?method=list";		
 		int modifyResult = bookService.modifyBook(mRequest, book);
-		return "redirect:book.do?method=list&pageNum="+pageNum+"&modifyResult="+modifyResult;
+		return "redirect:book.do?method=list&pageNum="+pageNum+"&modifyResult="+modifyResult+"&schItem="+book.getSchItem()+"&schWord="+book.getSchWord();
 	}
 }
 

@@ -40,6 +40,8 @@
 			<input type="hidden" name="method" value="modify">
 			<input type="hidden" name="pageNum" value="${param.pageNum }">
 			<input type="hidden" name="bnum" value="${bookDto.bnum }">
+			<input type="hidden" name="schItem" value="${param.schItem}">
+			<input type="hidden" name="schWord" value="${param.schWord}">
 			<table>
 				<caption>${bookDto.bnum }번 도서 수정하기</caption>
 				<tr><th>책이름</th><td><input type="text" name="btitle" value="${bookDto.btitle }"></td></tr>
@@ -50,7 +52,7 @@
 				<tr><th>책소개</th><td><textarea rows="5" cols="20" name="binfo">${bookDto.binfo}</textarea></td></tr>
 				<tr><td colspan="2">
 					<input type="submit" value="저장">
-					<input type="button" value="목록" onclick="location='book.do?method=list&pageNum=${param.pageNum}'">
+					<input type="button" value="목록" onclick="location='book.do?method=list&pageNum=${param.pageNum}&schItem=${param.schItem }&schWord=${param.schWord}'">
 			</table>
 		</form>
 	</div>

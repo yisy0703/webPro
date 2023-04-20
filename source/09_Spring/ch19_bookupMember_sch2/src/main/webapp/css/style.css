@@ -1,0 +1,10 @@
+@charset "UTF-8";
+#content table{ border: pink solid 2px; margin: 10px auto 0;}
+#content tr {background-color: #FFE271; }
+#content tr:HOVER { background-color: orange; cursor: pointer; }
+#content td, #content th { text-align: center; padding: 5px;}
+#content caption { font-size: 1.3em; text-align: center;}
+#content h2 {text-align: center; color:red;}
+#content div { text-align: center; }
+#content .left { text-align: left; }
+#content .curr{color:red;}
