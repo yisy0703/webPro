@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tj.ck.dao.BDao">
+	<resultMap type="B" id="BResult">
+		<result column="bno" property="bno"/>
+		<result column="btitle" property="btitle"/>
+		<result column="bcontent" property="bcontent"/>
+		<result column="bfile" property="bfile"/>
+	</resultMap>
+	<select id="list" parameterType="B" resultMap="BResult">
+		SELECT * FROM
+    		(SELECT A.*, ROWNUM RN FROM
+    	<if test="schItem=='' or schItem==null">
+    		(SELECT * FROM B
+    	</if>
+	    <if test="schItem=='btitle'">
+	    	(SELECT * FROM B WHERE BTITLE LIKE '%' || #{schWord} || '%'
+	    </if>
+	    <if test="schItem=='bcontent'">
+	    	(SELECT * FROM B WHERE BCONTENT LIKE '%' || #{schWord} || '%'
+	    </if>
+	    <if test="schItem=='btitlebcontent'">
+	    	(SELECT * FROM B WHERE BTITLE LIKE '%' || #{schWord} || '%' OR BCONTENT LIKE '%' || #{schWord} || '%'
+	    </if>
+	   ORDER BY BNO DESC) A ) WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="cnt" parameterType="B" resultType="int">
+		SELECT COUNT(*) FROM B 
+	    <if test="schItem=='btitle'">
+	    	WHERE BTITLE LIKE '%'||#{schWord}||'%'
+	    </if>
+	    <if test="schItem=='bcontent'">
+	    	WHERE BCONTENT LIKE '%'||#{schWord}||'%'
+	    </if>
+	    <if test="schItem=='all'">
+	    	WHERE BTITLE LIKE '%'||#{schWord}||'%' OR BCONTENT LIKE '%'||#{schWord}||'%' 
+	    </if>
+	</select>
+	<insert id="write" parameterType="B">
+		INSERT INTO B VALUES (B_SEQ.NEXTVAL, #{btitle}, #{bcontent}, #{bfile})
+	</insert>
+	<select id="detail" parameterType="int" resultType="B">
+		SELECT * FROM B WHERE BNO=#{bno}
+	</select>
+	<update id="update" parameterType="B">
+		UPDATE B SET BTITLE = #{btitle},
+						<if test="bfile!=''">
+			   		BFILE = #{bfile},  
+			   		</if>
+            BCONTENT = #{bcontent}
+        WHERE BNO = #{bno}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from b where bno=#{bno}
+	</delete>
+</mapper>

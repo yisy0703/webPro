@@ -131,11 +131,10 @@ public class BServiceImpl implements BService {
 	public FileUpVO fileUp(FileUpVO fileUpVO, HttpServletRequest request) {
 		String rootPath = request.getRealPath("/");
 		String attachPath = "fileUp/";
-		String uploadPath = request.getRealPath("fileUp/");
+		//String uploadPath = request.getRealPath("fileUp/");
 		System.out.println("서버로 여기로 보낸다 : "+rootPath + attachPath);
 		MultipartFile upload = fileUpVO.getUpload();
 		String filename = "";
-		
 		if(upload != null){
 	    	filename = System.currentTimeMillis() + upload.getOriginalFilename();
 	    	fileUpVO.setFilename(filename);
@@ -148,12 +147,14 @@ public class BServiceImpl implements BService {
 	     	
 	     	fileUpVO.setAttachPath(attachPath);
 	     	fileUpVO.setFilename(filename);
+	     	System.out.println("★서비스의 바뀐 fileUploadVO : "+fileUpVO);
 	     }
 		 
 		int result = filecopy(rootPath + attachPath + filename, backupPath+filename);
 		if(result==1) {
 			System.out.println(filename+" 파일 백업 성공");
 		}
+		
 		return fileUpVO;
 	}
 

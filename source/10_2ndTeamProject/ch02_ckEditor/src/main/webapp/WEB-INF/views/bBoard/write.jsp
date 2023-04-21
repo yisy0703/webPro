@@ -13,10 +13,17 @@
 		
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script src="${conPath }/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			CKEDITOR.replace('bcontent', {
+				filebrowserUploadUrl : '${conPath }/fileupload.do'
+			});
+		});
+	</script>
 	<script>
 		$(document).ready(function(){
 			$('#bfile').change(function(){
-				alert($(this)[0].files[0].name);
 				if(window.FileReader){
 					var filename = $(this)[0].files[0].name;
 				}else{
@@ -24,12 +31,16 @@
 				}
 				$(this).siblings('.bfile').val(filename);
 			});
+			/* $('#bfile').change(function(event){
+				let filename = event.target.files[0].name;
+				$(this).siblings('.bfile').val(filename)
+			}); */
 		});
 	</script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-	<form action="${conPath }/bBoard/write.do"  method="post" enctype="multipart/form-data">
+	<form action="${conPath }/writeBboard.do"  method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>글제목</th>

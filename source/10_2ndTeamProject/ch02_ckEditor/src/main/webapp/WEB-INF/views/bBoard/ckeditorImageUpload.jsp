@@ -1,1 +1,1 @@
-{"filename" : "${fileUploadVO.filename}", "uploaded" : 1, "url":"${filePath}"}
+{"filename" : "${fileUpVO.filename}", "uploaded" : 1, "url":"${filePath}"}

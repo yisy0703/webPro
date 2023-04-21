@@ -13,8 +13,8 @@ td, th {text-align: center; padding:5px; }
 a { text-decoration: none; color:black}
 .paging {text-align: center;}
 input:not(.btn), textarea{
-	width: 90%;
+	width: 99%;
 }
 input[type="text"]{
-	height: 25px;
+	height: 20px;
 }
