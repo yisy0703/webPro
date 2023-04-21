@@ -50,7 +50,7 @@
 		</form>
 	</div>
 	<table>
-		<tr><td colspan="2"><a href="${conPath }${conPath }/bBoard/write.do">글쓰기</a></td></tr>
+		<tr><td colspan="2"><a href="${conPath }/bBoard/write.do">글쓰기</a></td></tr>
 		<tr>
 			<th>글번호</th>
 			<th>글제목</th>

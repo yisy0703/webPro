@@ -14,11 +14,16 @@ public class BboardController {
 	private BService bService;
 	@RequestMapping(value="list", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list(B b, String pageNum, Model model) {
+		model.addAttribute("x", "Hello");
 		model.addAttribute("list", bService.listBboard(b, pageNum, model));
 		return "bBoard/list";
 	}
-	@RequestMapping(value="write", method = RequestMethod.POST)
+	@RequestMapping(value="write", method = RequestMethod.GET)
 	public String write() {
+		return "bBoard/write";
+	}
+	@RequestMapping(value="write", method = RequestMethod.POST)
+	public String write(Model model) {
 		return "bBoard/write";
 	}
 }

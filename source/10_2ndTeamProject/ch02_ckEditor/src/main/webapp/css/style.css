@@ -12,6 +12,9 @@ td, th {text-align: center; padding:5px; }
 .paging b{text-align: center; color:red;}
 a { text-decoration: none; color:black}
 .paging {text-align: center;}
-input:not(.btn), #content textarea {
+input:not(.btn), textarea{
 	width: 90%;
+}
+input[type="text"]{
+	height: 25px;
 }
