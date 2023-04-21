@@ -50,5 +50,11 @@ SELECT COUNT(*) FROM B WHERE BTITLE LIKE '%'||'글'||'%' OR BCONTENT LIKE '%'||'
 SELECT * FROM B WHERE BNO=1;
 
 -- id = updateBboard
-UPDATE SET BTITLE = '글1',
-  
+UPDATE B SET BTITLE = '글1',
+            BFILE = 'nothing.jpg',
+            BCONTENT = '본문입니다'
+      WHERE BNO=1;
+      
+-- id = deleteBboard
+DELETE FROM B WHERE BNO=2;
+COMMIT;
