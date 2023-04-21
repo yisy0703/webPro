@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
 import com.lec.ch15.dao.DeptDao;
 import com.lec.ch15.dao.EmpDao;
 import com.lec.ch15.model.Dept;
@@ -28,8 +30,9 @@ public class EmpServiceImpl implements EmpService {
 		return empDao.empList(emp);
 	}
 	@Override
-	public List<Emp> empDeptList(String pageNum) {
+	public List<Emp> empDeptList(String pageNum, Model model) {
 		Paging paging = new Paging(empDao.totCnt(), pageNum, 10, 5);
+		model.addAttribute("paging", paging);
 		Emp emp = new Emp();
 		emp.setStartRow(paging.getStartRow());
 		emp.setEndRow(paging.getEndRow());

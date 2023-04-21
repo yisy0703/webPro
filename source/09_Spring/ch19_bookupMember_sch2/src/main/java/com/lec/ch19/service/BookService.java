@@ -1,5 +1,7 @@
 package com.lec.ch19.service;
 import java.util.List;
+
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.lec.ch19.vo.Book;
 public interface BookService {

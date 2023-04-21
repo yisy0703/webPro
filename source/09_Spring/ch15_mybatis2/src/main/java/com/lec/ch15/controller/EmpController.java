@@ -27,8 +27,8 @@ public class EmpController {
 	@RequestMapping(value="empDeptList", method= {RequestMethod.GET, RequestMethod.POST})
 	public String empDeptList(String pageNum, Model model) {
 		// empList.do 또는 empList.do?pageNum=2
-		model.addAttribute("empList", empService.empDeptList(pageNum));
-		model.addAttribute("paging", new Paging(empService.totCnt(), pageNum, 10, 5));
+		model.addAttribute("empList", empService.empDeptList(pageNum, model));
+		//model.addAttribute("paging", new Paging(empService.totCnt(), pageNum, 10, 5));
 		return "empDeptList";
 	}
 	@RequestMapping(value="detail", method={RequestMethod.GET, RequestMethod.POST})

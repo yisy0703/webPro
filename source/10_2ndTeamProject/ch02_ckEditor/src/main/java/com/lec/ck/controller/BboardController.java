@@ -17,4 +17,8 @@ public class BboardController {
 		model.addAttribute("list", bService.listBboard(b, pageNum, model));
 		return "bBoard/list";
 	}
+	@RequestMapping(value="write", method = RequestMethod.POST)
+	public String write() {
+		return "bBoard/write";
+	}
 }
