@@ -1,3 +1,3 @@
 git add .
-git commit -m "2ndTeamProject"
+git commit -m "git_svn"
 git push -u origin main
