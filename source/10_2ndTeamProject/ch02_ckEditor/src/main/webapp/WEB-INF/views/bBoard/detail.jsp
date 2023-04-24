@@ -34,8 +34,8 @@
 		</tr>
 		<tr><td colspan="2">
 			<button onclick="location.href='${conPath}/listBboard.do?pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}'">목록</button>
-			<button onclick="location.href='${conPath}/updateBboard.do?bno=${detail.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}'">수정</button>
-			<button onclick="location.href='${conPath}/deleteBboard.do?bno=${detail.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}'">삭제</button>
+			<button onclick="location.href='${conPath}/updateBboard.do?bno=${bBoard.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}'">수정</button>
+			<button onclick="location.href='${conPath}/deleteBboard.do?bno=${bBoard.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}'">삭제</button>
 		</td></tr>
 	</table>
 </body>

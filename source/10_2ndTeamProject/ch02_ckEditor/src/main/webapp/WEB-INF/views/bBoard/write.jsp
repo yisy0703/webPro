@@ -52,7 +52,7 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td><input type="text" class="bfile" style="display: block; float: left;"> &nbsp;
+				<td><input type="text" class="bfile" style="display: block; float: left; width:80%;"> &nbsp;
 						<label for="bfile"><img src="${conPath }/img/upload.png"></label>
 						<input type="file" id="bfile" name="tempBfile" style="display: none;">
 			</tr>
