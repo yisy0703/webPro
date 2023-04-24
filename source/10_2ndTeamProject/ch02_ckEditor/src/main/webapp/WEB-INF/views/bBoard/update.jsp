@@ -34,8 +34,11 @@
 		});
 	});
 	$(document).ready(function(){
-		$('input[type=button]').click(function(){
+		$('.deleteBboardBtn').click(function(){
 			location.href='${conPath}/deleteBboard.do?bno=${param.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
+		});
+		$('.listBboardBtn').click(function(){
+			location.href='${conPath}/listBboard.do?pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
 		});
 	});
 	</script>
@@ -68,8 +71,8 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="수정" class="btn">
-					<input type="button" value="삭제" class="btn">
-					<input type="button" value="목록" class="btn">
+					<input type="button" value="삭제" class="btn deleteBboardBtn">
+					<input type="button" value="목록" class="btn listBboardBtn">
 				</td>
 			</tr>
 		</table>
