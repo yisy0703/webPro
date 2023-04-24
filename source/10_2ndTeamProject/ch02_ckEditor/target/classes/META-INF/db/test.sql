@@ -25,7 +25,7 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM B ORDER BY BNO DESC) A)
   WHERE RN BETWEEN 6 AND 11;
   -- ② schItem이 'btitle'일 때
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-      (SELECT * FROM B WHERE BTITLE LIKE '%'||'1'||'%' ORDER BY BNO DESC) A)
+      (SELECT * FROM B WHERE BTITLE LIKE '%'||'테스트'||'%' ORDER BY BNO DESC) A)
   WHERE RN BETWEEN 1 AND 11;
   -- ③ schItem이 'bcontent'일 때
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
@@ -33,7 +33,7 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
   WHERE RN BETWEEN 1 AND 11;  
   -- ④ schItem이 'btitleBcontent'일 때
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-      (SELECT * FROM B WHERE BTITLE LIKE '%'||'글'||'%' OR BCONTENT LIKE '%'||'글'||'%'  ORDER BY BNO DESC) A)
+      (SELECT * FROM B WHERE BTITLE LIKE '%'||'테스트'||'%' OR BCONTENT LIKE '%'||'테스트'||'%'  ORDER BY BNO DESC) A)
   WHERE RN BETWEEN 1 AND 11;
 
 -- id=cntBboard
@@ -42,7 +42,7 @@ SELECT COUNT(*) FROM B;
   -- ② schItem이 'btitle'일 때
 SELECT COUNT(*) FROM B WHERE BTITLE LIKE '%'||'1'||'%';
   -- ③ schItem이 'bcontent'일 때
-SELECT COUNT(*) FROM B WHERE BCONTENT LIKE '%'||'내'||'%';
+SELECT COUNT(*) FROM B WHERE BCONTENT LIKE '%'||'테스트'||'%';
   -- ④ schItem이 'btitleBcontent'일 때
 SELECT COUNT(*) FROM B WHERE BTITLE LIKE '%'||'글'||'%' OR BCONTENT LIKE '%'||'글'||'%';
 
