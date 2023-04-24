@@ -25,6 +25,7 @@ public class BServiceImpl implements BService {
 	@Autowired
 	private BDao bDao;
 	private String backupPath = "D:\\webPro\\source\\10_2ndTeamProject\\ch02_ckEditor\\src\\main\\webapp\\fileUp\\"; 
+	private String backupContentPath = "D:\\webPro\\source\\10_2ndTeamProject\\ch02_ckEditor\\src\\main\\webapp\\fileUpContentImg\\";
 	@Override
 	public List<B> listBboard(B b, String pageNum, Model model) {
 		Paging paging = new Paging(bDao.cntBboard(b), pageNum);
@@ -130,8 +131,8 @@ public class BServiceImpl implements BService {
 	@Override
 	public FileUpVO fileUp(FileUpVO fileUpVO, HttpServletRequest request) {
 		String rootPath = request.getRealPath("/");
-		String attachPath = "fileUp/";
-		//String uploadPath = request.getRealPath("fileUp/");
+		String attachPath = "fileUpContentImg/";
+		//String uploadPath = request.getRealPath("fileUpContentImg/");
 		System.out.println("서버로 여기로 보낸다 : "+rootPath + attachPath);
 		MultipartFile upload = fileUpVO.getUpload();
 		String filename = "";
@@ -150,7 +151,7 @@ public class BServiceImpl implements BService {
 	     	System.out.println("★서비스의 바뀐 fileUploadVO : "+fileUpVO);
 	     }
 		 
-		int result = filecopy(rootPath + attachPath + filename, backupPath+filename);
+		int result = filecopy(rootPath + attachPath + filename, backupContentPath+filename);
 		if(result==1) {
 			System.out.println(filename+" 파일 백업 성공");
 		}

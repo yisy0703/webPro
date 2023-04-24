@@ -40,7 +40,7 @@
 		</script>
 	</c:if>
 	<div align="center">
-		<form action="">
+		<form action="${conPath }/listBboard.do">
 			<select name="schItem">
 				<option value="">검색조건</option>
 				<option value="btitle"
@@ -49,8 +49,8 @@
 				<option value="bcontent"
 					<c:if test="${param.schItem=='bcontent' }">selected="selected"</c:if>
 				>내용</option>
-				<option value="all"
-					<c:if test="${param.schItem=='all' }">selected="selected"</c:if>
+				<option value="btitleBcontent"
+					<c:if test="${param.schItem=='btitleBcontent' }">selected="selected"</c:if>
 				>제목+내용</option>
 			</select>
 			<input type="text" name="schWord" class="btn" value="${param.schWord }">
@@ -63,6 +63,9 @@
 			<th>글번호</th>
 			<th>글제목</th>
 		</tr>
+		<c:if test="${list.size() eq 0 }">
+			<tr><td colspan="2">해당 데이터가 없습니다</td></tr>
+		</c:if>
 		<c:forEach var="dto" items="${list }">
 			<tr onclick="trClicked(${dto.bno})">
 				<td>${dto.bno }</td>

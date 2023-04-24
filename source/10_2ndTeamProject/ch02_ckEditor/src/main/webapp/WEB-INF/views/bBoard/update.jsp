@@ -44,6 +44,8 @@
 <body>
 	<form action="${conPath }/updateBboard.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
+		<input type="text" name="schItem" value="${param.schItem }">
+		<input type="text" name="schWord" value="${param.schWord }">
 		<table>
 			<tr>
 				<th>글번호</th><td><input type="text" name="bno" value="${updateDto.bno }" readonly="readonly"></td>				
@@ -67,6 +69,7 @@
 				<td colspan="2">
 					<input type="submit" value="수정" class="btn">
 					<input type="button" value="삭제" class="btn">
+					<input type="button" value="목록" class="btn">
 				</td>
 			</tr>
 		</table>

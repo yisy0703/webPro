@@ -40,7 +40,7 @@
     <if test="schItem=='bcontent'">
     	WHERE BCONTENT LIKE '%'||#{schWord}||'%'
     </if>
-    <if test="schItem=='all'">
+    <if test="schItem=='btitleBcontent'">
     	WHERE BTITLE LIKE '%'||#{schWord}||'%' OR BCONTENT LIKE '%'||#{schWord}||'%' 
     </if>
 	</select>

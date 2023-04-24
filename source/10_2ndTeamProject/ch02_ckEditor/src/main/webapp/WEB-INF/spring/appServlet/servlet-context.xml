@@ -19,6 +19,7 @@
 	<resources mapping="/img/**" location="/img/" />
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/fileUp/**" location="/fileUp/" />
+	<resources mapping="/fileUpContentImg/**" location="/fileUpContentImg/" />
 	<resources mapping="/ckeditor/**" location="/ckeditor/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
