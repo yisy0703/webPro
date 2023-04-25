@@ -15,7 +15,8 @@ CREATE TABLE CBOARD(
     PRIMARY KEY(bID)
 );
 INSERT INTO CBOARD (bID, bNAME, bTITLE, bCONTENT, bGROUP, bSTEP, bINDENT, bIP)
-    VALUES (CBOARD_SQ.NEXTVAL, '홍길동','제목1','본문1',CBOARD_SQ.CURRVAL, 0, 0, '127.0.0.1');
+    VALUES (CBOARD_SQ.NEXTVAL, '홍길동','제목1','본문1',
+    CBOARD_SQ.CURRVAL, 0, 0, '127.0.0.1');
     
 -- mapper에 들어갈 query 
 

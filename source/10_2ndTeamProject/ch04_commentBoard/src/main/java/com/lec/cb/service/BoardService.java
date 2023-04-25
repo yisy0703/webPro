@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
-import com.lec.cb.dto.Board;
+import com.lec.cb.vo.Board;
 public interface BoardService {
 	public List<Board> boardList(String pageNum, Model model);
 	public int boardTotCnt();

@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.lec.cb.dto.Comment;
+import com.lec.cb.vo.Comment;
 @Mapper
 public interface CommentDao {
 	public List<Comment> commentList(Comment comment);

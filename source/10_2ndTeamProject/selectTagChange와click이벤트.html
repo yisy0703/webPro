@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		let i = 0;
+		let cnt = 0;
+		$(document).ready(function(){
+			$('select').click(function(){
+				i++;
+				if(i%2==0){
+					cnt ++;
+					var no = $('select option:selected').val();
+					if(no==1 || no==2){
+						$('#msg').append(cnt+'번재 '+no +'<br>');
+					}
+				}
+			});
+			$('select').change(function(){
+				var no = $('select option:selected').val();
+				if(no==1 || no==2){
+					cnt ++;
+					$('#msg2').append(cnt+'번재 '+no +'<br>');
+				}
+			});
+		});
+		const chk = function(no){
+			alert(no);
+		};
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+	<select id="num">
+		<option></option>
+		<option value = "1">하나</option>
+		<option value = "2">둘</option>
+	</select>
+	<p id="msg"></p>
+	<h5 id="msg2"></h5>
+</body>
+</html>

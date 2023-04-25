@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.lec.cb.dao.CommentDao;
-import com.lec.cb.dto.Comment;
 import com.lec.cb.util.Paging;
+import com.lec.cb.vo.Comment;
 @Service
 public class CommentServiceImpl implements CommentService {
 	@Autowired

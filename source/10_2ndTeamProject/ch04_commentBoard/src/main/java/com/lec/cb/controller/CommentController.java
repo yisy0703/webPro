@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lec.cb.dto.Comment;
 import com.lec.cb.service.CommentService;
+import com.lec.cb.vo.Comment;
 
 @Controller
 @RequestMapping(value="comment")

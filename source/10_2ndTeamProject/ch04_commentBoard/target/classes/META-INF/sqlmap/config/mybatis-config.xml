@@ -4,8 +4,8 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.lec.cb.dto.Board" alias="Board"/>
-		<typeAlias type="com.lec.cb.dto.Comment" alias="Comment"/>
+		<typeAlias type="com.lec.cb.vo.Board" alias="Board"/>
+		<typeAlias type="com.lec.cb.vo.Comment" alias="Comment"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/Board.xml"/>

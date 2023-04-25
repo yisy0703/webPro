@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.lec.cb.dto.Board;
 import com.lec.cb.service.BoardService;
 import com.lec.cb.service.CommentService;
 import com.lec.cb.util.Paging;
+import com.lec.cb.vo.Board;
 @Controller
 @RequestMapping("mvcboard")
 public class BoardController {
@@ -22,7 +22,7 @@ public class BoardController {
 		model.addAttribute("boardList", boardService.boardList(pageNum, model));
 		return "mvcboard/list";
 	}
-	@RequestMapping(value = "writeView", method = RequestMethod.GET)
+	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String writeView() {
 		return "mvcboard/write";
 	}

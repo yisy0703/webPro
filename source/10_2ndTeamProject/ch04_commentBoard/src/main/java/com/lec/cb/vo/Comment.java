@@ -1,4 +1,4 @@
-package com.lec.cb.dto;
+package com.lec.cb.vo;
 import java.sql.Timestamp;
 
 import lombok.Data;

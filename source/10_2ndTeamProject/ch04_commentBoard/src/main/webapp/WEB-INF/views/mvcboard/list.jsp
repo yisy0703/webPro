@@ -52,7 +52,7 @@
 	<c:set var="oNum" value="${paging.startRow }"/>
 	<c:set var="iNum" value="${paging.totCnt - paging.startRow + 1 }"/>
 	<table>
-		<tr><td><a href="${conPath }/mvcboard/writeView.do">글쓰기</a></td></tr>
+		<tr><td><a href="${conPath }/mvcboard/write.do">글쓰기</a></td></tr>
 	</table>
 	<table>
 		<tr>
@@ -64,7 +64,7 @@
 		</c:if>
 		<c:if test="${totCnt != 0 }">
 			<c:forEach items="${boardList }" var="bDto">
-				<tr onclick="trclicked(${bDto.bid})">
+				<tr onclick="trclicked('${bDto.bid}')">
 					<td>${oNum }</td>
 					<td>${iNum }</td>
 					<td>${bDto.bid }</td>

@@ -2,7 +2,7 @@ package com.lec.cb.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
-import com.lec.cb.dto.Board;
+import com.lec.cb.vo.Board;
 @Mapper
 public interface BoardDao {
 	public List<Board> boardList(Board board);

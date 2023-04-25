@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.lec.cb.dao.BoardDao;
-import com.lec.cb.dto.Board;
 import com.lec.cb.util.Paging;
+import com.lec.cb.vo.Board;
 @Service
 public class BoardServiceImpl implements BoardService {
 	@Autowired

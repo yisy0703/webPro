@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
-import com.lec.cb.dto.Comment;
+import com.lec.cb.vo.Comment;
 
 public interface CommentService {
 	public List<Comment> commentList(int bid, String commentPageNum, Model model);
