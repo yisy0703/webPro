@@ -9,17 +9,18 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.lec.sn.service.BoardService;
 import com.lec.sn.vo.Board;
 @Controller
+@RequestMapping(value="board")
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	@RequestMapping(value="list", method=RequestMethod.GET)
 	public String list(Model model) {
 		model.addAttribute("list", boardService.list());
-		return "list";
+		return "board/list";
 	}
 	@RequestMapping(value="write", method=RequestMethod.GET)
 	public String writeForm() {
-		return "write";
+		return "board/write";
 	}
 	@RequestMapping(value="write", method=RequestMethod.POST)
 	public String write(Board board, MultipartHttpServletRequest mRequest, Model model) {
@@ -29,13 +30,13 @@ public class BoardController {
 	@RequestMapping(value="detail", method=RequestMethod.GET)
 	public String detail(int bNo, Model model) {
 		model.addAttribute("dto", boardService.detail(bNo));
-		return "detail";
+		return "board/detail";
 	}
 	
 	@RequestMapping(value="update", method=RequestMethod.GET)
 	public String updateForm(int bNo, Model model) {
 		model.addAttribute("dto", boardService.detail(bNo));
-		return "update";
+		return "board/update";
 	}
 	@RequestMapping(value="update", method=RequestMethod.POST)
 	public String update(Board board, MultipartHttpServletRequest mRequest, Model model) {
