@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.smeditor.dao.BoardDao">
+	<select id="list" parameterType="Board" resultType="Board">
+		SELECT * FROM Board ORDER BY BNO DESC
+	</select>
+	<insert id="write" parameterType="Board">
+		INSERT INTO board VALUES (Board_SQ.NEXTVAL, #{bTitle},#{bContent},#{bFile1, jdbcType=VARCHAR},#{bFile2, jdbcType=VARCHAR},#{bFile3, jdbcType=VARCHAR})
+	</insert>
+	<select id="detail" parameterType="int" resultType="Board">
+		SELECT * FROM board WHERE BNO=#{bNo}
+	</select>
+	<update id="update" parameterType="Board">
+		UPDATE board SET BTITLE = #{bTitle},
+            <if test="bFile1!='' and bFile1!=null">BFILE1 = #{bFile1},</if>
+            <if test="bFile2!='' and bFile2!=null">BFILE2 = #{bFile2},</if>
+            <if test="bFile3!='' and bFile3!=null">BFILE3 = #{bFile3},</if>
+            BCONTENT = #{bContent}
+        WHERE BNO = #{bNo}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM BOARD WHERE BNO=#{bNo}
+	</delete>
+	<select id="getCnt" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+	</select>
+</mapper>
