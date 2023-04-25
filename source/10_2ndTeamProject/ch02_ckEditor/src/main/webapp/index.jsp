@@ -21,6 +21,6 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-	<jsp:forward page="listBboard.do"/>
+	<jsp:forward page="bBoard/listBboard.do"/>
 </body>
 </html>

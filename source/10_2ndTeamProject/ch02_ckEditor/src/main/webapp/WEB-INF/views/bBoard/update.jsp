@@ -35,20 +35,20 @@
 	});
 	$(document).ready(function(){
 		$('.deleteBboardBtn').click(function(){
-			location.href='${conPath}/deleteBboard.do?bno=${param.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
+			location.href='${conPath}/bBoard/deleteBboard.do?bno=${param.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
 		});
 		$('.listBboardBtn').click(function(){
-			location.href='${conPath}/listBboard.do?pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
+			location.href='${conPath}/bBoard/listBboard.do?pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
 		});
 	});
 	</script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-	<form action="${conPath }/updateBboard.do" method="post" enctype="multipart/form-data">
+	<form action="${conPath }/bBoard/updateBboard.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
-		<input type="text" name="schItem" value="${param.schItem }">
-		<input type="text" name="schWord" value="${param.schWord }">
+		<input type="hidden" name="schItem" value="${param.schItem }">
+		<input type="hidden" name="schWord" value="${param.schWord }">
 		<table>
 			<tr>
 				<th>글번호</th><td><input type="text" name="bno" value="${updateDto.bno }" readonly="readonly"></td>				
@@ -63,7 +63,7 @@
 			<tr>
 				<th>첨부파일</th>
 				<td>
-					<input type="text" class="bfile" class="btn" value="${updateDto.bfile}">
+					<input type="text" class="bfile" class="btn" value="${updateDto.bfile}" style="display: block; float: left; width:90%;">
 					<label for="bfile"><img src="${conPath }/img/upload.png"></label>
 					<input type="file" id="bfile" name="tempBfile" style="display:none;">
 				</td>

@@ -4,28 +4,31 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.google.gson.JsonObject;
 import com.lec.ck.dao.BDao;
 import com.lec.ck.util.Paging;
 import com.lec.ck.vo.B;
-import com.lec.ck.vo.FileUpVO;
 @Service
 public class BServiceImpl implements BService {
 	@Autowired
 	private BDao bDao;
-	private String backupPath = "D:\\webPro\\source\\10_2ndTeamProject\\ch02_ckEditor\\src\\main\\webapp\\fileUp\\"; 
-	private String backupContentPath = "D:\\webPro\\source\\10_2ndTeamProject\\ch02_ckEditor\\src\\main\\webapp\\fileUpContentImg\\";
+	private String backupPath = "D:\\webPro\\source\\10_2ndTeamProject\\ch02_ckeditor\\src\\main\\webapp\\fileUp\\"; 
 	@Override
 	public List<B> listBboard(B b, String pageNum, Model model) {
 		Paging paging = new Paging(bDao.cntBboard(b), pageNum);
@@ -36,7 +39,7 @@ public class BServiceImpl implements BService {
 	}
 
 	@Override
-	public int writeBboard(MultipartHttpServletRequest mRequest, B b, Model model) {
+	public void writeBboard(MultipartHttpServletRequest mRequest, B b, Model model) {
 		String uploadPath = mRequest.getRealPath("fileUp/");
 		Iterator<String> params = mRequest.getFileNames();
 		String bfile = "";
@@ -44,6 +47,7 @@ public class BServiceImpl implements BService {
 			String param = params.next();
 			MultipartFile mFile = mRequest.getFile(param);
 			bfile = mFile.getOriginalFilename();
+			System.out.println("파일이름 : "+ (bfile.equals("") ? "빈스트링":bfile)); // 첨부 안 하면 빈스트링
 			if(bfile!=null && !bfile.equals("")) {
 				if(new File(uploadPath + bfile).exists()) {
 					bfile = System.currentTimeMillis() + "_" + bfile;
@@ -60,14 +64,12 @@ public class BServiceImpl implements BService {
 			}
 		}// while
 		b.setBfile(bfile);
-		int result = 0;
 		try {
-			result = bDao.writeBboard(b);
+			bDao.writeBboard(b);
 			model.addAttribute("successMsg", "글쓰기가 완료되었습니다");
 		}catch (Exception e) {
 			model.addAttribute("failMsg", "글쓰기에 실패했습니다");
 		}
-		return result;
 	}
 
 	@Override
@@ -76,7 +78,7 @@ public class BServiceImpl implements BService {
 	}
 
 	@Override
-	public int updateBboard(MultipartHttpServletRequest mRequest, Model model) {
+	public void updateBboard(MultipartHttpServletRequest mRequest, Model model) {
 		String uploadPath = mRequest.getRealPath("fileUp/");
 		Iterator<String> params = mRequest.getFileNames();
 		String bfile = "";
@@ -85,7 +87,7 @@ public class BServiceImpl implements BService {
 			System.out.println("파라미터 이름  : "+param);
 			MultipartFile mFile = mRequest.getFile(param);
 			bfile = mFile.getOriginalFilename();
-			System.out.println("파일이름 : "+bfile);
+			System.out.println("파일이름 : "+ (bfile.equals("") ? "빈스트링":bfile)); // 첨부 안 하면 빈스트링
 			if(bfile!=null && !bfile.equals("")) {
 				if(new File(uploadPath + bfile).exists()) {
 					bfile = System.currentTimeMillis() + "_" + bfile;
@@ -106,14 +108,16 @@ public class BServiceImpl implements BService {
 		String btitle = mRequest.getParameter("btitle");
 		String bcontent = mRequest.getParameter("bcontent");
 		B b = new B(bno, btitle, bcontent, bfile);
-		int result = 0;
 		try {
-			result = bDao.updateBboard(b);
-			model.addAttribute("successMsg", "글 수정이 완료되었습니다");
+			int result = bDao.updateBboard(b);
+			if(result==1) {
+				model.addAttribute("successMsg", "글 수정이 완료되었습니다");
+			}else {
+				model.addAttribute("failMsg", "글 수정에 실패했습니다");
+			}
 		}catch (Exception e) {
 			model.addAttribute("failMsg", "글 수정에 실패했습니다");
 		}
-		return result;
 	}
 
 	@Override
@@ -127,38 +131,6 @@ public class BServiceImpl implements BService {
 		}
 		return result;
 	}
-
-	@Override
-	public FileUpVO fileUp(FileUpVO fileUpVO, HttpServletRequest request) {
-		String rootPath = request.getRealPath("/");
-		String attachPath = "fileUpContentImg/";
-		//String uploadPath = request.getRealPath("fileUpContentImg/");
-		System.out.println("서버로 여기로 보낸다 : "+rootPath + attachPath);
-		MultipartFile upload = fileUpVO.getUpload();
-		String filename = "";
-		if(upload != null){
-	    	filename = System.currentTimeMillis() + upload.getOriginalFilename();
-	    	fileUpVO.setFilename(filename);
-	     	try{
-	     		File file = new File(rootPath + attachPath + filename);
-	     		upload.transferTo(file);
-	     	}catch(IOException e){
-	     		e.printStackTrace();
-	     	}  
-	     	
-	     	fileUpVO.setAttachPath(attachPath);
-	     	fileUpVO.setFilename(filename);
-	     	System.out.println("★서비스의 바뀐 fileUploadVO : "+fileUpVO);
-	     }
-		 
-		int result = filecopy(rootPath + attachPath + filename, backupContentPath+filename);
-		if(result==1) {
-			System.out.println(filename+" 파일 백업 성공");
-		}
-		
-		return fileUpVO;
-	}
-
 	private int filecopy(String serverFile, String backupFile) {
 		int isCopy = 0;
 		FileInputStream is = null;
@@ -193,4 +165,59 @@ public class BServiceImpl implements BService {
 		}
 		return isCopy;
 	}
+
+	@Override
+	public void imageUpload(HttpServletRequest req, HttpServletResponse resp, MultipartHttpServletRequest multiFile) {
+		PrintWriter printWriter = null;
+		OutputStream out = null;
+		MultipartFile file = multiFile.getFile("upload");
+		
+		if(file != null) {
+			if(file.getSize() >0 && StringUtils.isNotBlank(file.getName())) {
+				if(file.getContentType().toLowerCase().startsWith("image/")) {
+				    try{
+				    	 
+			            String fileName = file.getOriginalFilename();
+			            byte[] bytes = file.getBytes();
+			           
+			            String uploadPath = req.getSession().getServletContext().getRealPath("/resources/bBoardimg"); //저장경로
+			            System.out.println("uploadPath:"+uploadPath);
+
+			            File uploadFile = new File(uploadPath);
+			            if(!uploadFile.exists()) {
+			            	uploadFile.mkdir();
+			            }
+			            String fileName2 = UUID.randomUUID().toString();
+			            uploadPath = uploadPath + "/" + fileName2 +fileName;
+			            
+			            out = new FileOutputStream(new File(uploadPath));
+			            out.write(bytes);
+			            int result = filecopy(uploadPath, "D:\\webPro\\source\\10_2ndTeamProject\\ch02_ckeditor\\src\\main\\webapp\\resources\\bBoardimg\\"+fileName2+fileName);
+			    		if(result==1) {
+			    			System.out.println(" 파일 백업 성공");
+			    		}
+			            printWriter = resp.getWriter();
+			            String fileUrl = req.getContextPath() + "/resources/bBoardimg/" +fileName2 +fileName; //url경로
+			            System.out.println("fileUrl :" + fileUrl);
+			            JsonObject json = new JsonObject();
+			            json.addProperty("uploaded", 1);
+			            json.addProperty("fileName", fileName);
+			            json.addProperty("url", fileUrl);
+			            printWriter.print(json);
+			            System.out.println(json);
+			 
+			        }catch(IOException e){
+			           System.out.println(e.getMessage());
+			        } finally {
+			        	try {
+				            if (out != null) { out.close(); }
+			                if (printWriter != null) {printWriter.close();}
+			        	}catch (Exception e) {
+							// TODO: handle exception
+						}
+			        }//try
+				}//if
+			}//if
+		}//if
+	}//imageUpload()
 }

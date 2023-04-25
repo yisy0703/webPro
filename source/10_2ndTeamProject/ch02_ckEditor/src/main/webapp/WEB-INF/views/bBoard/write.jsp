@@ -40,7 +40,7 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-	<form action="${conPath }/writeBboard.do"  method="post" enctype="multipart/form-data">
+	<form action="${conPath }/bBoard/writeBboard.do"  method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>글제목</th>

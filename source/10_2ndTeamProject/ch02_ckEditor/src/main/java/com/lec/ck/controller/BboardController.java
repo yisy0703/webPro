@@ -10,12 +10,12 @@ import com.lec.ck.service.BService;
 import com.lec.ck.vo.B;
 // 
 @Controller
+@RequestMapping(value="bBoard")
 public class BboardController {
 	@Autowired
 	private BService bService;
 	@RequestMapping(value="listBboard", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listBboard(B b, String pageNum, Model model) {
-		model.addAttribute("x", "Hello");
 		model.addAttribute("list", bService.listBboard(b, pageNum, model));
 		return "bBoard/list";
 	}
@@ -46,6 +46,6 @@ public class BboardController {
 	@RequestMapping(value="deleteBboard", method=RequestMethod.GET)
 	public String deleteBboard(int bno, Model model) {
 		bService.deleteBboard(bno, model);
-		return "forward:list.do";
+		return "forward:listBboard.do";
 	}
 }
