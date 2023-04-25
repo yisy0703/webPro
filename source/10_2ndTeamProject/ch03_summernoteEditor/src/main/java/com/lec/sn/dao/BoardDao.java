@@ -12,5 +12,4 @@ public interface BoardDao {
 	public Board detail(int bNo);
 	public int update(Board board);
 	public int delete(int bNo);
-	public int getCnt();
 }

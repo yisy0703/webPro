@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lec.sn.dao.BoardDao">
-	<select id="list" parameterType="Board" resultType="Board">
+	<select id="list" resultType="Board">
 		SELECT * FROM Board ORDER BY BNO DESC
 	</select>
 	<insert id="write" parameterType="Board">
@@ -23,7 +23,4 @@
 	<delete id="delete" parameterType="int">
 		DELETE FROM BOARD WHERE BNO=#{bNo}
 	</delete>
-	<select id="getCnt" resultType="int">
-		SELECT COUNT(*) FROM BOARD
-	</select>
 </mapper>

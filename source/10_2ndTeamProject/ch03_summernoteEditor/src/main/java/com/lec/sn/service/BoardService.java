@@ -12,5 +12,4 @@ public interface BoardService {
 	public Board detail(int bNo);
 	public void update(Board board, MultipartHttpServletRequest mRequest, Model model);
 	public void delete(int bNo, Model model);
-	public int getCnt();
 }

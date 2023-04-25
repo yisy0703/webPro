@@ -88,7 +88,7 @@ public class BoardServiceImpl implements BoardService {
 			}
 			MultipartFile mFile = mRequest.getFile(param);
 			bFile[idx] = mFile.getOriginalFilename();
-			System.out.println("파라미터 이름 : "+ param +"/ 파일이름 : " + (bFile[idx].equals("")? "빈스트링(첨부안함)" : bFile[idx]));
+			System.out.println("파라미터 이름 : "+ param +"/ 파일이름 : " + (bFile[idx].equals("")? "빈스트링(첨부안함==수정안함)" : bFile[idx]));
 			if(bFile[idx]!=null && !bFile[idx].equals("")) {
 				if(new File(uploadPath + bFile[idx]).exists()) {
 					bFile[idx] = System.currentTimeMillis() + "_" + bFile[idx];
@@ -171,9 +171,5 @@ public class BoardServiceImpl implements BoardService {
 			}
 		}
 		return isCopy;
-	}
-	@Override
-	public int getCnt() {
-		return boardDao.getCnt();
 	}
 }
