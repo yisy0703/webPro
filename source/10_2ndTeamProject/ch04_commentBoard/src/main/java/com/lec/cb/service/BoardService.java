@@ -2,9 +2,11 @@ package com.lec.cb.service;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.ui.Model;
+
 import com.lec.cb.dto.Board;
 public interface BoardService {
-	public List<Board> boardList(String pageNum);
+	public List<Board> boardList(String pageNum, Model model);
 	public int boardTotCnt();
 	public int boardWrite(Board board, HttpServletRequest request);
 	public Board boardContent(int bid);

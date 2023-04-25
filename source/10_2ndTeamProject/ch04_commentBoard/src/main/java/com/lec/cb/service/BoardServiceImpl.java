@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.lec.cb.dao.BoardDao;
 import com.lec.cb.dto.Board;
@@ -14,12 +15,13 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDao boardDao;
 	@Override
-	public List<Board> boardList(String pageNum) {
+	public List<Board> boardList(String pageNum, Model model) {
 		Paging paging = new Paging(boardDao.boardTotCnt(), pageNum);
 		Board board = new Board();
 		board.setStartRow(paging.getStartRow());
 		board.setEndRow(paging.getEndRow());
 		List<Board> list = boardDao.boardList(board);
+		model.addAttribute("paging", paging);
 		return list;
 	}
 	@Override

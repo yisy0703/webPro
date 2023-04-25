@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.lec.cb.dao.CommentDao;
 import com.lec.cb.dto.Comment;
@@ -15,12 +16,13 @@ public class CommentServiceImpl implements CommentService {
 	@Autowired
 	private CommentDao commentDao;
 	@Override
-	public List<Comment> commentList(int bid, String commentPageNum) {
+	public List<Comment> commentList(int bid, String commentPageNum, Model model) {
 		Comment comment = new Comment();
 		Paging paging = new Paging(commentDao.commentTotCnt(bid), commentPageNum, 5, 5);
 		comment.setBid(bid);
 		comment.setStartRow(paging.getStartRow());
 		comment.setEndRow(paging.getEndRow());
+		model.addAttribute("comPaging", paging);
 		return commentDao.commentList(comment);
 	}
 

@@ -19,8 +19,7 @@ public class BoardController {
 	private CommentService commentService;
 	@RequestMapping(value = "list", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list(String pageNum, String comPageNum,  Model model) {
-		model.addAttribute("boardList", boardService.boardList(pageNum));
-		model.addAttribute("paging", new Paging(boardService.boardTotCnt(), pageNum));
+		model.addAttribute("boardList", boardService.boardList(pageNum, model));
 		return "mvcboard/list";
 	}
 	@RequestMapping(value = "writeView", method = RequestMethod.GET)
@@ -35,8 +34,7 @@ public class BoardController {
 	@RequestMapping(value="content", method = {RequestMethod.GET, RequestMethod.POST})
 	public String content(int bid, Model model, String comPageNum) {
 		model.addAttribute("bDto",boardService.boardContent(bid));
-		model.addAttribute("commentList", commentService.commentList(bid, comPageNum));
-		model.addAttribute("comPaging", new Paging(commentService.commentTotCnt(bid), comPageNum, 5, 5));
+		model.addAttribute("commentList", commentService.commentList(bid, comPageNum, model));
 		return "mvcboard/content";
 	}
 	@RequestMapping(value = "modify", method = RequestMethod.GET)

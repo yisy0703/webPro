@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import com.lec.cb.dto.Comment;
 
 public interface CommentService {
-	public List<Comment> commentList(int bid, String commentPageNum);
+	public List<Comment> commentList(int bid, String commentPageNum, Model model);
 	public int commentTotCnt(int bid);
 	public int commentWrite(Comment comment, HttpServletRequest request);
 	public int commentReplyPreStep(Comment comment);
