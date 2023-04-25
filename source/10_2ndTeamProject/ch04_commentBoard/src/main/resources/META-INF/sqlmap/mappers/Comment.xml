@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.cb.dao.CommentDao">
+	<resultMap type="Comment" id="CommentResult">
+		<result property="cnum" column="cnum"/>
+		<result property="bid" column="bid"/>
+		<result property="cname" column="cname"/>
+		<result property="cmemo" column="cmemo"/>
+		<result property="cdate" column="cdate"/>
+		<result property="cgroup" column="cgroup"/>
+		<result property="cstep" column="cstep"/>
+		<result property="cindent" column="cindent"/>
+		<result property="cip" column="cip"/>
+	</resultMap>
+	
+	<select id="commentList" parameterType="Comment" resultMap="CommentResult">
+		<![CDATA[
+			SELECT * 
+		    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BCOMMENT WHERE BID=#{bid} ORDER BY CGROUP DESC, CSTEP) A)
+	    	WHERE RN BETWEEN #{startRow} AND #{endRow}
+    	]]>
+	</select>
+	<select id="commentTotCnt" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM BCOMMENT where bid= #{bid}
+	</select>
+	
+	<insert id="commentWrite" parameterType="Comment">
+		INSERT INTO BCOMMENT (CNUM, BID, CNAME, CMEMO, CGROUP, CSTEP, CINDENT, CIP)
+    	VALUES (COMMENT_SQ.NEXTVAL, #{bid}, #{cname}, #{cmemo},COMMENT_SQ.CURRVAL, 0,0, #{cip})
+	</insert>
+
+	<update id="commentReplyPreStep" parameterType="Comment">
+		UPDATE BCOMMENT SET SET CSTEP=CSTEP+1 WHERE CGROUP=#{cgroup} AND CSTEP>#{cstep}
+	</update>
+	
+	<insert id="commentReply" parameterType="Comment">
+		INSERT INTO BCOMMENT (CNUM, BID, CNAME, CMEMO, CGROUP, CSTEP, CINDENT, CIP)
+		    VALUES (COMMENT_SQ.NEXTVAL, #{bid}, #{cname}, #{cmemo}, #{cgroup}, #{cstep}+1, #{cindent}+1, #{cip})
+	</insert>
+	<update id="commentModify" parameterType="Comment">
+		UPDATE BCOMMENT SET
+		    CNAME = #{cname},
+		    CMEMO = #{cmemo},
+		    CDATE = SYSDATE,
+		    CIP = #{cip}
+		  WHERE CNUM=#{cnum}
+	</update>
+	<delete id="commentDelete" parameterType="int">
+		DELETE FROM BCOMMENT WHERE CNUM= #{cnum}
+	</delete>
+	<select id="commentDetail" parameterType="int" resultType="Comment">
+		SELECT * FROM BCOMMENT WHERE CNUM=#{cnum}
+	</select>
+</mapper>
