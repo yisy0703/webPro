@@ -18,7 +18,7 @@
 			$('tr').click(function(){
 				let bno = Number($(this).children().eq(0).text());
 				if(!isNaN(bno)){
-					location.href='${conPath}/bBoard/detailBboard.do?bno='+bno+'&pageNum=${paging.currentPage}&schItem=${param.schItem}&schWord=${param.schWord}';
+					location.href='${conPath}/bBoard/detail.do?bno='+bno+'&pageNum=${paging.currentPage}&schItem=${param.schItem}&schWord=${param.schWord}';
 				}
 			});
 		});
@@ -40,7 +40,7 @@
 		</script>
 	</c:if>
 	<div align="center">
-		<form action="${conPath }/bBoard/listBboard.do">
+		<form action="${conPath }/bBoard/list.do">
 			<select name="schItem">
 				<option value="">검색조건</option>
 				<option value="btitle"
@@ -58,7 +58,7 @@
 		</form>
 	</div>
 	<table>
-		<tr><td colspan="2"><a href="${conPath }/bBoard/writeBboard.do">글쓰기</a></td></tr>
+		<tr><td colspan="2"><a href="${conPath }/bBoard/write.do">글쓰기</a></td></tr>
 		<tr>
 			<th>글번호</th>
 			<th>글제목</th>
@@ -80,7 +80,7 @@
 	</table>
 	<div class="paging">
 		<c:if test="${paging.startPage>paging.blockSize}">
-			<a href="${conPath }/bBoard/listBboard.do?pageNum=${paging.startPage-1}&schItem=${param.schItem }&schWord=${param.schWord}">&nbsp;〈〈&nbsp;</a>
+			<a href="${conPath }/bBoard/list.do?pageNum=${paging.startPage-1}&schItem=${param.schItem }&schWord=${param.schWord}">&nbsp;〈〈&nbsp;</a>
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage}"
 			end="${paging.endPage }">
@@ -88,11 +88,11 @@
 				<b>&nbsp;${i }&nbsp;</b>
 			</c:if>
 			<c:if test="${paging.currentPage != i }">
-				<a href="${conPath }/bBoard/listBboard.do?pageNum=${i }&schItem=${param.schItem }&schWord=${param.schWord}">&nbsp;${i }&nbsp;</a>
+				<a href="${conPath }/bBoard/list.do?pageNum=${i }&schItem=${param.schItem }&schWord=${param.schWord}">&nbsp;${i }&nbsp;</a>
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage<paging.pageCnt }">
-			<a href="${conPath }/bBoard/listBboard.do?pageNum=${paging.endPage + 1}&schItem=${param.schItem }&schWord=${param.schWord}">&nbsp;〉〉&nbsp;</a>
+			<a href="${conPath }/bBoard/list.do?pageNum=${paging.endPage + 1}&schItem=${param.schItem }&schWord=${param.schWord}">&nbsp;〉〉&nbsp;</a>
 		</c:if>
 	</div>
 </body>

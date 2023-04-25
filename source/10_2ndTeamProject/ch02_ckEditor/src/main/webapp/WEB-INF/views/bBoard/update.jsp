@@ -35,17 +35,17 @@
 	});
 	$(document).ready(function(){
 		$('.deleteBboardBtn').click(function(){
-			location.href='${conPath}/bBoard/deleteBboard.do?bno=${param.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
+			location.href='${conPath}/bBoard/delete.do?bno=${param.bno }&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
 		});
 		$('.listBboardBtn').click(function(){
-			location.href='${conPath}/bBoard/listBboard.do?pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
+			location.href='${conPath}/bBoard/list.do?pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
 		});
 	});
 	</script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-	<form action="${conPath }/bBoard/updateBboard.do" method="post" enctype="multipart/form-data">
+	<form action="${conPath }/bBoard/update.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
 		<input type="hidden" name="schItem" value="${param.schItem }">
 		<input type="hidden" name="schWord" value="${param.schWord }">

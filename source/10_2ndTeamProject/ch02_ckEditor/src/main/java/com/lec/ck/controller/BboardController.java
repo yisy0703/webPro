@@ -14,38 +14,38 @@ import com.lec.ck.vo.B;
 public class BboardController {
 	@Autowired
 	private BService bService;
-	@RequestMapping(value="listBboard", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="list", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listBboard(B b, String pageNum, Model model) {
 		model.addAttribute("list", bService.listBboard(b, pageNum, model));
 		return "bBoard/list";
 	}
-	@RequestMapping(value="writeBboard", method = RequestMethod.GET)
+	@RequestMapping(value="write", method = RequestMethod.GET)
 	public String writeBboard() {
 		return "bBoard/write";
 	}
-	@RequestMapping(value="writeBboard", method = RequestMethod.POST)
+	@RequestMapping(value="write", method = RequestMethod.POST)
 	public String writeBboard(B b, MultipartHttpServletRequest mRequest, Model model) {
 		bService.writeBboard(mRequest, b, model);
-		return "forward:listBboard.do";
+		return "forward:list.do";
 	}
-	@RequestMapping(value="detailBboard", method = RequestMethod.GET)
+	@RequestMapping(value="detail", method = RequestMethod.GET)
 	public String detailBboard(int bno, Model model) {
 		model.addAttribute("bBoard", bService.detailBboard(bno));
 		return "bBoard/detail";
 	}
-	@RequestMapping(value="updateBboard", method = RequestMethod.GET)
+	@RequestMapping(value="update", method = RequestMethod.GET)
 	public String updateBboard(int bno, Model model) {
 		model.addAttribute("updateDto", bService.detailBboard(bno));
 		return "bBoard/update";
 	}
-	@RequestMapping(value="updateBboard", method = RequestMethod.POST)
+	@RequestMapping(value="update", method = RequestMethod.POST)
 	public String updateBboard(MultipartHttpServletRequest mRequest, Model model) {
 		bService.updateBboard(mRequest, model);
-		return "forward:listBboard.do";
+		return "forward:list.do";
 	}
-	@RequestMapping(value="deleteBboard", method=RequestMethod.GET)
+	@RequestMapping(value="delete", method=RequestMethod.GET)
 	public String deleteBboard(int bno, Model model) {
 		bService.deleteBboard(bno, model);
-		return "forward:listBboard.do";
+		return "forward:list.do";
 	}
 }
