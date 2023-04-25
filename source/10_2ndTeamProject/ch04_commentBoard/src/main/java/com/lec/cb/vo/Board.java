@@ -1,6 +1,6 @@
 package com.lec.cb.vo;
-import java.sql.Date;
 import java.sql.Timestamp;
+
 import lombok.Data;
 @Data
 public class Board {
@@ -16,4 +16,5 @@ public class Board {
 	private String bip;
 	private int startRow;
 	private int endRow;
+	private int commentCnt;
 }

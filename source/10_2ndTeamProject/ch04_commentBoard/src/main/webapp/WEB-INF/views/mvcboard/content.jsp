@@ -59,10 +59,11 @@
 	<form action="${conPath }/comment/write.do">
 		<input type="hidden" name="bid" value="${param.bid }">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
-		<input type="text" name="cname" value="" style="width:30%" placeholder="글쓴이">
-		<textarea rows="2" cols="5" name="cmemo"></textarea>
-		<input type="submit" value="댓글저장" class="btn">
+		<input type="text" name="cname" value="" style="width:100px; height:50px; float:left; margin: 5px;" placeholder="글쓴이">
+		<textarea rows="2" cols="5" name="cmemo" style="width:50%; height:50px; float:left; margin: 5px;"></textarea>
+		<input type="submit" value="댓글저장" class="btn" style="height:50px; float:left; margin: 5px;">
 	</form>
+	<p style="clear:both;"></p>
 	<c:if test="${empty commentList }">등록된 댓글이 없습니다</c:if>
 	<c:if test="${not empty commentList }">
 		<c:forEach items="${commentList }" var="comment">

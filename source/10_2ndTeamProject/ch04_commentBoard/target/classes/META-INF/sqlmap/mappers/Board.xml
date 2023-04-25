@@ -14,10 +14,11 @@
 		<result property="bstep" column="bstep"/>
 		<result property="bindent" column="bindent"/>
 		<result property="bip" column="bip"/>
+		<result property="commentCnt" column="commentCnt"/>
 	</resultMap>
 	
 	<select id="boardList" parameterType="Board" resultMap="BoardResult">
-		SELECT * FROM (SELECT ROWNUM RN, A.* 
+		SELECT * FROM (SELECT ROWNUM RN, A.*, (select count(*) from BCOMMENT where bid=a.bid) commentCnt
             FROM (SELECT * FROM CBOARD ORDER BY BGROUP DESC, BSTEP) A)
         		WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>

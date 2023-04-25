@@ -78,7 +78,12 @@
 						 		&nbsp; &nbsp; &nbsp; 
 						 	</c:if>
 						</c:forEach>
-						${bDto.btitle }
+						<c:if test="${bDto.commentCnt != 0 }"> <!-- 댓글이 있을 경우 title과 함께 댓글 갯수 출력 -->
+							${bDto.btitle } [${bDto.commentCnt }]
+						</c:if>
+						<c:if test="${bDto.commentCnt eq 0 }"> <!-- 댓글이 없을 경우 title만 출력 -->
+							${bDto.btitle }
+						</c:if>
 					</td>
 					<td>
 						<fmt:formatDate value="${bDto.bdate }" pattern="yy/MM/dd(E) hh:mm:ss(a)"/><%-- <br>
