@@ -16,7 +16,7 @@
 			$('tr').click(function(){
 				var bNo = $(this).children(0).eq(1).text();
 				if(!isNaN(bNo)){
-					location.href='${conPath}/detail.do?bNo='+bNo;
+					location.href='${conPath}/board/detail.do?bNo='+bNo;
 				}
 			});
 		});
@@ -30,7 +30,7 @@
 	</c:if>
 	<c:set var="no" value="1"/>
 	<table>
-		<tr><td colspan="6"><a href="${conPath }/write.do">글쓰기</a></td></tr>
+		<tr><td colspan="6"><a href="${conPath }/board/write.do">글쓰기</a></td></tr>
 		<tr>
 			<th>순번</th>
 			<th>글번호</th>

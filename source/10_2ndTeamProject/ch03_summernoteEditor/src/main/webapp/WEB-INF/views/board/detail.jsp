@@ -34,9 +34,9 @@ ondragstart="return false" onselectstart="return false">
 				</td>
 		</tr>
 		<tr><td colspan="2">
-			<button onclick="location.href='${conPath}/list.do?pageNum=${param.pageNum}'">목록</button>
-			<button onclick="location.href='${conPath}/update.do?pageNum=${param.pageNum}&bNo=${dto.bNo }'">수정</button>
-			<button onclick="location.href='${conPath}/delete.do?pageNum=${param.pageNum}&bNo=${dto.bNo }'">삭제</button>
+			<button onclick="location.href='${conPath}/board/list.do?pageNum=${param.pageNum}'">목록</button>
+			<button onclick="location.href='${conPath}/board/update.do?pageNum=${param.pageNum}&bNo=${dto.bNo }'">수정</button>
+			<button onclick="location.href='${conPath}/board/delete.do?pageNum=${param.pageNum}&bNo=${dto.bNo }'">삭제</button>
 		</td></tr>
 	</table>
 	<br>

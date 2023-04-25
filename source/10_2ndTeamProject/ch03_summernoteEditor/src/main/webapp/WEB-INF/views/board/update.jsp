@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-	<form action="${conPath }/update.do" method="post" enctype="multipart/form-data">
+	<form action="${conPath }/board/update.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
 		<table>
 			<tr>
@@ -95,8 +95,8 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="수정" class="btn">
-					<input type="button" value="목록" onclick="location.href='${conPath}/list.do'" class="btn">
-					<button onclick="location.href='${conPath}/delete.do?pageNum=${param.pageNum}&bno=${detail.bno }'" class="btn">삭제</button>
+					<input type="button" value="목록" onclick="location.href='${conPath}/board/list.do'" class="btn">
+					<button onclick="location.href='${conPath}/board/delete.do?pageNum=${param.pageNum}&bno=${detail.bno }'" class="btn">삭제</button>
 				</td>
 			</tr>
 		</table>

@@ -43,4 +43,9 @@ public class Board {
 	public void setbFile3(String bFile3) {
 		this.bFile3 = bFile3;
 	}
+	@Override
+	public String toString() {
+		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bFile1=" + bFile1
+				+ ", bFile2=" + bFile2 + ", bFile3=" + bFile3 + "]";
+	}
 }

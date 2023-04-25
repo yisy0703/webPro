@@ -58,7 +58,7 @@ public class BoardServiceImpl implements BoardService {
 			}
 			idx++;
 		}//while
-		System.out.println(Arrays.toString(bFile));
+		//System.out.println(Arrays.toString(bFile));
 		board.setbFile1(bFile[0]);
 		board.setbFile2(bFile[1]);
 		board.setbFile3(bFile[2]);

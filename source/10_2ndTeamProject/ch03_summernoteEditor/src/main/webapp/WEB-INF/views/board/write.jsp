@@ -34,7 +34,7 @@
 </script>
 </head>
 <body>
-	<form action="${conPath }/write.do" method="post" enctype="multipart/form-data">
+	<form action="${conPath }/board/write.do" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>글제목</th><td><input type="text" name="bTitle"></td>
@@ -89,7 +89,7 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="쓰기" class="btn">
-					<input type="button" value="목록" onclick="location.href='${conPath}/list.do'" class="btn">
+					<input type="button" value="목록" onclick="location.href='${conPath}/board/list.do'" class="btn">
 				</td>
 			</tr>
 		</table>
