@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<style>
+		.sub { padding-left: 20px;}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.sub').css('display','none');
+			
+			/* $('.no').each(function(index, item){
+				$(this).click(function(){
+					$('#sub'+index).toggle();
+				});
+			}); */
+
+			$('.no').each(function(index, item){
+				$(this).click(function(){
+					$(this).siblings('.sub').toggle();
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+			<div class="no">1. title</div>
+			<div class="sub" id="sub${i }">1의 서브 내용</div>
+	</div>
+	<div>
+			<div class="no">2. title</div>
+			<div class="sub" id="sub${i }">2의 서브 내용</div>
+	</div>
+	<div>
+			<div class="no">3. title</div>
+			<div class="sub" id="sub${i }">3의 서브 내용</div>
+	</div>
+	<div>
+			<div class="no">4. title</div>
+			<div class="sub" id="sub${i }">4의 서브 내용</div>
+	</div>
+</body>
+</html>
