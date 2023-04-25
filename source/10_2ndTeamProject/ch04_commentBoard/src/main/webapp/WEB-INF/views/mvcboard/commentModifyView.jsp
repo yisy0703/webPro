@@ -6,28 +6,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
 </head>
 <body>
 	<br>
 	<div>
-		<c:forEach var="i" begin="1" end="${comment.cindent }">
-			<c:if test="${i==comment.cindent }">
-				&nbsp; &nbsp; &nbsp; └
-			</c:if>
-			<c:if test="${i!=comment.cindent }">
-				&nbsp; &nbsp; &nbsp; 
-			</c:if>
-		</c:forEach>
-		${comment.cnum }.
-		<input type="hidden" name="cnum" value="${comment.cnum }">
-		<input type="text" name="cmemo" value="${comment.cmemo }" size="3">
-		<i>from ${comment.cip } - at ${comment.cdate }</i>
-		<span id="${comment.cnum }" class="modifyView btn" id="${comment.cnum }">[ 수정 ]</span>
-		<span onclick="location='${conPath}/comment/delete.do?cnum=${comment.cnum }&bid=${param.bid }&pageNum=${param.pageNum }&comPageNum=${comPaging.currentPage }'" class="btn">[ 삭제 ]</span>
-		<span id="${comment.cnum }" class="replyView" class="btn">[ 답변 ]</span>
+		<form action="${conPath}/comment/modify.do">
+			<input type="hidden" name="cnum" value="${comment.cnum }">
+			<input type="hidden" name="pageNum" value="${param.pageNum }">
+			<input type="hidden" name="comPageNum" value="${param.comPageNum}">
+			<input type="hidden" name="bid" value="${comment.bid}">
+			<c:forEach var="i" begin="1" end="${comment.cindent }">
+				<c:if test="${i==comment.cindent }">
+					&nbsp; &nbsp; &nbsp; └
+				</c:if>
+				<c:if test="${i!=comment.cindent }">
+					&nbsp; &nbsp; &nbsp; 
+				</c:if>
+			</c:forEach>
+			<span style="display:block; height:30px; float:left; margin: 5px;">${comment.cnum }.</span>
+			
+			<input type="text" name="cname" value="${comment.cname }" style="width:100px; height:30px; float:left; margin: 5px;" placeholder="글쓴이">
+			<textarea rows="2" cols="5" name="cmemo" style="width:50%; height:30px; float:left; margin: 5px;">${comment.cmemo }</textarea>
+			<input type="submit" value="수정" class="btn" style="height:30px; float:left; margin: 5px;">
+		</form>
 	</div>
+	<p style="clear:both;"></p>
 	<br>
 </body>
 </html>

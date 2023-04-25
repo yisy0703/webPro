@@ -26,8 +26,13 @@ public class CommentController {
 		return "forward:../mvcboard/content.do?bid="+comment.getBid()+"&pageNum="+pageNum;
 	}
 	@RequestMapping(value = "modifyView")
-	public String modify(int cnum, Model model) {
+	public String modifyView(int cnum, Model model) {
 		model.addAttribute("comment", commentService.commentDetail(cnum));
 		return "mvcboard/commentModifyView";
+	}
+	@RequestMapping(value = "modify")
+	public String modify(Comment comment, Model model, HttpServletRequest request) {
+		model.addAttribute("commentModifyResult", commentService.commentModify(comment, request));
+		return "forward:../mvcboard/content.do?bid="+comment.getBid();
 	}
 }

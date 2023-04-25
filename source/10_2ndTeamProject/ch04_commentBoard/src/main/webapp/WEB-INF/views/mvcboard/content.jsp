@@ -79,7 +79,7 @@
 					</c:forEach>
 					${comment.cnum }.
 					<span style="font-weight: blod; font-size: 1.3em;">${comment.cmemo }</span> 
-					<i>from ${comment.cip } - at ${comment.cdate }</i>
+					<i>from ${comment.cname} ${comment.cip } - at ${comment.cdate }</i>
 					<span class="btn" onclick="modifyComment(${comment.cnum}, ${param.pageNum}, ${bDto.bid}, ${comPaging.currentPage})">[ 수정 ]</span>
 					<span onclick="location='${conPath}/comment/delete.do?cnum=${comment.cnum }&bid=${param.bid }&pageNum=${param.pageNum }&comPageNum=${comPaging.currentPage }'" class="btn">[ 삭제 ]</span>
 					<span id="${comment.cnum }" class="replyView" class="btn">[ 답변 ]</span>
