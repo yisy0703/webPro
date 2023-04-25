@@ -12,7 +12,6 @@ public interface CommentService {
 	public List<Comment> commentList(int bid, String commentPageNum, Model model);
 	public int commentTotCnt(int bid);
 	public int commentWrite(Comment comment, HttpServletRequest request);
-	public int commentReplyPreStep(Comment comment);
 	public int commentReply(Comment comment);
 	public int commentModify(Comment comment, HttpServletRequest request);
 	public int commentDelete(int bid);

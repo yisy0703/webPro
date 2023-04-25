@@ -39,12 +39,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public int commentReplyPreStep(Comment comment) {
-		return commentDao.commentReplyPreStep(comment);
-	}
-
-	@Override
 	public int commentReply(Comment comment) {
+		commentDao.commentReplyPreStep(comment);
 		return commentDao.commentReply(comment);
 	}
 

@@ -35,4 +35,9 @@ public class CommentController {
 		model.addAttribute("commentModifyResult", commentService.commentModify(comment, request));
 		return "forward:../mvcboard/content.do?bid="+comment.getBid();
 	}
+	@RequestMapping(value="replyView")
+	public String replyView(int cnum, Model model) {
+		model.addAttribute("comment", commentService.commentDetail(cnum));
+		return "mvcboard/commentReplyView";
+	}
 }

@@ -11,6 +11,20 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+  	$(document).ready(function(){
+  		$('.replyView').click(function(){
+  			var cnum = $(this).attr('id');
+  			$.ajax({
+  				url : '${conPath}/comment/replyView.do',
+					data : {'cnum':cnum, 'pageNum':pageNum, 'comPageNum':comPageNum},
+					type : 'get',
+					dateType : 'html',
+					success : function(data, status){
+						$('.reply'+cnum).html(data);
+					}
+  			});
+  		});
+  	});
 		function modifyComment(cnum, pageNum, bid, comPageNum){
 			$.ajax({
 				url : '${conPath}/comment/modifyView.do',
@@ -18,7 +32,7 @@
 				type : 'get',
 				dateType : 'html',
 				success : function(data, status){
-					$('.reply'+cnum).html(data);
+					$('.replySpace'+cnum).html(data);
 				}
 			});
 		}
@@ -84,6 +98,7 @@
 					<span onclick="location='${conPath}/comment/delete.do?cnum=${comment.cnum }&bid=${param.bid }&pageNum=${param.pageNum }&comPageNum=${comPaging.currentPage }'" class="btn">[ 삭제 ]</span>
 					<span id="${comment.cnum }" class="replyView" class="btn">[ 답변 ]</span>
 				</div>
+				<div class="replySpace${comment.cnum }"></div>
 			</div>
 			<br>
 		</c:forEach>
