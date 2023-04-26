@@ -1,5 +1,6 @@
 package com.lec.foreach.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class EmpController {
 	}
 	@RequestMapping(value="list", method = RequestMethod.GET)
 	public String test(int[] deptnos, Model model) {
+		System.out.println("넘어온 deptnos : " + Arrays.toString(deptnos));
 		model.addAttribute("empList", service.empList(deptnos));
 		return "empList";
 	}
