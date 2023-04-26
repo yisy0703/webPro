@@ -33,3 +33,4 @@ delete from board where bno=2;
 rollback;
 -- getCnt
 select count(*) from board;
+select * from board;
