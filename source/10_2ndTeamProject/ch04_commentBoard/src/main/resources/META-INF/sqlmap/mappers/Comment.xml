@@ -32,7 +32,9 @@
 	</insert>
 
 	<update id="commentReplyPreStep" parameterType="Comment">
-		UPDATE BCOMMENT SET SET CSTEP=CSTEP+1 WHERE CGROUP=#{cgroup} AND CSTEP>#{cstep}
+		<![CDATA[
+			UPDATE BCOMMENT SET CSTEP=CSTEP+1 WHERE CGROUP=#{cgroup} AND CSTEP>${cstep}
+		]]>
 	</update>
 	
 	<insert id="commentReply" parameterType="Comment">

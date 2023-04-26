@@ -17,13 +17,13 @@ public class CommentController {
 	private CommentService commentService;
 	@RequestMapping(value="write")
 	public String write(Comment comment, Model model, HttpServletRequest request) {
-		model.addAttribute("replyWriteResult", commentService.commentWrite(comment, request));
-		return "forward:../mvcboard/content.do?bid="+comment.getBid();
+		commentService.commentWrite(comment, request, model);
+		return "forward:../mvcboard/content.do";
 	}
 	@RequestMapping(value="delete")
 	public String delete(Comment comment, String pageNum, String comPageNum, Model model) {
-		model.addAttribute("replyWriteResult", commentService.commentDelete(comment.getCnum()));
-		return "forward:../mvcboard/content.do?bid="+comment.getBid()+"&pageNum="+pageNum;
+		commentService.commentDelete(comment.getCnum(), model);
+		return "forward:../mvcboard/content.do";
 	}
 	@RequestMapping(value = "modifyView")
 	public String modifyView(int cnum, Model model) {
@@ -31,13 +31,18 @@ public class CommentController {
 		return "mvcboard/commentModifyView";
 	}
 	@RequestMapping(value = "modify")
-	public String modify(Comment comment, Model model, HttpServletRequest request) {
-		model.addAttribute("commentModifyResult", commentService.commentModify(comment, request));
-		return "forward:../mvcboard/content.do?bid="+comment.getBid();
+	public String modify(Comment comment, HttpServletRequest request, Model model) {
+		commentService.commentModify(comment, request, model);
+		return "forward:../mvcboard/content.do";
 	}
 	@RequestMapping(value="replyView")
 	public String replyView(int cnum, Model model) {
 		model.addAttribute("comment", commentService.commentDetail(cnum));
 		return "mvcboard/commentReplyView";
+	}
+	@RequestMapping(value="reply")
+	public String reply(Comment comment, HttpServletRequest request, Model model) {
+		commentService.commentReply(comment, request, model);
+		return "forward:../mvcboard/content.do";
 	}
 }

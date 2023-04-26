@@ -14,4 +14,5 @@ public interface BoardService {
 	public int boardReply(Board board, HttpServletRequest request);
 	public int boardModify(Board board, HttpServletRequest request);
 	public int boardDelete(int bid);
+	public void dummy();
 }

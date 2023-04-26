@@ -33,6 +33,7 @@ public class BoardController {
 	}
 	@RequestMapping(value="content", method = {RequestMethod.GET, RequestMethod.POST})
 	public String content(int bid, Model model, String comPageNum) {
+		System.out.println("bid : " + bid);
 		model.addAttribute("bDto",boardService.boardContent(bid));
 		model.addAttribute("commentList", commentService.commentList(bid, comPageNum, model));
 		return "mvcboard/content";
@@ -60,6 +61,11 @@ public class BoardController {
 	@RequestMapping(value="reply", method = RequestMethod.POST)
 	public String reply(Board board, HttpServletRequest request, Model model) {
 		model.addAttribute("replyResult", boardService.boardReply(board, request));
+		return "forward:list.do";
+	}
+	@RequestMapping(value="dummyData100")
+	public String dummy() {
+		boardService.dummy();
 		return "forward:list.do";
 	}
 }

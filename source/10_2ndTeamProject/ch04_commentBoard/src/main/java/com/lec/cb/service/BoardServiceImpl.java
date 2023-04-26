@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import com.lec.cb.dao.BoardDao;
 import com.lec.cb.util.Paging;
 import com.lec.cb.vo.Board;
+import com.lec.cb.vo.Comment;
 @Service
 public class BoardServiceImpl implements BoardService {
 	@Autowired
@@ -55,5 +56,17 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int boardDelete(int bid) {
 		return boardDao.boardDelete(bid);
+	}
+	@Override
+	public void dummy() {
+		Board board = new Board();
+		String[] names = {"홍길동","김성실","이순신","성춘향","변사또","이몽룡","윤봉길","김구","이봉창","유관순"};
+		for(int i=1 ; i<100 ; i++) {
+			board.setBname(names[i%10]);
+			board.setBtitle("제목임다 " + i);
+			board.setBcontent("본문임다 " + i);
+			board.setBip("190.168.0."+i);
+			boardDao.boardWrite(board);
+		}
 	}
 }

@@ -9,6 +9,9 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<style>
+		.replyView{cursor: pointer;}
+	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
   	$(document).ready(function(){
@@ -16,11 +19,11 @@
   			var cnum = $(this).attr('id');
   			$.ajax({
   				url : '${conPath}/comment/replyView.do',
-					data : {'cnum':cnum, 'pageNum':pageNum, 'comPageNum':comPageNum},
+					data : {'cnum':cnum, 'pageNum':'${param.pageNum}', 'comPageNum':'${param.comPageNum}'},
 					type : 'get',
 					dateType : 'html',
 					success : function(data, status){
-						$('.reply'+cnum).html(data);
+						$('.replySpace'+cnum).html(data);
 					}
   			});
   		});
@@ -32,7 +35,7 @@
 				type : 'get',
 				dateType : 'html',
 				success : function(data, status){
-					$('.replySpace'+cnum).html(data);
+					$('.reply'+cnum).html(data);
 				}
 			});
 		}
@@ -46,6 +49,9 @@
 	</c:if>
 	<c:if test="${modifyResult eq 0 }">
 		<script>alert('수정 실패'); history.back();</script>
+	</c:if>
+	<c:if test="${not empty commentResult }">
+		<script>alert('${commentResult}'); </script>
 	</c:if>
 	<!-- ${bDto } ${param.bid } ${param.pageNum } 들어옴 -->
 	<table>
@@ -79,30 +85,28 @@
 	</form>
 	<p style="clear:both;"></p>
 	<c:if test="${empty commentList }">등록된 댓글이 없습니다</c:if>
-	<c:if test="${not empty commentList }">
-		<c:forEach items="${commentList }" var="comment">
-			<div class="reply${comment.cnum }">
-				<div>
-					<c:forEach var="i" begin="1" end="${comment.cindent }">
-						<c:if test="${i==comment.cindent }">
-				  			&nbsp; &nbsp; &nbsp; └
-				  		</c:if>
-						<c:if test="${i!=comment.cindent }">
-				  			&nbsp; &nbsp; &nbsp; 
-				  		</c:if>
-					</c:forEach>
-					${comment.cnum }.
-					<span style="font-weight: blod; font-size: 1.3em;">${comment.cmemo }</span> 
-					<i>from ${comment.cname} ${comment.cip } - at ${comment.cdate }</i>
-					<span class="btn" onclick="modifyComment(${comment.cnum}, ${param.pageNum}, ${bDto.bid}, ${comPaging.currentPage})">[ 수정 ]</span>
-					<span onclick="location='${conPath}/comment/delete.do?cnum=${comment.cnum }&bid=${param.bid }&pageNum=${param.pageNum }&comPageNum=${comPaging.currentPage }'" class="btn">[ 삭제 ]</span>
-					<span id="${comment.cnum }" class="replyView" class="btn">[ 답변 ]</span>
-				</div>
-				<div class="replySpace${comment.cnum }"></div>
+	<c:forEach items="${commentList }" var="comment">
+		<div class="reply${comment.cnum }">
+			<div>
+				<c:forEach var="i" begin="1" end="${comment.cindent }">
+					<c:if test="${i==comment.cindent }">
+			  			&nbsp; &nbsp; &nbsp; └
+			  		</c:if>
+					<c:if test="${i!=comment.cindent }">
+			  			&nbsp; &nbsp; &nbsp; 
+			  		</c:if>
+				</c:forEach>
+				${comment.cnum }.
+				<span style="font-weight: blod; font-size: 1.3em;">${comment.cmemo }</span> 
+				<i>from ${comment.cname} ${comment.cip } - at ${comment.cdate }</i>
+				<span class="btn" onclick="modifyComment(${comment.cnum}, ${param.pageNum}, ${bDto.bid}, ${comPaging.currentPage})">[ 수정 ]</span>
+				<span onclick="location='${conPath}/comment/delete.do?cnum=${comment.cnum }&bid=${param.bid }&pageNum=${param.pageNum }&comPageNum=${comPaging.currentPage }'" class="btn">[ 삭제 ]</span>
+				<span id="${comment.cnum }" class="replyView" class="btn" style="cursor: pointer;">[ 답변 ]</span>
 			</div>
-			<br>
-		</c:forEach>
-	</c:if>
+			<div class="replySpace${comment.cnum }"></div>
+		</div>
+		<br>
+	</c:forEach>
 	<div class="paging">
 		<c:if test="${comPaging.startPage > comPaging.blockSize }">
 			[ <a href="${conPath }/mvcboard/content.do?bid=${param.bid}&pageNum=${param.pageNum }&comPageNum=${comPaging.startPage-1}">이전</a> ]

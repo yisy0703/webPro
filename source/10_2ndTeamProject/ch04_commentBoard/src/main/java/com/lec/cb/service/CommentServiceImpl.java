@@ -32,32 +32,51 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public int commentWrite(Comment comment, HttpServletRequest request) {
+	public void commentWrite(Comment comment, HttpServletRequest request, Model model) {
 		comment.setCip(request.getRemoteAddr());
-		System.out.println("저장 될 댓글 데이터 : " + comment);
-		return commentDao.commentWrite(comment);
+		int result = commentDao.commentWrite(comment);
+		if(result == 1) {
+			model.addAttribute("commentResult", "댓글이 등록되었습니다");
+		}else {
+			model.addAttribute("commentResult", "댓글 등록이 실패되었습니다");
+		}
 	}
 
 	@Override
-	public int commentReply(Comment comment) {
+	public void commentReply(Comment comment, HttpServletRequest request, Model model) {
+		comment.setCip(request.getRemoteAddr());
 		commentDao.commentReplyPreStep(comment);
-		return commentDao.commentReply(comment);
+		int result = commentDao.commentReply(comment);
+		if(result == 1) {
+			model.addAttribute("commentResult", comment.getCnum() + "번 댓글에 답변하였습니다");
+		}else {
+			model.addAttribute("commentResult", comment.getCnum() + "번 댓글을에 답변이 실패되었습니다");
+		}
 	}
 
 	@Override
-	public int commentModify(Comment comment, HttpServletRequest request) {
+	public void commentModify(Comment comment, HttpServletRequest request, Model model) {
 		comment.setCip(request.getRemoteAddr());
-		return commentDao.commentModify(comment);
+		int result = commentDao.commentModify(comment);
+		if(result == 1) {
+			model.addAttribute("commentResult", comment.getCnum() + "번 댓글을 수정하였습니다");
+		}else {
+			model.addAttribute("commentResult", comment.getCnum() + "번 댓글을 수정이 실패되었습니다");
+		}
 	}
 
 	@Override
-	public int commentDelete(int bid) {
-		return commentDao.commentDelete(bid);
+	public void commentDelete(int cnum, Model model) {
+		int result = commentDao.commentDelete(cnum);
+		if(result == 1) {
+			model.addAttribute("commentResult", cnum + "번 댓글을 삭제하였습니다");
+		}else {
+			model.addAttribute("commentResult", cnum + "번 댓글 삭제가 실패되었습니다");
+		}
 	}
 
 	@Override
 	public Comment commentDetail(int cnum) {
-		// TODO Auto-generated method stub
 		return commentDao.commentDetail(cnum);
 	}
 
