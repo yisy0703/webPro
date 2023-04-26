@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.foreach.dao.Dao">
+	<resultMap type="Emp" id="EmpResult">
+		<result property="empno" column="empno"/>
+		<result property="ename" column="ename"/>
+		<result property="job" column="job"/>
+		<result property="mgr" column="mgr"/>
+		<result property="hiredate" column="hiredate"/>
+		<result property="sal" column="sal"/>
+		<result property="comm" column="comm"/>
+		<result property="deptno" column="deptno"/>
+	</resultMap>
+	<select id="empList" parameterType="java.util.List" resultMap="EmpResult">
+		SELECT * FROM EMP WHERE DEPTNO IN
+		<foreach collection="list" item="deptno" index="index"  open="(" separator="," close=")">
+			#{deptno}
+		</foreach>
+	</select>
+	<select id="deptList" resultType="Dept">
+		SELECT * FROM DEPT
+	</select>
+</mapper>
