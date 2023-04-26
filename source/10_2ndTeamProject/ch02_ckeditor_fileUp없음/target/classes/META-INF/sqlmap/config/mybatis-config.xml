@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+    
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.lec.ck.vo.B" alias="B"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="META-INF/sqlmap/mappers/b.xml"/>
+	</mappers>
+</configuration>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.ck.dao.BDao">
+	<resultMap type="B" id="BResult">
+		<result column="bno" property="bno"/>
+		<result column="btitle" property="btitle"/>
+		<result column="bcontent" property="bcontent"/>
+	</resultMap>
+	
+	<insert id="writeBboard" parameterType="B">
+		INSERT INTO B VALUES (B_SEQ.NEXTVAL, #{btitle}, #{bcontent})
+	</insert>
+	
+	<select id="listBboard" parameterType="B" resultMap="BResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
+		<if test="schItem=='' or schItem==null">
+			SELECT * FROM B ORDER BY BNO DESC
+		</if>
+		<if test="schItem=='btitle'">
+			SELECT * FROM B WHERE UPPER(BTITLE) LIKE '%'||UPPER(#{schWord})||'%' ORDER BY BNO DESC
+		</if>
+		<if test="schItem=='bcontent'">
+			SELECT * FROM B WHERE UPPER(BCONTENT) LIKE '%'||UPPER(#{schWord})||'%' ORDER BY BNO DESC
+		</if>
+		<if test="schItem=='btitleBcontent'">
+			SELECT * FROM B WHERE UPPER(BTITLE) LIKE '%'||UPPER(#{schWord})||'%' OR UPPER(BCONTENT) LIKE '%'||UPPER(#{schWord})||'%'  ORDER BY BNO DESC
+		</if>
+		) A)
+ 		WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="cntBboard" parameterType="B" resultType="int"> <!-- 대소문자 구분없이 검색하고자 할 때 -->
+		SELECT COUNT(*) FROM B 
+    <if test="schItem=='btitle'">
+    	WHERE UPPER(BTITLE) LIKE '%'||UPPER(#{schWord})||'%'
+    </if>
+    <if test="schItem=='bcontent'">
+    	WHERE UPPER(BCONTENT) LIKE '%'||UPPER(#{schWord})||'%'
+    </if>
+    <if test="schItem=='btitleBcontent'">
+    	WHERE UPPER(BTITLE) LIKE '%'||UPPER(#{schWord})||'%' OR UPPER(BCONTENT) LIKE '%'||UPPER(#{schWord})||'%' 
+    </if>
+	</select>
+	
+	<select id="detailBboard" parameterType="int" resultType="B">
+		SELECT * FROM B WHERE BNO=#{bno}
+	</select>
+	<update id="updateBboard" parameterType="B">
+		UPDATE B SET BTITLE = #{btitle},
+            BCONTENT = #{bcontent}
+        WHERE BNO = #{bno}
+	</update>
+	
+	<delete id="deleteBboard" parameterType="int">
+		DELETE FROM B WHERE BNO=#{bno}
+	</delete>
+</mapper>
