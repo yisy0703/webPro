@@ -23,8 +23,4 @@ public class MemberController {
 		model.addAttribute("member", sessionTemplate.selectOne("getMember", id));
 		return "detail";
 	}
-	@RequestMapping(value = "test", method = RequestMethod.GET)
-	public String test() {
-		return "testInput";
-	}
 }
