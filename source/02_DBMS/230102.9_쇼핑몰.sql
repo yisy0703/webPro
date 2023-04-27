@@ -2,7 +2,7 @@
 DROP TABLE CART;
 DROP TABLE ORDER_DETAIL;
 DROP TABLE ORDERS;
-DROP TABLE MEMBER;
+DROP TABLE MEMBER cascade constraints;
 DROP TABLE PRODUCT; -- 테이블 삭제가 안 되면 참조되는 테이블이 있는 경우
                     -- 무시하고 삭제하고자 하면 CASCADE CONSTRAINTS 추가
     -- 식별관계 : 부모테이블의 주키가 자식 테이블의 주키
@@ -76,16 +76,16 @@ INSERT INTO CART VALUES
 INSERT INTO CART VALUES 
     (CART_SEQ.NEXTVAL, 'abc', 'B1', 1, (select price from product where pcode='B1')*1);
 SELECT * FROM CART;
-SELECT 
-     ORDER_DETAIL_SEQ.NEXTVAL odNO, 
-        TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.CURRVAL, '000')) ono, 
-        pcode, qty, cost 
-    FROM CART WHERE MID='abc'; -- cart 확인
 -- ORDERS(주문)테이블
 INSERT INTO ORDERS (ONO, MID, ONAME, OADDR, OTEL)
     VALUES (TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.NEXTVAL, '000')),
             'abc', '홍길동', '서울시 서대문구', '010-9999-9999');
 -- ORDER_DETAIL(주문상세) 테이블
+SELECT 
+     ORDER_DETAIL_SEQ.NEXTVAL odNO, 
+        TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.CURRVAL, '000')) ono, 
+        pcode, qty, cost 
+    FROM CART WHERE MID='abc'; -- cart 확인하여 주문상세테이블로 insert
 INSERT INTO ORDER_DETAIL (odNO, oNO, pCODE, QTY, COST)
     SELECT ORDER_DETAIL_SEQ.NEXTVAL, 
         TO_CHAR(SYSDATE, 'RRMMDD')||TRIM(TO_CHAR(ORDERS_SEQ.CURRVAL, '000')) ono, 
