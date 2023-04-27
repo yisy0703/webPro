@@ -13,7 +13,7 @@ SELECT * FROM MEMBER WHERE ID='aaa';
 INSERT INTO MEMBER (ID, PW, NAME, EMAIL, BIRTH, RDATE, ADDRESS) 
     VALUES ('aaa','1','홍길동',null, '1990-01-01',SYSDATE, '서울시 서대문구 신촌로 141');
 INSERT INTO MEMBER (ID, PW, NAME, EMAIL, BIRTH, RDATE, ADDRESS) 
-    VALUES ('bbb','1','이소영',null, '1980-01-01',SYSDATE, '서울시 용산구 용문동 90');
+    VALUES ('bbb','1','이봉창',null, '1980-01-01',SYSDATE, '서울 용산구 백범로 281-9');
 commit;
 -- 3. 로그인할 때 (ID/PW)
 SELECT * FROM MEMBER WHERE ID='aaa';
@@ -26,5 +26,5 @@ UPDATE MEMBER SET PW='111',
                 BIRTH='1990-01-01',
                 ADDRESS='제주특별자치도 제주시 첨단로 242'
         WHERE ID='aaa';
-commit;
+COMMIT;
 SELECT * FROM member;
