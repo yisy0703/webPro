@@ -14,4 +14,4 @@ table tr th:nth-child(2), table tr td:nth-child(2){width: 30%}
 table tr th:nth-child(3), table tr td:nth-child(3){width: 30%}
 table tr th:nth-child(4), table tr td:nth-child(4){width: 25%}
 td, th {text-align: center; padding:5px; }
-.paging {text-align: center;}
+.paging {text-align: center; margin: 20px;}

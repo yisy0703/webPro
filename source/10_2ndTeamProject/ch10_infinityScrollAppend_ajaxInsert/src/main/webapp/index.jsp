@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-	<jsp:forward page="memo/list.do"/>
-	<%-- <jsp:forward page="memo/insert100.do"/> --%>
+	<%-- <jsp:forward page="memo/list.do"/> --%>
+	<jsp:forward page="memo/insert100.do"/>
 </body>
 </html>

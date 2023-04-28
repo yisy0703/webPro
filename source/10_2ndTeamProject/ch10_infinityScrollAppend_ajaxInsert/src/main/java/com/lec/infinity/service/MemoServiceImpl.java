@@ -43,9 +43,10 @@ public class MemoServiceImpl implements MemoService {
 	@Override
 	public void insert100() {
 		Memo memo = new Memo();
+		String[] ids = {"good","job","friday","sunday","happy","day","pure","molody","iris","blossom"};
 		for(int i=0 ; i<30 ; i++) {
-			memo.setId("z"+i);
-			memo.setContent(i+"만큼 좋아요");
+			memo.setId(ids[i%10]);
+			memo.setContent(i+"번째 테스트 글");
 			memo.setIp("192.168.20."+i);
 			int result = memoDao.memoInsert(memo);
 			System.out.println(result==1? i+"번재 insert성공":i+"번째 실패");
