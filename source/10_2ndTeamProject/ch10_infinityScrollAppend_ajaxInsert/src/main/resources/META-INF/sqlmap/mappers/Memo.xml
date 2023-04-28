@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.infinity.dao.MemoDao">
+	<resultMap type="Memo" id="MemoResult">
+		<result property="id" column="id"/>
+		<result property="content" column="content"/>
+		<result property="rdate" column="rdate"/>
+		<result property="ip" column="ip"/>
+	</resultMap>
+	<insert id="memoInsert" parameterType="Memo">
+		INSERT INTO MEMO (NUM, ID, CONTENT, IP) VALUES (MEMO_SQ.NEXTVAL, #{id},#{content},#{ip})
+	</insert>
+	<select id="memoList" parameterType="Memo" resultMap="MemoResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM MEMO ORDER BY NUM DESC) A)
+    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="getMemoCnt" resultType="int">
+		SELECT COUNT(*) FROM MEMO
+	</select>
+</mapper>

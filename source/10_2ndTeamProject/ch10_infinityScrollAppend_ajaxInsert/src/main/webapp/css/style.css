@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #fff0B5;
+	font-size: 12px;
+	margin: 0;
+}
+table {width:90%; margin: 0px auto; background-color: #FeE060; }
+table tr { background-color: #FFE271; }
+table tr:hover { background-color: orange;
+	cursor: pointer;
+}
+table tr th:nth-child(1), table tr td:nth-child(1){width: 15%}
+table tr th:nth-child(2), table tr td:nth-child(2){width: 30%}
+table tr th:nth-child(3), table tr td:nth-child(3){width: 30%}
+table tr th:nth-child(4), table tr td:nth-child(4){width: 25%}
+td, th {text-align: center; padding:5px; }
+.paging {text-align: center;}

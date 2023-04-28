@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.like.dao.ClikeDao">
+	<select id="categoryList" resultType="Category">
+		SELECT CNO||',' CNO, MAIN, SUB FROM CATEGORY ORDER BY CNO
+	</select>
+	<select id="myClikeList" parameterType="String" resultType="Clike">
+		SELECT * FROM CLIKE WHERE MID=#{mid}
+	</select>
+	<insert id="insertLike" parameterType="Clike">
+		INSERT INTO CLIKE VALUES (CLIKE_SQ.NEXTVAL, #{mid},(SELECT CNO FROM CATEGORY WHERE SUB=#{sub}))
+	</insert>
+	<delete id="deleteLike" parameterType="Clike">
+		DELETE FROM CLIKE WHERE MID=#{mid} AND CNO=(SELECT CNO FROM CATEGORY WHERE SUB=#{sub})
+	</delete>
+</mapper>

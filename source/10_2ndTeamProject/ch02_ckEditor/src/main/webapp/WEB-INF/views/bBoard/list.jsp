@@ -31,12 +31,12 @@
 <body>
 	<c:if test="${not empty successMsg }">
 		<script>
-			alert('${successMsg}');
+			swal('','${successMsg}','success');
 		</script>
 	</c:if>
 	<c:if test="${not empty failMsg }">
 		<script>
-			alert('${failMsg}');
+		swal('','${failMsg}','error');
 		</script>
 	</c:if>
 	<div align="center">

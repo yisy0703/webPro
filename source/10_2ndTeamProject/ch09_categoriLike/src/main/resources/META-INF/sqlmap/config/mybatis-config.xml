@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.lec.like.vo.Category" alias="Category"/>
+		<typeAlias type="com.lec.like.vo.Clike" alias="Clike"/>
+		<typeAlias type="com.lec.like.vo.Member" alias="Member"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="META-INF/sqlmap/mappers/clike.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
+	</mappers>
+</configuration>
