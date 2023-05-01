@@ -4,9 +4,9 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
     
 <configuration>
-	<settings>
-		<setting name="jdbcTypeForNull" value="NULL"/> <!-- date에 널 허용 -->
-	</settings>
+	<!-- <settings>
+		<setting name="jdbcTypeForNull" value="NULL"/> date에 널 허용
+	</settings> -->
 	<typeAliases>
 		<typeAlias type="com.lec.foreach.vo.Emp" alias="Emp"/>
 		<typeAlias type="com.lec.foreach.vo.Dept" alias="Dept"/>

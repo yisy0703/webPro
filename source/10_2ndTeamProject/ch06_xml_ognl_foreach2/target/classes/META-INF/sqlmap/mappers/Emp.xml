@@ -15,7 +15,7 @@
 	</resultMap>
 	<select id="empList" parameterType="Emp" resultMap="EmpResult">
 		SELECT * FROM EMP WHERE
-			ENAME LIKE '%'||UPPER(#{ename})||'%' 
+			ENAME LIKE '%'||UPPER(#{ename, jdbcType=VARCHAR})||'%' 
 			AND DEPTNO IN
 			<foreach collection="deptnos" item="deptno" index="index"  open="(" separator="," close=")">
 				#{deptno}

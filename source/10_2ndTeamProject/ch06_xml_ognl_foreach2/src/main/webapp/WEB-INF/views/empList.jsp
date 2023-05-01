@@ -34,9 +34,9 @@
 				}
 				$('form').submit();
 			});
-			$('input[type="text"]').keyup(function(){
+			/* $('input[type="text"]').keyup(function(){
 				$('form').submit();
-			});
+			}); */
 		});
 	</script>
 </head>
