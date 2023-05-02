@@ -62,7 +62,7 @@ pom.xml
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
-		    <version>3.0.5.RELEASE</version>
+		    <version>${org.springframework-version}</version>
 		</dependency>
 		
 		<!--  file upload  -->

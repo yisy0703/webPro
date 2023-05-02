@@ -1,0 +1,18 @@
+drop table friend;
+DROP SEQUENCE F_SQ;
+create table friend(
+  no number(3) primary key,
+  NAME VARCHAR2(100),
+  CATEGORY VARCHAR2(1), -- A친구/B지인
+  years NUMBER(3),
+  TEL VARCHAR2(20)
+);
+CREATE SEQUENCE F_SQ MAXVALUE 999 NOCACHE NOCYCLE;
+-- id=joinFriend
+INSERT INTO FRIEND VALUES (F_SQ.NEXTVAL, '홍길동', 'A', 30, '010-9999-9999');
+INSERT INTO FRIEND VALUES (F_SQ.NEXTVAL, '김길동', 'B', NULL, '010-8888-8888');
+-- id=listFriend
+SELECT * FROM FRIEND ORDER BY NO DESC;
+-- id = getNo 최종 입력한 친구의 번호
+SELECT NO FROM (SELECT * FROM FRIEND ORDER BY NO DESC) WHERE ROWNUM=1; 
+commit;

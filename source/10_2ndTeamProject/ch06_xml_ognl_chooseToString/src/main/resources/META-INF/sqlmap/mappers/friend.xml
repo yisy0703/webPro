@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.choose.dao.FriendDao">
+	<insert id="joinFriend" parameterType="Friend">
+		<choose>
+			<when test="category == 'A'.toString()">
+				INSERT INTO FRIEND VALUES (F_SQ.NEXTVAL, #{name}, #{category}, #{years}, #{tel})
+			</when>
+			<when test="category == 'B'.toString()">
+			INSERT INTO FRIEND VALUES (F_SQ.NEXTVAL, #{name}, #{category}, null, #{tel})
+			</when>
+		</choose>
+	</insert>
+	<select id="listFriend" resultType="Friend">
+		SELECT * FROM FRIEND ORDER BY NO DESC
+	</select>
+	<select id="getNo" resultType="int">
+		SELECT NO FROM (SELECT * FROM FRIEND ORDER BY NO DESC) WHERE ROWNUM=1
+	</select>
+</mapper>
