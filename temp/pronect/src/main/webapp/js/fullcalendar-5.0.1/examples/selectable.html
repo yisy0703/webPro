@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='../lib/main.css' rel='stylesheet' />
+<script src='../lib/main.js'></script>
+<script src='../lib/locales/ko.js'></script>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      minTime :'10:00:00',
+      maxTime :'24:00:00',
+      locale:'ko',
+      initialDate: '2020-06-12',
+      navLinks: true, // can click day/week names to navigate views
+      selectable: true,
+      selectMirror: true,
+      select: function(arg) {
+        var title = prompt('일정 입력:');
+        
+        
+        if (title) {
+          calendar.addEvent({
+            title: title,
+            start: arg.start,
+            end: arg.end,
+            allDay: arg.allDay
+          })
+        }
+        calendar.unselect()
+      },
+      eventClick: function(calEvent, jsEvent) {
+    	/*   
+        if (confirm('Are you sure you want to delete this event?')) {
+          arg.event.remove()
+        }
+         */
+         var title = prompt('일정 수정:', calEvent.title, {
+             buttons: {
+                 Ok: true,
+                 Cancel: false
+             }
+         });
+         
+    	  if (title){
+              calEvent.title = title;
+              calEvent.start=calEvent.start,
+              calEvent.end=calEvent.end,
+              calEvent.allDay=calEvent.allDay
+              calendar.fullCalendar('updateEvent',calEvent);
+          }
+      },
+      editable: true,
+      dayMaxEvents: true, // allow "more" link when too many events
+      events: [
+        {
+          title: 'All Day Event',
+          start: '2020-06-01'
+        },
+        {
+          title: 'Long Event',
+          start: '2020-06-07',
+          end: '2020-06-10'
+        },
+        {
+          groupId: 999,
+          title: 'Repeating Event',
+          start: '2020-06-09T16:00:00'
+        },
+        {
+          groupId: 999,
+          title: 'Repeating Event',
+          start: '2020-06-16T16:00:00'
+        },
+        {
+          title: 'Conference',
+          start: '2020-06-11',
+          end: '2020-06-13'
+        },
+        {
+          title: 'Meeting',
+          start: '2020-06-12'
+        },
+        {
+          title: 'Lunch',
+          start: '2020-06-12T12:00:00'
+        },
+        {
+          title: 'Meeting',
+          start: '2020-06-12T14:30:00'
+        },
+        {
+          title: 'Happy Hour',
+          start: '2020-06-12T17:30:00'
+        },
+        {
+          title: 'Dinner',
+          start: '2020-06-12T20:00:00'
+        },
+        {
+          title: 'Birthday Party',
+          start: '2020-06-13T07:00:00'
+        },
+        {
+          title: 'Click for Google',
+          url: 'http://google.com/',
+          start: '2020-06-28',
+          end :'2020-06-30'
+        }
+      ]
+    });
+
+    calendar.render();
+  });
+
+</script>
+<style>
+
+  body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  #calendar {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+</style>
+</head>
+<body>
+
+  <div id='calendar'></div>
+
+</body>
+</html>

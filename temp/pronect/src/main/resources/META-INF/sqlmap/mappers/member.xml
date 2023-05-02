@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.google.pronect.dao.MemberDao">
+	<resultMap type="Member" id="MemberResult">
+		<result property="mid" column="mid"/>
+		<result property="mnickname" column="mnickname"/>
+		<result property="mpw" column="mpw"/>
+		<result property="mname" column="mname"/>
+		<result property="mmail" column="mmail"/>
+		<result property="mdate" column="mdate"/>
+		<result property="mscore" column="mscore"/>
+		<result property="mevalnum" column="mevalnum"/>
+		<result property="manager" column="manager"/>
+		<result property="mstate" column="mstate"/>
+		<result property="mimage" column="mimage"/>
+		<result property="mrole" column="mrole"/>
+	</resultMap>
+	<select id="idConfirm" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE MID= #{mid, jdbcType=VARCHAR}
+	</select>
+	<select id="nicknameConfirm" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE MNICKNAME= #{mnickname, jdbcType=VARCHAR}
+	</select>
+	<insert id="joinMember" parameterType="Member">
+		INSERT INTO MEMBER (MID, MNICKNAME, MPW, MNAME, MMAIL, MIMAGE, MROLE)
+            VALUES(#{mid}, #{mnickname}, #{mpw}, #{mname}, #{mmail}, #{mimage}, #{mrole})
+	</insert>
+	<select id="loginCheck" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE MID=#{mid} AND MPW=#{mpw}
+	</select>
+	<select id="getDetailMember" parameterType="String" resultType="Member">
+		SELECT * FROM MEMBER WHERE MID=#{mid}
+	</select>
+	<update id="modifyMember" parameterType="Member">
+		UPDATE MEMBER
+		    SET MNICKNAME=#{mnickname},
+		        MPW=#{mpw},
+		        MNAME=#{mname},
+		        MMAIL=#{mmail},
+		        <if test="mimage != null and mimage!=''">MIMAGE=#{mimage},</if>
+		        MROLE=#{mrole}
+		    WHERE MID=#{mid}
+	</update>
+	<update id="modifyManager" parameterType="Member">
+		UPDATE MEMBER
+		    SET MANAGER=#{manager},
+		        MSTATE=#{mstate}
+		    WHERE MID=#{mid}
+	</update>
+	<update id="deactivateMember" parameterType="String">
+		UPDATE MEMBER SET MSTATE='N' WHERE MID=#{mid, jdbcType=VARCHAR}
+	</update>
+	<select id="searchId" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE MNAME=#{mname} AND MMAIL=#{mmail}
+	</select>
+	<select id="searchPw" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE MNAME=#{mname} AND MMAIL=#{mmail} AND MID=#{mid}
+	</select>
+	<!-- 멤버출력 startRow~endRow -->
+	<select id="memberList" parameterType="Member" resultMap="MemberResult">
+		<if test="schItem==null or schItem==''">
+			SELECT * FROM (SELECT ROWNUM RN, A.* 
+    			FROM (SELECT * FROM MEMBER ORDER BY MDATE DESC) A)
+    			WHERE RN BETWEEN #{startRow} AND #{endRow}	
+		</if>
+		<if test="schItem=='mid'">
+			SELECT * FROM (SELECT ROWNUM RN, A.* 
+			    FROM (SELECT * FROM MEMBER WHERE MID LIKE '%'||#{schWord}||'%' ORDER BY MDATE DESC) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="schItem=='manager'">
+			SELECT * FROM (SELECT ROWNUM RN, A.* 
+			    FROM (SELECT * FROM MEMBER WHERE MANAGER=UPPER(#{schWord}) ORDER BY MDATE DESC) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+	</select>
+	<!-- 페이징용 멤버 수 -->
+	<select id="totCntMember" parameterType="Member" resultType="int">
+		<if test="schItem==null or schItem==''">
+			SELECT COUNT(*) FROM MEMBER
+		</if>
+		<if test="schItem=='mid'">
+			SELECT COUNT(*) FROM MEMBER WHERE MID LIKE '%'||#{schWord}||'%'
+		</if>
+		<if test="schItem=='manager'">
+			SELECT COUNT(*) FROM MEMBER WHERE MANAGER=#{schWord}
+		</if>
+	</select>
+</mapper>

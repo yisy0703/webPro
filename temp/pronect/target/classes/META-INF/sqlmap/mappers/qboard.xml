@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.google.pronect.dao.QboardDao">
+	<resultMap type="Qboard" id="QboardResult">
+		<result property="qid" column="qid"/>
+		<result property="mid" column="mid"/>
+		<result property="qtitle" column="qtitle"/>
+		<result property="qcontent" column="qcontent"/>
+		<result property="qfile" column="qfile"/>
+		<result property="qrdate" column="qrdate"/>
+		<result property="qgroup" column="qgroup"/>
+		<result property="qstep" column="qstep"/>
+		<result property="qindent" column="qindent"/>
+		<result property="mnickname" column="mnickname"/>
+		<result property="mimage" column="mimage"/>
+	</resultMap>
+	
+	<select id="qboardList" parameterType="Qboard" resultMap="QboardResult">
+		<if test="schItem==null or schItem==''">
+			SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QBOARD 
+							ORDER BY QGROUP DESC, QSTEP) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="schItem=='all'">
+			SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QBOARD 
+			        WHERE QTITLE LIKE '%'||#{schWord}||'%' OR QCONTENT LIKE '%'||#{schWord}||'%'
+			        ORDER BY QGROUP DESC, QSTEP) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="schItem=='qtitle'">
+			SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QBOARD 
+			        WHERE QTITLE LIKE '%'||#{schWord}||'%'
+			        ORDER BY QGROUP DESC, QSTEP) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="schItem=='qcontent'">
+			SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QBOARD 
+			        WHERE QCONTENT LIKE '%'||#{schWord}||'%'
+			        ORDER BY QGROUP DESC, QSTEP) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+	</select>
+	<!-- 페이징용 멤버 수 -->
+	<select id="totCntQboard" resultType="int">
+		<if test="schItem==null or schItem==''">
+			SELECT COUNT(*) FROM QBOARD
+		</if>
+		<if test="schItem=='all'">
+			SELECT COUNT(*) FROM QBOARD WHERE QTITLE LIKE '%'||#{schWord}||'%' OR QCONTENT LIKE '%'||#{schWord}||'%'
+		</if>
+		<if test="schItem=='qtitle'">
+			SELECT COUNT(*) FROM QBOARD WHERE QTITLE LIKE '%'||#{schWord}||'%'
+		</if>
+		<if test="schItem=='qcontent'">
+			SELECT COUNT(*) FROM QBOARD WHERE QCONTENT LIKE '%'||#{schWord}||'%'
+		</if>
+	</select>
+	<insert id="writeQboard" parameterType="Qboard">
+		INSERT INTO QBOARD (QID, MID, QTITLE, QCONTENT, QFILE,
+		                    QGROUP, QSTEP, QINDENT)
+		            VALUES (QBOARD_SEQ.NEXTVAL, #{mid}, #{qtitle},#{qcontent}, #{qfile},
+		                    QBOARD_SEQ.CURRVAL,0,0,)
+	</insert>
+	<!-- <selectKey resultType="Integer" keyProperty="qid" order="AFTER">
+		SELECT MAX(qid) FROM QBOARD
+	</selectKey> -->
+	<select id="contentQboard" parameterType="int" resultType="Qboard">
+		SELECT QID, M.MID MID, MIMAGE, MNICKNAME, QTITLE, QCONTENT, QFILE, QRDATE, QSTEP, QINDENT  FROM QBOARD Q,MEMBER M WHERE Q.MID=M.MID AND QID=${qid} 
+	</select>
+	<update id="modifyQboard" parameterType="Qboard">
+		UPDATE QBOARD 
+		    SET QTITLE = #{qtitle},
+		        QCONTENT = #{qcontent},
+		        <if test="qfile != null and qfile!=''">QFILE = #{qfile}</if>
+		    WHERE QID = #{qid}
+	</update>
+	<delete id="deleteQboard" parameterType="int">
+		DELETE FROM QBOARD WHERE QID=#{qid}
+	</delete>
+	<update id="replyQboardPreStep" parameterType="Qboard">
+		UPDATE QBOARD SET QSTEP = QSTEP + 1 WHERE QGROUP=#{qgroup} AND QSTEP>#{qstep}
+	</update>
+	<insert id="replyQboard" parameterType="Qboard">
+		INSERT INTO QBOARD (QID, MID, QTITLE, QCONTENT,
+		                    QGROUP, QSTEP, QINDENT)
+		        VALUES (QBOARD_SEQ.NEXTVAL, #{mid}, #{qtitle}, #{qcontent}, 
+		                #{qgroup}, #{qstep}+1, #{qindent}+1)
+	</insert>
+</mapper>

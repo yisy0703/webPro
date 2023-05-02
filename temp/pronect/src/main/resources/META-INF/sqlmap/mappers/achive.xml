@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.google.pronect.dao.AchiveDao">
+	<resultMap type="Achive" id="AchiveResult">
+		<result property="scd_id" column="SCD_ID"/>
+		<result property="mid" column="MID"/>
+		<result property="scd_achive" column="SCD_ACHIVE"/>
+	</resultMap>
+	<insert id="insertAchive" parameterType="Achive">
+		INSERT INTO SCD_ACHIVE VALUES (#{scd_id}, #{mid}, 'N')
+	</insert>
+	<update id="updateAchive" parameterType="int">
+		UPDATE SCD_ACHIVE SET SCD_ACHIVE = 'Y' WHERE SCD_ID = #{scd_id}
+	</update>
+</mapper>

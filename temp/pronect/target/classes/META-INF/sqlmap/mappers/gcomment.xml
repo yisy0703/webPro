@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.google.pronect.dao.GCommentDao">
+	<resultMap type="GComment" id="GCommentResult">
+		<result property="gcid" column="gcid"/>
+		<result property="mid" column="mid"/>
+		<result property="gccontent" column="gccontent"/>
+		<result property="gcip" column="gcip"/>
+		<result property="gcrdate" column="gcrdate"/>
+		<result property="gid" column="gid"/>
+		<result property="mimage" column="mimage"/>
+		<result property="mnickname" column="mnickname"/>
+	</resultMap>
+	<insert id="comment" parameterType="GComment">
+		INSERT INTO GCOMMENT (GCID, MID, GCCONTENT, GCIP, GID)
+            VALUES(GCOMMENT_SEQ.NEXTVAL, #{mid}, #{gccontent}, #{gcip}, #{gid})
+ 	  <selectKey resultType="Integer" keyProperty="gcid" order="AFTER">
+  		SELECT MAX(GCID) FROM GCOMMENT
+  	</selectKey>
+	</insert>
+	<select id="commentContent" parameterType="int" resultMap="GCommentResult">
+		SELECT GID, GCID, MIMAGE, MNICKNAME, GCRDATE, GCCONTENT FROM MEMBER M, GCOMMENT C WHERE M.MID = C.MID AND GID = #{gid}
+	</select>
+	<update id="commentModify" parameterType="GComment">
+		UPDATE GCOMMENT SET GCCONTENT = #{gccontent} WHERE GCID = #{gcid}
+	</update>
+	<delete id="commentDelete" parameterType="int">
+		DELETE GCOMMENT WHERE GCID = #{gcid}
+	</delete>
+	<select id="commentCnt">
+		SELECT COUNT(*) FROM GCOMMENT WHERE GID = #{gid}
+	</select>
+</mapper>

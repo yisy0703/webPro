@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.google.pronect.dao.ScheduleDao">
+	<resultMap type="Schedule" id="Map">
+		<result property="scd_id" column="SCD_ID"/>
+		<result property="gid" column="GID"/>
+		<result property="mid" column="MID"/>
+		<result property="scd_title" column="SCD_TITLE"/>
+		<result property="scd_memo" column="SCD_MEMO"/>
+		<result property="scd_start" column="SCD_START"/>
+		<result property="scd_end" column="SCD_END"/>
+	</resultMap>
+	<insert id="insertSchedule" parameterType="Schedule">
+		INSERT INTO SCHEDULE 
+		<if test="scd_end==null or scd_end==''">
+			VALUES (SCHEDULE_SEQ.NEXTVAL, #{gid}, #{mid}, #{scd_title}, #{scd_memo}, TO_DATE(TO_CHAR(#{scd_start}), 'YYYY-MM-DD'))
+		</if>
+		<if test="scd_end!=null or scd_end!=''">
+			VALUES (SCHEDULE_SEQ.NEXTVAL, #{gid}, #{mid}, #{scd_title}, #{scd_memo}, TO_DATE(TO_CHAR(#{scd_start}), 'YYYY-MM-DD')), TO_DATE(TO_CHAR(#{scd_end}), 'YYYY-MM-DD'))
+		</if>
+		<selectKey resultType="int" keyProperty="scd_id" order="AFTER">
+        	SELECT SCHEDULE_SEQ.CURRVAL FROM DUAL
+    </selectKey>     
+	</insert>
+	<select id="totalSchedule" parameterType="Integer" resultMap="Map">
+		SELECT * FROM SCHEDULE WHERE GID = #{gid}
+	</select>
+	<select id="detailSchedule" parameterType="Integer" resultMap="Map">
+		SELECT * FROM SCHEDULE WHERE SCD_ID = #{scd_id}
+	</select>
+</mapper>
