@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.json.dao.ExDao">
+	
+	<select id="select" resultType="Ex">
+		<![CDATA[
+			select * from ex
+    	]]>
+	</select>
+	<insert id="insert" parameterType="Ex">
+		<![CDATA[
+			insert into ex values (ex_sq.nextval, #{id}, #{name},#{price},#{description})
+		]]>
+	</insert>
+</mapper>

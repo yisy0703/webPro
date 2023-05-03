@@ -21,7 +21,7 @@ public class SeatServiceImpl implements SeatService {
 		for(int i=0 ; i<10 ; i++) {
 			if(seatDbList.contains("a"+(i+1))) {
 				//System.out.print("a"+(i+1)+"는 예약됨 ");
-				seats.add("a"+i);
+				seats.add("s"+i);
 			}else {
 				//System.out.print("a"+(i+1)+"는 예약안 됨 ");
 				seats.add("");
@@ -32,7 +32,7 @@ public class SeatServiceImpl implements SeatService {
 	}
 	@Override
 	public boolean seatReservation(String[] seatId, Seat seat) {
-		int arrayCnt = seatId.length;
+		int arrayCnt = seatId.length;//2
 		int reserveCnt = 0;
 		for(String seatid : seatId) {
 			seat.setSeatid(seatid);

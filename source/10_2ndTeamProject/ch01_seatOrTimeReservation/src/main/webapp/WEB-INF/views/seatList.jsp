@@ -62,7 +62,7 @@
 					<input type="checkbox" name="seatId" value="a${i+1}" id="a${i+1 }" disabled="disabled">
 				</c:if>
 				<c:if test="${i%2 == 1 }">
-					<tr>					
+					<br>					
 				</c:if>
 		</c:forEach>
 		<input type="submit" value="">
