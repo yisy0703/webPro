@@ -1,3 +1,3 @@
 git add .
-git commit -m "2ndTeamProject"
+git commit -m "application test"
 git push -u origin main
