@@ -1,7 +1,7 @@
 const express = require('express'); // express 라이브러리 첨부
 const app = express(); // express라이브러리를 이용, 객체 생성
 
-const uri = "mongodb+srv://yisy0703:ftnwLKSfNEPRGMS5@cluster0.rjo9xgd.mongodb.net/?retryWrites=true&w=majority";
+
 
 app.listen(8090, function(){
   console.log("listening on 8090");
