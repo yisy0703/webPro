@@ -1,7 +1,7 @@
 const express = require('express'); // express 라이브러리 첨부
 const app = express(); // express라이브러리를 이용, 객체 생성
 
-
+const uri = "";
 
 app.listen(8090, function(){
   console.log("listening on 8090");
