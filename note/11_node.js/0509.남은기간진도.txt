@@ -1,5 +1,5 @@
 5/9 ~ 10 node.js(JavaScript 웹프레임워크)
--- node.js download & setup
+-- node.js download & setup (cmd창에서 node -v)
 -- IDE(vscode)
 
 5/11 ~ 12 SpringBoot(Java 웹프레임워크)
