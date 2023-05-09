@@ -1,0 +1,218 @@
+1. 프로젝트 생성 : 스타터 사이트로 이동해서 스프링 프로젝트 생성 https://start.spring.io
+   프로젝트 선택
+	Project : gradle Project(라이브러리 툴)
+	Spring Boot : 2.6.x (SNAPSHOT은 만들고있는 버전.M2은 아직 릴리즈전)
+	Language : Java
+	Packaging : Jar
+	Java : 8
+      	Dependencies : Spring Web, Thymeleaf(타임리프 템플릿 엔진VIew), Lombok, spring-boot-devtools(html파일을 컴파일만 해주면 서버 재시작없이 View 파일 변경이 가능)
+
+2. 인텔리J에서 build.gradle로 open as Project
+3.  settings > Build,Execution,Deployment > BuildTools > Gradle > Build and run using과 Run Tests using을 IntelliJ로 바꾸면 속도가 조금 빠름
+
+4. 라이브러리 살펴보기
+	Gradle은 의존관계가 있는 라이브러리를 함께 다운로드한다.
+	- Spring boot 라이브러리
+	Spring-boot-starter-web
+		spring-boot-start-tomcat : 톰캣(웹서버)
+		Spring-webmvc : 스프링 웹 MVC
+	Spring-boot-starter-thymeleaf : 타임리프 템플릿 엔진(View)
+	Spring-boot-starter(공통) :스프링 부트 + 스프링 코어 +로깅
+		Spring-boot
+			Spring-core
+		Spring-boot-start-logging
+			logback, slf4j
+	- 테스트 라이브러리
+	Spring-boot-starter-test
+		junit : 테스트 프레임워크
+		mockito : 목 라이브러리
+		assertj : 테스트 코드를 좀 더 편하게 작성하게 도와주는 라이브러리
+		Spring-test : 스프링 통합 테스트 지원
+
+6. https://docs.spring.io/spring-boot/docs/2.7.11/reference/html/web.html#web(reference docs 검색)
+
+7. 배포 방법 > gradlew build (안 되면 gradlew clean build : clean은 build지움)
+                   cd build
+                   cd libs
+                   java -jar hello-spring-0.0.1-tab
+
+* 다음은 비즈니스 요구사항
+	컨트롤러 : 웹MVC의 컨트롤러 역할
+	서비스 : 핵심 비즈니스 로직 구현
+	리포지토리 : 데이터베이스에 접근, 도메인 객체를 DB에 저장하고 관리(dao)
+	도메인 : 비즈니스 도메인 객체 (dto, vo)
+
+7. domain
+@Data
+public class Member {
+    private int no;
+    private String name;
+}
+
+
+8. repository
+//@Repository
+public class MemberRepository {
+    private static List<Member> store = new ArrayList<Member>();
+    private static int cnt;
+    public void save(Member member){
+        member.setNo(++cnt);
+        store.add(member);
+    }
+    public List<Member> list(){
+        return store;
+    }
+    public void clear(){
+        store.clear();
+    }
+}
+8-1. Repository Test
+public class MemberRepositoryTest {
+    private MemberRepository memberRepository = new MemberRepository();
+    @AfterEach
+    public void afterEach(){
+        memberRepository.clear();
+    }
+    @Test
+    public void save(){
+        Member member = new Member();
+        member.setName("홍길동");
+        memberRepository.save(member);
+        Member member1 = new Member();
+        member1.setName("홍길동");
+        memberRepository.save(member1);
+        List<Member> result = memberRepository.list();
+        System.out.println(result);
+        Assertions.assertEquals(result.get(0), member);
+        Assertions.assertEquals(result.get(1), member1);
+    }
+    @Test
+    public void list(){
+        Member member = new Member();
+        member.setName("홍길동");
+        memberRepository.save(member);
+        Member member1 = new Member();
+        member1.setName("홍길동");
+        memberRepository.save(member1);
+        List<Member> result = memberRepository.list();
+        Assertions.assertEquals(result.size(), 2);
+    }
+}
+
+9. service
+//@Service
+public class MemberService {
+    @Autowired
+    private MemberRepository memberRepository;
+    public void save(Member member){
+        memberRepository.save(member);
+    }
+    public List<Member> list(){
+        return memberRepository.list();
+    }
+}
+
+10. Bean 생성(Java 파일로 Bean 생성)
+@Configuration
+public class SpringConfig {
+    @Bean
+    public MemberRepository memberRepository(){
+        return new MemberRepository();
+    }
+    @Bean
+    public MemberService memberService(){
+        return new MemberService();
+    }
+}
+
+11. Controller
+@Controller
+public class MemberController {
+    @Autowired
+    private MemberService memberService;
+
+    @GetMapping("/")
+    public String index(Model model){
+        model.addAttribute("greeting", "안녕하세요. 회원기능입니다");
+        return "home";
+    }
+    @GetMapping("/join")
+    public String joinView(){
+        return "member/joinForm";
+    }
+    @PostMapping("/join")
+    public String join(Member member){
+        memberService.save(member);
+        return "redirect:/";
+    }
+    @GetMapping("/list")
+    public String list(Model model){
+        model.addAttribute("memberList", memberService.list());
+        return "member/list";
+    }
+}
+12. view단
+(1) home.html소스
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 th:text="${greeting}">Hello, Spring</h1>
+    <p>
+        <a href="/join">회원가입</a>
+        <a href="/list">회원목록</a>
+    </p>
+</body>
+</html>
+(2) joinForm.html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/join" method="post">
+        <input type="text" name="name" placeholder="이름을 입력하세요">
+        <input type="submit" value="등록">
+        <input type="button" value="목록" onclick="location.href='/list'">
+    </form>
+</div>
+</body>
+</html>
+(3) list.html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <table>
+    <tbody>
+    <tr><td colspan="2"><a href="/join">회원가입</a></td> </tr>
+      <tr><th>#</th><th>이름</th></tr>
+    </tbody>
+    <tbody>
+      <tr th:if="${memberList.size()==0}"><td colspan="2"><b>등록된 회원이 없습니다</b></td> </tr>
+      <tr th:each="member : ${memberList}">
+        <td th:text="${member.no}">#</td>
+        <td th:text="${member.name}">name</td>
+      </tr>
+      <tr th:unless="${memberList.size()==0}"><td colspan="2" th:text="'이상 &nbsp; '+${memberList.size()}+'명'"></td> </tr>
+    </tbody>
+  </table>
+</body>
+</html>
+13. 참고 : spring-boot-devtools 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능하다.
+      (인텔리J 컴파일 방법 : build > Recompile)
+14. 빌드하기 (콘솔 이동)
+   gradlew.bat build 실행
+    cd build/libs
+    java -jar hello-spring-0.0.1-SNAPSHOT.jar
+   잘 안 되면 : gradlew.bat clean
+   실행확인

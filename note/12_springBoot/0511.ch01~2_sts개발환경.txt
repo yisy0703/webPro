@@ -1,0 +1,113 @@
+- Spring Boot 수업 차례
+(1) maven 라이브러리 - sts4
+
+(2) gradle 라이브러리 - 인텔리J
+    cf)젯브레인社 - 인텔리J(자바, 스프링 개발)
+                      - pyCharm (python 웹 개발)
+                      - 안드로이드 스튜디오(코틀린)
+
+
+
+0. Java install
+1. sts4.15.3 Download (https://github.com/spring-projects/sts4/wiki/Previous-Versions)
+2. IDE 폴더에 옮김
+3. "java -jar 다운받은파일명" 실행
+ ini파일에  
+-Dosgi.requiredJavaVersion=1.8
+-Dfile.encoding=utf-8
+4. Lombok 인스톨
+5. Eclipse Marketplace 
+(1) IntelliJ IDEA keymap for Eclipse 0.1 인스톨(단축키를 인텔리J와 맞춤)
+   keymap을 설치하는 이유 : 젯브레인(러시아회사)의 intelliJ 툴과 안드로이드 스튜디오 툴과 코틀린 언어
+            자바개발자라면 코틀린을 쓰거나 인텔리J로 사용하려면 유료
+            우리는 무료로 sts를 쓰고 단축키를 인텔리J로 맞출 수 있음
+(2) Eclipse Enterprise Java and Web Developer Tools 3.2x 인스톨
+
+6. 프로젝트 생성
+(1) ch01_helloMaven
+    dependency : spring web / Lombok / Spring Boot DevTools / thymeleaf
+
+★ pom.xml에 dependency 추가
+		<!-- 톰캣 -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+		
+   
+★ application.properties에 추가
+server.port=8090
+★ static/index.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+	<h1>welcome Page</h1>
+</body>
+</html>
+★ templates/home.html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+	<h1 th:text="'전달받은 인사 : '+${greeting}">안녕하세요. 손님</h1>
+</body>
+</html>
+
+(2) ch02_empMaven
+    dependency :spring web /  JDBC api /  Oracle Driver / Mybatis framework   / Lombok / Spring Boot DevTools
+
+★ pom.xml에 dependency 추가
+		<!-- JSP 파일 사용하기 위한 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- 톰캣 -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+★ application.properties에 추가
+
+server.port=8090
+
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE
+spring.datasource.username=scott
+spring.datasource.password=tiger
+
+★ static/index.html 추가
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>index.html</h1>
+</body>
+</html>
+
+★ application.properties에 추가
+# vo location
+mybatis.type-aliases-package=com.lec.emp.vo
+
+# xml location
+mybatis.mapper-locations=classpath:mappers/**/*.xml
+
+9. vo추가
+10. xml추가
+
+11. service추가
