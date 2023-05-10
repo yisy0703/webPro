@@ -3,8 +3,8 @@
 -- IDE(vscode)
 
 5/11 ~ 12 SpringBoot(Java 웹프레임워크)
--- IDE1(sts4-4.15.3)
--- IDE2(IntelliJ)
+-- IDE1(sts4-4.15.3) - maven
+-- IDE2(IntelliJ) - gradle(thymleaf 엔진)
 
 
 

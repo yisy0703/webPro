@@ -2,7 +2,7 @@ const express = require('express'); // express 라이브러리 첨부
 const app = express(); // express라이브러리를 이용, 객체 생성
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "";
+const uri = "mongodb+srv://yisy0703:ftnwLKSfNEPRGMS5@cluster0.rjo9xgd.mongodb.net/?retryWrites=true&w=majority";
 var db;
 MongoClient.connect(uri, function(err, client){
   // MongDB 연결후 할 일
@@ -50,10 +50,27 @@ app.post('/write', (req, res) => {
                                           if(err) {return console.log(err); }
                                           // 1~3까지 err없으면 write.html로 가기 
                                           console.log('post 등록 완료');
-                                          res.sendFile(__dirname + "/write.html");
+                                          //res.sendFile("__dirname + /write.html);
+                                          res.redirect("/list");
                                          });
     });
   });
 });
 
 // '/list' 요청(get)으로 들어오면 post find한 결과를 배열로 받아 브라우저 화면에 출력
+app.set('view engine', "ejs"); // view엔진으로 ejs를 등록
+app.get('/list', (req, res)=>{
+  db.collection('post').find().toArray(function(err, result){
+    console.log(result); // find한 결과
+    res.render("list.ejs", {posts : result}); // model.addAttribute("posts", result)
+  });
+});
+
+app.delete('/delete', (req, res) => {
+  // req.body._id번 게시물을 post에서 삭제하고 alert 메세지 전송
+  var _id = req.body._id;
+  db.collection('post').deleteOne({_id : Number(_id)}, function(err, result){
+    if(err) {return console.log(err);}
+    res.status(200).send({msg : _id+'번 post 삭제 완료'});
+  });
+});
