@@ -6,11 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Insert title here</title>
-  <link href="${conPath }/css/emp.css" rel="stylesheet">
-  <style></style>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="${conPath }/css/emp.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('input[type=text]').keyup(function(){
@@ -24,8 +23,9 @@
 		});
 			
 	</script>
+</head>
 <body>
-  <div id="wrap">
+<div id="wrap">
   	<form action="${conPath }/emp.do">
   		사원명 <input type="text" name="ename" value="${searchEmp.ename }" size="5">
   		직책 <input type="text" name="job" value="${searchEmp.job }" size="5">
