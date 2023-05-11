@@ -23,15 +23,7 @@
 (1) ch01_helloMaven
     dependency : spring web / Lombok / Spring Boot DevTools / thymeleaf
 
-★ pom.xml에 dependency 추가
-		<!-- 톰캣 -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-		</dependency>
-		
-   
-★ application.properties에 추가
+ ★ application.properties에 추가
 server.port=8090
 ★ static/index.html
 <!DOCTYPE html>
