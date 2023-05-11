@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.emp.repository.EmpRepository">
+	<resultMap type="Emp" id="EmpResult">
+		<result property="empno" column="empno"/>
+		<result property="ename" column="ename"/>
+		<result property="job" column="job"/>
+		<result property="mgr" column="mgr"/>
+		<result property="hiredate" column="hiredate"/>
+		<result property="sal" column="sal"/>
+		<result property="comm" column="comm"/>
+		<result property="deptno" column="deptno"/>
+	</resultMap>
+	<select id="empList" parameterType="Emp" resultMap="EmpResult">
+			<![CDATA[
+			SELECT * FROM EMP where 1=1
+			]]>
+		<if test="ename!=null and ename!=''">
+			<![CDATA[AND ENAME LIKE '%'||#{ename}||'%']]>
+		</if>
+		<if test="job!=null and job!=''">
+			<![CDATA[ AND JOB LIKE '%'||#{job}||'%']]>
+		</if>
+		<if test="deptno!=0">
+			<![CDATA[ and deptno = #{deptno}]]>
+		</if>
+	</select>
+</mapper>
