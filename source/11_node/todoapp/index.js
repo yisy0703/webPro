@@ -2,7 +2,7 @@ const express = require('express'); // express 라이브러리 첨부
 const app = express(); // express라이브러리를 이용, 객체 생성
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "";
+const uri = "mongodb+srv://yisy0703:ftnwLKSfNEPRGMS5@cluster0.rjo9xgd.mongodb.net/?retryWrites=true&w=majority";
 var db;
 MongoClient.connect(uri, function(err, client){
   // MongDB 연결후 할 일
