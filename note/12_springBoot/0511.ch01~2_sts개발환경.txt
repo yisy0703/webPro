@@ -17,11 +17,7 @@
 -Dfile.encoding=utf-8
 4. Lombok 인스톨
 5. Eclipse Marketplace 
-(1) IntelliJ IDEA keymap for Eclipse 0.1 인스톨(단축키를 인텔리J와 맞춤)
-   keymap을 설치하는 이유 : 젯브레인(러시아회사)의 intelliJ 툴과 안드로이드 스튜디오 툴과 코틀린 언어
-            자바개발자라면 코틀린을 쓰거나 인텔리J로 사용하려면 유료
-            우리는 무료로 sts를 쓰고 단축키를 인텔리J로 맞출 수 있음
-(2) Eclipse Enterprise Java and Web Developer Tools 3.2x 인스톨
+ - Eclipse Enterprise Java and Web Developer Tools 3.2x 인스톨
 
 6. 프로젝트 생성
 (1) ch01_helloMaven

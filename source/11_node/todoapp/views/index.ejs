@@ -8,21 +8,7 @@
     <link href="/css/style.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">ToDo App</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-            <a class="nav-link" href="/write">Write</a>
-            <a class="nav-link" href="/list">List</a>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <%- include('nav.html') %>
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">ToDo App에 와주셔서 감사합니다</h1>
     </div>

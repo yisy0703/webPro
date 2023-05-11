@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <%- include('nav.html') %>
+
+    <div class="container mt-5">
+      <h1>상세보기</h1>
+        <div class="container mt-4">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <p> _id : <%=post._id %> </p>
+              <h4>할일 : <%=post.title %></h4>
+              <p>할일 마감날짜 : <%=post.date%></p>
+              <button class="btn btn-warning" onclick="location='/list'">목록</button>
+              <button class="btn btn-danger update" data-id="<%=post._id %>">수정</button>
+            </li>
+          </ul>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      $('button.update').click(e => {
+        let _id = e.target.dataset.id;
+        location.href = '/update/'+_id;
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
