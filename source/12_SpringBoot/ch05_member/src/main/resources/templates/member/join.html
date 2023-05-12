@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <script th:inline="javascript">
+    let msg = [[${param.msg}]];
+    if(msg){
+      alert(msg);
+    }
+  </script>
+  <form action="/join" method="post">
+    <table>
+      <tr><td><input type="text" name="name" placeholder="이름을 입력하세요"></td></tr>
+      <tr><td><input type="text" name="tel" placeholder="전화번호를 입력하세요"></td></tr>
+      <tr>
+        <td>
+          <button onclick="location.href='/join'">회원가입</button>
+          <button onclick="location.href='/list'">회원목록</button>
+          <button onclick="location.href='/'">처음으로</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

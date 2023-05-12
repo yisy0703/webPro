@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.ch05_member.repository.MemberRepository">
+    <insert id="save" parameterType="Member">
+        INSERT INTO MEMBER VALUES (MEMBER_NO_SQ.NEXTVAL, #{name}, #{tel})
+    </insert>
+    <select id="findByNo" parameterType="int" resultType="Member">
+        SELECT * FROM MEMBER WHERE NO=#{no}
+    </select>
+    <select id="findByName" parameterType="String" resultType="Member">
+        SELECT * FROM MEMBER WHERE NAME=#{name}
+    </select>
+    <select id="findAll" resultType="Member">
+        sELECT * FROM MEMBER
+    </select>
+    <delete id="deleteAll">
+        DELETE FROM MEMBER
+    </delete>
+</mapper>
