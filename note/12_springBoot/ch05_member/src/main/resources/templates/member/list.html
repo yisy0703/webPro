@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('tr').click(function(){
+                let no = Number($(this).children().eq(0).text());
+                if(!isNaN(no)){
+                    location.href = '/findOne?no='+no;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="3">
+                <a href="/join">회원가입</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <a href="/">처음으로</a>
+            </td>
+        </tr>
+        <tr>
+            <th>번호</th><th>이름</th><th>전화번호</th>
+        </tr>
+        <tr th:if="${memberList.size() == 0}">
+            <td colspan="3">
+                <b>등록된 회원이 없습니다</b>
+            </td>
+        </tr>
+        <tr th:each="member:${memberList}">
+            <td th:text="${member.no}">#no</td>
+            <td th:text="${member.name}">#name</td>
+            <td th:text="${member.tel}">#tel</td>
+        </tr>
+        <tr th:unless="${memberList.size() == 0}">
+            <td colspan="3" th:text="'이상 &nbsp; ' + ${memberList.size()} + '명'">xx명</td>
+        </tr>
+    </table>
+</body>
+</html>

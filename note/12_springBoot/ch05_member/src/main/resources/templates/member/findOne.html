@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <table>
+    <tr><td>번호</td><td th:text="${member.no}">#no</td></tr>
+    <tr><td>이름</td><td th:text="${member.name}">#name</td></tr>
+    <tr><td>전화번호</td><td th:text="${member.tel}">#tel</td></tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="등록" class="btn">
+        <input type="button" value="목록" onclick="location.href='/list'" class="btn">
+        <input type="button" value="처음으로" onclick="location.href='/'" class="btn">
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
